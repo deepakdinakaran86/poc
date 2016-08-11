@@ -1,0 +1,606 @@
+/* Template-specific stuff
+ *
+ * Customizations just for the template; these are not necessary for anything
+ * with disabling the responsiveness.
+ */
+ 
+ html, body {
+  font-family: 'Open Sans', Tahoma, Arial, Verdana, Helvetica, sans-serif;
+  max-width: 1340px;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+  padding: 0 4px;
+  border: 0 solid #ff0000;
+  background-color: transparent;
+}
+
+
+header.gx-page-title {
+  background-color: #014183;
+}
+
+header.gx-page-title h2 {
+  color: #ffffff;
+}
+
+header.gx-page-title h2 {
+  font-size: 24px;
+  margin: 4px 0 4px 0;
+}
+
+header.gx-page-title {
+  color: #ffffff;
+  padding: 1px 10px 4px 10px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  background: #014183;
+  border: 0 solid #ff0000;
+}
+
+
+
+/* Account for fixed navbar */
+body {
+  padding-bottom: 30px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* body, */
+/* .navbar-fixed-top, */
+/* .navbar-fixed-bottom { */
+/*   min-width: 970px; */
+/* } */
+
+/* Don't let the lead text change font-size. */
+.lead {
+  font-size: 16px;
+}
+
+/* Finesse the page header spacing */
+.page-header {
+  margin-bottom: 30px;
+}
+.page-header .lead {
+  margin-bottom: 10px;
+}
+
+
+/* Non-responsive overrides
+ *
+ * Utilize the following CSS to disable the responsive-ness of the container,
+ * grid system, and navbar.
+ */
+
+/* Reset the container */
+/* .container { */
+/*   width: 1024px; */
+/*   max-width: none !important; */
+/* } */
+`
+/* Demonstrate the grids */
+.col-xs-4 {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: #eee;
+  background-color: rgba(86,61,124,.15);
+  border: 1px solid #ddd;
+  border: 1px solid rgba(86,61,124,.2);
+}
+
+/* .container .navbar-header, */
+/* .container .navbar-collapse { */
+/*   margin-right: 0; */
+/*   margin-left: 0; */
+/* } */
+
+/* Always float the navbar header */
+.navbar-header {
+  float: left;
+}
+
+/* Undo the collapsing navbar */
+.navbar-collapse {
+  display: block !important;
+  height: auto !important;
+  padding-bottom: 0;
+  overflow: visible !important;
+  visibility: visible !important;
+}
+
+.navbar-toggle {
+  display: none;
+}
+.navbar-collapse {
+  border-top: 0;
+}
+
+.navbar-brand {
+  margin-left: -15px;
+}
+
+/* Always apply the floated nav */
+.navbar-nav {
+  float: left;
+  margin: 0;
+}
+.navbar-nav > li {
+  float: left;
+}
+.navbar-nav > li > a {
+  padding: 15px;
+}
+
+/* Redeclare since we override the float above */
+.navbar-nav.navbar-right {
+  float: right;
+}
+
+/* Undo custom dropdowns */
+.navbar .navbar-nav .open .dropdown-menu {
+  position: absolute;
+  float: left;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, .15);
+  border-width: 0 1px 1px;
+  border-radius: 0 0 4px 4px;
+  -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+          box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+  color: #333;
+}
+.navbar .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar .navbar-nav .open .dropdown-menu > li > a:focus,
+.navbar .navbar-nav .open .dropdown-menu > .active > a,
+.navbar .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #fff !important;
+  background-color: #428bca !important;
+}
+.navbar .navbar-nav .open .dropdown-menu > .disabled > a,
+.navbar .navbar-nav .open .dropdown-menu > .disabled > a:hover,
+.navbar .navbar-nav .open .dropdown-menu > .disabled > a:focus {
+  color: #999 !important;
+  background-color: transparent !important;
+}
+
+/* Undo form expansion */
+.navbar-form {
+  float: left;
+  width: auto;
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-right: 0;
+  margin-left: 0;
+  border: 0;
+  -webkit-box-shadow: none;
+          box-shadow: none;
+}
+
+/* Copy-pasted from forms.less since we mixin the .form-inline styles. */
+.navbar-form .form-group {
+  display: inline-block;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.navbar-form .form-control {
+  display: inline-block;
+  width: auto;
+  vertical-align: middle;
+}
+
+.navbar-form .form-control-static {
+  display: inline-block;
+}
+
+.navbar-form .input-group {
+  display: inline-table;
+  vertical-align: middle;
+}
+
+.navbar-form .input-group .input-group-addon,
+.navbar-form .input-group .input-group-btn,
+.navbar-form .input-group .form-control {
+  width: auto;
+}
+
+.navbar-form .input-group > .form-control {
+  width: 100%;
+}
+
+.navbar-form .control-label {
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.navbar-form .radio,
+.navbar-form .checkbox {
+  display: inline-block;
+  margin-top: 0;
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.navbar-form .radio label,
+.navbar-form .checkbox label {
+  padding-left: 0;
+}
+
+.navbar-form .radio input[type="radio"],
+.navbar-form .checkbox input[type="checkbox"] {
+  position: relative;
+  margin-left: 0;
+}
+
+.navbar-form .has-feedback .form-control-feedback {
+  top: 0;
+}
+
+
+
+.navbar-default {
+  background-color: #272727;
+  border-color: #e7e7e7;
+}
+
+.navbar-default .navbar-brand {
+  color: #FFF;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #FFF;
+}
+
+
+.k-tabstrip-top>.k-tabstrip-items>.k-item {
+  border-top-width: 5px;
+}
+
+
+.k-tabstrip-items .k-state-default{
+   border-color: #ccc; 
+}
+
+.k-tabstrip-top>.k-tabstrip-items .k-tab-on-top, .k-tabstrip-top>.k-tabstrip-items .k-state-active {
+  margin-bottom: -1px;
+}
+
+#dc-navWrapper {
+  padding-bottom: 51px;
+}
+
+.k-tabstrip .k-content.k-state-active {
+/*   background-color: #EAEAEA; */
+  color: #444;
+}
+
+.k-textbox {
+  background-color: #f9f9f9;
+  border-color: #ccc;
+  display: inherit;
+}
+
+textarea.k-textbox {
+	  display: inherit;
+	  min-width:400px; 
+}
+
+select.k-textbox {
+	
+	min-height: 2.694em;
+	width: 400px;
+}
+
+input.k-textbox {
+	
+	min-width:400px; 
+}
+
+.k-widget.k-multiselect.k-header.k-textbox.input-small.selectWidth {
+  width: 400px;
+}
+
+.dcCheckbox {
+  display: inherit;
+  margin-top: 45px;
+}
+
+.form-group.dc-right {
+  display: inherit;
+  margin-left: 335px;
+}
+
+.footer {
+  bottom: 0;
+  width: 100%;
+  height: 30px;
+  background-color: #ebebeb;
+  padding-top: 5px;
+  text-align:center;
+  border-radius:5px;
+  margin-top:8px;
+}
+.text-muted {
+  color: #777;
+  text-align: center;
+}
+
+.gx-header {
+  position: relative;
+height: 100px;
+  border: 0 solid #ff00ff;
+}
+
+.gx-logo {
+  float: left;
+  max-width: 300px;
+  height: 80px;
+  margin-top: 10px;
+  margin-right: 20px;
+  display: inline-block;
+  overflow: hidden;
+  line-height: 80px;
+  border: 0 solid #ff0000;
+}
+
+img {
+  outline: none;
+  vertical-align: top;
+}
+
+.gx-nav-bar {
+  padding-top: 30px;
+  height: 80px;
+}
+
+.gx-nav-bar-left {
+  float: left;
+}
+
+#gxIMGUser {
+  background-image: url(../../../images/user-profile.png);
+}
+
+#gxIMGLogout {
+  background-image: url(../../../images/logout.png);
+}
+
+.k-header {
+/*   background-color: #014183; */
+}
+
+.k-tabstrip-items .k-state-active {
+  background-color: #014183;
+  background-image: none;
+  border-top-color: #014183;
+}
+
+.k-tabstrip-items,.k-item.k-state-hover {
+/* background:#014183 !important; */
+/* border-color:#014183 !important; */
+background:#fff !important;
+border-color:#fff !important;
+}
+
+.k-tabstrip-items .k-state-default .k-link {
+/*   color: #428bca; */
+ color: #ccc; 
+}
+
+
+.k-tabstrip-items .k-state-active .k-link {
+  color:#428bca;
+}
+
+.k-tabstrip-items .k-item {
+/*   background-color: #014183; */
+/*  background-color: #ccc;  */
+
+}
+.gx-nav-bar-left>li, .gx-nav-bar-right>li {
+  cursor: pointer;
+  display: inline-block;
+  min-width: 32px;
+  height: 32px;
+  background: #00a8e7;
+  border-radius: 4px;
+  text-align: center;
+  overflow: hidden;
+  vertical-align: middle;
+  border: 0 solid #ff0000;
+}
+
+.gx-icon {
+  width: 24px;
+  height: 24px;
+  margin-top: 4px;
+  display: inline-block;
+  border: 0 solid #ff0000;
+}
+
+a, a:active, a:hover, a:visited {
+  outline: none;
+}
+
+#mainpage_grid{
+	margin-bottom:11px;
+}
+
+#select_tag{
+	width:50%;
+}
+.gx-nav-bar-right {
+  float: right !important;
+}
+
+.gx-nav-bar-left>ul, .gx-nav-bar-left>li {
+  margin-right: 10px;
+}
+
+.gx-nav-bar-left>ul, .gx-nav-bar-left>li, .gx-nav-bar-right>ul, .gx-nav-bar-right>li {
+  padding: 5px;
+  box-sizing: content-box;
+}
+
+.gx-nav-userprofile {
+  margin: -2px 5px 0px 5px;
+  border: 0 solid #ff0000;
+}
+
+.gx-nav-alert, .gx-nav-userprofile {
+  text-align: left;
+  padding: 2px 5px 5px 5px;
+  border-radius: 4px;
+  display: inline-block;
+  min-width: 10px;
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: baseline;
+  border: 0 solid #ff0000;
+}
+
+.gx-nav-alert, .gx-user-name, .gx-user-role {
+  color: #ffffff;
+}
+
+.gx-nav-bar-right>ul, .gx-nav-bar-right>li {
+  margin-left: 10px;
+}
+
+.gx-user-name {
+  font-size: 14px;
+  margin-bottom: 4px;
+}
+
+.gx-user-role {
+  font-size: 11px;
+}
+
+.row {
+  padding-top: 7px;
+}
+
+/* div#deviceDetails { */
+/*   padding-top: 15px; */
+/* } */
+
+.k-grid tr.k-state-selected {
+	background-color: #014183;
+	
+}
+
+.k-textbox .k-icon {
+  top: 50%;
+  margin: -8px -16px 0;
+  position: absolute;
+  color:#fff;
+}
+
+
+.gx-footer {
+  background-color: #ebebeb;
+}
+
+.gx-footer {
+  background: #ebebeb;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.gx-footer, .gx-body:after {
+  height: 30px;
+  border-radius: 5px;
+}
+
+.gx-footer-left, .gx-footer-right {
+  display: inline-block;
+  font-size: 12px;
+  color: #999999;
+  padding: 5px 10px 5px 10px;
+  line-height: 20px;
+}
+
+.gx-footer-left {
+  color: #999999;
+}
+.gx-footer-left {
+  float: left;
+}
+
+.gx-footer-right {
+  color: #999999;
+}
+
+.gx-footer-right {
+  float: right;
+}
+
+a.gx-footer-link {
+  color: #00a8e8;
+}
+
+a.gx-footer-link {
+  color: #00a8e8;
+  text-decoration: none;
+}
+
+.k-picker-wrap .k-select {
+  border-style: none;
+}
+.k-picker-wrap .k-select, .k-numeric-wrap .k-select, .k-dropdown-wrap .k-select {
+  position: absolute;
+/*   top: 8px; */
+  right: 0;
+  display: inline-block;
+  vertical-align: top;
+  text-decoration: none;
+}
+
+/* Error template */
+
+   .k-notification-error.k-group {
+       background: rgba(100%,0%,0%,0.4);
+       color: #ffffff;
+ 
+   }
+   .errorTemp {
+       width: 400px;
+       height: auto;
+      
+   }
+   .errorTemp h3 {
+       font-size: 1em;
+       padding: 25px 5px 5px;
+       font-weight:normal;
+   }
+   .errorTemp img {
+       float: left;
+       margin: 15px 15px 30px 30px;
+   }
+
+   /* Success template */
+   .k-notification-success.k-group {
+       background: rgba(0%,60%,0%,.4);
+       color: #fff;
+   }
+   .successTemp {
+       width: 400px;
+       height: 100px;
+   }
+   .successTemp h3 {
+       font-size: 1.2em;
+       padding: 32px 10px 5px;
+       font-weight:normal
+   }
+   .successTemp img {
+      float: left;
+       margin: 30px 15px 30px 30px;
+   }
+
+#gxIMGMenu{
+	background-image: url(../../../images/menu.png);
+}

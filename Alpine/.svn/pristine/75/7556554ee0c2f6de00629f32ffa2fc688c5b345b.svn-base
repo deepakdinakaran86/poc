@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" context="/alpine/services/markers"
+	name="Marker_API">
+	<resource inSequence="Create_Marker_SEQ" methods="POST"
+		url-mapping="/">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Find_Marker_SEQ" methods="POST"
+		url-mapping="/find">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="List_Marker_SEQ" methods="POST"
+		url-mapping="/list">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="List_Filter_Marker_SEQ" methods="POST"
+		url-mapping="/list/filter">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Update_Marker_SEQ" methods="PUT"
+		url-mapping="/">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Delete_Marker_SEQ" methods="POST"
+		url-mapping="/delete">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Validate_Marker_SEQ" methods="POST"
+		url-mapping="/validate">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Marker_Count_SEQ" methods="POST"
+		url-mapping="/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Marker_Children_Count_SEQ" methods="POST"
+		url-mapping="/children/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Marker_Children_SEQ" methods="POST"
+		url-mapping="/children">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Marker_Distribution_Count_SEQ"
+		methods="POST" url-mapping="/distribution/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Marker_Distribution_SEQ" methods="POST"
+		url-mapping="/distribution">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Marker_Search_Count_SEQ" methods="POST"
+		url-mapping="/fieldvalue/search/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Marker_Search_SEQ" methods="POST"
+		url-mapping="/fieldvalue/search">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+</api>

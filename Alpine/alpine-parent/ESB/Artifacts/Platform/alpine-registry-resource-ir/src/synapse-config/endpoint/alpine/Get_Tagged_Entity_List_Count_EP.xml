@@ -1,0 +1,11 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Get_Tagged_Entity_List_Count_EP" >
+	<http uri-template="http://10.234.31.154:9763/alpine-tagservices-1.0.0/services/tags/attached/entity/count" method="post">
+		<suspendOnFailure>
+			<progressionFactor>1.0</progressionFactor>
+		</suspendOnFailure>
+		<markForSuspension>
+			<retriesBeforeSuspension>0</retriesBeforeSuspension>
+			<retryDelay>0</retryDelay>
+		</markForSuspension>
+	</http>
+</endpoint>

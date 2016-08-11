@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Get_Device_Point_Config_SEQ" >
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_Device_Point_Config_SEQ" value="--------" />
+	</log>
+	<property action="set" expression="get-property('uri.var.pathparameter')"
+		name="uri.var.pathparameter" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<send>
+		<endpoint key="conf:/endpoints/saffron/Get_Device_Point_Config_EP.xml" />
+	</send>
+</sequence>

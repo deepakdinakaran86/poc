@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="POI_Find_Entity_EP" groupId="com.pcs.guava-poi-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/poi/POI_Find_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/poi</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="POI_Get_Entity_Search_EP" groupId="com.pcs.guava-poi-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/poi/POI_Get_Entity_Search_EP.xml</file>
+            <path>/_system/config/endpoints/poi</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="POI_Get_Immediate_Children_EP" groupId="com.pcs.guava-poi-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/poi/POI_Get_Immediate_Children_EP.xml</file>
+            <path>/_system/config/endpoints/poi</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="POI_Get_Template_EP" groupId="com.pcs.guava-poi-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/poi/POI_Get_Template_EP.xml</file>
+            <path>/_system/config/endpoints/poi</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="POI_Hierarchy_Update_Node_EP" groupId="com.pcs.guava-poi-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/poi/POI_Hierarchy_Update_Node_EP.xml</file>
+            <path>/_system/config/endpoints/poi</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="POI_Update_Entity_EP" groupId="com.pcs.guava-poi-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/poi/POI_Update_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/poi</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="POI_Find_All_Enitities_EP" groupId="com.pcs.guava-poi-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/poi/POI_Find_All_Enitities_EP.xml</file>
+            <path>/_system/config/endpoints/poi</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="POI_Create_Entity_EP" groupId="com.pcs.guava-poi-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/poi/POI_Create_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/poi</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="POI_Attach_Children_EP" groupId="com.pcs.guava-poi-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/poi/POI_Attach_Children_EP.xml</file>
+            <path>/_system/config/endpoints/poi</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

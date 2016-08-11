@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/alpine/services/tagTypes" name="Tag_Type_API"
+	xmlns="http://ws.apache.org/ns/synapse">
+	<resource methods="POST" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="TagType_Create_TagType_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="GET" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="TagType_Get_All_TagType_SEQ"
+				scope="default" type="STRING"></property>
+			<property name="isParentDomainQueryParam" value="true"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="GET" uri-template="?domain_name={domain_name}">
+		<inSequence>
+			<property name="seqName" value="TagType_Get_All_TagType_SEQ"
+				scope="default" type="STRING"></property>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain_name"
+				expression="get-property('query.param.domain_name')" scope="default"
+				type="STRING" />
+			<property name="isParentDomainQueryParam" value="true"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="GET" uri-template="/{pathparameter}">
+		<inSequence>
+			<property name="seqName" value="TagType_Get_TagType_SEQ"
+				scope="default" type="STRING"></property>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter"
+				expression="get-property('uri.var.pathparameter')" scope="default"
+				type="STRING" />
+			<property name="isParentDomainQueryParam" value="true"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="GET" uri-template="/{pathparameter}?domain_name={domain_name}">
+		<inSequence>
+			<property name="seqName" value="TagType_Get_TagType_SEQ"
+				scope="default" type="STRING"></property>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter"
+				expression="get-property('uri.var.pathparameter')" scope="default"
+				type="STRING" />
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain_name"
+				expression="get-property('query.param.domain_name')" scope="default"
+				type="STRING" />
+			<property name="isParentDomainQueryParam" value="true"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+</api>

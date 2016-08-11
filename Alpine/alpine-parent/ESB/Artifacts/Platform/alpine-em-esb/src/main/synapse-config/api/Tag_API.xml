@@ -1,0 +1,453 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/alpine/services/tags" name="Tag_API"
+	xmlns="http://ws.apache.org/ns/synapse">
+	<resource methods="POST" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Tag_Create_Tag_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/find">
+		<inSequence>
+			<property name="seqName" value="Tag_Find_Tag_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="GET" uri-template="/{tag_type}">
+		<inSequence>
+			<property name="seqName" value="Tag_List_Tag_SEQ" scope="default"
+				type="STRING"></property>
+			<property name="isParentDomainQueryParam" value="true"
+				scope="default" type="STRING" />
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.tag_type"
+				expression="get-property('uri.var.tag_type')" scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="GET" uri-template="/{tag_type}?domain_name={domain_name}">
+		<inSequence>
+			<property name="seqName" value="Tag_List_Tag_SEQ" scope="default"
+				type="STRING"></property>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.tag_type"
+				expression="get-property('uri.var.tag_type')" scope="default" type="STRING" />
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain_name"
+				expression="get-property('query.param.domain_name')" scope="default"
+				type="STRING" />
+			<property name="isParentDomainQueryParam" value="true"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/entities">
+		<inSequence>
+			<sequence key="Tag_All_Tags_Of_An_Actor_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/subjects">
+		<inSequence>
+			<sequence key="Tag_Validate_Tag_Map_Subjects_SEQ" />
+		</inSequence>
+		<outSequence>
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)"
+				regex="true">
+				<then>
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default"
+						type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>
+							{"errorCode":"$1","errorMessage":"$2"}
+						</format>
+						<args>
+							<arg evaluator="xml" expression="//jsonObject/errorCode" />
+							<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+						</args>
+					</payloadFactory>
+					<send />
+					<drop />
+				</then>
+			</filter>
+			<property name="info" scope="default">
+				<ns:Information xmlns:ns="www.google.com" />
+			</property>
+			<aggregate id="TagTemplatesIterator">
+				<completeCondition>
+					<messageCount />
+				</completeCondition>
+				<onComplete expression="//jsonObject"
+					enclosingElementProperty="info">
+					<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)"
+						regex="true">
+						<then>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>
+									{"errorCode":"$1","errorMessage":"$2"}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//jsonObject/errorCode" />
+									<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+								</args>
+							</payloadFactory>
+							<log level="full" />
+							<send />
+						</then>
+						<else>
+							<sequence key="Tag_Map_Subjects_To_An_Actor_SEQ" />
+						</else>
+					</filter>
+				</onComplete>
+			</aggregate>
+			<aggregate id="TagEntitiesIterator">
+				<completeCondition>
+					<messageCount />
+				</completeCondition>
+				<onComplete expression="//jsonObject"
+					enclosingElementProperty="info">
+					<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)"
+						regex="true">
+						<then>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>
+									{"errorCode":"$1","errorMessage":"$2"}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//jsonObject/errorCode" />
+									<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+								</args>
+							</payloadFactory>
+							<send />
+						</then>
+						<else>
+							<sequence key="Tag_Map_Subjects_To_An_Actor_SEQ" />
+						</else>
+					</filter>
+				</onComplete>
+			</aggregate>
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/actors">
+		<inSequence>
+			<sequence key="Tag_Validate_Tag_Map_Actors_SEQ" />
+		</inSequence>
+		<outSequence>
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)"
+				regex="true">
+				<then>
+					<filter xmlns:ns="http://org.apache.synapse/xsd" source="//errorMessage"
+						regex="Search Fields List is invalid">
+						<then>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>
+									{"errorCode":"508","errorMessage":"Tags is invalid"}
+								</format>
+								<args />
+							</payloadFactory>
+							<respond />
+						</then>
+						<else>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>
+									{"errorCode":"$1","errorMessage":"$2"}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//jsonObject/errorCode" />
+									<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+								</args>
+							</payloadFactory>
+							<send />
+							<drop />
+						</else>
+					</filter>
+				</then>
+				<else>
+				</else>
+			</filter>
+			<property name="info" scope="default">
+				<ns:Information xmlns:ns="www.asankatechtalks.com" />
+			</property>
+			<aggregate id="IterateTagsEntities">
+				<completeCondition>
+					<messageCount />
+				</completeCondition>
+				<onComplete expression="$body/*[1]"
+					enclosingElementProperty="info">
+					<property expression="$trp:x-jwt-assertion" name="Authorization"
+						scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+					<property expression="json-eval($.Information)" name="aggregatedPayload"
+						scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+					<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)"
+						regex="true">
+						<then>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>
+									{"errorCode":"$1","errorMessage":"$2"}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//jsonObject/errorCode" />
+									<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+								</args>
+							</payloadFactory>
+							<send />
+						</then>
+						<else>
+							<sequence key="Tag_Map_Tags_To_Entity_SEQ" />
+						</else>
+					</filter>
+				</onComplete>
+			</aggregate>
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/subjects/entities">
+		<inSequence>
+			<property name="seqName" value="Tag_Get_Tagged_Subject_Entities_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/subjects/templates">
+		<inSequence>
+			<property name="seqName" value="Tag_Get_Tagged_Subject_Templates_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/range">
+		<inSequence>
+			<sequence key="Tag_Range_SEQ" />
+		</inSequence>
+		<outSequence>
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)"
+				regex="true">
+				<then>
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default"
+						type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>
+							{"errorCode":"$1","errorMessage":"$2"}
+						</format>
+						<args>
+							<arg evaluator="xml" expression="//jsonObject/errorCode" />
+							<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+						</args>
+					</payloadFactory>
+					<send />
+				</then>
+			</filter>
+			<property name="info" scope="default">
+				<ns:Information xmlns:ns="www.google.com" />
+			</property>
+			<aggregate id="TagTypesIterator">
+				<completeCondition>
+					<messageCount />
+				</completeCondition>
+				<onComplete expression="$body/*[1]"
+					enclosingElementProperty="info">
+					<property expression="json-eval($.Information)" name="aggregatedPayload"
+						scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+					<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)"
+						regex="true">
+						<then>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>
+									{"errorCode":"$1","errorMessage":"$2"}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//jsonObject/errorCode" />
+									<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+								</args>
+							</payloadFactory>
+							<send />
+						</then>
+						<else>
+							<sequence key="Tag_Range_Get_Tags_SEQ" />
+						</else>
+					</filter>
+				</onComplete>
+			</aggregate>
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/subjects/filter/entities">
+		<inSequence>
+			<sequence key="Tag_Subject_Filter_Entities_Validate_Payload_SEQ" />
+		</inSequence>
+		<outSequence>
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)"
+				regex="true">
+				<then>
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default"
+						type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>
+							{"errorCode":"$1","errorMessage":"$2"}
+						</format>
+						<args>
+							<arg evaluator="xml" expression="//jsonObject/errorCode" />
+							<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+						</args>
+					</payloadFactory>
+					<send />
+					<drop />
+				</then>
+				<else>
+				</else>
+			</filter>
+			<property name="info" scope="default">
+				<ns:Information xmlns:ns="www.google.com" />
+			</property>
+			<aggregate id="123">
+				<completeCondition>
+					<messageCount />
+				</completeCondition>
+				<!-- <onComplete expression="$body/*[1]" enclosingElementProperty="info"> -->
+				<onComplete expression="$body/*[1]"
+					enclosingElementProperty="info">
+					<xslt key="conf:/xslt/alpine/XSLT_To_Remove_Dataprovider.xslt" />
+					<property expression="$trp:x-jwt-assertion" name="Authorization"
+						scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+					<property expression="json-eval($.Information)" name="aggregatedPayload"
+						scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+					<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)"
+						regex="true">
+						<then>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>
+									{"errorCode":"$1","errorMessage":"$2"}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//jsonObject/errorCode" />
+									<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+								</args>
+							</payloadFactory>
+							<send />
+						</then>
+						<else>
+							<sequence key="Tag_Subject_Entities_By_Tags_SEQ" />
+						</else>
+					</filter>
+				</onComplete>
+			</aggregate>
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Get_Tagged_Entity_List_Count_SEQ" methods="POST"
+		protocol="http" url-mapping="/attached/entity/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+</api>

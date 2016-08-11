@@ -1,0 +1,50 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Avocado_Create_Facility_Response_SEQ">
+	<log separator=",">
+		<property name="Enter Avocado_Create_Facility_Response_SEQ"
+			value="--------Avocado_Create_Facility_Response_SEQ--------"></property>
+	</log>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="createResponseFromSkyspark"
+		expression="$body" scope="default" type="STRING"></property>
+	<log separator=",">
+		<property xmlns:ns="http://org.apache.synapse/xsd"
+			name="createResponseFromSkyspark : -----------------------------------------------"
+			expression="get-property('createResponseFromSkyspark')"></property>
+	</log>
+	<script language="js">
+      <![CDATA[var response =   mc.getProperty('createResponseFromSkyspark'); 		 var index = response.toLowerCase().indexOf("success");			 if(index>-1){			 mc.setProperty("statusChk","true"); }]]></script>
+	<log separator=",">
+		<property xmlns:ns="http://org.apache.synapse/xsd"
+			name="statusChk : -----------------------------------------------"
+			expression="get-property('statusChk')"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(get-property('statusChk'))"
+		regex="true">
+		<then>
+			<log separator=",">
+				<property
+					name="createMarkerResponse : -----------------------------------------------"
+					expression="get-property('createMarkerResponse')"></property>
+			</log>
+			<header name="To" action="remove"></header>
+			<property name="RESPONSE" value="true" scope="default" type="STRING"></property>
+			<property name="HTTP_SC" value="200" scope="axis2"></property>
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg expression="get-property('createMarkerResponse')"
+						evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<send></send>
+		</then>
+		<else>
+			<header name="To" action="remove"></header>
+			<property name="RESPONSE" value="true" scope="default" type="STRING"></property>
+			<property name="HTTP_SC" value="200" scope="axis2"></property>
+			<payloadFactory media-type="json">
+				<format>{ "errorMessage": "Invalid Point data specified else"}</format>
+			</payloadFactory>
+			<send></send>
+		</else>
+	</filter>
+</sequence>

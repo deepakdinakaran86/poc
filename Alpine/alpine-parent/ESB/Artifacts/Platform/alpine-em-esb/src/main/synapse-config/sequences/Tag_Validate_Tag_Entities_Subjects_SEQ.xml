@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Validate_Tag_Entities_Subjects_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Validate_Tag_Entities_Subjects_SEQ" value="--------"></property>
+	</log>
+	<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+	<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('originalPayload')" />
+		</args>
+	</payloadFactory>
+
+
+	<iterate attachPath="//jsonObject" expression="//entities" id="TagEntitiesIterator" preservePayload="true" continueParent="false"
+		xmlns:ns="http://org.apache.synapse/xsd"
+	>
+		<target>
+			<sequence>
+				<!-- get platformEntityType -->
+				<property expression="//jsonObject/entities/platformEntity/platformEntityType" name="platformEntityType" scope="default" type="STRING" />
+				<switch source="get-property('platformEntityType')">
+					<case regex="MARKER">
+						<!-- check if MARKER entity is existing -->
+						<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+						<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+						<payloadFactory media-type="json">
+							<format>
+								{
+								"platformEntity": {
+								"platformEntityType": "MARKER"
+								},
+								"domain": {
+								"domainName": "$1"
+								},
+								"entityTemplate": {
+								"entityTemplateName": "$2"
+								},
+								"identifier": {
+								"key": "identifier",
+								"value": "$3"
+								}
+								}
+							</format>
+							<args>
+								<arg evaluator="xml" expression="//entities/domain/domainName" />
+								<arg evaluator="xml" expression="//entities/entityTemplate/entityTemplateName" />
+								<arg evaluator="xml" expression="//entities/identifier/value" />
+							</args>
+						</payloadFactory>
+						<send>
+							<endpoint key="conf:/endpoints/alpine/Tag_Get_Marker_Entity_EP.xml"></endpoint>
+						</send>
+					</case>
+					<case regex="USER">
+						<!-- check if USER entity is existing -->
+						<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+						<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+						<payloadFactory media-type="json">
+							<format>
+								{
+								"platformEntity": {
+								"platformEntityType": "USER"
+								},
+								"domain": {
+								"domainName": "$1"
+								},
+								"entityTemplate": {
+								"entityTemplateName": "$2"
+								},
+								"identifier": {
+								"key": "$3",
+								"value": "$4"
+								}
+								}
+							</format>
+							<args>
+								<arg evaluator="xml" expression="//entities/domain/domainName" />
+								<arg evaluator="xml" expression="//entities/entityTemplate/entityTemplateName" />
+								<arg evaluator="xml" expression="//entities/identifier/key" />
+								<arg evaluator="xml" expression="//entities/identifier/value" />
+							</args>
+						</payloadFactory>
+						<send>
+							<endpoint key="conf:/endpoints/alpine/Tag_Get_User_Entity_EP.xml"></endpoint>
+						</send>
+					</case>
+					<case regex="TENANT">
+						<!-- check if TENANT entity is existing -->
+						<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+						<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+						<payloadFactory media-type="json">
+							<format>
+								{
+								"platformEntity": {
+								"platformEntityType": "TENANT"
+								},
+								"domain": {
+								"domainName": "$1"
+								},
+								"entityTemplate": {
+								"entityTemplateName": "$2"
+								},
+								"identifier": {
+								"key":
+								"$3",
+								"value": "$4"
+								}
+								}
+							</format>
+							<args>
+								<arg evaluator="xml" expression="//entities/domain/domainName" />
+								<arg evaluator="xml" expression="//entities/entityTemplate/entityTemplateName" />
+								<arg evaluator="xml" expression="//entities/identifier/key" />
+								<arg evaluator="xml" expression="//entities/identifier/value" />
+							</args>
+						</payloadFactory>
+						<send>
+							<endpoint key="conf:/endpoints/alpine/Tag_Get_Tenant_Entity_EP.xml"></endpoint>
+						</send>
+					</case>
+					<default>
+						<!-- Invalid entity -->
+						<!-- Generate Error message for Invalid entity -->
+						<header name="To" action="remove" />
+						<property name="RESPONSE" value="true" scope="default" type="STRING" />
+						<property name="HTTP_SC" value="200" scope="axis2" />
+						<payloadFactory media-type="json">
+							<format>{"errorCode":"508","errorMessage":"Platform Entity Type is invalid"}</format>
+							<args />
+						</payloadFactory>
+						<property name="messageType" value="application/json" scope="axis2" />
+						<respond />
+					</default>
+				</switch>
+			</sequence>
+		</target>
+	</iterate>
+</sequence>	

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Create_CCD_Equipments_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Create_CCD_Equipments_SEQ" value="--------"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <log separator=",">
+                <property name="Error in get ccd tenant" value="--------"/>
+            </log>
+            <property expression="$body/jsonObject/errorCode"
+                name="errorCode" scope="default" type="STRING"/>
+            <log separator="##">
+                <property expression="get-property('errorCode')" name="errorCode"/>
+            </log>
+            <filter regex="500" source="get-property('errorCode')">
+                <then>
+                    <payloadFactory media-type="json">
+                        <format>{
+							"fieldValues": [
+							{
+							"key": "id",
+							"value": "$1"
+							},
+							{
+							"key": "name",
+							"value": "$2"
+							},
+							{
+							"key":
+							"firstName",
+							"value": "$3"
+							},
+							{
+							"key": "lastName",
+							"value": "$4"
+							}
+							],
+							"entityTemplate": {
+							"entityTemplateName": "$5"
+							},
+							"domain":{
+							"domainName":"$6"
+							}
+							}
+						</format>
+                        <args>
+                        	<arg expression="get-property('tenantId')" evaluator="xml"></arg>
+                            <arg evaluator="xml" expression="get-property('tenantName')"/>
+                            <arg evaluator="xml" expression="get-property('tenantContactFName')"/>
+                            <arg evaluator="xml" expression="get-property('tenantContactLName')"/>
+                            <arg evaluator="xml" expression="get-property('tenantTemplate')"/>
+                            <arg evaluator="xml" expression="get-property('myDomain')"/>
+                        </args>
+                    </payloadFactory>
+                    <property expression="get-property('Authorization')"
+                        name="x-jwt-assertion" scope="transport" type="STRING"/>
+                    <property name="messageType" scope="axis2"
+                        type="STRING" value="application/json"/>
+                    <send receive="Create_CCD_Tenant_Node_Equip_SEQ">
+                        <endpoint key="conf:/endpoints/ccd/Create_CCD_Tenant_EP.xml"/>
+                    </send>
+                </then>
+                <else>
+                    <send/>
+                </else>
+            </filter>
+        </then>
+        <else>
+            <log separator=",">
+                <property name="tenant returned" value="--------"/>
+            </log>
+            <filter regex="false" source="boolean(get-property('tenantMarkerId'))">
+                <then>
+                    <property expression="json-eval($.)"
+                        name="tenantPayload" scope="default" type="STRING"/>
+                    <log separator="##">
+                        <property
+                            expression="get-property('tenantPayload')" name="tenantPayload"/>
+                        <property
+                            expression="get-property('tenantMarkerId')" name="tenantMarkerId"/>
+                    </log>
+                    <log separator=",">
+                        <property name="reading tenant return payload" value="--------"/>
+                    </log>
+                    <script language="js"><![CDATA[var tenantPayload=eval("("+mc.getProperty('tenantPayload')+")");     
+for ( var i in tenantPayload) {
+	var id = tenantPayload[i].identifier;
+    var idKey=id.key; 
+    var idValue;
+    if(idKey== 'identifier'){
+    idValue = tenantPayload[i].identifier.value;
+    }
+    mc.setProperty("tenantId",idValue);
+}]]></script>
+                </then>
+                <else>
+                    <property
+                        expression="get-property('tenantMarkerId')"
+                        name="tenantId" scope="default" type="STRING"/>
+                    <log separator="##">
+                        <property expression="get-property('tenantId')" name="tenantId"/>
+                        <property name="tenantId from create" value="tenantId from create"/>
+                    </log>
+                </else>
+            </filter>
+            <log separator=",">
+                <property expression="get-property('equipPayload')" name="reading equipment payload"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format> {"equipments": $1 }</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('equipPayload')"/>
+                </args>
+            </payloadFactory>
+            <property name="it_count" scope="operation" value="0"/>
+            <iterate continueParent="true" expression="//equipments">
+                <target>
+                    <sequence>
+                        <payloadFactory media-type="json">
+                            <format> {"equips": $1 }</format>
+                            <args>
+                                <arg evaluator="xml" expression="//equipments"/>
+                            </args>
+                        </payloadFactory>
+                        <script language="js"><![CDATA[payload = mc.getPayloadJSON();
+				if(payload.assetId != null){
+           		mc.setProperty('assetId',payload.assetId);           	
+           	}
+           	if(payload.assetType != null){
+           		mc.setProperty('assetType',payload.assetType);           	
+           	}
+			if(payload.serialNumber != null){
+           		mc.setProperty('serialNumber',payload.serialNumber);           	
+           	}]]></script>
+                        <property expression="//equipments/assetName"
+                            name="assetName" scope="default" type="STRING"/>
+                       
+                        <property expression="//equipments/assetType"
+                            name="assetType" scope="default" type="STRING"/>
+                        
+                        <log separator="$$$">
+                            <property expression="get-property('assetType')" name="assetType"/>
+                            <property expression="json-eval($.)" name="payload"/>
+                        </log>
+                        <payloadFactory media-type="json">
+                            <format>
+								{
+								"fieldValues": [
+								{
+								"key": "assetName",
+								"value": "$1"
+								},
+								{
+								"key": "assetType",
+								"value": "$2"
+								},
+								{
+								"key": "assetId",
+								"value": "$3"
+								},
+								{
+								"key": "serialNumber",
+								"value": "$4"
+								}
+								],
+								"entityTemplate": {
+								"entityTemplateName": "$5"
+								},
+								"domain": {
+								"domainName": "$6"
+								}
+								}
+							</format>
+                            <args>
+                                <arg evaluator="xml" expression="get-property('assetName')"/>
+                                <arg evaluator="xml" expression="get-property('assetType')"/>
+                                <arg evaluator="xml" expression="get-property('assetId')"/>
+                                 <arg evaluator="xml" expression="get-property('serialNumber')"/>
+                                <arg evaluator="xml" expression="get-property('equipTemplate')"/>
+                                <arg evaluator="xml" expression="get-property('myDomain')"/>
+                            </args>
+                        </payloadFactory>
+                        <log separator="-------------------$">
+                            <property expression="json-eval($.)" name="payload test make"/>
+                        </log>
+                        <property
+                            expression="get-property('Authorization')"
+                            name="x-jwt-assertion" scope="transport" type="STRING"/>
+                        <property name="messageType" scope="axis2"
+                            type="STRING" value="application/json"/>
+                        <send receive="Create_CCD_Equipment_Hierarchy_SEQ">
+                            <endpoint key="conf:/endpoints/ccd/Create_CCD_Equipments_EP.xml"/>
+                        </send>
+                        <property
+                            expression="get-property('operation', 'it_count')" name="synapse_it_count"/>
+                        <script language="js"><![CDATA[var cnt_str =
+							mc.getProperty('synapse_it_count');
+							var cnt = parseInt(cnt_str);
+							cnt++;
+							mc.setProperty('synapse_it_count', cnt.toString());]]></script>
+                        <property
+                            expression="get-property('synapse_it_count')"
+                            name="it_count" scope="operation"/>
+                        <log level="custom">
+                            <property
+                                expression="get-property('it_count')" name="number of symbols"/>
+                            <property
+                                expression="get-property('synapse_it_count')" name="number of symbols"/>
+                        </log>
+                    </sequence>
+                </target>
+            </iterate>
+            <!-- <header name="To" action="remove"></header> -->
+            <!-- <property name="RESPONSE" value="true" scope="default" type="STRING"></property> -->
+            <!-- <property name="HTTP_SC" value="200" scope="axis2"></property> -->
+            <!-- <payloadFactory media-type="json"> -->
+            <!-- <format>{ "status": "SUCCESS"}</format> -->
+            <!-- </payloadFactory> -->
+            <!-- <send></send> -->
+            <!-- </aggregate> -->
+            <!-- </out> -->
+        </else>
+    </filter>
+</sequence>

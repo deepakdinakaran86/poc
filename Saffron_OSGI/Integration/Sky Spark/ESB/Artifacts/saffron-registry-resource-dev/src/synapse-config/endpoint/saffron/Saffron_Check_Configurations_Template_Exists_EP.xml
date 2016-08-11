@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Check_Configurations_Template_Exists_EP">
+    <http method="get" uri-template="http://10.234.60.59:9763/datasource-api-1.0.0/services/datasources/config_templates/{uri.var.pathparameter}/isexist"/>
+</endpoint>

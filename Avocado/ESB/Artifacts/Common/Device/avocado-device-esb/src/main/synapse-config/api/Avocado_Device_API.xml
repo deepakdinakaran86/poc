@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Avocado_Device_API" context="/galaxy-dm/services/devices">
+    <resource methods="POST" url-mapping="/" inSequence="Avocado_Device_Create_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    
+    <resource methods="PUT" uri-template="/{sourceId}" inSequence="Avocado_Device_Update_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    
+    <resource methods="PUT" uri-template="/{sourceId}/claim" inSequence="Avocado_Device_Claim_SEQ">
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence/>
+   </resource>
+</api>

@@ -1,0 +1,64 @@
+<api xmlns="http://ws.apache.org/ns/synapse" context="/alpine/services/geofence"
+	name="Geofence_API">
+	<resource methods="POST" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Create_Geofence_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="PUT" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Geofence_Find_Geofence_For_Update_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/delete">
+		<inSequence>
+			<property name="seqName" value="Geofence_Delete_Find_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/find">
+		<inSequence>
+			<property name="seqName" scope="default" type="STRING"
+				value="Geofence_Find_Geofence_Find_Marker_SEQ" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE_FIND_GEOFENCE_TYPE')"
+					name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+</api>

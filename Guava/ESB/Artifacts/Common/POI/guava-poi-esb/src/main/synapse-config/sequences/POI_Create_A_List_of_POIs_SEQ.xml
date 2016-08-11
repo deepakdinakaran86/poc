@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="POI_Create_A_List_of_POIs_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property expression="get-property('poiPayload')" name="Enter POI_Create_A_List_of_POIs_SEQ"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<property name="createListSeq" value="Create_A_List_of_POIs" />
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<payloadFactory media-type="json">
+		<format> {"poiEntities": $1 }</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('poiPayload')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+		</args>
+	</payloadFactory>
+	<iterate attachPath="//jsonObject" expression="//poiEntities"
+		id="createPois" preservePayload="true" xmlns:ns="http://org.apache.synapse/xsd">
+		<target>
+			<sequence>
+				<log level="custom">
+					<property expression="json-eval($.poiEntities)" name="curPoiPayload" />
+				</log>
+				<property name="varUniqnessCheck" pattern="regex" scope="default"
+					type="BOOLEAN" value="false" />
+				<property expression="json-eval($.poiEntities)" name="curPoiPayload"
+					type="STRING" />
+				<payloadFactory media-type="json">
+					<format>$1</format>
+					<args>
+						<arg evaluator="xml" expression="get-property('curPoiPayload')" />
+					</args>
+				</payloadFactory>
+				<property expression="get-property('Authorization')" name="x-jwt-assertion"
+					scope="transport" type="STRING" />
+				<property name="messageType" scope="axis2" type="STRING"
+					value="application/json" />
+				<log level="custom">
+					<property expression="json-eval($.)" name="PayloadtoCheckPOIType" />
+				</log>
+				<sequence key="POI_Check_POI_Type_Template_SEQ" />
+			</sequence>
+		</target>
+	</iterate>
+</sequence>

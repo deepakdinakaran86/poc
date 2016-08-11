@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Parameter_API" context="/saffron/services/parameters">
+    <resource methods="POST GET" inSequence="Saffron_Create_Get_All_Parameters_Of_Subscriber_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}/isexist" inSequence="Saffron_Check_Parameter_Exists_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

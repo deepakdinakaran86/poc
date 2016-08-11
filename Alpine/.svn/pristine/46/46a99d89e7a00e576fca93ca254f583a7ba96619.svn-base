@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Tenant_API" groupId="alpine-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Tenant_API.xml</file>
+    </artifact>
+    <artifact name="Create_Tenant_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_Tenant_SEQ.xml</file>
+    </artifact>
+    <artifact name="Find_Tenant_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Find_Tenant_SEQ.xml</file>
+    </artifact>
+    <artifact name="List_Tenant_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/List_Tenant_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Tenant_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Tenant_SEQ.xml</file>
+    </artifact>
+    <artifact name="Delete_Tenant_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Delete_Tenant_SEQ.xml</file>
+    </artifact>
+    <artifact name="Validate_Tenant_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Validate_Tenant_SEQ.xml</file>
+    </artifact>
+    <artifact name="User_API" groupId="alpine-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/User_API.xml</file>
+    </artifact>
+    <artifact name="Create_User_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_User_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_Admin_User_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_Admin_User_SEQ.xml</file>
+    </artifact>
+    <artifact name="Find_User_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Find_User_SEQ.xml</file>
+    </artifact>
+    <artifact name="List_User_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/List_User_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_User_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_User_SEQ.xml</file>
+    </artifact>
+    <artifact name="Delete_User_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Delete_User_SEQ.xml</file>
+    </artifact>
+    <artifact name="Validate_User_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Validate_User_SEQ.xml</file>
+    </artifact>
+    <artifact name="Marker_API" groupId="alpine-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Marker_API.xml</file>
+    </artifact>
+    <artifact name="Create_Marker_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_Marker_SEQ.xml</file>
+    </artifact>
+    <artifact name="Find_Marker_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Find_Marker_SEQ.xml</file>
+    </artifact>
+    <artifact name="List_Marker_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/List_Marker_SEQ.xml</file>
+    </artifact>
+    <artifact name="List_Filter_Marker_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/List_Filter_Marker_SEQ.xml</file>
+    </artifact>
+        <artifact name="Update_Marker_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Marker_SEQ.xml</file>
+    </artifact>
+    <artifact name="Delete_Marker_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Delete_Marker_SEQ.xml</file>
+    </artifact>
+    <artifact name="Validate_Marker_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Validate_Marker_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_Tenant_Node_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_Tenant_Node_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_Tenant_Node_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_Tenant_Node_SEQ.xml</file>
+    </artifact>
+    <artifact name="Hierarchy_API" groupId="alpine-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Hierarchy_API.xml</file>
+    </artifact>
+    <artifact name="Attach_Parent_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Attach_Parent_SEQ.xml</file>
+    </artifact>
+    <artifact name="Attach_Children_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Attach_Children_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_Permission_Group_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_Permission_Group_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Permission_Group_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Permission_Group_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Permission_Group_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Permission_Group_SEQ.xml</file>
+    </artifact>
+    <artifact name="Delete_Permission_Group_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Delete_Permission_Group_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Domain_Permission_Group_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Domain_Permission_Group_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_Role_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_Role_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Role_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Role_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Role_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Role_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Domain_Role_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Domain_Role_SEQ.xml</file>
+    </artifact>
+    <artifact name="Delete_Role_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Delete_Role_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Current_User_Permission_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Current_User_Permission_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Children_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Children_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Children_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Children_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Children_Count_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Children_Count_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Marker_Count_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Marker_Count_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_User_Count_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_User_Count_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Tenant_Count_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Tenant_Count_SEQ.xml</file>
+    </artifact>
+    <artifact name="Reset_Password_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Reset_Password_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Domain_Info_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Domain_Info_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Hierarchy_Count_By_Status_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Hierarchy_Count_By_Status_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Users_Count_By_Status_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Users_Count_By_Status_SEQ.xml</file>
+    </artifact>
+    <artifact name="Hierarchy_Update_Node_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Hierarchy_Update_Node_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_Site_SkySpark_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_Site_SkySpark_SEQ.xml</file>
+    </artifact>
+    <artifact name="Skyspark_Assign_Device_To_Site_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Skyspark_Assign_Device_To_Site_SEQ.xml</file>
+    </artifact>
+    <artifact name="Skyspark_Response_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Skyspark_Response_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Marker_Children_Count_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Marker_Children_Count_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Marker_Children_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Marker_Children_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Marker_Distribution_Count_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Marker_Distribution_Count_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Marker_Distribution_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Marker_Distribution_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Tenant_Children_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Tenant_Children_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Tenant_Children_Count_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Tenant_Children_Count_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Marker_Search_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Marker_Search_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Marker_Search_Count_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Marker_Search_Count_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Tenant_Node_Details_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Tenant_Node_Details_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Tenant_Node_SEQ" groupId="alpine-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Tenant_Node_SEQ.xml</file>
+    </artifact>
+</artifacts>

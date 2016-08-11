@@ -1,0 +1,9 @@
+cacheprovider=HazelCast
+cacheproviderConfigPath=hazelcast-client.xml
+
+## Platform configuration
+remote.platform.hostIp=10.234.31.153
+remote.platform.port=9763
+remote.platform.scheme=http
+remote.getdevice.url=datasource-api-1.0.0/services/datasources/ds/context/{datasource_name}
+

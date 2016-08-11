@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Reset_Password_Get_Marker_SEQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+  <log>
+    <property name="Entering Avocado_Get_Reset_Password_Marker_Sequence" value="Entering Avocado_Get_Reset_Password_Marker_Sequence"/>
+  </log>
+  <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+    <then>
+      <log separator="Error">
+        <property name="AvocadoError" value="Error in Reseting Password"/>
+      </log>
+      <send/>
+    </then>
+    <else>
+      <payloadFactory media-type="json">
+        <format>$1
+				</format>
+        <args>
+          <arg evaluator="xml" expression="get-property('identityDTO')"/>
+        </args>
+      </payloadFactory>
+      <property expression="get-property('x-jwt-assertion')"
+        name="x-jwt-assertion" scope="transport" type="STRING"/>
+      <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+      <send receive="Avocado_Reset_Password_Update_Marker_SEQ">
+        <endpoint key="conf:/endpoints/user/Avocado_Reset_Password_Get_Marker_EP.xml"/>
+      </send>
+    </else>
+  </filter>
+</sequence>

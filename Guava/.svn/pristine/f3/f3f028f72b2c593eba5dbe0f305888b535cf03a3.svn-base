@@ -1,0 +1,134 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="POI_API" context="/guava/services/poi">
+   <resource methods="POST" url-mapping="/">
+      <inSequence>
+         <property name="seqName" value="POI_Check_POI_Type_Template_SEQ" scope="default" type="STRING"/>
+          <property name="seqToGo" value="POI_Create_POI_Entity" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="full">
+            <property name="MSG" value="==== FAULT CREATED ==="/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="PUT" url-mapping="/">
+      <inSequence>
+         <property name="seqName" value="POI_Check_POI_Type_Template_SEQ" scope="default" type="STRING"/>
+         <property name="seqToGo" value="POI_Find_POI_For_Update_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/batchCreate" inSequence="POI_Check_For_Duplicate_POI_Entities_SEQ">
+      <outSequence>
+         <log separator=",">
+            <property name="-------insideOutsequenceeeeeee-------" expression="json-eval($.)"/>
+            <property name="variable check" expression="get-property('varUniqnessCheck')"/>
+            <property name="-------poiEntityResponse----inOutSequence----" expression="get-property('poiEntityIdentifier')"/>
+         </log>
+         <filter source="get-property('varUniqnessCheck')" regex="true">
+            <then>
+               <filter source="boolean(//jsonObject/errorMessage)" regex="false">
+                  <then>
+                     <header name="To" action="remove"/>
+                     <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+                     <property name="HTTP_SC" value="200" scope="axis2"/>
+                     <payloadFactory media-type="json">
+                        <format>{"errorCode":"652","errorMessage":"POI/POIs already exists"}</format>
+                        <args/>
+                     </payloadFactory>
+                     <log separator=",">
+                        <property name="-----POI Exists---------" expression="json-eval($.)"/>
+                     </log>
+                     <send/>
+                  </then>
+                  <else>
+                     <property name="info" scope="default">
+                        <ns:Information xmlns:ns="www.google.com"/>
+                     </property>
+                     <aggregate id="poiUniqnessCheck">
+                        <completeCondition>
+                           <messageCount/>
+                        </completeCondition>
+                        <onComplete expression="$body/*[1]" enclosingElementProperty="info">
+                           <property name="-----At-Aggregate-on-complete-----" value="--------"/>
+                           <log separator=",">
+                              <property name="poiiiiiipayload" expression="get-property('poiPayload')"/>
+                           </log>
+                           <sequence key="POI_Create_A_List_of_POIs_SEQ"/>
+                        </onComplete>
+                     </aggregate>
+                     <log separator=",">
+                        <property name="-------after-poiuniqueness-aggregator--------" expression="json-eval($.)"/>
+                        <property name="-------poiEntityResponse--------" expression="get-property('poiEntityIdentifier')"/>
+                     </log>
+                  </else>
+               </filter>
+            </then>
+            <else>
+               <payloadFactory media-type="json">
+                  <format>$1</format>
+                  <args>
+                     <arg evaluator="xml" expression="get-property('poiEntityIdentifier')"/>
+                  </args>
+               </payloadFactory>
+               <aggregate id="createPois">
+                  <completeCondition>
+                     <messageCount/>
+                  </completeCondition>
+                  <onComplete expression="//jsonObject" enclosingElementProperty="info">
+                     <log separator=",">
+                        <property name="payloadddd-----" expression="json-eval($.)"/>
+                        <property name="-------inside-createpois-oncomplete--aggregate-------" value="--------"/>
+                     </log>
+                     <header name="To" action="remove"/>
+                     <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+                     <property name="HTTP_SC" value="200" scope="axis2"/>
+                     <property name="listOfPoiIdentifiers" expression="json-eval($.Information)" scope="default" type="STRING"/>
+                     <payloadFactory media-type="json">
+                        <format>{                        "poiIdentifiers":$1                        }</format>
+                        <args>
+                           <arg evaluator="xml" expression="get-property('listOfPoiIdentifiers')"/>
+                        </args>
+                     </payloadFactory>
+                     <send/>
+                  </onComplete>
+               </aggregate>
+               <log separator=",">
+                  <property name="whereisthispayload" expression="json-eval($.)"/>
+                  <property name="-------outside-aggregate-------" value="--------"/>
+               </log>
+            </else>
+         </filter>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/find">
+      <inSequence>
+         <property name="seqName" value="POI_Find_POI_Marker_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="full">
+            <property name="MSG" value="==== FAULT CREATED ==="/>
+         </log>
+      </faultSequence>
+   </resource>
+</api>

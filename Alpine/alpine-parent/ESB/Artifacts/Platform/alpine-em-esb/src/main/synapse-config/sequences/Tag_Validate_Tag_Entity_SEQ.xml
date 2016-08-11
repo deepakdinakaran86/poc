@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Validate_Tag_Entity_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Validate_Tag_Entity_SEQ" value="--------"></property>
+	</log>
+	<!-- xPath boolean() function may evaluate to false if value of key is empty/null or request doesn't have that key. -->
+	<filter regex="false" source="boolean(//jsonObject/tag)">
+		<then>
+			<!-- Generate Error message for Tag -->
+			<header name="To" action="remove" />
+			<property name="RESPONSE" value="true" scope="default" type="STRING" />
+			<property name="HTTP_SC" value="200" scope="axis2" />
+			<payloadFactory media-type="json">
+				<format>{"errorCode":"505","errorMessage":"Tag not specified"}</format>
+				<args />
+			</payloadFactory>
+			<send />
+		</then>
+		<else>
+			<filter regex="false" source="boolean(//jsonObject/tag/name)">
+				<then>
+					<!-- Generate Error message for platformEntity -->
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>{"errorCode":"505","errorMessage":"Name not specified"}</format>
+						<args />
+					</payloadFactory>
+					<property name="messageType" value="application/json" scope="axis2" />
+					<send />
+				</then>
+				<else>
+					<filter regex="false" source="boolean(//jsonObject/tag/tagType)">
+						<then>
+							<!-- Generate Error message for platformEntityType -->
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default" type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>{"errorCode":"505","errorMessage":"Tag Type not specified"}</format>
+								<args />
+							</payloadFactory>
+							<property name="messageType" value="application/json" scope="axis2" />
+							<send />
+						</then>
+						<else>
+							<!-- check if MARKER tagEntity is existing -->
+							<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+							<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+							<payloadFactory media-type="json">
+								<format>
+									{
+									"searchFields": [
+									{
+									"key": "name",
+									"value": "$1"
+									}
+									],
+									"domain": {
+									"domainName": "$2"
+									},
+									"entityTemplate": {
+									"entityTemplateName": "$3"
+									}
+									}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//tag/name" />
+									<arg evaluator="xml" expression="//tag/domain/domainName" />
+									<arg evaluator="xml" expression="//tag/tagType" />
+								</args>
+							</payloadFactory>
+							<call>
+								<endpoint key="conf:/endpoints/alpine/Tag_Search_Tag_Entity_EP.xml"></endpoint>
+							</call>
+							<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)" regex="true">
+								<then>
+									<filter xmlns:ns="http://org.apache.synapse/xsd" source="//errorMessage" regex="Search Fields List is invalid">
+										<then>
+											<header name="To" action="remove" />
+											<property name="RESPONSE" value="true" scope="default" type="STRING" />
+											<property name="HTTP_SC" value="200" scope="axis2" />
+											<payloadFactory media-type="json">
+												<format>
+													{"errorCode":"508","errorMessage":"Tag is invalid"}
+												</format>
+												<args />
+											</payloadFactory>
+											<respond />
+										</then>
+									</filter>
+									<header name="To" action="remove" />
+									<property name="RESPONSE" value="true" scope="default" type="STRING" />
+									<property name="HTTP_SC" value="200" scope="axis2" />
+									<payloadFactory media-type="json">
+										<format>
+											{"errorCode":"$1","errorMessage":"$2"}
+										</format>
+										<args>
+											<arg evaluator="xml" expression="//jsonObject/errorCode" />
+											<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+										</args>
+									</payloadFactory>
+									<respond />
+								</then>
+								<else>
+									<!-- below XSLT will remove the dataprovider -->
+									<xslt key="conf:/xslt/alpine/XSLT_To_Remove_Dataprovider.xslt" />
+									<!-- Save returned entity -->
+									<property expression="json-eval($.)" name="originalPayload_tagentity" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+								</else>
+							</filter>
+						</else>
+					</filter>
+				</else>
+			</filter>
+		</else>
+	</filter>
+</sequence>

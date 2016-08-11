@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Marker_Children_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_Marker_Children_SEQ" value="--------" />
+	</log>
+
+	<script language="js"><![CDATA[
+		payload = mc.getPayloadJSON();
+	 	if(payload.parentIdentity.domain !=null && payload.parentIdentity.domain.domainName != null){ 
+             mc.setProperty('domain',payload.parentIdentity.domain.domainName);    
+         } 
+        if(payload.parentIdentity.identifier != null && payload.parentIdentity.identifier.key != null){ 
+             mc.setProperty('key',payload.parentIdentity.identifier.key);    
+         } 
+        if(payload.parentIdentity.identifier !=null && payload.parentIdentity.identifier.value != null){ 
+             mc.setProperty('value',payload.parentIdentity.identifier.value);    
+         } 
+        if(payload.searchTemplateName != null){ 
+             mc.setProperty('searchTemplateName',payload.searchTemplateName);    
+         } 
+        if(payload.statusName !=null){ 
+            mc.setProperty('statusName',payload.statusName);    
+         } 
+         if(payload.parentIdentity.entityTemplate !=null && payload.parentIdentity.entityTemplate.entityTemplateName != null){
+            mc.setProperty('entityTemplate',payload.parentIdentity.entityTemplate.entityTemplateName);    
+         } 
+    	]]></script>
+
+	<payloadFactory media-type="json">
+		<format>
+			{
+			"parentIdentity": {
+			"platformEntity": {
+			"platformEntityType":
+			"MARKER"
+			},
+			"domain": {
+			"domainName": "$1"
+			},
+			"entityTemplate": {
+			"entityTemplateName": "$2"
+			},
+			"identifier": {
+			"key": "$3",
+			"value": "$4"
+			}
+			},
+			"searchTemplateName": "$5",
+			"statusName":
+			"$6"
+			}
+		</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('domain')" />
+			<arg evaluator="xml" expression="get-property('entityTemplate')" />
+			<arg evaluator="xml" expression="get-property('key')" />
+			<arg evaluator="xml" expression="get-property('value')" />
+			<arg evaluator="xml" expression="get-property('searchTemplateName')" />
+			<arg evaluator="xml" expression="get-property('statusName')" />
+		</args>
+	</payloadFactory>
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Get_Marker_Children_EP.xml" />
+	</send>
+
+
+</sequence>

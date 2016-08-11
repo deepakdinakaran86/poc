@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Item_Create_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Service_Item_Create_SEQ" value="--------" />
+	</log>
+	<property expression="json-eval($.serviceItem)" name="serviceItemPayload"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.listOfTags)" name="listOfTagsPayload"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('serviceItemPayload')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+		</args>
+	</payloadFactory>
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="get-property('listOfTagsPayload')">
+		<then>
+			<log separator=",">
+				<property name="Entered Then" value="---list of tags present-----" />
+			</log>
+			<send receive="Service_Item_Attach_Entity_To_Tags_SEQ">
+				<endpoint
+					key="conf:/endpoints/serviceSchedule/Service_Schedule_Create_Entity_EP.xml" />
+			</send>
+		</then>
+		<else>
+			<log separator=",">
+				<property name="Entered else" value="----no tags present----" />
+			</log>
+			<send>
+				<endpoint
+					key="conf:/endpoints/serviceSchedule/Service_Schedule_Create_Entity_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Data_Source_API" context="/saffron/services/ds">
+    <resource methods="POST" uri-template="/publish/{pathparameter}" inSequence="Saffron_Publish_Data_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}/isexist" inSequence="Saffron_Check_Datasource_Exists_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/context/{pathparameter}" inSequence="Saffron_Get_Subsctiption_Context_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/datasources" inSequence="Saffron_Get_All_Registered_Datasources_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT GET" uri-template="/{pathparameter}" inSequence="Saffron_Update_Get_All_Parameters_Of_Datasource_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" uri-template="/deregister/{pathparameter}" inSequence="Saffron_Deregister_Datasource_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/subscribe" inSequence="Saffron_Subscribe_Datasource_Destination_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/register" inSequence="Saffron_Register_Datasource_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

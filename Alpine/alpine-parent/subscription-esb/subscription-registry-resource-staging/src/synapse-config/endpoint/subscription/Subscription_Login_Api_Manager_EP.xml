@@ -1,0 +1,5 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Login_Api_Manager_EP">
+	<!-- <http method="post" uri-template="http://10.234.31.201:9765/store/site/blocks/user/login/ajax/login.jag?action=login&amp;username={query.param.username}&amp;password={query.param.password}"/> -->
+	<http method="post"
+		uri-template="http://10.236.166.115:9765/store/site/blocks/user/login/ajax/login.jag?action=login&amp;username={query.param.username}&amp;password={query.param.password}" />
+</endpoint>

@@ -1,0 +1,228 @@
+[
+  {
+    "resources": [
+      "client_management"
+    ],
+    "feature": "Tenant Management"
+  },
+  {
+    "resources": [
+      "claim_device",
+      "device_management",
+      "device_status"
+    ],
+    "feature": "Device Management",
+    "templates": [
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "UnRecognizedDevice"
+      }
+    ]
+  },
+  {
+    "resources": [
+      "poi_management",
+      "poi_types"
+    ],
+    "feature": "POI Management",
+    "templates": [
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Poi"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "PoiType"
+      }
+    ]
+  },
+  {
+    "resources": [
+      "dashboards"
+    ],
+    "feature": "Dashboard"
+  },
+  {
+    "resources": [
+      "role_management",
+      "user_management"
+    ],
+    "feature": "User Management",
+    "templates": [
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "ResetPassword"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "TenantAdminUser"
+      }
+    ]
+  },
+  {
+    "resources": [
+      "asset_monitoring",
+      "asset_history",
+      "asset_types",
+      "asset_management",
+      "asset_details"
+    ],
+    "feature": "Asset Management",
+    "templates": [
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Asset"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "AssetType"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Point"
+      }
+    ]
+  },
+  {
+    "resources": [
+      "alarm_console",
+      "alarm_logs",
+      "alarm_definition"
+    ],
+    "feature": "Event Management"
+  },
+  {
+    "resources": [
+      "geofence",
+      "geotag"
+    ],
+    "feature": "Geo-service Management",
+    "templates": [
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Circle"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Polygon"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Route"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Geofence"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Geotag"
+      }
+    ]
+  },
+  {
+    "resources": [
+      "tag",
+      "tag_type"
+    ],
+    "feature": "Tag Management",
+    "templates": [
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Tag"
+      }
+    ]
+  },
+  {
+    "resources": [
+      "routing",
+	  "route_scheduling"
+    ],
+    "feature": "Route Management",
+    "templates": [
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "RouteScheduling"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "DESTINATION"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "ScheduleDestination"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "SchedulingRoute"
+      }
+    ]
+  },
+  {
+    "resources": [
+      "service_scheduling",
+	  "service_items",
+	  "service_components"
+    ],
+    "feature": "Service Management",
+    "templates": [
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "ServiceItem"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "ServiceComponent"
+      },
+	  {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "ServiceSchedule"
+      },
+	  {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "ServiceTags"
+      }
+    ]
+  },  
+  {
+    "resources": [
+      "devices"
+    ],
+    "feature": "Devices"
+  },
+  {
+    "resources": [
+      "audit_logs"
+    ],
+    "feature": "Audit Logs"
+  },
+  {
+    "resources": [
+      "vehicle_types",
+      "vehicle_management"
+    ],
+    "feature": "Vehicle Configuration",
+    "templates": [
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Asset"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "VEHICLE"
+      },
+      {
+        "platformEntityType": "MARKER",
+        "entityTemplateName": "Point"
+      }
+    ]
+  },
+  {
+    "resources": [
+      "live_tracking",
+	  "vehicle_details",
+	  "vehicle_history"
+    ],
+    "feature": "Vehicle Tracking"
+  }
+]

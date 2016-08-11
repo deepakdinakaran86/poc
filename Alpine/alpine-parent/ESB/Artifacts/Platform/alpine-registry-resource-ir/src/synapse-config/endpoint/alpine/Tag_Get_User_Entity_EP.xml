@@ -1,0 +1,4 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Tag_Get_User_Entity_EP" >
+	<http method="post"
+		uri-template="http://10.234.31.155:8281/alpine/services/users/find" />
+</endpoint>

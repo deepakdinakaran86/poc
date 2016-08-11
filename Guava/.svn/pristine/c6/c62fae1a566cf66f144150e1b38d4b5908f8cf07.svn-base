@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Item_Update_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Service_Item_Update_SEQ" value="----Service_Item_Update_SEQ----"/>
+        <property expression="json-eval($.)" name="findMarkerPayload" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+        	<property expression="json-eval($.)" name="serviceItemEntity" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <property expression="json-eval($.identifier.key)"
+                name="serviceItemIdKey" scope="default" type="STRING"/>
+            <property expression="json-eval($.identifier.value)"
+                name="serviceItemIdValue" scope="default" type="STRING"/>
+            <property expression="json-eval($.domain.domainName)"
+                name="serviceItemDomain" scope="default" type="STRING"/>
+            <property
+                expression="json-eval($.entityTemplate.entityTemplateName)"
+                name="serviceItemTemplate" scope="default" type="STRING"/>
+            <log separator=",">
+                <property expression="json-eval($.identifier.key)" name="serviceItemIdKey"/>
+                <property expression="json-eval($.identifier.value)" name="serviceItemIdValue"/>
+                <property expression="json-eval($.domain.domainName)" name="serviceItemDomain"/>
+                <property
+                    expression="json-eval($.entityTemplate.entityTemplateName)" name="serviceItemTemplate"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>{
+					"entityTemplate": {
+					"entityTemplateName": "$1"
+					},
+					"domain": {
+					"domainName": "$2"
+					},
+					"entityStatus": {
+					"statusName": "$3"
+					},
+					"fieldValues":
+					$4,
+					"identifier": {
+					"key": "$5",
+					"value": "$6"
+					}
+					}</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('serviceItemTemplate')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemDomain')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemStatus')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemFieldValues')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemIdKey')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemIdValue')"/>
+                </args>
+            </payloadFactory>
+            <log separator=",">
+                <property expression="json-eval($.)" name="Payload for Update Service Item"/>
+            </log>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send receive="Service_Item_Update_Node_SEQ">
+                <endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Update_Entity_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

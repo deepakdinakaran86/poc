@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Domain_Accessible_SEQ">
+	<log separator=",">
+		<property name="Enter Get_Domain_Accessible_SEQ" value="--------"></property>
+	</log>
+	<property action="set" expression="get-property('domain')"
+		name="uri.var.pathparameter" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Get_Domain_Accessible_EP.xml"></endpoint>
+	</send>
+</sequence>

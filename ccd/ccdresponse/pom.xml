@@ -1,0 +1,96 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.pcs.ccd.response</groupId>
+	<artifactId>ccdresponse</artifactId>
+	<version>1.0.0</version>
+	<name>CcdResponse</name>
+	<description>CcdResponse</description>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>com.pcs.deviceframework</groupId>
+			<artifactId>data-distributor</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-databind</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>com.google.collections</groupId>
+					<artifactId>google-collections</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>velocity</artifactId>
+					<groupId>org.apache.velocity</groupId>
+				</exclusion>
+				<exclusion>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.6.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>log4j-over-slf4j</artifactId>
+			<version>1.6.6</version>
+		</dependency>
+
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.pcs.saffron</groupId>
+			<artifactId>EOS-commons</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<exclusions>
+				<exclusion>
+					<groupId>com.fasterxml.jackson.core</groupId>
+					<artifactId>jackson-databind</artifactId>
+				</exclusion>
+			</exclusions>
+			<!-- <scope>provided</scope> -->
+		</dependency>
+
+		<dependency>
+			<groupId>com.pcs.avocado</groupId>
+			<artifactId>token-manager</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+
+
+	</dependencies>
+	<packaging>war</packaging>
+
+	<build>
+		<finalName>faultmonitor</finalName>
+		<!-- ... -->
+	</build>
+</project>

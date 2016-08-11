@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="Skyspark_Create_Equipment_EP" xmlns="http://ws.apache.org/ns/synapse">
+  <http method="post" trace="disable" uri-template="http://10.234.60.61:9763/analytics/equipments"/>
+</endpoint>

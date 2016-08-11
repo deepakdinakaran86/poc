@@ -1,0 +1,29 @@
+<html>
+<head>
+<style> 
+#t1 {
+    -moz-tab-size: 4; /* Code for Firefox */
+    -o-tab-size: 4; /* Code for Opera 10.6-12.1 */
+    tab-size: 4;
+}
+</style>
+
+</head>
+    <body>
+       Dear Customer,
+        <div>
+         Please find the fault details
+         </br>
+         <pre id="t1">
+         Engine Serial Number		${esn}	
+         Fault Generated Time		${occuranceDateTime}
+         Engine Model				${engineModel}
+         SPN						${SPN}
+         FMI						${FMI}
+         Occurrence Count			${OC}
+         </pre>
+        </div>
+        
+      Thank you
+    </body>
+</html>

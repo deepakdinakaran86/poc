@@ -1,0 +1,113 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.pcs.saffron</groupId>
+		<artifactId>EOS</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>EOS-cache-hazelcast</artifactId>
+	<name>EOS-cache-hazelcast</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<embed-dep>*;scope=compile;type=!pom;inline=true</embed-dep>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-client</artifactId>
+			<version>3.4.1</version>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+			<version>3.4.1</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>com.pcs.saffron</groupId>
+			<artifactId>EOS-cache</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<type>bundle</type>
+			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.felix</groupId>
+			<artifactId>org.osgi.service.obr</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-all</artifactId>
+			<version>3.4.4</version>
+		</dependency>
+	</dependencies>
+
+
+
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>1.4.0</version>
+				<extensions>true</extensions>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${pom.groupId}.${pom.artifactId}</Bundle-SymbolicName>
+						<Bundle-Name>${pom.artifactId}</Bundle-Name>
+						<Bundle-Version>1.0.0</Bundle-Version>
+						<Bundle-Activator>com.pcs.saffron.cache.hazelcast.osgi.HazelcastActivator</Bundle-Activator>
+						<DynamicImport-Package>*</DynamicImport-Package>
+						<Private-Package>com.pcs.saffron.cache.*</Private-Package>
+						<Embed-Dependency>${embed-dep}</Embed-Dependency>
+						<Export-Package>com.hazelcast.*</Export-Package>
+						<Import-Package>
+							com.pcs.saffron.cache.base,
+<!-- 							com.pcs.saffron.cipher, -->
+<!-- 							com.pcs.saffron.cipher.adapter, -->
+<!-- 							com.pcs.saffron.cipher.data.message, -->
+<!-- 							com.pcs.saffron.cipher.data.point, -->
+<!-- 							com.pcs.saffron.cipher.data.point.extension, -->
+<!-- 							com.pcs.saffron.cipher.data.point.types, -->
+<!-- 							com.pcs.saffron.cipher.data.point.utils, -->
+<!-- 							com.pcs.saffron.cipher.exception, -->
+							org.osgi.framework,
+							*;resolution:=optional,
+							com.hazelcast.*
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>true</filtering>
+				<includes>
+					<include>**/*</include>
+				</includes>
+			</resource>
+		</resources>
+	</build>
+
+
+	<packaging>bundle</packaging>
+</project>

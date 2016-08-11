@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Device_Tag_API" context="/saffron/services/device_tags">
+    <resource methods="GET" inSequence="Saffron_Get_All_Device_Tags_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Get_All_Configuration_Template_SEQ">
+    <log separator=",">
+        <property name="Enter Saffron_Get_All_Configuration_Template_SEQ" value="--------"/>
+    </log>
+    <send>
+        <endpoint key="conf:/endpoints/saffron/Saffron_Get_All_Configuration_Template_EP.xml"/>
+    </send>
+</sequence>

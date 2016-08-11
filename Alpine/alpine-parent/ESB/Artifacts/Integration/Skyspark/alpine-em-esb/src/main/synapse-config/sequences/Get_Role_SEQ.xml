@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Get_Role_SEQ" >
+<log separator=",">
+        <property name="Enter Get_Role_SEQ" value="--------"/>
+    </log>
+    
+      <property action="set"
+        expression="get-property('uri.var.pathparameter')"
+        name="uri.var.pathparameter" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property action="set"
+        expression="get-property('query.param.domain_name')"
+        name="query.param.domain_name" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property action="set"
+        expression="get-property('uri.var.domain_name')"
+        name="uri.var.domain_name" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <send>
+        <endpoint key="conf:/endpoints/alpine/Get_Role_EP.xml"/>
+    </send>
+</sequence>

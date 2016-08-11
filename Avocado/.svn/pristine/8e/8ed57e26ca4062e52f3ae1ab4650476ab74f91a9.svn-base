@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Attach_Point_Parents_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Avocado_Attach_Point_Parents_SEQ" value="--------"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property name="attachParents" scope="default" type="STRING" value="true"/>
+            <property expression="json-eval($.)" name="pointsPayload"
+                scope="default" type="STRING"/>
+            <payloadFactory media-type="json">
+                <format> {"points": $1 }</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('pointsPayload')"/>
+                </args>
+            </payloadFactory>
+            <iterate attachPath="//jsonObject" continueParent="true"
+                expression="//points" id="ITR_AGG" preservePayload="true">
+                <target>
+                    <sequence>
+                        <log level="custom">
+                            <property expression="//points" name="Points"/>
+                        </log>
+                        <property expression="//points/identifier/key"
+                            name="pointIdKey" scope="default" type="STRING"/>
+                        <property expression="//points/identifier/value"
+                            name="pointIdValue" scope="default" type="STRING"/>
+                        <property
+                            expression="//points/entityTemplate/entityTemplateName"
+                            name="pointTemplateName" scope="default" type="STRING"/>
+                        <property
+                            expression="//points/domain/domainName"
+                            name="pointDomain" scope="default" type="STRING"/>
+                        <payloadFactory media-type="json">
+                            <format>{
+								"actor": {
+								"domain": {
+								"domainName": "$1"
+								},
+								"entityTemplate": {
+								"entityTemplateName": "$2"
+								},
+								"platformEntity": {
+								"platformEntityType": "MARKER"
+								},
+								"identifier": {
+								"key": "$3",
+								"value": "$4"
+								}
+								},
+								"subjects": [
+								{
+								"domain": {
+								"domainName": "$5"
+								},
+								"entityTemplate": {
+								"entityTemplateName": "$6"
+								},
+								"platformEntity": {
+								"platformEntityType": "MARKER"
+								},
+								"identifier": {
+								"key":
+								"identifier",
+								"value": "$7"
+								}
+								},
+								{
+								"domain": {
+								"domainName": "$8"
+								},
+								"entityTemplate": {
+								"entityTemplateName": "Device"
+								},
+								"platformEntity": {
+								"platformEntityType": "MARKER"
+								},
+								"identifier": {
+								"key": "identifier",
+								"value": "$9"
+								}
+								}
+								]
+								}</format>
+                            <args>
+                                <arg evaluator="xml" expression="get-property('pointDomain')"/>
+                                <arg evaluator="xml" expression="get-property('pointTemplateName')"/>
+                                <arg evaluator="xml" expression="get-property('pointIdKey')"/>
+                                <arg evaluator="xml" expression="get-property('pointIdValue')"/>
+                                <arg evaluator="xml" expression="get-property('equipDomain')"/>
+                                <arg evaluator="xml" expression="get-property('equipTemplate')"/>
+                                <arg evaluator="xml" expression="get-property('equipIdValue')"/>
+                                <arg evaluator="xml" expression="get-property('deviceDomain')"/>
+                                <arg evaluator="xml" expression="get-property('deviceIdValue')"/>
+                            </args>
+                        </payloadFactory>
+                        <property
+                            expression="get-property('Authorization')"
+                            name="x-jwt-assertion" scope="transport" type="STRING"/>
+                        <property name="messageType" scope="axis2"
+                            type="STRING" value="application/json"/>
+                        <send receive="Update_Avocado_Point_Status_Hierarchy_SEQ">
+                            <endpoint key="conf:/endpoints/asset/Avocado_Attach_Point_Parents_EP.xml"/>
+                        </send>
+                    </sequence>
+                </target>
+            </iterate>
+        </else>
+    </filter>
+</sequence>

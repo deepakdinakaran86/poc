@@ -1,0 +1,15 @@
+brokerHosts : 10.234.31.234:2181
+cepOutTopic : galaxy-cep-alarm
+alarmMessageTopic : alarm-message
+zookeeperRoot :  /kafka
+topologyName : cep-alarm-topology
+spoutName : cep-alarm-spout
+parentSpoutMaxParallelism : 2
+topologyEmitInterval : 2000
+topologyMode : LOCAL
+topologyMaxParallelism : 2
+numberOfWorkers : 2
+analyzerBoltName : AlarmMessageConversionBolt
+analyzerBoltMaxParallelism : 2
+kafkaStartOffSet : -2
+

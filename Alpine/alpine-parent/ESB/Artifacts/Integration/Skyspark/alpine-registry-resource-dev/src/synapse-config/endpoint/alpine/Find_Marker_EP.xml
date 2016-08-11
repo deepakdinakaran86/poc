@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="Find_Marker_EP" xmlns="http://ws.apache.org/ns/synapse">
+	<http method="post" uri-template="http://10.234.31.201:9764/alpine-marker-1.0.0/services/markers/find"/>
+<!-- 	<http method="post" -->
+<!-- 		uri-template="http://10.234.31.154:9763/alpine-marker-1.0.0/services/markers/find" /> -->
+</endpoint>

@@ -1,0 +1,12 @@
+   zookeeperRoot :
+   nimbusHost : 10.131.5.12
+   thriftPort : 6627
+   zookeeperPort : 2181
+   zookeeperServers: 10.131.5.12
+   zookeeperHosts: 10.131.5.12:2181
+   maxSpoutSpending: 1000
+   cassandraHosts: 10.131.5.11
+   dataCenter: datacenter1
+   clusterName: DeviceCloud
+   cassandraBatchSize: 100
+   

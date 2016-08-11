@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Geofence_Delete_Find_Geofence_Type_SEQ">
+	<log separator=",">
+		<property name="Enter Geofence_Delete_Find_Geofence_Type_SEQ" value="---Geofence_Delete_Find_Geofence_Type_SEQ----" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.fieldValues)" name="geofencePayload"
+				scope="default" type="STRING" />
+			<script language="js"><![CDATA[var geofencePayload		= eval("("+mc.getProperty('geofencePayload')+")"); 
+      var geoType;	  
+      for(var i in geofencePayload )      	
+       {       	 	   	 		
+        var key = geofencePayload[i].key;      	 		
+        if(key		== 'type')       	 		
+       {       	 			
+        geoType = geofencePayload[i].value; 
+		mc.setProperty("geofenceType",geoType);		
+       } 
+}]]></script>
+<payloadFactory media-type="json">
+                <format>{
+					"actor": {
+					"platformEntity": {
+					"platformEntityType": "MARKER"
+					},
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"identifier": {
+					"key": "$3",
+					"value":
+					"$4"
+					}
+					},
+					"searchTemplateName": "$5",
+					"searchEntityType": "MARKER"
+					}</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('geofenceEntityDomain')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceEntityTemplate')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceEntityIdKey')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceEntityIdValue')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceType')"/>
+                </args>
+            </payloadFactory>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+          
+            <send receive="Geofence_Type_Delete_SEQ">
+                <endpoint key="conf:/endpoints/alpine/Get_Immediate_Children_EP.xml"/>
+            </send>
+		</else>
+	</filter>
+</sequence>

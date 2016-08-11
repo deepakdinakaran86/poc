@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src/main/java"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="E:/mavenrepo/org/slf4j/slf4j-api/1.7.10/slf4j-api-1.7.10.jar" sourcepath="E:/mavenrepo/org/slf4j/slf4j-api/1.7.10/slf4j-api-1.7.10-sources.jar">
+		<attributes>
+			<attribute name="maven.pomderived" value="true"/>
+			<attribute name="maven.groupId" value="org.slf4j"/>
+			<attribute name="maven.artifactId" value="slf4j-api"/>
+			<attribute name="maven.version" value="1.7.10"/>
+			<attribute name="maven.scope" value="compile"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

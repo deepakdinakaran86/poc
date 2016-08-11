@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Service_Schedule_Find_Service_Components_Hierarchy_SEQ" >
+<log separator="$$$$$$">
+		<property
+			name="----------------Entering Service_Schedule_Find_Service_Components_Hierarchy_SEQ"
+			value="----Service_Schedule_Find_Service_Components_Hierarchy_SEQ----" />
+		<property expression="json-eval($.)" name="JSON Payload find marker!"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.)" name="serviceSchedulePayload"
+				scope="default" type="STRING" />
+			<property expression="json-eval($.fieldValues)" name="serviceScheduleFieldValues"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/domain/domainName"
+				name="domainName" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/entityStatus/statusName"
+				name="status" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/key" name="identifierKey"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/value"
+				name="identifierValue" scope="default" type="STRING" />
+			<log separator=",">
+				<property expression="$body/jsonObject/entityStatus/statusName"
+					name="status" />
+			</log>
+			<script language="js"><![CDATA[var payload=eval("("+mc.getProperty('serviceScheduleFieldValues')+")");
+                         			var value;      	      	      
+                         			for(var i in payload ){
+                         				     var key = payload[i].key;      	 		                         
+                         				     if(key		== 'serviceScheduleName'){       	 			                   
+                         				     	serviceScheduleName = payload[i].value;       	 			                     
+                         				     	mc.setProperty("serviceScheduleName",serviceScheduleName);	
+                         				     	}         
+                         				     if(key		== 'description'){       	 			                   
+                         				     	description = payload[i].value;       	 			                     
+                         				     	mc.setProperty("description",description);	
+                         				     	} 
+											 if(key		== 'occuranceType'){       	 			                   
+                         				     	occuranceType = payload[i].value;       	 			                     
+                         				     	mc.setProperty("occuranceType",occuranceType);	
+                         				     	}
+                         			}]]></script>
+			<payloadFactory media-type="json">
+				<format>
+					{"actor": $1,
+					"searchTemplateName":"ServiceComponent"
+					}
+				</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('serviceSchedulePayload')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="Service_Schedule_Find_Res_SEQ">
+				<endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Get_Immediate_Children_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

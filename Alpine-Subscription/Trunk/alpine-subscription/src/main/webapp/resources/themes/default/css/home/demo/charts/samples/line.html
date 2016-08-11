@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Line Chart</title>
+		<script src="../Chart.js"></script>
+	<style>
+			body {
+				margin:0px;
+			}
+			
+			#canvas{
+			width:314px !important;
+			
+			}
+			
+			#canvas-holder {
+			padding: 15px;
+			}
+			
+			#chart-title{ 
+				float:left;
+				width:96%;
+				height:28px; 
+				font-family: 'Open Sans', Tahoma, Arial, Helvetica, sans-serif;
+				font-size:14px;
+				font-weight:normal;  
+				text-decoration:none; 
+				color:#fff;
+				padding: 6px 0 0 10px;
+				margin-bottom:10px;
+				text-shadow:1px 1px 0px #404040;
+			 	-webkit-box-shadow:inset 0px 0px 3px -13px #ffffff;
+			 	-moz-box-shadow:inset 0px 0px 3px -13px #ffffff;
+			 	box-shadow:inset 0px 0px 3px -13px #ffffff;	
+				background-color: #384146; 
+				/* background: url(images/header-gradient.jpg) #384146 repeat-x; */ 
+				/* Safari 4-5, Chrome 1-9 */ 
+				background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#505d65), to(#384146));   
+				/* Safari 5.1, Chrome 10+ */ 
+				background: -webkit-linear-gradient(top, #505d65, #384146);   
+				/* Firefox 3.6+ */ 
+				background: -moz-linear-gradient(top, #505d65, #384146);   
+				/* IE 10 */ 
+				background: -ms-linear-gradient(top, #505d65, #384146);   
+				/* Opera 11.10+ */ 
+				background: -o-linear-gradient(top, #505d65, #384146);
+				border-radius: 5px;
+				border: 0.0em solid #0000ff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="canvas-holder">
+				<canvas id="canvas"></canvas>
+		</div>
+
+
+	<script>
+		var randomScalingFactor = function(){ return Math.round(Math.random()*20)};
+		var lineChartData = {
+			labels : ["May","June"],
+			datasets : [
+				{
+					label: "My First dataset",
+					fillColor : "rgba(220,220,220,0.2)",
+					strokeColor : "rgba(220,220,220,1)",
+					pointColor : "rgba(220,220,220,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(220,220,220,1)",
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				},
+				{
+					label: "My Second dataset",
+					fillColor : "rgba(151,187,205,0.2)",
+					strokeColor : "rgba(151,187,205,1)",
+					pointColor : "rgba(151,187,205,1)",
+					pointStrokeColor : "#fff",
+					pointHighlightFill : "#fff",
+					pointHighlightStroke : "rgba(151,187,205,1)",
+					data : [randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor(),randomScalingFactor()]
+				}
+			]
+
+		}
+
+	window.onload = function(){
+		var ctx = document.getElementById("canvas").getContext("2d");
+		window.myLine = new Chart(ctx).Line(lineChartData, {
+			responsive: true
+		});
+	}
+
+
+	</script>
+	</body>
+</html>

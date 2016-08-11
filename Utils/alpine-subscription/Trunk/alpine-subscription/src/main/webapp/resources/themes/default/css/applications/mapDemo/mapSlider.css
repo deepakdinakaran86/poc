@@ -1,0 +1,153 @@
+/**
+* Copyright 2014 Pacific Controls Software Services LLC (PCSS). All Rights Reserved.
+*
+* This software is the property of Pacific Controls  Software  Services LLC  and  its
+* suppliers. The intellectual and technical concepts contained herein are proprietary 
+* to PCSS. Dissemination of this information or  reproduction  of  this  material  is
+* strictly forbidden  unless  prior  written  permission  is  obtained  from  Pacific 
+* Controls Software Services.
+* 
+* PCSS MAKES NO REPRESENTATION OR WARRANTIES ABOUT THE SUITABILITY  OF  THE  SOFTWARE,
+* EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE  IMPLIED  WARRANTIES  OF
+* MERCHANTANILITY, FITNESS FOR A PARTICULAR PURPOSE,  OR  NON-INFRINGMENT.  PCSS SHALL
+* NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF  USING,  MODIFYING
+* OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+**/
+
+/**
+* Version    :   1.0 
+* User       :   PCS
+* Function   :   CSS file for Map Application Slider.
+**/
+
+
+
+#fuelGauge {
+	display:none;
+}
+
+.live-alert { 
+	position:relative;
+	width: auto;
+	height:250px;  
+	overflow:hidden;
+	background-color:#fff;
+	border:0 solid #ff00ff;
+	display:block;
+}
+
+.alert-thumbnail {
+	width:350px;
+	height:85px;
+	float: left;
+	display: block; 
+	margin: 5px 15px 5px 0px;
+	background:#fff;
+	text-align:center;
+	overflow:hidden;
+	border:0.0em solid #ff00ff;
+}
+
+.map_carousel_inner {
+	float:left; /* important for inline positioning */
+	width:364px; /* important (this width = width of list item(including margin) * items shown */ 
+	height:250px;
+	overflow: hidden;  /* important (hide the items outside the div) */
+	/* non-important styling bellow */
+	background: #fff;
+}
+
+.map_carousel_ul {
+	position:relative;
+	top:-10px;
+	left:0px; /* important (this should be negative number of list items width(including margin) */
+	list-style-type: none; /* removing the default styling for unordered list items */
+	margin: 0px;
+	padding: 0px;
+	width:9999px; /* important */
+	/* non-important styling bellow */
+	padding-bottom:0px;
+	border:0.0em solid #ff00ff;
+}
+
+.map_carousel_ul li {
+	float: left; /* important for inline positioning of the list items */                                    
+	width:350px;  /* fixed width, important */
+	height: 250px;
+	/* just styling bellow*/
+	padding:0px; 
+	margin-top:10px;
+	margin-bottom:10px; 
+	margin-left:0px; 
+	margin-right:5px; 
+}
+
+.map_carousel_ul li img {
+	.margin-bottom:-4px; /* IE is making a 4px gap bellow an image inside of an anchor (<a href...>) so this is to fix that*/
+	/* styling */
+	cursor:pointer;
+	cursor: hand; 
+	border:0px; 
+}
+
+.left_scroll {
+	z-index:999;
+	position:absolute; 
+	top:30px;
+	right:310px;
+	width:20px;  
+	border:0.0em solid #00ff00;
+}
+
+.right_scroll {
+	z-index:999;
+	position:absolute; 
+	top:30px;
+	right:5px;
+	width:20px;  
+	border:0.0em solid #00ff00;
+}
+
+.left_scroll img, .right_scroll img {
+	position:relative; 
+	border:0; /* remove the default border of linked image */
+	/*styling*/
+	cursor: pointer;
+	cursor: hand;
+}
+
+.status-panel-alert-subtitle {
+	text-align:center;
+	display: inline-block;
+	width: 100%;
+	font-weight: bold;
+	text-decoration: none;
+	color: #fff;
+	padding: 5px 5px 5px 10px;
+	margin: 0 0 0 13;
+	/* text-shadow: 1px 1px 0px #404040; */
+	/* -webkit-box-shadow: inset 0px 0px 3px -13px #ffffff; */
+	-moz-box-shadow: inset 0px 0px 3px -13px #ffffff;
+	/* box-shadow: inset 0px 0px 3px -13px #ffffff; */
+	background-color: #00A8E7;
+	/* background: url(images/header-gradient.jpg) #384146 repeat-x; */
+	/* background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b80407), to(#970905)); */
+	/* background: -webkit-linear-gradient(top, #00A8E7, #00A8E7); */
+	background: -moz-linear-gradient(top, #b80407, #970905);
+	background: -ms-linear-gradient(top, #b80407, #970905);
+	background: -o-linear-gradient(top, #b80407, #970905);
+	/* border-radius: 5px; */
+	/* border: 0.0em solid #0000ff; */
+}
+
+.live-alert-panel-content { 
+	float:left;	
+	width:320px; 
+	overflow:hidden;
+	background:#fff;
+	padding:5px 10px 10px 5px; 
+	margin: 0 0 0 20px;
+	line-height:22px; 
+	color:#555;
+	border:0.0em solid #ff0000;
+}

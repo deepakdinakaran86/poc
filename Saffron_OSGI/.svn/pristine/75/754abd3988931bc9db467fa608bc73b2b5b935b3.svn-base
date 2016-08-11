@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Update_Write_Back_SEQ">
+    <log separator=",">
+        <property name="Enter Update_Write_Back_SEQ" value="--------"/>
+    </log>
+    <send>
+        <endpoint key="conf:/endpoints/saffron/Update_Write_Back_EP.xml"/>
+    </send>
+</sequence>

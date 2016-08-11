@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Get_Device_Details_For_Claim_SEQ" >
+<log category="INFO" level="simple" separator=",">
+        <property name="Enter Get_Device_Details_For_Claim_SEQ" value="--------"/>
+    </log>
+     <property action="set"
+        expression="get-property('uri.var.pathparameter')"
+        name="uri.var.pathparameter" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="x-jwt-assertion" expression="get-property('Authorization')" scope="transport" type="STRING"></property>
+   <log separator=",">
+      <property xmlns:ns="http://org.apache.synapse/xsd" name="===========Authorization==========" expression="get-property('Authorization')"></property>
+   </log>
+   <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+		
+    <send receive="Skyspark_Create_Equip_SEQ">
+        <endpoint key="conf:/endpoints/saffron/Get_Device_Details_EP.xml"/>
+    </send>
+    </else>
+    </filter>
+</sequence>

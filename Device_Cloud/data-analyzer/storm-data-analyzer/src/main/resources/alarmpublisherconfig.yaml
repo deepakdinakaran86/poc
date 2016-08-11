@@ -1,0 +1,6 @@
+   registryHost : 10.234.31.201
+   registryPort : 1099   
+   registryName : distributor
+   persistAPIHost : 10.234.31.153
+   persistAPIPort : 9763
+   persistAPIBatchURL : datasource-api-2.1.0/services/datasources/alarm

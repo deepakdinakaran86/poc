@@ -1,0 +1,155 @@
+graph = TitanFactory.open('conf/gremlin-server/titan-cassandra-es.properties')
+g = graph.traversal()
+
+################################################# Clear Vertices #########################################################################
+
+g.V().hasLabel('SUBSCRIPTION').drop();
+g.V().hasLabel('DEVICE').drop();
+g.V().hasLabel('DEVICE_TAG').drop();
+g.V().hasLabel('DEVICE_CONFIG_TEMP').drop();
+g.V().hasLabel('PROTOCOL_VERSION').drop();
+g.V().hasLabel('NW_PROTOCOL').drop();
+g.V().hasLabel('BATCH').drop();
+g.V().hasLabel('COMMAND').drop();
+g.V().hasLabel('CONFIGURED_POINT').drop();
+g.V().hasLabel('DATA_SOURCE').drop();
+g.V().hasLabel('DATA_SOURCE_PARAMETERS').drop();
+g.V().hasLabel('SUBSCRIPTION_CONTEXT').drop();
+g.V().hasLabel('MAKE').drop();
+g.V().hasLabel('DEVICE_TYPE').drop();
+g.V().hasLabel('MODEL').drop();
+g.V().hasLabel('DEVICE_PROTOCOL').drop();
+g.V().hasLabel('POINT').drop();
+g.V().hasLabel('UNIT').drop();
+g.V().hasLabel('PHYSICAL_QUANTITY').drop();
+g.V().hasLabel('DATA_TYPE').drop();
+g.V().hasLabel('ACCESS_TYPE').drop();
+
+####################################################################################################################################
+
+graph.tx().commit();
+ 
+################################################# Make, Type, Model, Protocol, Version #########################################################################
+
+mk = graph.addVertex(label,'MAKE','name','G2021');
+dt = graph.addVertex(label,'DEVICE_TYPE','name','Edge Device');
+md = graph.addVertex(label,'MODEL','name','EDCP');
+dp = graph.addVertex(label,'DEVICE_PROTOCOL','name','EDCP');
+pv= graph.addVertex(label,'PROTOCOL_VERSION','name','1.0.0') 
+mk.addEdge('hasType',dt)
+dt.addEdge('hasModel',md)
+md.addEdge('talksIn',dp)
+dp.addEdge('hasVersion',pv)
+
+pv1= graph.addVertex(label,'PROTOCOL_VERSION','name','1.2.0')
+cmd1 = graph.addVertex(label,'COMMAND_TYPE','name','Server Command','systemCommand',true)
+pv.addEdge('canExecute',cmd1)
+cmd2 = graph.addVertex(label,'COMMAND_TYPE','name','Point Write Command','systemCommand',false)
+pv.addEdge('canExecute',cmd2)
+dp.addEdge('hasVersion',pv1)
+
+dt1 = graph.addVertex(label,'DEVICE_TYPE','name','RMS')
+md1 = graph.addVertex(label,'MODEL','name','Alarmnet');
+dp1 = graph.addVertex(label,'DEVICE_PROTOCOL','name','Honeywell');
+pv_1= graph.addVertex(label,'PROTOCOL_VERSION','name','8.9.0') 
+mk.addEdge('hasType',dt1)
+dt1.addEdge('hasModel',md1)
+md1.addEdge('talksIn',dp1)
+dp1.addEdge('hasVersion',pv_1)
+
+mk1 = graph.addVertex(label,'MAKE','name','Teltonika');
+dt2 = graph.addVertex(label,'DEVICE_TYPE','name','Telematics')
+md2 = graph.addVertex(label,'MODEL','name','FMS');
+dp2 = graph.addVertex(label,'DEVICE_PROTOCOL','name','FM4200');
+pv2= graph.addVertex(label,'PROTOCOL_VERSION','name','1.0.0') 
+mk1.addEdge('hasType',dt2)
+dt2.addEdge('hasModel',md2)
+md2.addEdge('talksIn',dp2)
+dp2.addEdge('hasVersion',pv2)
+
+dp3 = graph.addVertex(label,'DEVICE_PROTOCOL','name','FM5300');
+pv3= graph.addVertex(label,'PROTOCOL_VERSION','name','v2.13')
+md2.addEdge('talksIn',dp3)
+dp3.addEdge('hasVersion',pv3)
+
+mk4 = graph.addVertex(label,'MAKE','name','Meitrack Group');
+dt4 = graph.addVertex(label,'DEVICE_TYPE','name','GPS Tracker')
+md4 = graph.addVertex(label,'MODEL','name','Vehicle Tracker');
+dp4 = graph.addVertex(label,'DEVICE_PROTOCOL','name','MVT380');
+pv4= graph.addVertex(label,'PROTOCOL_VERSION','name','V1.21') 
+mk4.addEdge('hasType',dt4)
+dt4.addEdge('hasModel',md4)
+md4.addEdge('talksIn',dp4)
+dp4.addEdge('hasVersion',pv4)
+
+
+
+################################################# Network Protocol  #############################################################################################
+
+graph.addVertex(label,'NW_PROTOCOL','name','TCP')
+graph.addVertex(label,'NW_PROTOCOL','name','UDP')
+
+
+################################################# Access Type  ########################################################################################################
+
+graph.addVertex(label,'ACCESS_TYPE','name','WRITEABLE','isWritable',true)
+graph.addVertex(label,'ACCESS_TYPE','name','READ_ONLY','isWritable',false)
+
+################################################# Data Type  ########################################################################################################
+
+graph.addVertex(label,'DATA_TYPE','name','Long')
+graph.addVertex(label,'DATA_TYPE','name','Boolean')
+graph.addVertex(label,'DATA_TYPE','name','Integer')
+graph.addVertex(label,'DATA_TYPE','name','Float')
+graph.addVertex(label,'DATA_TYPE','name','Short')
+graph.addVertex(label,'DATA_TYPE','name','Double')
+graph.addVertex(label,'DATA_TYPE','name','String')
+
+################################################# Unit,  Physical Quantity ########################################################################################################
+unit = graph.addVertex(label,'UNIT','name','unitless','status','ACTIVE','conversion','-','symbol','-','statusKey',0,'isSi',false,'desc','for mapping points without unit');
+dt = g.V().hasLabel('DATA_TYPE').has('name','String').next();
+pq = graph.addVertex(label,'PHYSICAL_QUANTITY','name','status string','dataStore','status_string','status','ACTIVE','statusKey',0,'dataType','STRING')
+pq.addEdge('isOfType',dt);
+pq.addEdge('measuresIn',unit);
+
+dt = g.V().hasLabel('DATA_TYPE').has('name','Long').next();
+pq = graph.addVertex(label,'PHYSICAL_QUANTITY','name','status long','dataStore','status_long','status','ACTIVE','statusKey',0,'dataType','LONG')
+pq.addEdge('isOfType',dt);
+pq.addEdge('measuresIn',unit);
+
+dt = g.V().hasLabel('DATA_TYPE').has('name','Short').next();
+pq = graph.addVertex(label,'PHYSICAL_QUANTITY','name','status short','dataStore','status_short','status','ACTIVE','statusKey',0,'dataType','SHORT')
+pq.addEdge('isOfType',dt);
+pq.addEdge('measuresIn',unit);
+
+dt = g.V().hasLabel('DATA_TYPE').has('name','Float').next();
+pq = graph.addVertex(label,'PHYSICAL_QUANTITY','name','status float','dataStore','status_float','status','ACTIVE','statusKey',0,'dataType','FLOAT')
+pq.addEdge('isOfType',dt);
+pq.addEdge('measuresIn',unit);
+
+dt = g.V().hasLabel('DATA_TYPE').has('name','Integer').next();
+pq = graph.addVertex(label,'PHYSICAL_QUANTITY','name','status integer','dataStore','status_integer','status','ACTIVE','statusKey',0,'dataType','INTEGER')
+pq.addEdge('isOfType',dt);
+pq.addEdge('measuresIn',unit);
+
+dt = g.V().hasLabel('DATA_TYPE').has('name','Double').next();
+pq = graph.addVertex(label,'PHYSICAL_QUANTITY','name','status double','dataStore','status_double','status','ACTIVE','statusKey',0,'dataType','DOUBLE')
+pq.addEdge('isOfType',dt);
+pq.addEdge('measuresIn',unit);
+
+
+dt = g.V().hasLabel('DATA_TYPE').has('name','Boolean').next();
+pq = graph.addVertex(label,'PHYSICAL_QUANTITY','name','status boolean','dataStore','status_boolean','status','ACTIVE','statusKey',0,'dataType','BOOLEAN')
+pq.addEdge('isOfType',dt);
+pq.addEdge('measuresIn',unit);
+
+
+####################################################################################################################################
+
+graph.tx().commit();
+ 
+####################################################################################################################################
+
+
+
+

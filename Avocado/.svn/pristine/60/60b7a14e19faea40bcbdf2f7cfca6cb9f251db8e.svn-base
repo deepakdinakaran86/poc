@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Validate_DS_DisplayName_Unique_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property expression="json-eval($.)"
+            name="Enter Avocado_Validate_DS_DisplayName_Unique_SEQ" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <property expression="$trp:x-jwt-assertion" name="Authorization"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.equipment)"
+        name="equipmentPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.device)" name="devicePayload"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.points)" name="pointsPayload"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$body/jsonObject/equipment/domain/domainName"
+        name="equipDomain" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$body/jsonObject/equipment/identifier/value"
+        name="equipIdValue" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/equipment/entityTemplate/entityTemplateName"
+        name="equipTemplate" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$body/jsonObject/device/identifier/value"
+        name="deviceIdValue" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$body/jsonObject/device/domain/domainName"
+        name="deviceDomain" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$body/jsonObject/pointTemplate"
+        name="pointTemplate" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.points)"
+        name="pointValidationPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <payloadFactory media-type="json">
+        <format> {"points": $1 }</format>
+        <args>
+            <arg evaluator="xml"
+                expression="get-property('pointValidationPayload')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <iterate attachPath="//jsonObject" expression="//points" id="123"
+        preservePayload="true" xmlns:ns="http://org.apache.synapse/xsd">
+        <target>
+            <sequence>
+                <log level="custom">
+                    <property expression="json-eval($.points)" name="pointValidationPayload"/>
+                </log>
+                <property expression="json-eval($.points)"
+                    name="currentPoint" scope="default" type="STRING"/>
+                <property expression="json-eval($.points.fieldValues)"
+                    name="currentPointFields" scope="default" type="STRING"/>
+                <property
+                    expression="//points/entityTemplate/entityTemplateName"
+                    name="pointTemplate" scope="default" type="STRING"/>
+                <script language="js"><![CDATA[var currentPointPayload		=eval("("+mc.getProperty('currentPointFields')+")"); 
+           	      	 
+      for(var i in currentPointPayload )      	 
+       {       	 	     	 		
+        var key = currentPointPayload[i].key;      	 		 
+     
+        if(key		== 'displayName')       	 		
+       {       	 			 
+       	displayName = currentPointPayload[i].value;       	 			 
+         mc.setProperty("displayName",displayName);	 		
+        }  
+        
+        if(key		== 'dataSourceName')       	 		
+       {       	 			 
+       	dataSourceName = currentPointPayload[i].value;       	 			 
+         mc.setProperty("dataSourceName",dataSourceName);	 		
+        }     	 	
+       }]]></script>
+                <payloadFactory media-type="json">
+                    <format>{
+						"searchFields": [
+						{
+						"key": "displayName",
+						"value": "$1"
+						},
+						{
+						"key": "dataSourceName",
+						"value": "$2"
+						}
+						],
+						"returnFields": [
+						"dataSourceName"
+						],
+						"domain": {
+						"domainName": "$3"
+						},
+						"entityTemplate": {
+						"entityTemplateName": "$4"
+						}
+						}</format>
+                    <args>
+                        <arg evaluator="xml" expression="get-property('displayName')"/>
+                        <arg evaluator="xml" expression="get-property('dataSourceName')"/>
+                        <arg evaluator="xml" expression="get-property('equipDomain')"/>
+                        <arg evaluator="xml" expression="get-property('pointTemplate')"/>
+                    </args>
+                </payloadFactory>
+                <property expression="get-property('Authorization')"
+                    name="x-jwt-assertion" scope="transport" type="STRING"/>
+                <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+                <log separator=",">
+                    <property expression="json-eval($.)" name="unique payload"/>
+                </log>
+                <send>
+                    <endpoint key="conf:/endpoints/air-handler/Avocado_Validate_DS_DisplayName_Unique_EP.xml"/>
+                </send>
+            </sequence>
+        </target>
+    </iterate>
+</sequence>

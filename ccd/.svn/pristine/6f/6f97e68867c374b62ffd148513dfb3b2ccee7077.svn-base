@@ -1,0 +1,37 @@
+<html>
+<head>
+<style> 
+#t1 {
+    -moz-tab-size: 4; /* Code for Firefox */
+    -o-tab-size: 4; /* Code for Opera 10.6-12.1 */
+    tab-size: 4;
+}
+
+#t2 {
+    -moz-tab-size: 16; /* Code for Firefox */
+    -o-tab-size: 16; /* Code for Opera 10.6-12.1 */
+    tab-size: 16;
+}
+</style>
+</head>
+    <body>
+       Dear Customer,
+        <div></br>
+         This is regard to a recent fault generated on your equipment:
+         </br>
+         <pre id="t1">
+         Vehicle ID					${vehicleId} </br>
+         Engine Serial Number		${esn} </br>
+         VIN						${VIN} </br>
+         Engine Model				${esn} </br>
+         </pre>
+        </div></br>
+        
+         <div></br>
+         Recommended Action: </br>
+         ${action} </br>
+        </div></br>
+        
+         Thank you for being a Cummins customer.
+    </body>
+</html>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Subscription_Create_App_Api_Manager_EP" groupId="subscription-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/subscription/Subscription_Create_App_Api_Manager_EP.xml</file>
+            <path>/_system/config/endpoints/subscription</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Subscription_Login_Api_Manager_EP" groupId="subscription-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/subscription/Subscription_Login_Api_Manager_EP.xml</file>
+            <path>/_system/config/endpoints/subscription</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Subscription_Send_Email_EP" groupId="subscription-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/subscription/Subscription_Send_Email_EP.xml</file>
+            <path>/_system/config/endpoints/subscription</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Subscription_Create_User_Api_Manager_Temp_EP" groupId="subscription-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/subscription/Subscription_Create_User_Api_Manager_Temp_EP.xml</file>
+            <path>/_system/config/endpoints/subscription</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Subscription_Create_User_Api_Manager_EP" groupId="subscription-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/subscription/Subscription_Create_User_Api_Manager_EP.xml</file>
+            <path>/_system/config/endpoints/subscription</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Subscription_Create_Tenant_Node_EP" groupId="subscription-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/subscription/Subscription_Create_Tenant_Node_EP.xml</file>
+            <path>/_system/config/endpoints/subscription</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Subscription_Create_Tenant_EP" groupId="subscription-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/subscription/Subscription_Create_Tenant_EP.xml</file>
+            <path>/_system/config/endpoints/subscription</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Subscription_Create_Saffron_Subscription_EP" groupId="subscription-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/subscription/Subscription_Create_Saffron_Subscription_EP.xml</file>
+            <path>/_system/config/endpoints/subscription</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Subscription_Create_Skyspark_Site_EP" groupId="subscription-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/subscription/Subscription_Create_Skyspark_Site_EP.xml</file>
+            <path>/_system/config/endpoints/subscription</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

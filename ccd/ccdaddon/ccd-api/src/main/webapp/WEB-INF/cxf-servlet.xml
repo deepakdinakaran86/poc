@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd 
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd 
+		http://www.springframework.org/schema/context	http://www.springframework.org/schema/context/spring-context.xsd ">
+
+	<import resource="/spring/ccd-app-context.xml" />
+
+	<jaxrs:server id="ccdgalaxyIntegrationServices"
+		address="/faultservices">
+		<jaxrs:serviceBeans>
+ 			<ref bean="fcResponseResource" />
+ 			<ref bean="tenantContactsResource" />
+			<ref bean="faultEventResource" />
+			<ref bean="notificationResource" />
+			<ref bean="equipmentResource" />
+			<ref bean="tenantResource" />
+			<ref bean="swaggerResource" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonJsonProvider" />
+			<ref bean="exceptionHandler" />
+			<ref bean="subscriptionProfile" />
+			<ref bean="swaggerWriter" />
+		</jaxrs:providers>
+	</jaxrs:server>
+	
+	<bean id="subscriptionProfile"
+		class="com.pcs.avocado.commons.serviceImpl.SubscriptionProfileFilter">
+	</bean>
+
+	<bean id="jsonObjectMapper" class="com.pcs.avocado.rest.mapper.GalaxyObjectMapper" />
+	<bean id="exceptionHandler"
+		class="com.pcs.avocado.commons.exception.GalaxyExceptionHandler" />
+	<bean id="jacksonJsonProvider"
+		class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider">
+		<constructor-arg name="mapper" ref="jsonObjectMapper" />
+		<constructor-arg name="annotationsToUse">
+			<null />
+		</constructor-arg>
+	</bean>
+	<!-- Swagger writers -->
+	<bean id="swaggerWriter" class="io.swagger.jaxrs.listing.SwaggerSerializers" />
+	
+	<!-- Swagger Configuration -->
+	<bean id="swaggerConfig" class="io.swagger.jaxrs.config.BeanConfig">
+		<property name="resourcePackage" value="com.pcs.ccd.resource" />
+		<property name="version" value="1.0.0" />
+		<property name="basePath" value="/ccd-api-1.0.0/services/integration" />
+		<property name="title" value="Saffron Services" />
+		<property name="description" value="" />
+		<property name="scan" value="true" />
+	</bean>
+	
+	<bean id="fcResponseResource" class="com.pcs.ccd.resource.FCResponseResource" />
+	<bean id="tenantContactsResource" class="com.pcs.ccd.resource.TenantContactsResource" />
+	<bean id="faultEventResource" class="com.pcs.ccd.resource.FaultEventResource" />
+	<bean id="notificationResource" class="com.pcs.ccd.resource.NotificationResource" />
+	<bean id="equipmentResource" class="com.pcs.ccd.resource.EquipmentResource" />
+	<bean id="tenantResource" class="com.pcs.ccd.resource.TenantResource" />
+	<!-- Swagger API listing resource -->
+	<bean id="swaggerResource" class="io.swagger.jaxrs.listing.ApiListingResource" />
+</beans>

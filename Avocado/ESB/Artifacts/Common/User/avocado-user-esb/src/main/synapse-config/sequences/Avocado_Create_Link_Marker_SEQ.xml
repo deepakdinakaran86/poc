@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Create_Link_Marker_SEQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+  <log>
+    <property name="Entering Avocado_Create_Link_Marker_Sequence" value="Entering Avocado_Create_Link_Marker_Sequence"/>
+  </log>
+  <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+    <then>
+      <log separator="Error">
+        <property name="AlpineError" value="Im error from Create User in Alpine"/>
+      </log>
+      <send/>
+    </then>
+    <else>
+      <property expression="$body/jsonObject" name="returnPayload"
+        scope="default" type="STRING"/>
+      <log separator="Error">
+        <property expression="get-property('emailFieldValues')" name="In Avocado_Create_Link_Marker else"/>
+      </log>
+      <payloadFactory media-type="json">
+        <format>{
+					"fieldValues": $1,
+					"domain": $2,
+					"entityTemplate": $3
+					}</format>
+        <args>
+          <arg evaluator="xml" expression="get-property('emailFieldValues')"/>
+          <arg evaluator="xml" expression="get-property('emailDomain')"/>
+          <arg evaluator="xml" expression="get-property('emailEntityTemplate')"/>
+        </args>
+      </payloadFactory>
+      <property expression="get-property('x-jwt-assertion')"
+        name="x-jwt-assertion" scope="transport" type="STRING"/>
+      <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+      <send receive="Avocado_Set_Pwd_Email_Send_SEQ">
+        <endpoint key="conf:/endpoints/user/Avocado_Create_Link_Marker_EP.xml"/>
+      </send>
+    </else>
+  </filter>
+</sequence>

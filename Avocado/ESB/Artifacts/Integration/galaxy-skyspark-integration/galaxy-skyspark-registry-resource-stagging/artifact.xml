@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Skyspark_Create_Equipment_EP" groupId="skyspark-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/skyspark/Skyspark_Create_Equipment_EP.xml</file>
+            <path>/_system/config/endpoints/skyspark</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Skyspark_Create_Point_EP" groupId="skyspark-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/skyspark/Skyspark_Create_Point_EP.xml</file>
+            <path>/_system/config/endpoints/skyspark</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Skyspark_Create_Update_Site_EP" groupId="skyspark-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/skyspark/Skyspark_Create_Update_Site_EP.xml</file>
+            <path>/_system/config/endpoints/skyspark</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Skyspark_Update_Equipment_EP" groupId="skyspark-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/skyspark/Skyspark_Update_Equipment_EP.xml</file>
+            <path>/_system/config/endpoints/skyspark</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

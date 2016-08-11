@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="List_Filter_Marker_EP" xmlns="http://ws.apache.org/ns/synapse">
+<!--     <http method="post" uri-template="http://10.234.31.201:9764/alpine-marker-1.0.0/services/markers/list/filter"/> -->
+    <http method="post" uri-template="http://10.234.31.201:8080/alpine-marker-1.0.0/services/markers/list/filter"/>
+</endpoint>

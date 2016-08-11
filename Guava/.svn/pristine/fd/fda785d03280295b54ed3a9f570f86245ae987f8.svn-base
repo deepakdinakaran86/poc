@@ -1,0 +1,27 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="POI_Update_Node_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter POI_Update_Node_SEQ" value="---POI_Update_Node_SEQ----" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>
+					$1
+				</format>
+				<args>
+					<arg expression="get-property('poiEntityPayload')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="POI_Type_Find_POI_Type_For_Update_SEQ">
+				<endpoint key="conf:/endpoints/poi/POI_Hierarchy_Update_Node_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

@@ -1,0 +1,31 @@
+brokerHosts : 10.234.31.234:2181
+messageTopicName : intermediate-message
+analyzeDataTopic : intermediate-message
+analyzePublishTopic : intermediate-publish-message
+zookeeperRoot :  /kafka
+topologyName : analyzer-topology
+parentSpoutName : analyze-message-spout
+parentSpoutMaxParallelism : 2
+topologyEmitInterval : 2000
+topologyMode : LOCAL
+topologyMaxParallelism : 2
+numberOfWorkers : 2
+analyzerBoltName : analyzer-bolt
+persistBoltMaxParallelism : 2
+kafkaStartOffSet : -1
+outputTopicName : analyzed-message
+publisherSpout : MessagePublishSpout
+publisherBolt : MsgPublisherBolt
+publishAnalyzeSpout : analyze-message-spout-1
+livepublishSpout : LivePublishSpout
+analyzerBoltName1 : AnalyzerBolt-1
+analyzerBoltName2 : AnalyzerBolt-2
+livefeedPushBolt : LivefeedPushBolt
+livepublishBolt : LivePublishBolt
+livefeedstream : live-feed-stream
+alarmFeedstream : alarm-message
+alarmPublishSpout : Alarm Spout
+alarmPublishBolt : Alarm Bolt
+datastoreFeedSpout : Datastore Feed Spout
+datastoreFeedStream : data-store
+datastoreFeedBolt : Datastore Feed Bolt

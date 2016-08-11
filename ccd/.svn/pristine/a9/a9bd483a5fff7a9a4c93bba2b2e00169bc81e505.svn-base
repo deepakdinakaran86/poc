@@ -1,0 +1,20 @@
+brokerHosts : 10.131.5.12:2181
+faultMessageTopic : fault_data_stream
+faultResponseTopic : fault_response_stream
+zookeeperRoot :  /faultMonitor
+topologyName : FaultEventMonitor
+faultReadSpoutName : Fault Message Read Spout
+faultResponseSpoutName : Fault Response Read Spout
+parentSpoutMaxParallelism : 2
+topologyEmitInterval : 2000
+topologyMode : LOCAL
+topologyMaxParallelism : 2
+numberOfWorkers : 2
+faultCheckBoltName : Fault Status Check Bolt
+faultReqBuildBoltName : Fault Notification Build Bolt
+faultSendBoltName : Fault Event Send Bolt
+faultPersistBoltName : Fault Event Persist Bolt
+faultRespNotifierBoltName : Fault Response Notifier Bolt
+emailSenderBoltName : Email Send Bolt
+kafkaStartOffSet : -1
+

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Delete_Guava_Route_Poi_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Delete_Guava_Route_Poi_SEQ" value="--------" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="$trp:x-jwt-assertion" name="Authorization"
+				scope="default" type="STRING" />
+			<property expression="json-eval($.route)" name="routeIdentity"
+				scope="default" type="STRING" />
+			<property expression="json-eval($.poi)" name="poiIdentities"
+				scope="default" type="STRING" />
+			
+			<property expression="json-eval($.route.domain.domainName)" name="domainName"
+				scope="default" type="STRING" />
+				
+			<property expression="json-eval($.route.entityTemplate.entityTemplateName)" name="entityTemplateName"
+				scope="default" type="STRING" />
+				
+			<property expression="json-eval($.route.identifier.key)" name="key"
+				scope="default" type="STRING" />
+				
+			<property expression="json-eval($.route.identifier.value)" name="value"
+				scope="default" type="STRING" />
+			
+							
+			<payloadFactory media-type="json">
+				<format> {"poi": $1 }</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('poiIdentities')" />
+				</args>
+			</payloadFactory>
+			<iterate attachPath="//jsonObject" expression="//poi" id="deletePoi"
+				preservePayload="true">
+				<target>
+					<sequence>
+						<log level="custom">
+							<property expression="json-eval($.poi)" name="poiValidationPayload" />
+						</log>
+						<property expression="json-eval($.poi)" name="currentPoi"
+							scope="default" type="STRING" />
+						<payloadFactory media-type="json">
+							<format>
+								$1
+							</format>
+							<args>
+								<arg evaluator="xml" expression="get-property('currentPoi')" />
+							</args>
+						</payloadFactory>
+						<property expression="get-property('Authorization')"
+							name="x-jwt-assertion" scope="transport" type="STRING" />
+						<property name="messageType" scope="axis2" type="STRING"
+							value="application/json" />
+						<log separator=",">
+							<property expression="json-eval($.)" name="unique payload" />
+						</log>
+						<send>
+							<endpoint key="conf:/endpoints/route/Delete_Guava_Route_Poi_EP.xml" />
+						</send>
+					</sequence>
+				</target>
+			</iterate>
+		</else>
+	</filter>
+</sequence>

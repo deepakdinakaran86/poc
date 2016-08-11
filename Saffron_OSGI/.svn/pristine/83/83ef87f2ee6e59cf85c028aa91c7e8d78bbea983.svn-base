@@ -1,0 +1,12 @@
+amqp.rabbitmq.livequeue=SENSOR_DATA
+amqp.rabbitmq.host=10.64.70.152
+amqp.rabbitmq.port=5672
+amqp.rabbitmq.username=test
+amqp.rabbitmq.password=test
+amqp.jms.event.scan.source=EVENT_SCAN
+amqp.jms.event.scan.candidate=galaxy_input_queue
+amqp.jms.event.violation=galaxy_alert_queue
+amqp.jms.url=tcp://10.236.166.120:61616
+amqp.servicebus.connection.url=amqps://sendpolicy:xTwbAh3dTvq1GxdByFuhzK6Y%2FP7TrCq0mDtLjLUXtDs%3D@devicecloud.servicebus.windows.net/?sync-publish=false
+amqp.servicebus.queue.name=dcallpointseventhub
+# Device Gateway Configurations Ends:

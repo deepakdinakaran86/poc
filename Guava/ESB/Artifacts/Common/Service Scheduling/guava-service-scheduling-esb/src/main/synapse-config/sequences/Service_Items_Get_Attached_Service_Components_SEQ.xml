@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Items_Get_Attached_Service_Components_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property
+            name="----------------Entering Service_Items_Get_Attached_Service_Components_SEQ----------------" value="----Service_Items_Get_Attached_Service_Components_SEQ----"/>
+    </log>
+    <property expression="$trp:x-jwt-assertion" name="Authorization"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.serviceItem)"
+        name="serviceItemPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/serviceItem/entityTemplate/entityTemplateName"
+        name="serviceItemEntityTemplate" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/serviceItem/platformEntity/platformEntityType"
+        name="serviceItemEntityType" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/serviceItem/entityStatus/statusName"
+        name="serviceItemEntityStatus" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <payloadFactory media-type="json">
+        <format>{
+			"actor": $1 ,
+			"searchTemplateName": "ServiceComponent",
+			"searchEntityType":
+			"$2"
+			}</format>
+        <args>
+            <arg evaluator="xml"
+                expression="get-property('serviceItemPayload')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml"
+                expression="get-property('serviceItemEntityType')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <property expression="get-property('Authorization')"
+        name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <property expression="json-eval($.)" name="Check Payload" scope="default"
+        type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <send>
+        <endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Get_Immediate_Parents_EP.xml"/>
+    </send>
+</sequence>

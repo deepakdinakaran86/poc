@@ -1,0 +1,14 @@
+com/pcs/saffron/connectivity/config/Handler.class
+com/pcs/saffron/connectivity/udp/UDPConnector$1.class
+com/pcs/saffron/connectivity/config/ConnectorConfiguration.class
+com/pcs/saffron/connectivity/tcp/TCPConnector$1.class
+com/pcs/saffron/connectivity/udp/UDPConnector.class
+com/pcs/saffron/connectivity/Connector.class
+com/pcs/saffron/connectivity/config/ConnectorConfigurationBuilder.class
+com/pcs/saffron/connectivity/utils/ConversionUtils.class
+com/pcs/saffron/connectivity/exception/ConfigurationException.class
+com/pcs/saffron/connectivity/tcp/TCPConnector.class
+com/pcs/saffron/connectivity/exception/InvalidConnectorException.class
+com/pcs/saffron/connectivity/utils/Base64.class
+com/pcs/saffron/connectivity/utils/CRC16.class
+com/pcs/saffron/osgi/ConnectivityActivator.class

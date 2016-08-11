@@ -1,0 +1,30 @@
+# Licensed to the Apache Software Foundation (ASF) under one
+# or more contributor license agreements.  See the NOTICE file
+# distributed with this work for additional information
+# regarding copyright ownership.  The ASF licenses this file
+# to you under the Apache License, Version 2.0 (the
+# "License"); you may not use this file except in compliance
+# with the License.  You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+brokerHosts: localhost:2181
+messageTopicName: DeviceMessage
+zookeeperRoot:  
+topologyName: DeviceMessageProcessor1
+parentSpoutName: MessageReceptionSpout
+nimbusHost: 10.234.31.234
+thriftPort: 6627
+zookeeperPort: 2181
+zookeeperServers: 10.234.31.234 
+topologyEmitInterval: 2000
+topologyMode: 1
+zookeeperHosts: 10.234.31.234:2181
+kafkaSpoutThreads: 10
+spoutGroupName:

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Get_Resource_Permissions_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Avocado_Get_Resource_Permissions_SEQ" value="--Avocado_Get_Resource_Permissions_SEQ--------"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.resources)"
+                name="resourcesPayload" scope="default" type="STRING"/>
+            <log separator=",">
+                <property expression="get-property('resourcesPayload')" name="resourcesPayload$$$$$$$$$$$$$$$$$$"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format> {"resources": $1 }</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('resourcesPayload')"/>
+                </args>
+            </payloadFactory>
+             
+            <iterate attachPath="//jsonObject" expression="//resources"
+                id="RESOURCE_ITERATE" preservePayload="true">
+                <target>
+                    <sequence>
+                        <log separator=",">
+                            <property expression="//resources" name="inside iterate--------------------------"/>
+                        </log>
+                        <property expression="//resources"
+                            name="uri.var.pathparameter" scope="default" type="STRING"/>
+                        <property
+                            expression="get-property('Authorization')"
+                            name="x-jwt-assertion" scope="transport" type="STRING"/>
+                        <property name="messageType" scope="axis2"
+                            type="STRING" value="application/json"/>
+                        <send>
+                            <endpoint key="conf:/endpoints/tenant/Avocado_Get_Resource_Permissions_EP.xml"/>
+                        </send>
+                    </sequence>
+                </target>
+            </iterate>
+        </else>
+    </filter>
+</sequence>

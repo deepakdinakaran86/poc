@@ -1,0 +1,58 @@
+/**
+* Copyright 2014 Pacific Controls Software Services LLC (PCSS). All Rights Reserved.
+*
+* This software is the property of Pacific Controls  Software  Services LLC  and  its
+* suppliers. The intellectual and technical concepts contained herein are proprietary 
+* to PCSS. Dissemination of this information or  reproduction  of  this  material  is
+* strictly forbidden  unless  prior  written  permission  is  obtained  from  Pacific 
+* Controls Software Services.
+* 
+* PCSS MAKES NO REPRESENTATION OR WARRANTIES ABOUT THE SUITABILITY  OF  THE  SOFTWARE,
+* EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE  IMPLIED  WARRANTIES  OF
+* MERCHANTANILITY, FITNESS FOR A PARTICULAR PURPOSE,  OR  NON-INFRINGMENT.  PCSS SHALL
+* NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF  USING,  MODIFYING
+* OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+**/
+
+/**
+* Version    :   1.0 
+* User       :   PCS
+* Function   :   CSS file for tree node .
+**/
+
+
+
+.tree-node1 {
+    border: 1px solid #cccccc;
+    background: #ffffff;
+    color: #000000;
+}
+#treeContainer
+    {  
+    height:500px;
+    width:380px;
+    position:absolute;
+    overflow:auto;    
+    }
+
+.tree-node-content {
+    margin: 10px;
+}
+
+.tree-handle {
+    padding: 10px;
+    color: #FFF;
+    margin-right: 10px;
+}
+
+.angular-ui-tree-handle:hover {
+
+}
+
+.angular-ui-tree-placeholder {
+    background: #f0f9ff;
+    border: 2px dashed #bed2db;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}

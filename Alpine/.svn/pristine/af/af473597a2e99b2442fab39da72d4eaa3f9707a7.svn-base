@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Subject_Filter_Entities_Validate_Payload_Res_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Subject_Filter_Entities_Validate_Payload_Res_SEQ" value="--------"></property>
+	</log>
+
+	<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)" regex="true">
+		<then>
+			<header name="To" action="remove" />
+			<property name="RESPONSE" value="true" scope="default" type="STRING" />
+			<property name="HTTP_SC" value="200" scope="axis2" />
+			<payloadFactory media-type="json">
+				<format>
+					{"errorCode":"$1","errorMessage":"$2"}
+				</format>
+				<args>
+					<arg evaluator="xml" expression="//jsonObject/errorCode" />
+					<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+				</args>
+			</payloadFactory>
+			<send />
+			<drop />
+		</then>
+		<else>
+		</else>
+	</filter>
+</sequence>

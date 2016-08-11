@@ -1,0 +1,5 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Create_User_Api_Manager_EP">
+	<!-- <http method="post" uri-template="http://10.234.31.201:9765/store/site/blocks/user/sign-up/ajax/user-add.jag?action=addUser&amp;username={query.param.username}&amp;password={query.param.password}&amp;allFieldsValues=firstname|lastname|email"/> -->
+	<http method="post"
+		uri-template="http://10.236.166.115:9765/store/site/blocks/user/sign-up/ajax/user-add.jag?action=addUser&amp;username={query.param.username}&amp;password={query.param.password}&amp;allFieldsValues=firstname|lastname|email" />
+</endpoint>

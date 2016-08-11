@@ -1,0 +1,11 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Create_Guava_Route_POI_EP" >
+	<http uri-template="http://10.234.31.158:9763/guava-poi-management-1.0.0/services/poi/createBatch" method="post">
+		<suspendOnFailure>
+			<progressionFactor>1.0</progressionFactor>
+		</suspendOnFailure>
+		<markForSuspension>
+			<retriesBeforeSuspension>0</retriesBeforeSuspension>
+			<retryDelay>0</retryDelay>
+		</markForSuspension>
+	</http>
+</endpoint>

@@ -1,0 +1,11 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="List_Document_EP" >
+	<http uri-template="http://10.234.31.154:9763/alpine-document-1.0.0/services/documents/list?domain_name={query.param.domain_name}&amp;document_type={query.param.document_type}" method="get">
+		<suspendOnFailure>
+			<progressionFactor>1.0</progressionFactor>
+		</suspendOnFailure>
+		<markForSuspension>
+			<retriesBeforeSuspension>0</retriesBeforeSuspension>
+			<retryDelay>0</retryDelay>
+		</markForSuspension>
+	</http>
+</endpoint>

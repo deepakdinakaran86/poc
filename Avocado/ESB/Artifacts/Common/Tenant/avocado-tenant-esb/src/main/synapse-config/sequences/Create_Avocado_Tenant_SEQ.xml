@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_Avocado_Tenant_SEQ">
+   <log separator=",">
+      <property name="Enter Create_Avocado_Tenant_SEQ" value="--------"></property>
+   </log>
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="tenantName" expression="$body/jsonObject/tenantName" scope="default" type="STRING"></property>
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="parentDomain" expression="$body/jsonObject/parentDomain" scope="default" type="STRING"></property>
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="myDomain" expression="$body/jsonObject/myDomain" scope="default" type="STRING"></property>
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="tenantAdminRole" expression="$body/jsonObject/roleName" scope="default" type="STRING"></property>
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="Authorization" expression="$trp:x-jwt-assertion" scope="default" type="STRING"></property>
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain" expression="get-property('myDomain')" scope="default" type="STRING"></property>
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="Authorization" expression="$trp:x-jwt-assertion" scope="default" type="STRING"></property>
+   <send receive="Avocado_Get_Tenant_Resources_SEQ">
+      <endpoint key="conf:/endpoints/tenant/Create_Avocado_Tenant_EP.xml"></endpoint>
+   </send>
+</sequence>

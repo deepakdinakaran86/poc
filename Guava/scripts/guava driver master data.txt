@@ -1,0 +1,29 @@
+Create driver template using below request, check domain
+{
+  "domain": {
+    "domainName": "ibn.galaxy"
+  },
+  "entityTemplateName": "Driver",
+  "fieldValidation": {
+    "driverId": "{\"client\":[\"\"],\"server\":[\"mandatory\", \"uniqueAcrossDomain\"],\"showOnGrid\":true,\"showOnTree\":false}",
+    "name": "{\"client\":[\"\"],\"server\":[\"mandatory\"],\"showOnGrid\":true,\"showOnTree\":true}",
+    "employeeCode": "{\"client\":[\"\"],\"server\":[],\"showOnGrid\":true,\"showOnTree\":false}",
+    "nationality": "{\"client\":[\"\"],\"server\":[\"mandatory\"],\"showOnGrid\":true,\"showOnTree\":false}",
+    "dateOfBirth": "{\"client\":[\"\"],\"server\":[],\"showOnGrid\":true,\"showOnTree\":false}",
+    "mobileNumber": "{\"client\":[\"\"],\"server\":[\"mandatory\"],\"showOnGrid\":true,\"showOnTree\":false}",
+    "status": "{\"client\":[\"\"],\"server\":[\"mandatory\"],\"showOnGrid\":true,\"showOnTree\":false}",
+    "identifier": "{\"client\":[\"\"],\"server\":[\"mandatory\"],\"showOnGrid\":true,\"showOnTree\":false}"
+  },
+  "globalEntityTemplateName": "GlobalMarkerTemplate",
+  "globalEntityType": "MARKER",
+  "htmlPage": "check",
+  "identifierField": "identifier",
+  "isModifiable": false,
+  "isSharable": true,
+  "status": {
+    "statusName": "ACTIVE"
+  }
+}
+
+Or below query could be used to create driver template, check domain
+INSERT INTO entity_template (uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name) VALUES (91000440-111d-11e6-90bc-e3d7bb1231c0,1,'pcs.galaxy',null,'Driver',{'dateOfBirth':'{"client":[""],"server":[],"showOnGrid":true,"showOnTree":false}','driverId':'{"client":[""],"server":["mandatory","uniqueAcrossDomain"],"showOnGrid":true,"showOnTree":false}','employeeCode':'{"client":[""],"server":[],"showOnGrid":true,"showOnTree":false}','identifier':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','mobileNumber':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','name':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":true}','nationality':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','status':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,91005260-111d-11e6-90bc-e3d7bb1231c0,0,'ACTIVE');

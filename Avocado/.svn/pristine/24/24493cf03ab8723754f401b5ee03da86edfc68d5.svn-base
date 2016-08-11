@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Avocado_Tenant_Admin_Marker_Link_SEQ">
+   <log separator=",">
+      <property name="Enter Get_Avocado_Tenant_Admin_Marker_Link_SEQ" value="---Get_Avocado_Tenant_Admin_Marker_Link_SEQ-----"></property>
+   </log>
+   <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+      <then>
+         <send></send>
+      </then>
+      <else>
+         <payloadFactory media-type="json">
+            <format> $1 </format>
+            <args>
+               <arg expression="get-property('tenantAdminTemplatePayload')" evaluator="xml"></arg>
+            </args>
+         </payloadFactory>
+         <property name="x-jwt-assertion" expression="get-property('Authorization')" scope="transport" type="STRING"></property>
+         <property name="messageType" value="application/json" scope="axis2" type="STRING"></property>
+         <send receive="Update_Avocado_Tenant_Admin_Marker_Link_SEQ">
+            <endpoint key="conf:/endpoints/tenant/Get_Avocado_Tenant_Admin_Marker_Link_EP.xml"></endpoint>
+         </send>
+      </else>
+   </filter>
+</sequence>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Geofence_Type_Update_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Geofence_Type_Update_SEQ" value="----Geofence_Type_Update_SEQ----"/>
+        <property expression="json-eval($.[0].identifier.key)"
+            name="geofenceEntityPayload" xmlns:ns="http://org.apache.synapse/xsd"/>
+        <property expression="$body[0]/jsonObject/identifier/key"
+            name="geofenceEntityPayload" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.[0].identifier.key)"
+                name="geofenceTypeIdKey" scope="default" type="STRING"/>
+            <property expression="json-eval($.[0].identifier.value)"
+                name="geofenceTypeIdValue" scope="default" type="STRING"/>
+            <property expression="json-eval($.[0].domain.domainName)"
+                name="geofenceTypeDomain" scope="default" type="STRING"/>
+            <log separator=",">
+                <property expression="json-eval($.[0].identifier.key)" name="geofenceTypeDomain"/>
+                <property expression="json-eval($.[0].identifier.value)" name="geofenceTypeDomain"/>
+                <property
+                    expression="json-eval($.[0].domain.domainName)" name="geofenceTypeDomain"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>{
+					"entityTemplate": {
+					"entityTemplateName": "$1"
+					},
+					"domain": {
+					"domainName": "$2"
+					},
+					"entityStatus": {
+					"statusName": "$3"
+					},
+					"fieldValues":
+					$4,
+					"identifier": {
+					"key": "$5",
+					"value": "$6"
+					}
+					}</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('geofenceType')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceTypeDomain')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceStatus')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceTypeEntityPayload')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceTypeIdKey')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceTypeIdValue')"/>
+                </args>
+            </payloadFactory>
+            <log separator=",">
+                <property expression="json-eval($.)" name="geofenceTypeDomain"/>
+            </log>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send receive="Geofence_Type_Node_Update_SEQ">
+                <endpoint key="conf:/endpoints/alpine/Update_Marker_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

@@ -1,0 +1,5 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Send_Email_EP">
+	<!-- <http method="post" uri-template="http://10.234.31.201:9764/alpine-notification-1.0.0/services/notification/email"/> -->
+	<http method="post"
+		uri-template="http://10.234.31.154:9763/alpine-notification-1.0.0/services/notification/email" />
+</endpoint>

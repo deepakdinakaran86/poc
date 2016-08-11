@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Device_Update_On_Claim_SEQ">
+	<log separator=",">
+		<property name="Enter Saffron_Device_Update_On_Claim_SEQ"
+			value="Saffron_Device_Update_On_Claim_SEQ" />
+	</log>
+	<log separator=",">
+		<property expression="get-property('saffronDevice')" name="saffronDevice"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<log separator=",">
+				<property name="Im in" value="Im error from Saffron Claim Device" />
+			</log>
+			<send />
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('saffronDevice')"
+						xmlns:ns="http://org.apache.synapse/xsd" />
+				</args>
+			</payloadFactory>
+			<property name="x-jwt-assertion" expression="get-property('x-jwt-assertion')" scope="transport" type="STRING"></property>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.sourceId"
+				expression="get-property('uri.var.sourceId')" scope="default" type="STRING"></property>
+
+			<send receive="Alpine_Device_Create_SEQ">
+				<endpoint key="conf:/endpoints/Saffron_Device_Update_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

@@ -1,0 +1,11 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Get_Markers_Between_Tenants_EP" >
+	<http uri-template="http://10.236.166.111:9763/alpine-hierarchy-1.0.0/services/hierarchy/range/tenants/markers" method="post">
+		<suspendOnFailure>
+			<progressionFactor>1.0</progressionFactor>
+		</suspendOnFailure>
+		<markForSuspension>
+			<retriesBeforeSuspension>0</retriesBeforeSuspension>
+			<retryDelay>0</retryDelay>
+		</markForSuspension>
+	</http>
+</endpoint>

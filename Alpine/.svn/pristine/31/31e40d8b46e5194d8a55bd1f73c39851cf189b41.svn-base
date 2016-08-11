@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Subscription_API" context="/alpine/services/subscriptions">
+    <resource methods="POST" inSequence="Subscription_Create_User_Api_Manager_Temp_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

@@ -1,0 +1,1971 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="Physical Quantities" resourceRoot="" soapui-version="5.0.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://10.234.60.55:9763" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://10.234.60.55:9763</con:endpoint></con:endpoints><con:resource name="Phy_quantity" path="/datasource-api-1.0.0/services/datasources/phy_quantity"><con:settings/><con:parameters/><con:method name="create elec potential" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.158:9763</con:endpoint><con:request>{
+    "dataStore": "electric_potential",
+    "name": "electric potential",
+     "dataType": "DOUBLE",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "volt",
+            "desc": "The volt (symbol: V) is the SI unit for electric potential",
+            "symbol": "V"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09volt%3B%0D%0A%09volt%3Dvalue%2A0.001%3B%0D%0A%09volt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "millivolt",
+            "desc": "A millivolt is a unit of electric potential equal to one thousandth of a volt",
+            "symbol": "mV"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09volt%3B%0D%0A%09volt%3Dvalue%2A1000.00%3B%0D%0A%09volt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilovolt",
+            "desc": "A kilovolt is a unit of electric potential equal to 1000 volts",
+            "symbol": "kV"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09volt%3B%0D%0A%09volt%3Dvalue%2A1000000%3B%0D%0A%09volt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megavolt",
+            "desc": "A megavolt is a unit of electric potential equal to 1 million volts",
+            "symbol": "mV"
+        }
+    ]
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="length" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400 500</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.158:9763</con:endpoint><con:request>{
+    "dataStore": "length",
+    "name": "length",
+        "dataType": "DOUBLE",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "metre",
+            "desc": "The meter (symbol m; the British spelling is metre) is the SI unit of displacement or length.It is defined as the length of the path travelled by light in vacuum during a time interval of 1/299,792,458 of a second.",
+            "symbol": "m"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09mm%3B%0D%0A%09mm%3Dvalue%2A0.000001%3B%0D%0A%09mm%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "micrometer",
+            "desc": "The micrometre (symbol: um) or micrometer also commonly known as a micron, is an SI derived unit of length equaling one millionth of a metre",
+            "symbol": "um"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09mm%3B%0D%0A%09mm%3Dvalue%2A0.001%3B%0D%0A%09mm%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "millimeter",
+            "desc": "The millimetre or millimeter (symbol mm) is a unit of length in the metric system, equal to one thousandth of a metre",
+            "symbol": "mm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cm%3B%0D%0A%09cm%3Dvalue%2A0.01%3B%0D%0A%09cm%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "centimeter",
+            "desc": "A centimetre (symbol cm) or centimeter is a unit of length in the metric system, equal to one hundredth of a metre",
+            "symbol": "cm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09km%3B%0D%0A%09km%3Dvalue%2A1000%3B%0D%0A%09km%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilometer",
+            "desc": "The kilometre (symbol: km) or kilometer is a unit of length in the metric system, equal to one thousand metres",
+            "symbol": "km"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09in%3B%0D%0A%09in%3Dvalue%2A0.0254%3B%0D%0A%09in%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "inch",
+            "desc": "An inch (symbol: in) is a unit of length",
+            "symbol": "in"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09ft%3B%0D%0A%09ft%3Dvalue%2A0.3048%3B%0D%0A%09ft%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "foot",
+            "desc": "A foot (symbol:ft) is a unit of length ,equivalent to 0.3048 meters exactly",
+            "symbol": "ft"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09yd%3B%0D%0A%09yd%3Dvalue%2A0.9144%3B%0D%0A%09yd%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "yard",
+            "desc": "The yard (symbol: yd) is a unit of length, exactly 0.9144 meters",
+            "symbol": "yd"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09mile%3B%0D%0A%09mile%3Dvalue%2A1609.34%3B%0D%0A%09mile%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "mile",
+            "desc": "The mile is a unit of length exactly 1,609.344 metres",
+            "symbol": "mile"
+        }
+    ]
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="velocity" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400 500</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.158:9763</con:endpoint><con:request>{
+    "dataStore": "velocity",
+    "name": "velocity",
+     "dataType": "DOUBLE",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "meter per second",
+            "desc": "Metre per second is the SI unit for velocity, defined by distance in metres divided by time in seconds",
+            "symbol": "m/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09meter.per.sec%3B%0D%0A%09meter.per.sec%3Dvalue%2A1000%3B%0D%0A%09meter.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilometer per second",
+            "desc": "A kilometer per second (km/sec) is a unit of speed or velocity equals kilometers traveled per one second",
+            "symbol": "km/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09meter.per.sec%3B%0D%0A%09meter.per.sec%3Dvalue%2A0.277778%3B%0D%0A%09meter.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilometer per hour",
+            "desc": "The kilometre per hour is a unit of speed, expressing the number of kilometres travelled in one hour",
+            "symbol": "km/hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09meter.per.sec%3B%0D%0A%09meter.per.sec%3Dvalue%2A0.44704%3B%0D%0A%09meter.per.sec%3B%0D%0A%7D%0D%0A",
+            "isSi": false,
+            "name": "mile per hour",
+            "desc": "Miles per hour is a unit of speed expressing the number of miles covered in one hour",
+            "symbol": "mph"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09meter.per.sec%3B%0D%0A%09meter.per.sec%3Dvalue%2A0.3048%3B%0D%0A%09meter.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "feet per second",
+            "desc": "The feet per second is a unit of both speed (scalar) and velocity expressing the distance in feet traveled divided by the time in second",
+            "symbol": "ft/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09meter.per.sec%3B%0D%0A%09meter.per.sec%3Dvalue%2A0.00508%3B%0D%0A%09meter.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "feet per minute",
+            "desc": "The feet per minute is a unit of both speed (scalar) and velocity expressing the distance in feet traveled divided by the time in minute",
+            "symbol": "ft/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09meter.per.sec%3B%0D%0A%09meter.per.sec%3Dvalue%2A0.001%3B%0D%0A%09meter.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "millimeter per second",
+            "desc": "A millimeter per second is a unit of both speed and velocity ,defined as the number of millimeters travelled in one second",
+            "symbol": "mm/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09meter.per.sec%3B%0D%0A%09meter.per.sec%3Dvalue%2A0.000017%3B%0D%0A%09meter.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "millimeter per minute",
+            "desc": "A millimeter per minute is a unit of both speed and velocity ,defined as the number of millimeters travelled in one minute",
+            "symbol": "mm/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09meter.per.sec%3B%0D%0A%09meter.per.sec%3Dvalue%2A0.0166667%3B%0D%0A%09meter.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "meter per minute",
+            "desc": "Meter per minute is a unit of speed or velocity expressing the distance in meters traveled per one minute",
+            "symbol": "m/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09meter.per.sec%3B%0D%0A%09meter.per.sec%3Dvalue%2A0.000277778%3B%0D%0A%09meter.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "meter per hour",
+            "desc": "Meter per hour is a unit of speed or velocity expressing the distance in meters traveled per one hour",
+            "symbol": "m/hr"
+        }
+    ]
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="volume" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400 500</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "volume",
+    "name": "volume",
+     "dataType": "DOUBLE",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "cubic meter",
+            "desc": "The cubic metre is the SI unit of volume.",
+            "symbol": "cu.m"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.000000001%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cubic millimeter",
+            "desc": "A cubic millimeter is a unit of volume with sides equal to one millimeter",
+            "symbol": "km/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.000001%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cubic centimeter",
+            "desc": "A cubic centimetres is a unit of volume of a cube equals to the volume of a cube sides equal to 1 cm",
+            "symbol": "cu.cm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.000001%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "milliliter",
+            "desc": "Milliliter is a volume unit of volume of a cube with sides equal to one centimeter (1cm).",
+            "symbol": "mL"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.001%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "liter",
+            "desc": "Liter is a unit of volume of a cube with sides equal to ten centimeters",
+            "symbol": "L"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A1%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kiloliter",
+            "desc": "Kiloliter is a unit of volume of a cube with sides equal to one meter",
+            "symbol": "kL"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.000016387064%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cubic inch",
+            "desc": "The cubic inch is a unit of measurement for volume equals to volume of a cube with sides equal to one inch",
+            "symbol": "cu.in"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.0283168%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cubic foot",
+            "desc": "The cubic foot is a unit of measurement for volume equals to volume of a cube with sides equal to one foot",
+            "symbol": "cu.ft"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.764555%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cubic yard",
+            "desc": "The cubic yard is a unit of measurement for volume equals to volume of a cube with sides equal to one yard",
+            "symbol": "cu.yd"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.00378541%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "gallon",
+            "desc": "a unit of volume",
+            "symbol": "gal"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.000946353%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "quart",
+            "desc": "The quart is a unit of volume equal to a quarter of a gallon",
+            "symbol": "qt"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.000473176%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "pint",
+            "desc": "The pint is a unit of volume equal to one eighth of a gallon",
+            "symbol": "qt"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.0000295735296%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "fluid ounce",
+            "desc": "A fluid ounce is a unit of volume typically used for measuring liquids",
+            "symbol": "fl oz"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter%3B%0D%0A%09cubic.meter%3Dvalue%2A0.00454609%3B%0D%0A%09cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "imperial gallon",
+            "desc": "A unit of volume in the British Imperial System, used in liquid and dry measure, equal to 4 quarts",
+            "symbol": "galUK"
+        }
+    ]
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="test" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "newtest",
+    "name": "newtest",
+     "dataType":"double",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "test1",
+            "desc": "Metre per second is the SI unit for velocity, defined by distance in metres divided by time in seconds",
+            "symbol": "m/s"
+           
+        }
+        
+    ]
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="acceleration" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "acceleration",
+    "name": "acceleration",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "meter per second squared",
+            "desc": "The metre per second squared is the SI unit of acceleration",
+            "symbol": "m/sq.s"
+        }
+    ],
+    "dataType": "FLOAT"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="angular acceleration" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "angular_acceleration",
+    "name": "angular acceleration",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "radians per second squared",
+            "desc": "The radian per second squared is the SI unit of angular (rotational) acceleration",
+            "symbol": "rad/sq.s"
+        }
+    ],
+    "dataType": "FLOAT"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="angular velocity" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "angular_velocity",
+    "name": "angular velocity",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "radians per second",
+            "desc": "he radian per second is the SI unit of angular (rotational) speed",
+            "symbol": "rad/s"
+        },
+        {
+            "conversion": "%24%7Brad%3B%0A%09rad%3D(2*pi*rpm)%2F60.0%3B%0A%09rad%3Dnumber%3AformatDouble(rad%2C2)%3B%0A%09rad%3B%0A%7D",
+            "isSi": false,
+            "name": "revolutions per minute",
+            "desc": "Revolutions per minute (rpm) is a measure of the frequency of rotation",
+            "symbol": "rpm"
+        }
+    ],
+    "dataType": "FLOAT"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="area" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "area",
+    "name": "area",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "square meter",
+            "desc": "The square metre is the SI unit of area",
+            "symbol": "sq.m"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09sq.meter%3B%0D%0A%09sq.meter%3Dvalue%2A0.000001%3B%0D%0A%09sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "square millimeter",
+            "desc": "A square millimeter is a unit of area with sides equal to one millimeter",
+            "symbol": "sq.mm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09sq.meter%3B%0D%0A%09sq.meter%3Dvalue%2A0.0001%3B%0D%0A%09sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "square centimeter",
+            "desc": "A square centimeter is a unit of area,equal to a square that is 1 centimeter on each side",
+            "symbol": "sq.cm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09sq.meter%3B%0D%0A%09sq.meter%3Dvalue%2A1000000%3B%0D%0A%09sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "square kilometer",
+            "desc": "A square kilometer is a unit of area,equal to a square that is 1 kilometer on each side",
+            "symbol": "sq.km"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09sq.meter%3B%0D%0A%09sq.meter%3Dvalue%2A0.00064516%3B%0D%0A%09sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "square inch",
+            "desc": "A square inch is a unit of area, equal to the area of a square with sides of one inch",
+            "symbol": "sq.in"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09sq.meter%3B%0D%0A%09sq.meter%3Dvalue%2A0.092903%3B%0D%0A%09sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "square foot",
+            "desc": "A square foot is a unit of area, equal to the area of a square with sides of 1 ft",
+            "symbol": "sq.ft"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09sq.meter%3B%0D%0A%09sq.meter%3Dvalue%2A0.836127%3B%0D%0A%09sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "square yard",
+            "desc": "A square yard is a unit of area, equal to the area of a square with sides of one yard",
+            "symbol": "sq.yd"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09sq.meter%3B%0D%0A%09sq.meter%3Dvalue%2A2589988.11%3B%0D%0A%09sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "square mile",
+            "desc": "A square mile is a unit of area equal to the area of a square of one mile in length on each side.",
+            "symbol": "sq.mile"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09sq.meter%3B%0D%0A%09sq.meter%3Dvalue%2A4046.86%3B%0D%0A%09sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "acre",
+            "desc": "a unit of area",
+            "symbol": "acre"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="capacitance" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "capacitance",
+    "name": "capacitance",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "farad",
+            "desc": "The farad is the SI of capacitance",
+            "symbol": "F"
+        }
+    ],
+    "dataType": "FLOAT"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="electric conductance" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "electric_conductance",
+    "name": "electric conductance",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "siemens",
+            "desc": "The siemens is the SI unit of electric conductance",
+            "symbol": "S"
+        }
+    ],
+    "dataType": "FLOAT"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="electric current density" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "electric_current_density",
+    "name": "electric current density",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "amperes per square meter",
+            "desc": "The ampere per meter squared,is the SI Unit of electric current density",
+            "symbol": "A/sq.m"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="electrical conductivity" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "electrical_conductivity",
+    "name": "electrical conductivity",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "siemens per meter",
+            "desc": "The SI unit of conductivity is siemens per meter",
+            "symbol": "S/m"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="electrical resistivity" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "electrical resistivity",
+    "name": "electrical resistivity",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "ohm meter",
+            "desc": "The SI unit of electrical resistivity is the ohm⋅metre",
+            "symbol": "ohm-m"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="inductance" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "inductance",
+    "name": "inductance",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "henry",
+            "desc": "The henry is the SI unit of inductance",
+            "symbol": "H"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="luminous flux" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "luminous flux",
+    "name": "luminous flux",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "lumen",
+            "desc": "The SI unit of luminous flux is the lumen",
+            "symbol": "lm"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="magnetic fielsd strength" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "magnetic_field_strength",
+    "name": "magnetic field strength",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "amperes per meter",
+            "desc": "The ampere per meter is the SI Unit of magnetic field strength.",
+            "symbol": "A/m"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="magnetic flux" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "magnetic_flux",
+    "name": "magnetic flux",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "weber",
+            "desc": "Weber is the SI unit of magnetic flux",
+            "symbol": "Wb"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="magnetic flux density" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "magnetic_flux_density",
+    "name": "magnetic flux density",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "tesla",
+            "desc": "Tesla is the SI unit of magnetic flux density",
+            "symbol": "T"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="momentum" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "momentum",
+    "name": "momentum",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "newton second",
+            "desc": "newton second is the SI unit of momentum",
+            "symbol": "N-s"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="specific entropy" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "specific entropy",
+    "name": "specific entropy",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "joules per kilogram degree kelvin",
+            "desc": "joule per kilogram kelvin is the SI unit of momentum",
+            "symbol": "J/kgdegK"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="surface tension" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "surface tension",
+    "name": "surface tension",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "newtons per meter",
+            "desc": "newtons per meter is the SI unit of surface tension",
+            "symbol": "N/m"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="thermal conductivity" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "thermal_conductivity",
+    "name": "thermal conductivity",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "watts per meter degree kelvin",
+            "desc": "In SI units, thermal conductivity is measured in watts per meter kelvin ",
+            "symbol": "W/mdegK"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="electric current" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "electric_current",
+    "name": "electric current",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "ampere",
+            "desc": "Ampere is the SI unit of electric current",
+            "symbol": "A"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09ampere%3B%0D%0A%09ampere%3Dvalue%2A0.001%3B%0D%0A%09ampere%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "milliampere",
+            "desc": "Milliampere is a measure of electric current.One milliampere is 1000 ampere",
+            "symbol": "mA"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="force" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "force",
+    "name": "force",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "newton",
+            "desc": "The newton is the SI unit of force",
+            "symbol": "N"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09newton%3B%0D%0A%09newton%3Dvalue%2A4.44822%3B%0D%0A%09newton%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "pound force",
+            "desc": "A pound-force is a non-SI measurement unit of force. ",
+            "symbol": "lb"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="electric charge" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "electric_charge",
+    "name": "electric charge",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "coulomb",
+            "desc": "Coulomb the SI unit of electric charge",
+            "symbol": "C"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09elec.charge%3B%0D%0A%09elec.charge%3Dvalue%2A3600%3B%0D%0A%09elec.charge%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "ampere hour",
+            "desc": "An ampere-hour is a unit of electric charge",
+            "symbol": "Ah"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09elec.charge%3B%0D%0A%09elec.charge%3Dvalue%2A3.6%3B%0D%0A%09elec.charge%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "milliampere hour",
+            "desc": "A milliampere hour used to measure energy charge",
+            "symbol": "mAh"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="density" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "density",
+    "name": "density",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "kilograms per cubic meter",
+            "desc": "Kilogram per cubic metre is the SI unit of density",
+            "symbol": "kg/cu.m"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.cubic.meter%3B%0D%0A%09kg.cubic.meter%3Dvalue%2A0.001%3B%0D%0A%09kg.cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "grams per cubic meter",
+            "desc": "Gram per cubic meter is a density measurement unit",
+            "symbol": "g/cu.m"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.cubic.meter%3B%0D%0A%09kg.cubic.meter%3Dvalue%2A0.000001%3B%0D%0A%09kg.cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "milligrams per cubic meter",
+            "desc": "Milligram per cubic meter is a density measurement unit",
+            "symbol": "mg/cu.m"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.cubic.meter%3B%0D%0A%09kg.cubic.meter%3Dvalue%2A0.000000001%3B%0D%0A%09kg.cubic.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "micrograms per cubic meter",
+            "desc": "Microgram per cubic meter is a density measurement unit",
+            "symbol": "ug/cu.m"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="electric potential" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.158:9763</con:endpoint><con:request>{
+    "dataStore": "electric_potential",
+    "name": "electric potential",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "volt",
+            "desc": "The volt is the SI unit of electric potential",
+            "symbol": "V"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09volt%3B%0D%0A%09volt%3Dvalue%2A0.001%3B%0D%0A%09volt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "millivolt",
+            "desc": "A unit of potential difference equal to one thousandth of a volt.",
+            "symbol": "mV"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09volt%3B%0D%0A%09volt%3Dvalue%2A1000%3B%0D%0A%09volt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilovolt",
+            "desc": "Is a unit of potential equal to a thousand volts",
+            "symbol": "kV"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09volt%3B%0D%0A%09volt%3Dvalue%2A1000000%3B%0D%0A%09volt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megavolt",
+            "desc": "a unit of electromotive force equal to one million volts",
+            "symbol": "MV"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="electric resistance" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "electric resistance",
+    "name": "electric resistance",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "ohm",
+            "desc": "The ohm is the SI unit of electrical resistance",
+            "symbol": "ohm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09ohm%3B%0D%0A%09ohm%3Dvalue%2A1000%3B%0D%0A%09ohm%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilohm",
+            "desc": "Kiloohm is a measure of electric resistance",
+            "symbol": "kohm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09ohm%3B%0D%0A%09ohm%3Dvalue%2A1000000%3B%0D%0A%09ohm%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megohm",
+            "desc": "Megaohm is a measure of electric resistance",
+            "symbol": "Mohm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09ohm%3B%0D%0A%09ohm%3Dvalue%2A0.001%3B%0D%0A%09ohm%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "milliohm",
+            "desc": "Milliohm is a measure of electric resistance",
+            "symbol": "mohm"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="volumetric flow" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "volumetric_flow",
+    "name": "volumetric flow",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "cubic meters per second",
+            "desc": "A cubic metre per second is a SI unit of volumetric flow",
+            "symbol": "cu.m/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.000001%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "milliliters per second",
+            "desc": "Milliliters per second is a measure of volume flow rate",
+            "symbol": "mL/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.0000000166667%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "milliliters per minute",
+            "desc": "Ml per minute is a measure of volume flow rate",
+            "symbol": "mL/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.001%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "liters per second",
+            "desc": "Litres per second is a measure of volume flow rate",
+            "symbol": "L/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.0283168%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cubic feet per second",
+            "desc": "Cubic feet per second is a measure of volume flow rate",
+            "symbol": "cfs"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.000471947%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cubic feet per minute",
+            "desc": "cubic feet per minute is the volumetric flow rate",
+            "symbol": "cfm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.0000757682%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "imperial gallons per minute",
+            "desc": "Gallon per minute is a measure of volumetric flow",
+            "symbol": "galUK/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.0000630902%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "gallons per minute",
+            "desc": "Gallons per minute, a unit of volumetric flow rate",
+            "symbol": "gal/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.0000166667%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "liters per minute",
+            "desc": "Liter per minute is a measure of volume flow rate",
+            "symbol": "L/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.000277778%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cubic meters per hour",
+            "desc": " A cubic meter per hour is a unit of volumetric flow",
+            "symbol": "cu.m/hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.000000277778%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "liter per hour",
+            "desc": "A cubic meter per hour is a unit of volumetric flow",
+            "symbol": "L/hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09cubic.meter.sec%3B%0D%0A%09cubic.meter.sec%3Dvalue%2A0.0166667%3B%0D%0A%09cubic.meter.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cubic meters per minute",
+            "desc": "A cubic meter per minute is a unit of volumetric flow",
+            "symbol": "cu.m/min"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="energy" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "energy",
+    "name": "energy",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "joule",
+            "desc": "The joule is a derived unit of energy in the SI Unit",
+            "symbol": "J"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A1000%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilojoule",
+            "desc": "Kilojoules is a measure of energy",
+            "symbol": "kJ"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A1000000000%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "gigajoule",
+            "desc": "GJ is a measure of energy",
+            "symbol": "GJ"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A3600%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "watt hour",
+            "desc": "The watt-hour is a unit of energy",
+            "symbol": "W-hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A3600000%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilowatt hour",
+            "desc": "TThe kilowatt-hour is a unit of energy ",
+            "symbol": "kW-hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A3600000000%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megawatt hour",
+            "desc": "Megawatt hour is a measure of energy",
+            "symbol": "MW-hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A1055.06%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "btu",
+            "desc": "A BTU, is a basic measure of energy",
+            "symbol": "BTU"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A1055055.8526%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilobtu",
+            "desc": "Gallons per minute, a unit of volumetric flow rate",
+            "symbol": "kBTU"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A1055055852.62%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megabtu",
+            "desc": "MBTU is occasionally used as a standard unit of energy",
+            "symbol": "MBTU"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A2684519.536886%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "horsepower hour",
+            "desc": "A horsepower-hour is an outdated unit of energy, not used in the SI system of units",
+            "symbol": "hp-hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A4184%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "calorie",
+            "desc": "calorie, a unit of energy",
+            "symbol": "cal"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A105505600%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "therm",
+            "desc": "The therm is a non-SI unit of heat energy",
+            "symbol": "therm"
+        },
+        {
+            "conversion": "%24%0A%7B%0A%09joule%3B%0A%09joule%3Dvalue*1000000000%3B%0A%09joule%3B%0A%7D",
+            "isSi": false,
+            "name": "decatherms",
+            "desc": "Decatherm is a measure of energy",
+            "symbol": "Dth"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A12660670.23144%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "tons refrigeration hour",
+            "desc": "The refrigeration ton. hour is a unit of energy",
+            "symbol": "tR-hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A1000000%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megajoule",
+            "desc": "Megajoule is a measure of energy",
+            "symbol": "MJ"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09joule%3B%0D%0A%09joule%3Dvalue%2A1%3B%0D%0A%09joule%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "newton meter",
+            "desc": "Newton meter is a measure of energy",
+            "symbol": "N-m"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="frequency" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "frequency",
+    "name": "frequency",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "hertz",
+            "desc": "hertz is the SI unit of frequency, equal to one cycle per second",
+            "symbol": "Hz"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09hertz%3B%0D%0A%09hertz%3Dvalue%2A1000%3B%0D%0A%09hertz%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilohertz",
+            "desc": "Kilohertz is a measure of frequency equivalent to 1,000 cycles per second",
+            "symbol": "kHz"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09hertz%3B%0D%0A%09hertz%3Dvalue%2A0.000277777778%3B%0D%0A%09hertz%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cycles per hour",
+            "desc": "Cycle per hour is a unit of frequency",
+            "symbol": "cph"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09hertz%3B%0D%0A%09hertz%3Dvalue%2A0.016666666667%3B%0D%0A%09hertz%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "cycles per minute",
+            "desc": "Cycle per minute is a unit of frequency",
+            "symbol": "cpm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09hertz%3B%0D%0A%09hertz%3Dvalue%2A1000000%3B%0D%0A%09hertz%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megahertz",
+            "desc": "Megahertz is a measure of frequency",
+            "symbol": "MHz"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="mas" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "mass",
+    "name": "mass",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "kilogram",
+            "desc": "The kilogram is the SI unit of mass",
+            "symbol": "kg"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg%3B%0D%0A%09kg%3Dvalue%2A0.000001%3B%0D%0A%09kg%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "milligram",
+            "desc": "milligram is a measure of weight",
+            "symbol": "mg"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg%3B%0D%0A%09kg%3Dvalue%2A0.001%3B%0D%0A%09kg%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "gram",
+            "desc": "The gram  is a unit of mass.",
+            "symbol": "g"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg%3B%0D%0A%09kg%3Dvalue%2A0.0283495%3B%0D%0A%09kg%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "ounce",
+            "desc": "An ounce is a unit of mass",
+            "symbol": "oz"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg%3B%0D%0A%09kg%3Dvalue%2A0.453592%3B%0D%0A%09kg%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "pound",
+            "desc": "The pound is a unit of mass",
+            "symbol": "lb"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg%3B%0D%0A%09kg%3Dvalue%2A1000%3B%0D%0A%09kg%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "metric ton",
+            "desc": "metric ton is a unit of mass",
+            "symbol": "ton"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg%3B%0D%0A%09kg%3Dvalue%2A907.185%3B%0D%0A%09kg%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "short ton",
+            "desc": "The short ton is a unit of weight ",
+            "symbol": "t"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="mass flow" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "mass_flow",
+    "name": "mass flow",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "kilogram per second",
+            "desc": "Kilogram per second is a measure of mass flow rate",
+            "symbol": "kg/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.per.sec%3B%0D%0A%09kg.per.sec%3Dvalue%2A0.0166667%3B%0D%0A%09kg.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilogram per minute",
+            "desc": "Kilograms per minute is a measure of mass flow rate",
+            "symbol": "kg/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.per.sec%3B%0D%0A%09kg.per.sec%3Dvalue%2A0.000277778%3B%0D%0A%09kg.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilogram per hour",
+            "desc": "A kilogram per hour is a metric unit of mass flow rate",
+            "symbol": "kg/hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.per.sec%3B%0D%0A%09kg.per.sec%3Dvalue%2A0.00755987%3B%0D%0A%09kg.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "pound per minute",
+            "desc": "A pound per minute is a unit of mass flow rate",
+            "symbol": "lb/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.per.sec%3B%0D%0A%09kg.per.sec%3Dvalue%2A0.000125998%3B%0D%0A%09kg.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "pound per hour",
+            "desc": "Pound per hour is a mass flow unit",
+            "symbol": "lb/hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.per.sec%3B%0D%0A%09kg.per.sec%3Dvalue%2A0.453592%3B%0D%0A%09kg.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "pound per second",
+            "desc": "Pound per second is a measure of mass flow rate",
+            "symbol": "lb/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.per.sec%3B%0D%0A%09kg.per.sec%3Dvalue%2A0.001%3B%0D%0A%09kg.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "gram per second",
+            "desc": "Grams per second is a measure of mass flow rate",
+            "symbol": "g/s"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.per.sec%3B%0D%0A%09kg.per.sec%3Dvalue%2A0.0000166667%3B%0D%0A%09kg.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "gram per minute",
+            "desc": "Gram per minute is a measure of mass flow rate",
+            "symbol": "g/min"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kg.per.sec%3B%0D%0A%09kg.per.sec%3Dvalue%2A0.277778%3B%0D%0A%09kg.per.sec%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "metric ton per hour",
+            "desc": "Metric tons per hour is a measure of mass flow rate",
+            "symbol": "ton/hr"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="pressure" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "pressure",
+    "name": "pressure",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "pascal",
+            "desc": "The pascal is the SI unit of pressure",
+            "symbol": "Pa"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A1000%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilopascal",
+            "desc": "Kilopascal is a unit of pressure",
+            "symbol": "kPa"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A100000%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "bar",
+            "desc": "Bar is a pressure measurement unit",
+            "symbol": "bar"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A101325%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "atmosphere",
+            "desc": "he standard atmosphere is a unit of pressure ",
+            "symbol": "atm"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A6894.76%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "pound per square inch",
+            "desc": "Psi is a measure of pressure",
+            "symbol": "psi"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A6894.75728%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "pound per sqaure inch gauge",
+            "desc": "Psig is a unit of pressure",
+            "symbol": "psig"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A98.0665%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "centimeter of water",
+            "desc": "A centimetre of water is a less commonly used unit of pressure",
+            "symbol": "cm/wc"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A248.84%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "inche of water",
+            "desc": "Inches of water can be converted to a pressure unit using the formula for pressure head",
+            "symbol": ""
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A133.322%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "millimeter of mercury",
+            "desc": "A millimeter of mercury is a manometric unit of pressure",
+            "symbol": "mm Hg"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A1333.2236842179%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "centimeter of mercury",
+            "desc": "Centimeters of Mercury is a small pressure unit",
+            "symbol": "cm Hg"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A3386.39%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "inche of mercury",
+            "desc": "Inche of mercury,is a unit of measurement for pressure",
+            "symbol": "in Hg"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A100%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "hectopascal",
+            "desc": "Hectopascal is a pressure measurement unit",
+            "symbol": "hPa"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A100%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "millibar",
+            "desc": "Millibar is a metric unit of pressure",
+            "symbol": "mbar"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09pascal%3B%0D%0A%09pascal%3Dvalue%2A133.322%3B%0D%0A%09pascal%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "torr",
+            "desc": "The torr is a unit of pressure",
+            "symbol": "torr"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="temperature" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "temperature",
+    "name": "temperature",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "kelvin",
+            "desc": "The SI unit of temperature is the Kelvin",
+            "symbol": "K"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kelvin%3B%0D%0A%09kelvin%3Dvalue%2A255.928%3B%0D%0A%09kelvin%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "farhrenheit",
+            "desc": "Fahrenheit is a temperature scale",
+            "symbol": "degF"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09kelvin%3B%0D%0A%09kelvin%3Dvalue%2A274.15%3B%0D%0A%09kelvin%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "celsius",
+            "desc": "Celsius is a temperature scale",
+            "symbol": "degC"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="power" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "power",
+    "name": "power",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "watt",
+            "desc": "The watt SI unit of power",
+            "symbol": "W"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt%3B%0D%0A%09watt%3Dvalue%2A0.001%3B%0D%0A%09watt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "milliwatt",
+            "desc": "Milliwatt is a power measurement unit",
+            "symbol": "mW"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt%3B%0D%0A%09watt%3Dvalue%2A1000%3B%0D%0A%09watt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilowatt",
+            "desc": "Kilowatt is a unit of electric power",
+            "symbol": "kW"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt%3B%0D%0A%09watt%3Dvalue%2A1000000%3B%0D%0A%09watt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megawatt",
+            "desc": "Megawatt is a power measurement unit",
+            "symbol": "mW"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt%3B%0D%0A%09watt%3Dvalue%2A1000000000%3B%0D%0A%09watt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "gigawatt",
+            "desc": "Gigawatt is a unit of energy, especially electrical energyy",
+            "symbol": "GW"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt%3B%0D%0A%09watt%3Dvalue%2A0.29307107%3B%0D%0A%09watt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "btu per hour",
+            "desc": "btu per hour is a unit of power",
+            "symbol": "BTU/hr"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt%3B%0D%0A%09watt%3Dvalue%2A735.499%3B%0D%0A%09watt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "horse power",
+            "desc": "Horsepower is a non-metric measurement unit of power",
+            "symbol": "hp"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt%3B%0D%0A%09watt%3Dvalue%2A1.35581795%3B%0D%0A%09watt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "foot pound per second",
+            "desc": "Foot-pound per second is a power measurement unit",
+            "symbol": "ft-lbs/sec"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt%3B%0D%0A%09watt%3Dvalue%2A3516.85%3B%0D%0A%09watt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "ton refrigeration",
+            "desc": "A ton of refrigeration is a unit of power",
+            "symbol": "tR"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt%3B%0D%0A%09watt%3Dvalue%2A293.07107%3B%0D%0A%09watt%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilobtu per hour",
+            "desc": "",
+            "symbol": "kBTU/hr"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="irradiance" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "irradiance",
+    "name": "irradiance",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "watt per square meter",
+            "desc": "watt per square metre is the SI unit of irradiance",
+            "symbol": "W/sq.m"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt.per.sq.meter%3B%0D%0A%09watt.per.sq.meter%3Dvalue%2A1000%3B%0D%0A%09watt.per.sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilowatt per square meter",
+            "desc": "kilowatts per square meter is a unit of irradiance",
+            "symbol": "kW/sq.m"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt.per.sq.meter%3B%0D%0A%09watt.per.sq.meter%3Dvalue%2A1000000%3B%0D%0A%09watt.per.sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megawatt per square meter",
+            "desc": "megawatts per square meter is a unit of irradiance",
+            "symbol": "MW/sq.m"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt.per.sq.meter%3B%0D%0A%09watt.per.sq.meter%3Dvalue%2A10.7639%3B%0D%0A%09watt.per.sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "watt per square foot",
+            "desc": "watts per square foot is a unit of irradiance",
+            "symbol": "W/sq.ft"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt.per.sq.meter%3B%0D%0A%09watt.per.sq.meter%3Dvalue%2A10763.9%3B%0D%0A%09watt.per.sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilowatt per square foot",
+            "desc": "kilowatts per square foot is a unit of irradiance",
+            "symbol": "kW/sq.ft"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt.per.sq.meter%3B%0D%0A%09watt.per.sq.meter%3Dvalue%2A10760000%3B%0D%0A%09watt.per.sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "megawatt per square foot",
+            "desc": "mega watts per square foot is a unit of irradiance",
+            "symbol": "MW/sq.ft"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt.per.sq.meter%3B%0D%0A%09watt.per.sq.meter%3Dvalue%2A3.15459075%3B%0D%0A%09watt.per.sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "btu per hour per square foot",
+            "desc": "btu per hour per square foot is a unit of irradiance",
+            "symbol": "BTU/hr/sq.ft"
+        },
+        {
+            "conversion": "%24%0D%0A%7B%0D%0A%09watt.per.sq.meter%3B%0D%0A%09watt.per.sq.meter%3Dvalue%2A3154.590745065%3B%0D%0A%09watt.per.sq.meter%3B%0D%0A%7D",
+            "isSi": false,
+            "name": "kilobtu per hour per square foot",
+            "desc": "kilobtu per hour per square foot is a unit of irradiance",
+            "symbol": "kBTU/hr/sq.ft"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="solid angle" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+    "dataStore": "solid_angle",
+    "name": "solid angle",
+    "units": [
+        {
+            "conversion": "-",
+            "isSi": true,
+            "name": "steradian",
+            "desc": "The SI unit of solid angle is the steradian (sr)",
+            "symbol": "sr"
+        }
+    ],
+    "dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="angular momentum" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "angular_momentum",
+	"name": "angular momentum",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "joule-second",
+		"desc": "The joule-second (J s or Js) is a unit equal to a joule multiplied by a second, used to measure action or angular momentum",
+		"symbol": "J-s"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="concentration" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "concentration",
+	"name": "concentration",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "parts per million",
+		"desc": "One ppm is equivalent to 1 milligram of something per liter of water (mg/l)",
+		"symbol": "ppm"
+	}, {
+		"conversion": "%24%0D%0A%7B%0D%0A%09ppm%3B%0D%0A%09ppm%3Dvalue%2A0.001%3B%0D%0A%09ppm%3B%0D%0A%7D",
+		"isSi": false,
+		"name": "parts per billion",
+		"desc": "One ppb represents one microgram of something per liter of water (ug/l)",
+		"symbol": "ppb"
+	}, {
+		"conversion": "%24%0D%0A%7B%0D%0A%09ppm%3B%0D%0A%09ppm%3Dvalue%2A1+000%3B%0D%0A%09ppm%3B%0D%0A%7D",
+		"isSi": false,
+		"name": "grams per kilogram",
+		"desc": "grams per kilogram a unit of density or concentration",
+		"symbol": "g/kg"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="electric field strength" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "electric_field_strength",
+	"name": "electric field strength",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "volts per meter",
+		"desc": "The standard unit of electric field (E-field) strength is the volt per meter (V/m)",
+		"symbol": "V/m"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="apparent energy" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "apparent_energy",
+	"name": "apparent energy",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "kilovolt ampere hour",
+		"desc": "",
+		"symbol": "kVA-hr"
+	}, {
+		"conversion": "%24%7B%0A%09kvah%3B%0A%09kvah%3Dvalue*0.001%3B%0A%09kvah%3B%0A%7D",
+		"isSi": false,
+		"name": "volt ampere hour",
+		"desc": "",
+		"symbol": "VA-hr"
+	}, {
+		"conversion": "%24%7B%0A%09kvah%3B%0A%09kvah%3Dvalue*1000%3B%0A%09kvah%3B%0A%7D",
+		"isSi": false,
+		"name": "megavolt ampere hour",
+		"desc": "",
+		"symbol": "MVA-hr"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="reactive energy" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "reactive_energy",
+	"name": "reactive energy",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "kilovolt ampere reactive hour",
+		"desc": "",
+		"symbol": "kvar-hr"
+	}, {
+		"conversion": "%24%7B%0A%09kvarh%3B%0A%09kvarh%3Dvalue*0.001%3B%0A%09kvarh%3B%0A%7D",
+		"isSi": false,
+		"name": "volt ampere reactive hour",
+		"desc": "",
+		"symbol": "var_hr"
+	}, {
+		"conversion": "%24%7B%0A%09kvarh%3B%0A%09kvarh%3Dvalue*1000%3B%0A%09kvarh%3B%0A%7D",
+		"isSi": false,
+		"name": "megovolt ampere reactive hour",
+		"desc": "",
+		"symbol": "Mvar-hr"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="energy consumption" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "energy_consumption",
+	"name": "energy consumption",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "joules per square meter",
+		"desc": "",
+		"symbol": "J/sq.m"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*3600%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "watt hours per square meter",
+		"desc": "",
+		"symbol": "W-hr/sq.m"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*38750.1%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "watt hours per square foot",
+		"desc": "",
+		"symbol": "W-hr/sq.ft"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*3600000%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "kilowatt hours per square meter",
+		"desc": "",
+		"symbol": "kW-hr/sq.m"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*38750000%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "kilowatt hours per square foot",
+		"desc": "",
+		"symbol": "kW-hr/sq.ft"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*3600000000%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "megawatt hours per square meter",
+		"desc": "",
+		"symbol": "MW-hr/sq.m"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*38750000000%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "megawatt hours per square foot",
+		"desc": "",
+		"symbol": "MW-hr/sq.ft"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*1000000%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "megajoules per square meter",
+		"desc": "",
+		"symbol": "MJ/sq.m"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*10760000%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "megajoules per square foot",
+		"desc": "",
+		"symbol": "MJ/sq.ft"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*11356.5%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "btus per square foot",
+		"desc": "",
+		"symbol": "BTU/sq.ft"
+	}, {
+		"conversion": "%24%7B%0A%09joule.sqm%3B%0A%09joule.sqm%3Dvalue*11360000%3B%0A%09joule.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "kilobtus per square foot",
+		"desc": "",
+		"symbol": ""
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="enthalpy" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "enthalpy",
+	"name": "enthalpy",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "joules per kilogram",
+		"desc": "he SI unit for specific enthalpy is joule per kilogram",
+		"symbol": "J/kg"
+	}, {
+		"conversion": "%24%7B%0A%09joule.kg%3B%0A%09joule.kg%3Dvalue*1000%3B%0A%09joule.kg%3B%0A%7D",
+		"isSi": false,
+		"name": "joules per gram",
+		"desc": "",
+		"symbol": "J/g"
+	}, {
+		"conversion": "%24%7B%0A%09joule.kg%3B%0A%09joule.kg%3Dvalue*2326%3B%0A%09joule.kg%3B%0A%7D",
+		"isSi": false,
+		"name": "btu per pound",
+		"desc": "",
+		"symbol": "BTU/lb"
+	}, {
+		"conversion": "%24%7B%0A%09joule.kg%3B%0A%09joule.kg%3Dvalue*4184000%3B%0A%09joule.kg%3B%0A%7D",
+		"isSi": false,
+		"name": "calorie per gram",
+		"desc": "",
+		"symbol": "cal/g"
+	}, {
+		"conversion": "%24%7B%0A%09joule.kg%3B%0A%09joule.kg%3Dvalue*1000%3B%0A%09joule.kg%3B%0A%7D",
+		"isSi": false,
+		"name": "kilo joule per kilogram",
+		"desc": "",
+		"symbol": "kJ/kg"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="entropy" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "entropy",
+	"name": "entropy",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "joules per degree kelvin",
+		"desc": "",
+		"symbol": "J/degK"
+	}, {
+		"conversion": "%24%7B%0A%09joule.degK%3B%0A%09joule.degK%3Dvalue*1000%3B%0A%09joule.degK%3B%0A%7D",
+		"isSi": false,
+		"name": "kilojoules per degree kelvin",
+		"desc": "",
+		"symbol": "kJ/degK"
+	}, {
+		"conversion": "%24%7B%0A%09joule.degK%3B%0A%09joule.degK%3Dvalue*1000000%3B%0A%09joule.degK%3B%0A%7D",
+		"isSi": false,
+		"name": "megajoules per degree kelvin",
+		"desc": "",
+		"symbol": "MJ/degK"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="grammage" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "grammage",
+	"name": "grammage",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "kilograms per square meter",
+		"desc": "",
+		"symbol": "kg/sq.m"
+	}, {
+		"conversion": "%24%7B%0A%09kg.sqm%3B%0A%09kg.sqm%3Dvalue*0.001%3B%0A%09kg.sqm%3B%0A%7D",
+		"isSi": false,
+		"name": "grams per square meter",
+		"desc": "",
+		"symbol": "g/sq.m"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="heating rate" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "heating_rate",
+	"name": "heating rate",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "degrees kelvin per second",
+		"desc": "",
+		"symbol": "K/s"
+	}, {
+		"conversion": "%24%7B%0A%09k.s%3B%0A%09k.s%3Dvalue*273.15%3B%0A%09k.s%3B%0A%7D",
+		"isSi": false,
+		"name": "degrees celsius per hour",
+		"desc": "",
+		"symbol": "degC/hr"
+	}, {
+		"conversion": "%24%7B%0A%09k.s%3B%0A%09k.s%3Dvalue*273.167%3B%0A%09k.s%3B%0A%7D",
+		"isSi": false,
+		"name": "degrees celsius per minute",
+		"desc": "",
+		"symbol": "deg/min"
+	}, {
+		"conversion": "%24%7B%0A%09k.s%3B%0A%09k.s%3Dvalue*255.372%3B%0A%09k.s%3B%0A%7D",
+		"isSi": false,
+		"name": "dergree farenheit per hour",
+		"desc": "",
+		"symbol": "degF/hr"
+	}, {
+		"conversion": "%24%7B%0A%09k.s%3B%0A%09k.s%3Dvalue*255.381%3B%0A%09k.s%3B%0A%7D",
+		"isSi": false,
+		"name": "dergree farenheit per minute",
+		"desc": "",
+		"symbol": "degF/min"
+	}, {
+		"conversion": "%24%7B%0A%09k.s%3B%0A%09k.s%3Dvalue*0.000277778%3B%0A%09k.s%3B%0A%7D",
+		"isSi": false,
+		"name": "dergree kelvin per hour",
+		"desc": "",
+		"symbol": "K/hr"
+	}, {
+		"conversion": "%24%7B%0A%09k.s%3B%0A%09k.s%3Dvalue*0.0166667%3B%0A%09k.s%3B%0A%7D",
+		"isSi": false,
+		"name": "dergree kelvin per minute",
+		"desc": "",
+		"symbol": "K/min"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="illuminance" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "illuminance",
+	"name": "illuminance",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "lux",
+		"desc": "The lux (symbol: lx) is the SI unit of illuminance",
+		"symbol": "lx"
+	}, {
+		"conversion": "%24%7B%0A%09lux%3B%0A%09lux%3Dvalue*1000%3B%0A%09lux%3B%0A%7D",
+		"isSi": false,
+		"name": "kilolux",
+		"desc": "kilolux is a unit of illuminance equal to 1000 lux",
+		"symbol": "klx"
+	}, {
+		"conversion": "%24%7B%0A%09lux%3B%0A%09lux%3Dvalue*1%3B%0A%09lux%3B%0A%7D",
+		"isSi": false,
+		"name": "candelas per square meter",
+		"desc": "The candela per square metre is the derived SI unit of luminance",
+		"symbol": "cd/sq.m"
+	}, {
+		"conversion": "%24%7B%0A%09lux%3B%0A%09lux%3Dvalue*10.7639%3B%0A%09lux%3B%0A%7D",
+		"isSi": false,
+		"name": "footcandles",
+		"desc": "A foot-candle is a non-SI unit of illuminance",
+		"symbol": "fc"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="information" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "information",
+	"name": "information",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "byte",
+		"desc": "",
+		"symbol": "B"
+	}, {
+		"conversion": "%24%7B%0A%09byte%3B%0A%09byte%3Dvalue*0.125%3B%0A%09byte%3B%0A%7D",
+		"isSi": false,
+		"name": "bit",
+		"desc": "A bit is the basic unit of information in computing and digital communications",
+		"symbol": "b"
+	}, {
+		"conversion": "%24%7B%0A%09byte%3B%0A%09byte%3Dvalue*125%3B%0A%09byte%3B%0A%7D",
+		"isSi": false,
+		"name": "kilobit",
+		"desc": "A kilobit (Kb or kbit) is a data measurement unit for digital information or computer storage",
+		"symbol": "Kb"
+	}, {
+		"conversion": "%24%7B%0A%09byte%3B%0A%09byte%3Dvalue*1000%3B%0A%09byte%3B%0A%7D",
+		"isSi": false,
+		"name": "kilobyte",
+		"desc": "A kilobyte is a unit of computer memory or storage equal to 1,024 bytes",
+		"symbol": "KB"
+	}, {
+		"conversion": "%24%7B%0A%09byte%3B%0A%09byte%3Dvalue*125000%3B%0A%09byte%3B%0A%7D",
+		"isSi": false,
+		"name": "megabit",
+		"desc": "A megabit is a unit of data size or (when expressed per second) network speed, equal to one million or (strictly) 1,048,576 bits",
+		"symbol": "Mb"
+	}, {
+		"conversion": "%24%7B%0A%09byte%3B%0A%09byte%3Dvalue*1000000%3B%0A%09byte%3B%0A%7D",
+		"isSi": false,
+		"name": "megabyte",
+		"desc": "A megabyte is a unit of information equal to one million or, strictly, 1,048,576 bytes",
+		"symbol": "MB"
+	}, {
+		"conversion": "%24%7B%0A%09byte%3B%0A%09byte%3Dvalue*125000000%3B%0A%09byte%3B%0A%7D",
+		"isSi": false,
+		"name": "gigabit",
+		"desc": "A gigabit is a unit of information equal to one thousand million bits",
+		"symbol": "Gb"
+	}, {
+		"conversion": "%24%7B%0A%09byte%3B%0A%09byte%3Dvalue*1000000000%3B%0A%09byte%3B%0A%7D",
+		"isSi": false,
+		"name": "gigabyte",
+		"desc": "a unit of information equal to one thousand million bytes",
+		"symbol": "GB"
+	}, {
+		"conversion": "%24%7B%0A%09byte%3B%0A%09byte%3Dvalue*125000000000%3B%0A%09byte%3B%0A%7D",
+		"isSi": false,
+		"name": "terabit",
+		"desc": "A terabit is one trillion bits",
+		"symbol": "Tb"
+	}, {
+		"conversion": "%24%7B%0A%09byte%3B%0A%09byte%3Dvalue*1000000000000%3B%0A%09byte%3B%0A%7D",
+		"isSi": false,
+		"name": "terabyte",
+		"desc": "A terabyte is a unit of information equal to one million million bytes",
+		"symbol": "TB"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="apparent power" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "apparent_power",
+	"name": "apparent power",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "kilovolt ampere",
+		"desc": "kVA is a unit of apparent power",
+		"symbol": "kVA"
+	}, {
+		"conversion": "%24%7B%0A%09kv.ampere%3B%0A%09kv.ampere%3Dvalue*0.001%3B%0A%09kv.ampere%3B%0A%7D",
+		"isSi": false,
+		"name": "volt ampere",
+		"desc": "A volt-ampere (VA) is the unit used for the apparent power in an electrical circuit",
+		"symbol": "VA"
+	}, {
+		"conversion": "%24%7B%0A%09kv.ampere%3B%0A%09kv.ampere%3Dvalue*1000%3B%0A%09kv.ampere%3B%0A%7D",
+		"isSi": false,
+		"name": "megavolt ampere",
+		"desc": "Mega-volt ampere is a unit of measure of apparent power",
+		"symbol": "MVA"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="information speed" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "information_speed",
+	"name": "information speed",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "kilobytes per second",
+		"desc": "",
+		"symbol": "KB/s"
+	}, {
+		"conversion": "%24%7B%0A%09kbs%3B%0A%09kbs%3Dvalue*0.000125%3B%0A%09kbs%3B%0A%7D",
+		"isSi": false,
+		"name": "bits per second",
+		"desc": "bits per second is a common measure of data speed",
+		"symbol": "b/s"
+	}, {
+		"conversion": "%24%7B%0A%09kbs%3B%0A%09kbs%3Dvalue*0.001%3B%0A%09kbs%3B%0A%7D",
+		"isSi": false,
+		"name": "bytes per second",
+		"desc": "bytes per second is a measurement of data transfer rate",
+		"symbol": "B/s"
+	}, {
+		"conversion": "%24%7B%0A%09kbs%3B%0A%09kbs%3Dvalue*0.125%3B%0A%09kbs%3B%0A%7D",
+		"isSi": false,
+		"name": "kilobits per second",
+		"desc": "kilobit per second is a unit of data transfer rate",
+		"symbol": "Kb/s"
+	}, {
+		"conversion": "%24%7B%0A%09kbs%3B%0A%09kbs%3Dvalue*125%3B%0A%09kbs%3B%0A%7D",
+		"isSi": false,
+		"name": "megabits per second",
+		"desc": "megabits per second is a measure of data transfer speed ",
+		"symbol": "Mb/s"
+	}, {
+		"conversion": "%24%7B%0A%09kbs%3B%0A%09kbs%3Dvalue*1000%3B%0A%09kbs%3B%0A%7D",
+		"isSi": false,
+		"name": "megabytes per second",
+		"desc": "Megabytes per second (MBps) is a unit of data transfer rate",
+		"symbol": "MB/s"
+	}, {
+		"conversion": "%24%7B%0A%09kbs%3B%0A%09kbs%3Dvalue*125000%3B%0A%09kbs%3B%0A%7D",
+		"isSi": false,
+		"name": "gigabits per second",
+		"desc": "gigabit per second (Gbps) is a unit of data transfer rate",
+		"symbol": "Gb/s"
+	}, {
+		"conversion": "%24%7B%0A%09kbs%3B%0A%09kbs%3Dvalue*1000000%3B%0A%09kbs%3B%0A%7D",
+		"isSi": false,
+		"name": "gigabytes per second",
+		"desc": "gigabyte per second is a unit of data transfer rate",
+		"symbol": "GB/s"
+	}, {
+		"conversion": "%24%7B%0A%09kbs%3B%0A%09kbs%3Dvalue*125000000%3B%0A%09kbs%3B%0A%7D",
+		"isSi": false,
+		"name": "terabits per second",
+		"desc": "terabit per second (Tbps) is a unit of data transfer rate",
+		"symbol": "Tb/s"
+	}, {
+		"conversion": "%24%7B%0A%09kbs%3B%0A%09kbs%3Dvalue*1000000000%3B%0A%09kbs%3B%0A%7D",
+		"isSi": false,
+		"name": "terabytes per second",
+		"desc": "Terabyte per second is a unit of data transfer rate",
+		"symbol": "TB/s"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method><con:method name="time" method="POST"><con:settings/><con:parameters/><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Fault</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:phy="http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity">phy:Response</con:element></con:representation><con:request name="Request 1" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.60.55:9763</con:endpoint><con:request>{
+	"dataStore": "time",
+	"name": "time",
+	"units": [{
+		"conversion": "-",
+		"isSi": true,
+		"name": "second",
+		"desc": "",
+		"symbol": "s"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*0.000000001%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "nanosecond",
+		"desc": "A nanosecond (ns) is an SI unit of time equal to one billionth of a second",
+		"symbol": "ns"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*0.000001%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "microsecond",
+		"desc": "A microsecond is an SI unit of time equal to one millionth of a second",
+		"symbol": "us"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*0.001%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "millisecond",
+		"desc": "A millisecond is a thousandth of a second",
+		"symbol": "ms"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*0.01%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "hundredths second",
+		"desc": "A unit of time equal to 0.01 seconds and with symbol cs (centi second)",
+		"symbol": "cs"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*0.1%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "tenths second",
+		"desc": "tenths second is an SI unit of time equal to 0.1 seconds with symbol ds (decisecond)",
+		"symbol": "ds"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*60%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "minute",
+		"desc": "minute is a unit of time,equal to 60 seconds",
+		"symbol": "min"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*3600%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "hour",
+		"desc": "The hour is a unit of measurement of time equals to 3,600 seconds",
+		"symbol": "hr"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*86400%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "day",
+		"desc": "A day as a unit of measurement of time defined as 86400 seconds",
+		"symbol": "day"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*604800%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "week",
+		"desc": "A week (wk) is a unit, or period of time, that consists of any seven (7) consecutive days",
+		"symbol": "wk"
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*2629800%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "Julian month",
+		"desc": "Julian month is a measure of time",
+		"symbol": ""
+	}, {
+		"conversion": "%24%7B%0A%09second%3B%0A%09second%3Dvalue*31540000%3B%0A%09second%3B%0A%7D",
+		"isSi": false,
+		"name": "year",
+		"desc": "year is the time for the earth to rotate around the sun",
+		"symbol": "yr"
+	}],
+	"dataType": "DOUBLE"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/phy_quantity</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource><con:resource name="units" path="/datasource-api-1.0.0/services/datasources/units"><con:settings/><con:parameters/><con:method name="Method 1" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:unit="http://10.234.60.55/datasource-api-1.0.0/services/datasources/units">unit:Response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:unit="http://10.234.60.55/datasource-api-1.0.0/services/datasources/units">unit:Fault</con:element></con:representation><con:request name="Save Unit" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.158:9763</con:endpoint><con:request>{
+    "conversion": "-",
+    "isSi": false,
+    "name": "unitless",
+    "pName": "generic_quantity",
+    "desc": "for mapping points without unit",
+    "symbol": "-"
+}</con:request><con:originalUri>http://10.234.60.55/datasource-api-1.0.0/services/datasources/units</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

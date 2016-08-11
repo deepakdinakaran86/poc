@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Item_Find_Res_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property
+			name="----------------Entering Service_Item_Find_Res_SEQ----------------"
+			value="----Service_Item_Find_Res_SEQ----" />
+		<property expression="json-eval($.)"
+			name="JSON Payload find tags attached to service Item" xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<log separator=",">
+				<property name="----------------If No Tags Attached----------------"
+					value="--------" />
+			</log>
+			<payloadFactory media-type="json">
+				<format>
+					{"domain":{"domainName":"$1"},"serviceItemName":"$2","description":"$3","serviceItemStatus":{"statusName":"$4"},"serviceItemIdentifier":{"key":"$5","value":"$6"}}
+				</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('domainName')" />
+					<arg evaluator="xml" expression="get-property('serviceItemName')" />
+					<arg evaluator="xml" expression="get-property('description')" />
+					<arg evaluator="xml" expression="get-property('status')" />
+					<arg evaluator="xml" expression="get-property('identifierKey')" />
+					<arg evaluator="xml" expression="get-property('identifierValue')" />
+				</args>
+			</payloadFactory>
+			<property name="RESPONSE" scope="default" type="STRING"
+				value="true" />
+			<property name="HTTP_SC" scope="axis2" type="STRING" value="200" />
+			<send />
+		</then>
+		<else>
+			<log separator=",">
+				<property name="----------------Tags Attached----------------"
+					value="--------" />
+			</log>
+			<property expression="json-eval($.)"
+			name="listOfTagsAttached" xmlns:ns="http://org.apache.synapse/xsd" />
+			<payloadFactory media-type="json">
+				<format>
+					{"domain":{"domainName":"$1"},"serviceItemName":"$2","description":"$3","serviceItemStatus":{"statusName":"$4"},"serviceItemIdentifier":{"key":"$5","value":"$6"},"listOfTags":$7}
+				</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('domainName')" />
+					<arg evaluator="xml" expression="get-property('serviceItemName')" />
+					<arg evaluator="xml" expression="get-property('description')" />
+					<arg evaluator="xml" expression="get-property('status')" />
+					<arg evaluator="xml" expression="get-property('identifierKey')" />
+					<arg evaluator="xml" expression="get-property('identifierValue')" />
+					<arg evaluator="xml" expression="get-property('listOfTagsAttached')" />
+				</args>
+			</payloadFactory>
+			<property name="RESPONSE" scope="default" type="STRING"
+				value="true" />
+			<property name="HTTP_SC" scope="axis2" type="STRING" value="200" />
+			<send />
+		</else>
+	</filter>
+</sequence>

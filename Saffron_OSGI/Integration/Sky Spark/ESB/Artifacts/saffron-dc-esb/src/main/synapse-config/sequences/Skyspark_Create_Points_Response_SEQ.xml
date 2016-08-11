@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Skyspark_Create_Points_Response_SEQ">
+
+	<log separator=",">
+		<property name="Enter Skyspark_Create_Points_Response_SEQ"
+			value="--------Skyspark_Create_Points_Response_SEQ--------"></property>
+	</log>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="createPointResponse"
+		expression="$body" scope="default" type="STRING"></property>
+	<property name="messageType" value="application/json" scope="axis2"
+		type="STRING"></property>
+	<script language="js">
+      <![CDATA[var response =   mc.getProperty('createPointResponse'); 		var index = response.toLowerCase().indexOf("success");		var status = "false";		if(index>-1){		status = "true";		}		mc.setProperty("pointStatus",status);]]></script>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" source="(get-property('pointStatus'))"
+		regex="true">
+		<then>
+			<log separator=",">
+				<property name="success from point" value="--------success from point--------"></property>
+			</log>
+			<header name="To" action="remove"></header>
+			<property name="RESPONSE" value="true" scope="default" type="STRING"></property>
+			<property name="HTTP_SC" value="200" scope="axis2"></property>
+			<payloadFactory media-type="json">
+				<format>{ "status": "SUCCESS"}</format>
+			</payloadFactory>
+			<send></send>
+		</then>
+		<else>
+			<log separator=",">
+				<property name="failure from point" value="--------failure from point--------"></property>
+			</log>
+			<header name="To" action="remove"></header>
+			<property name="RESPONSE" value="true" scope="default" type="STRING"></property>
+			<property name="HTTP_SC" value="400" scope="axis2"></property>
+			<payloadFactory media-type="json">
+				<format>{ "status": "FAILURE"}</format>
+			</payloadFactory>
+			<send></send>
+		</else>
+	</filter>
+</sequence>

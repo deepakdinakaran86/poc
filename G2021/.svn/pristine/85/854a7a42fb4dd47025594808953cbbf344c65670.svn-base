@@ -1,0 +1,124 @@
+
+<% 
+	var APPCONF = require('/configs/appconfig.jag');
+	var APICONF = require('/configs/apiproperties.jag');
+	var usr = require('/modules/user.js');
+	include(utils.resolvePath('templates/portal-header.jag')); 
+%>
+
+<style>
+
+.page-content-wrapper .page-content {    
+    padding: 0 !important;
+
+
+</style>
+
+<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed page-container-bg-solid page-footer-fixed " >
+
+<div class="se-pre-con"></div>
+<!-- BEGIN HEADER -->
+	<%include(utils.resolvePath('templates/page-header.jag')); %>
+<!-- END HEADER -->
+
+
+<!-- BEGIN CONTAINER -->
+<div class="page-container">	
+	<%include(utils.resolvePath('templates/page-sidebar.jag')); %>
+	
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content" style="min-height:720px">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title ">	Alarm <small></small></h3>
+			<div class="page-bar hidden">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Page Layouts</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Blank Page</a>
+					</li>
+				</ul>		
+			</div>
+			<!-- END PAGE HEADER-->
+			
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					alarm
+			
+				</div>		
+		
+			</div>
+				<div class="clearfix"><!-- END First ROW -->
+	
+			</div>
+			
+			
+			
+			
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+	<!--<% //include(utils.resolvePath('templates/page-quickbar.jag')); %> -->
+	
+</div>
+<!-- END CONTAINER -->
+<%
+	include(utils.resolvePath('templates/portal-footer.jag'));
+	include('/controllers/includes/theme-portal-scripts.jag');
+	%>
+ %>
+
+<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/leaflet.js"></script>	
+	<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/bouncemarker.js"></script>
+	<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/MovingMarker.js"></script>
+	<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/L.Polyline.SnakeAnim1.js"></script>
+	<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/leaflet.polylineoffset.js"></script>	
+	<script src="<%=urlPrefix%>js/websocket/WebORB.js"></script>
+	<script type='text/javascript' src="<%=urlPrefix%>js/mask.js"></script>
+	<script type="text/javascript" src="<%=urlPrefix%><%=utils.resolveUrl('js/dapp.js')%>"></script>
+	<!--<script src="<%=urlPrefix%>js/jquery-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>-->
+
+	<script type="text/javascript">
+				
+	</script>
+
+
+
+<script>
+MapsGoogle.init();
+</script>
+
+

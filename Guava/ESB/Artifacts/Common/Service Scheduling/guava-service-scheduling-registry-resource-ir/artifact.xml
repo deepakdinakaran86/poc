@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Service_Schedule_Update_Entity_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Update_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Service_Schedule_Hierarchy_Update_Node_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Hierarchy_Update_Node_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Service_Schedule_Attach_Entities_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Attach_Entities_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Service_Schedule_Get_Immediate_Children_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Get_Immediate_Children_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Service_Schedule_Find_Entity_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Find_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Service_Schedule_Create_Entity_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Create_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Service_Schedule_Find_All_Entities_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Find_All_Entities_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Service_Schedule_Get_Immediate_Parents_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Get_Immediate_Parents_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Service_Schedule_Attach_Entity_To_Tags_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Attach_Entity_To_Tags_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Service_Schedule_Find_Attached_Tags_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/serviceSchedule/Service_Schedule_Find_Attached_Tags_EP.xml</file>
+            <path>/_system/config/endpoints/serviceSchedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

@@ -1,0 +1,27 @@
+{
+    "entityId" : "bcd241a0-b044-4b3d-bd5d-9a226e7e809f",
+    "domain" : {
+        "domainName" : "jll.pcs.com"
+    },
+    "globalEntity" : {
+        "globalEntityType" : "TENANT"
+    },
+    "entityStatus" : {
+        "statusName" : "ACTIVE"
+    },
+    "entityTemplate" : {
+        "domain" : {
+            "domainName" : "jll.pcs.com"
+        },
+        "entityTemplateName" : "DefaultOrgTemplate"
+    },
+    "fieldValues" : [
+    {
+        "key" : "domainName",
+        "value": "alpine.com"
+    }],
+    "identifier" : {
+        "key" : "tenantName",
+        "value" : "alpine"
+    }
+}

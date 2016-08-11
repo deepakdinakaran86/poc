@@ -1,0 +1,2221 @@
+CREATE KEYSPACE devicecloud_test WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '2'}  AND durable_writes = true;
+
+CREATE TYPE devicecloud_test.fieldmap (
+    key text,
+    value text
+);
+
+CREATE TABLE devicecloud_test.irradiance (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+
+CREATE TABLE devicecloud_test.physical_quantity_test (
+    device uuid,
+    devicedate timestamp,
+    displayname text,
+    devicetime timestamp,
+    data double,
+    systemtag text,
+    PRIMARY KEY ((device, devicedate), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.information_speed (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+
+CREATE TABLE devicecloud_test.force (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.solid_angle (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.energy (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.genericquantity (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data text,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX genericquantity_displayname_idx ON devicecloud_test.genericquantity (displayname);
+
+CREATE TABLE devicecloud_test.electric_resistance (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.electrical_conductivity (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.pressure_differential (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.grammage (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.electric_potential (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.currency (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.energy_consumption (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.frequency (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.entropy (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.specific_entropy (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.concentration (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.electric_field_strength (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.apparent_power (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.acceleration (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.information (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.temperature (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.area (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.angular_momentum (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.illuminance (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.capacitance (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.electrical_resistivity (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.surface_tension (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.specific_energy (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.luminous_flux (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.magnetic_field_strength (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.angular_velocity (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.momentum (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.reactive_energy (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+
+CREATE TABLE devicecloud_test.plane_angle (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.electric_conductance (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.power (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.misc (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data text,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.temperature_differential (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.time (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.enthalpy_differential (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.volume (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.pressure (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.units (
+    uuid uuid PRIMARY KEY,
+    conversion text,
+    is_si boolean,
+    name text,
+    pname text,
+    puuid uuid,
+    status_key int,
+    status_name text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX name_unit_idx ON devicecloud_test.units (name);
+CREATE INDEX pname_unit_idx ON devicecloud_test.units (pname);
+CREATE INDEX status_key_unit_idx ON devicecloud_test.units (status_key);
+
+CREATE TABLE devicecloud_test.inductance (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.velocity (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.magnetic_flux_density (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.statustable (
+    uuid timeuuid PRIMARY KEY,
+    begining int,
+    revision_time timeuuid,
+    status_key int,
+    status_name text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX status_name_idx1 ON devicecloud_test.statustable (status_name);
+
+CREATE TABLE devicecloud_test.latestdata (
+    device uuid,
+    displayname text,
+    data text,
+    devicedate timestamp,
+    devicetime timestamp,
+    systemtag text,
+    PRIMARY KEY (device, displayname)
+) WITH CLUSTERING ORDER BY (displayname ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+
+CREATE TABLE devicecloud_test.physical_quantity (
+    phy_quan text PRIMARY KEY,
+    datastore text,
+    status_key int,
+    status_name text,
+    uuid uuid
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX physical_quantity_flag_idx1 ON devicecloud_test.physical_quantity (status_key);
+CREATE INDEX physical_quantity_uuid_idx1 ON devicecloud_test.physical_quantity (uuid);
+
+CREATE TABLE devicecloud_test.heating_rate (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.electric_current (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.angular_acceleration (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.luminescence (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.mass_flow (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.magnetic_flux (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.density (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.enthalpy (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.apparent_energy (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.length (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.electric_charge (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.mass (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.volumetric_flow (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.reactive_power (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.thermal_conductivity (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.turbidity (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE devicecloud_test.electric_current_density (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	
+	
+CREATE TABLE devicecloud_test.status_string (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data text,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	CREATE TABLE devicecloud_test.status_numeric (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	CREATE TABLE devicecloud_test.status_boolean (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data text,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	
+	CREATE TABLE devicecloud_test.status_integer (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	CREATE TABLE devicecloud_test.status_float (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	CREATE TABLE devicecloud_test.status_short (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	CREATE TABLE devicecloud_test.status_long (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	CREATE TABLE devicecloud_test.status_double (
+    device uuid,
+    date timestamp,
+    inserttime timestamp,
+    displayname text,
+    data double,
+    devicetime timestamp,
+    extension list<frozen<fieldmap>>,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	CREATE TABLE devicecloud_test.longitude (
+    device uuid,
+    date timestamp,
+    displayname text,
+    devicetime timestamp,
+    data double,
+    extension list<frozen<fieldmap>>,
+    inserttime timestamp,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+
+CREATE TABLE devicecloud_test.latitude (
+    device uuid,
+    date timestamp,
+    displayname text,
+    devicetime timestamp,
+    data double,
+    extension list<frozen<fieldmap>>,
+    inserttime timestamp,
+    lucene text,
+    systemtag text,
+    PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	CREATE TABLE devicecloud_test.alarm_trail (
+    device uuid,
+    displayname text,
+    alarmtime timestamp,
+    alarmmessage text,
+    alarmpoints list<frozen<fieldmap>>,
+    alarmstate text,
+	alarmname text,
+    alarmtype text,
+    criticality text,
+    data text,
+    date timestamp,
+    inserttime timestamp,
+    ltalarmmessage text,
+    ltnormalmessage text,
+    ltvalue text,
+    lucene text,
+    normalmessage text,
+    unit text,
+    utalarmmessage text,
+    utnormalmessage text,
+    utvalue text,
+    PRIMARY KEY ((device, displayname), alarmtime)
+) WITH CLUSTERING ORDER BY (alarmtime DESC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+	CREATE TABLE devicecloud_test.device_activity (
+    device uuid,
+    datasourcename text,
+    devicename text,
+    lastupdatedtime timestamp,
+    PRIMARY KEY (device, datasourcename)
+) WITH CLUSTERING ORDER BY (datasourcename ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+	
+	
+CREATE TABLE devicecloud_test.device_transition (
+    device uuid PRIMARY KEY,
+    lastofflinetime timestamp,
+    lastupdatedtime timestamp,
+    status text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+	
+CREATE TYPE devicecloud.geopoint (
+	latitude float,
+	longitude float
+);
+
+CREATE TABLE devicecloud.location (
+	device uuid,
+	date timestamp,
+	displayname text,
+	devicetime timestamp,
+	data frozen<geopoint>,
+	extension list<frozen<fieldmap>>,
+	inserttime timestamp,
+	lucene text,
+	systemtag text,
+	PRIMARY KEY ((device, date), displayname, devicetime)
+) WITH CLUSTERING ORDER BY (displayname ASC, devicetime ASC)
+	AND bloom_filter_fp_chance = 0.01
+	AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+	AND comment = ''
+	AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+	AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+	AND crc_check_chance = 1.0
+	AND dclocal_read_repair_chance = 0.1
+	AND default_time_to_live = 0
+	AND gc_grace_seconds = 864000
+	AND max_index_interval = 2048
+	AND memtable_flush_period_in_ms = 0
+	AND min_index_interval = 128
+	AND read_repair_chance = 0.0
+	AND speculative_retry = '99PERCENTILE';
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------	
+
+insert into devicecloud_test.statustable (uuid,status_key,status_name) values (a38af861-e596-11e4-8f68-49965a098945,0,'ACTIVE');
+insert into devicecloud_test.statustable (uuid,status_key,status_name) values (d38af861-e596-11e4-8f68-49965a098945,1,'INACTIVE');
+insert into devicecloud_test.statustable (uuid,status_key,status_name) values (f38af861-e596-11e4-8f68-49965a098945,2,'UN_SUPPORTED');
+insert into devicecloud_test.statustable (uuid,status_key,status_name) values (e38af861-e596-11e4-8f68-49965a098945,3,'DELETED');
+
+
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('acceleration','acceleration',0 ,'ACTIVE', 635320dd-abbe-43ef-ba51-b770a58b6c2b);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('angular_acceleration','angular_acceleration',0 ,'ACTIVE', bdada955-cc3e-483c-b6a0-5f7c0d2d41b2);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('angular_momentum','angular_momentum',0 ,'ACTIVE', 434255f0-01f6-4b8e-b4f5-046561d4b5f9);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('angular_velocity','angular_velocity',0 ,'ACTIVE', 62b0f56e-125c-4fe6-9748-4d36db9dd1a8);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('apparent_energy','apparent_energy',0 ,'ACTIVE', 197fba6f-e2df-41f3-b734-7f4bf4ca19c5);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('apparent_power','apparent_power',0 ,'ACTIVE', 36d44bac-1ec4-48f1-a51e-3ec3c6296366);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('area','area',0 ,'ACTIVE', 71021be8-4b7a-4d14-ae1b-6145e5b0073f);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('capacitance','capacitance',0 ,'ACTIVE', 0f0b9c9f-05f5-4ee8-923c-9efb16af1298);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('concentration','concentration',0 ,'ACTIVE', c3663e60-8df8-49b7-9b3d-14b04cb8cbb9);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('currency','currency',0 ,'ACTIVE', 0bca6b6d-e7f7-4ba2-8dc3-bddaac641235);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('density','density',0 ,'ACTIVE', 64c166a5-edf7-4a20-a7c9-04b630f73802);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('electric_charge','electric_charge',0 ,'ACTIVE', f680b587-0b56-4fd2-b29b-ec87342b0415);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('electric_conductance','electric_conductance',0 ,'ACTIVE', eadc18a5-bb39-47bb-8c97-228650ff4cf0);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('electric_current','electric_current',0 ,'ACTIVE', 6c5bfdeb-8227-4fe6-a992-9a20c352f111);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('electric_current_density','electric_current_density',0 ,'ACTIVE', a917d69b-cfd6-4bfc-86a9-e79274024f06);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('electric_field_strength','electric_field_strength',0 ,'ACTIVE', 2101cf27-06d0-4a3c-a14f-0e0af8338da5);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('electric_potential','electric_potential',0 ,'ACTIVE', 63598e0a-7f2b-435b-9a94-1a00a515cc7a);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('electric_resistance','electric_resistance',0 ,'ACTIVE', c4425959-72aa-430e-bbba-048cef097536);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('electrical_conductivity','electrical_conductivity',0 ,'ACTIVE', 91af0abe-71db-44ca-9a3e-d411990f6df1);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('electrical_resistivity','electrical_resistivity',0 ,'ACTIVE', 1fd2dcf9-6c68-4df9-915f-f46d60cc2739);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('energy','energy',0 ,'ACTIVE', feb12b59-b7a8-4597-9eff-cfa76d9e1848);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('energy_consumption','energy_consumption',0 ,'ACTIVE', 059bf17a-f8d2-4a82-8502-9222227ac972);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('enthalpy','enthalpy',0 ,'ACTIVE', 9be9e6dd-6453-47f8-addb-fd78375704ea);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('enthalpy_differential','enthalpy_differential',0 ,'ACTIVE', 24ab8133-bad7-41ce-8e37-9c3192e5e33b);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('entropy','entropy',0 ,'ACTIVE', 4970a74e-2efb-417b-8843-e869b723432e);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('force','force',0 ,'ACTIVE', 401db63d-9a35-4c0f-b205-aa077d5fe93e);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('frequency','frequency',0 ,'ACTIVE', d0431b14-a3fb-4c25-baf8-bb179bb6d4ae);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('generic_quantity','generic_quantity',0 ,'ACTIVE', f32733a0-d39f-11e4-8830-0800200c9a66);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('grammage','grammage',0 ,'ACTIVE', 78923a6c-b003-4a6c-8d8c-ad1bb0d21c1c);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('heating_rate','heating_rate',0 ,'ACTIVE', d5c9d447-dd96-4c9b-aef5-6d385f7311f4);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('illuminance','illuminance',0 ,'ACTIVE', ee5f7977-b980-4bbb-9f47-6f1dc2206160);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('inductance','inductance',0 ,'ACTIVE', a33f54c9-cc32-484f-b65a-0d09ffb2d193);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('information','information',0 ,'ACTIVE', 4e7cc15c-a253-48a8-9d2a-3e973736a155);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('information_speed','information_speed',0 ,'ACTIVE', 7515ed61-99af-45a8-96fd-d485350cd023);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('irradiance','irradiance',0 ,'ACTIVE', 5c33fb37-77b1-4458-bd7a-e4764e863097);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('length','length',0 ,'ACTIVE', add09b55-1036-42bb-b991-553dca5f79c8);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('luminescence','luminescence',0 ,'ACTIVE', 4e71b89b-b178-4843-876f-e202ce9ec8f1);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('luminous_flux','luminous_flux',0 ,'ACTIVE', 641c06fc-24c8-4531-8d88-a738781c1cb4);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('magnetic_field_strength','magnetic_field_strength',0 ,'ACTIVE', 13aafa55-14ae-4bf5-af20-ce37438cc269);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('magnetic_flux','magnetic_flux',0 ,'ACTIVE', 48490ae2-26bc-4814-b05c-fa07480c12fe);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('magnetic_flux_density','magnetic_flux_density',0 ,'ACTIVE', e4d1880d-b552-4a48-a851-2be5c830d201);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('mass','mass',0 ,'ACTIVE', a2efcf87-8ff1-497b-b8c6-9516be7daf31);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('mass_flow','mass_flow',0 ,'ACTIVE', 71b5ee68-eedb-4dec-91bb-0f7f97081b56);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('misc','misc',0 ,'ACTIVE', 07375d68-bb01-4929-8032-3095692becd0);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('momentum','momentum',0 ,'ACTIVE', 737a3e3e-d424-45ac-8225-fa13bd0211cb);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('plane_angle','plane_angle',0 ,'ACTIVE', d1d638b1-d0ee-459a-8952-e1abe2354fd5);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('power','power',0 ,'ACTIVE', 47fdc3e5-02f4-4dea-895a-bf323fb14721);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('pressure','pressure',0 ,'ACTIVE', 22f3532d-28ca-44af-a3e5-df9e5facfdbc);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('pressure_differential','pressure_differential',0 ,'ACTIVE', 55f4813a-9cb0-478c-833b-63ddcad18f9a);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('reactive_energy','reactive_energy',0 ,'ACTIVE', 792bd6eb-faa7-42e6-8727-5a532ab65167);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('reactive_power','reactive_power',0 ,'ACTIVE', f17d42b5-5018-4c54-b673-3d96cc32bf37);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('solid_angle','solid_angle',0 ,'ACTIVE', dffc572b-e2d6-4b0a-8336-7980dfa2fc14);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('specific_energy','specific_energy',0 ,'ACTIVE', e46fd091-533f-421e-993a-800bb04c925b);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('specific_entropy','specific_entropy',0 ,'ACTIVE', 8af6f9c7-f88b-4982-8e64-ce3d1bf4cf2b);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('surface_tension','surface_tension',0 ,'ACTIVE', 2706f1bd-746f-4710-999a-19c81ddc997f);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('temperature','temperature',0 ,'ACTIVE', 97c7b15e-9820-4e0a-abb4-f38821a379ce);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('temperature_differential','temperature_differential',0 ,'ACTIVE', 795f7522-c4ba-4835-bf60-ce89e6e2fd89);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('thermal_conductivity','thermal_conductivity',0 ,'ACTIVE', 8d839ac2-91a2-4d14-979b-4d6efbcc8ed2);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('time','time',0 ,'ACTIVE', ed3a16c4-022a-44df-a34f-6a3ed7bf4d53);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('turbidity','turbidity',0 ,'ACTIVE', fa7635f1-b7b5-45df-8e9e-81aa7cd29527);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('velocity','velocity',0 ,'ACTIVE', 5c5df146-13af-4820-977f-5c05d6705263);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('volume','volume',0 ,'ACTIVE', 4dc66dee-d59f-45b5-9013-7ffea0ed9941);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('volumetric_flow','volumetric_flow',0 ,'ACTIVE', 2716e354-1176-4d0c-a219-c9c7937ce2dd);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('status_string','status_string',0 ,'ACTIVE', 6a42bf30-7039-4a5e-9fe4-ba51e48a4699);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('status_numeric','status_numeric',0 ,'ACTIVE', 35b38313-d8bb-4abe-baab-78823f728817);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('status_boolean','status_boolean',0 ,'ACTIVE', 770898f0-e84e-4c82-9930-ec5d2076e92f);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('status_float','status_float',0 ,'ACTIVE', 320ccb9a-7529-41b7-bfd0-6f49c0ce1092);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('status_integer','status_integer',0 ,'ACTIVE', e13c63da-7046-4a44-a875-d56cdb8d6318);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('status_short','status_short',0 ,'ACTIVE', 2418bf37-c6ae-4946-8eb3-8a2d389b8379);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('status_long','status_long',0 ,'ACTIVE', 0727ebfe-1ff5-40b9-8048-717c9b22caab);
+insert into  devicecloud_test.physical_quantity (phy_quan,datastore,status_key,status_name,uuid) values ('status_double','status_double',0 ,'ACTIVE', ac84e450-5140-43bc-bc6a-56a03a53224d);

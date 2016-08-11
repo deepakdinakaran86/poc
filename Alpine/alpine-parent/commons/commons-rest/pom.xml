@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<artifactId>commons-rest</artifactId>
+	<packaging>jar</packaging>
+	<name>Galaxy Rest</name>
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.pcs.alpine</groupId>
+		<artifactId>alpine-pom</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../../alpine-pom</relativePath>
+	</parent>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.apache.httpcomponents</groupId>
+			<artifactId>httpclient</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>javax.ws.rs</groupId>
+			<artifactId>javax.ws.rs-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.cxf</groupId>
+			<artifactId>cxf-rt-frontend-jaxrs</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
+	</dependencies>
+
+</project>

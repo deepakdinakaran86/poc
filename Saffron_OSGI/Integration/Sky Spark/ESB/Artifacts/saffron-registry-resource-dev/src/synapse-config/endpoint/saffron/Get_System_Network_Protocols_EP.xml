@@ -1,0 +1,3 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Get_System_Network_Protocols_EP" >
+		<http method="get" uri-template="http://10.234.60.59:9763/datasource-api-1.0.0/services/datasources/system/network_protocols"/>
+</endpoint>

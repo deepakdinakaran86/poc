@@ -1,0 +1,126 @@
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'1',point_name:'DIN1',display_name:'DIN1',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'2',point_name:'DIN2',display_name:'DIN2',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'3',point_name:'DIN3',display_name:'DIN3',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'4',point_name:'DIN4',display_name:'DIN4',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'9',point_name:'Analog 1',display_name:'Analog 1',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'10',point_name:'Analog 2',display_name:'Analog 2',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'11',point_name:'Analog 3',display_name:'Analog 3',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'19',point_name:'Analog 4',display_name:'Analog 4',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'21',point_name:'GSM Signal',display_name:'GSM Signal',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'22',point_name:'Current Profile',display_name:'Profile',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'23',point_name:'Accelerometer data',display_name:'Accelerometer',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'24',point_name:'GPS speed',display_name:'Gps Speed',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'66',point_name:'External Power Voltage',display_name:'Vehicle Battery',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'67',point_name:'Internal Battery Voltage',display_name:'Device Battery',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'68',point_name:'Battery Current',display_name:'Battery Current',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'69',point_name:'GPS Power',display_name:'GPS Power',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'70',point_name:'PCB Temperature',display_name:'PCB Temperature',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'72',point_name:'Temperature Sensor1',display_name:'Temp Sensor1',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'73',point_name:'Temperature Sensor2',display_name:'Temp Sensor2',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'74',point_name:'Temperature Sensor3',display_name:'Temp Sensor3',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'76',point_name:'Fuel Counter',display_name:'Fuel Counter',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'78',point_name:'iButton Input',display_name:'iButton',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'145',point_name:'CAN0',display_name:'CAN0',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'146',point_name:'CAN1',display_name:'CAN1',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'147',point_name:'CAN2',display_name:'CAN2',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'148',point_name:'CAN3',display_name:'CAN3',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'149',point_name:'CAN4',display_name:'CAN4',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'150',point_name:'CAN5',display_name:'CAN5',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'151',point_name:'CAN6',display_name:'CAN6',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'152',point_name:'CAN7',display_name:'CAN7',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'153',point_name:'CAN8',display_name:'CAN8',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'154',point_name:'CAN9',display_name:'CAN9',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'199',point_name:'Virtual Odometer',display_name:'Virtual Odometer',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'200',point_name:'Harsh Move',display_name:'Harsh Movement',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'203',point_name:'Harsh Cornering',display_name:'Harsh Cornering',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'240',point_name:'Movement',display_name:'Movement',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'155',point_name:'Geozone 01',display_name:'Geozone 01',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'156',point_name:'Geozone 02',display_name:'Geozone 02',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'157',point_name:'Geozone 03',display_name:'Geozone 03',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'158',point_name:'Geozone 04',display_name:'Geozone 04',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'159',point_name:'Geozone 05',display_name:'Geozone 05',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'160',point_name:'Geozone 06',display_name:'Geozone 06',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'161',point_name:'Geozone 07',display_name:'Geozone 07',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'162',point_name:'Geozone 08',display_name:'Geozone 08',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'163',point_name:'Geozone 09',display_name:'Geozone 09',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'164',point_name:'Geozone 10',display_name:'Geozone 10',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'165',point_name:'Geozone 11',display_name:'Geozone 11',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'166',point_name:'Geozone 12',display_name:'Geozone 12',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'167',point_name:'Geozone 13',display_name:'Geozone 13',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'168',point_name:'Geozone 14',display_name:'Geozone 14',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'169',point_name:'Geozone 15',display_name:'Geozone 15',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'170',point_name:'Geozone 16',display_name:'Geozone 16',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'171',point_name:'Geozone 17',display_name:'Geozone 17',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'172',point_name:'Geozone 18',display_name:'Geozone 18',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'173',point_name:'Geozone 19',display_name:'Geozone 19',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'174',point_name:'Geozone 20',display_name:'Geozone 20',data_type:'String',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'Latitude',point_name:'Latitude',display_name:'Latitude',data_type:'Float',access_type:'READONLY',description:'Latitude'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'Longitude',point_name:'Longitude',display_name:'Longitude',data_type:'Float',access_type:'READONLY',description:'Longitude'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'Priority',point_name:'Priority',display_name:'Priority',data_type:'Integer',access_type:'READONLY',description:'Priority'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'Speed',point_name:'Speed',display_name:'Speed',data_type:'Integer',access_type:'READONLY',description:'Speed'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'Visible Satellites',point_name:'Visible Satellites',display_name:'Visible Satellites',data_type:'Integer',access_type:'READONLY',description:'Visible Satellites'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'Angle',point_name:'Angle',display_name:'Angle',data_type:'Float',access_type:'READONLY',description:'Angle'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=16 create (p:POINT {point_id:'Altitude',point_name:'Altitude',display_name:'Altitude',data_type:'Float',access_type:'READONLY',description:'Gps Altitude'}) create v-[r:hasPoint]->p return r,p;
+

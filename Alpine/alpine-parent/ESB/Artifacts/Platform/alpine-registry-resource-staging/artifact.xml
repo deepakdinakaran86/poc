@@ -1,0 +1,863 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Create_Tenant_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Tenant_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Find_Tenant_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Find_Tenant_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="List_Tenant_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/List_Tenant_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Tenant_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Update_Tenant_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Delete_Tenant_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Delete_Tenant_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Validate_Tenant_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Validate_Tenant_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_User_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_User_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Admin_User_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Admin_User_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Find_User_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Find_User_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="List_User_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/List_User_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_User_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Update_User_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Delete_User_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Delete_User_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Validate_User_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Validate_User_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Marker_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Find_Marker_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Find_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="List_Marker_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/List_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="List_Filter_Marker_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/List_Filter_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Search_Marker_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Search_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Marker_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Update_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Delete_Marker_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Delete_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Validate_Marker_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Validate_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Tenant_Node_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Tenant_Node_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Attach_Children_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Attach_Children_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Attach_Parent_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Attach_Parent_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Permission_Group_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Permission_Group_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Permission_Group_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Update_Permission_Group_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Permission_Group_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Permission_Group_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Delete_Permission_Group_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Delete_Permission_Group_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Role_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Role_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Role_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Update_Role_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Role_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Role_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Domain_Role_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Domain_Role_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Delete_Role_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Delete_Role_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Domain_Permission_Group_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Domain_Permission_Group_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Current_User_Permission_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Current_User_Permission_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Children_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Children_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Children_Count_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Children_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Marker_Count_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Marker_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_User_Count_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_User_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Tenant_Count_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Tenant_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Reset_Password_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Reset_Password_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Domain_Info_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Domain_Info_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Users_Count_By_Status_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Users_Count_By_Status_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Hierarchy_Count_By_Status_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Hierarchy_Count_By_Status_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Hierarchy_Update_Node_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Hierarchy_Update_Node_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Marker_Children_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Marker_Children_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Marker_Distribution_Count_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Marker_Distribution_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Marker_Distribution_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Marker_Distribution_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Marker_Search_Count_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Marker_Search_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Marker_Search_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Marker_Search_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Tenant_Children_Count_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Tenant_Children_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Tenant_Children_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Tenant_Children_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Immediate_Children_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Immediate_Children_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Immediate_Parents_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Immediate_Parents_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Assign_Templates_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Assign_Templates_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Template_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Template_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Delete_Template_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Delete_Template_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Domain_Accessible_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Domain_Accessible_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Domain_Templates_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Domain_Templates_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Template_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Template_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Update_Tenant_Details_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Update_Tenant_Details_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Template_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Update_Template_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Marker_Children_Count_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Marker_Children_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Assignable_Markers_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Assignable_Markers_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Owned_Markers_By_Domain_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Owned_Markers_By_Domain_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Tenants_Within_Range_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Tenants_Within_Range_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Hierarchy_Distribution_Count_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Hierarchy_Distribution_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Hierarchy_Distribution_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Hierarchy_Distribution_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Geotags_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Geotags_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Marker_Batch_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Marker_Batch_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Markers_Status_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Update_Markers_Status_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Change_Password_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Change_Password_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Forgot_Password_Create_Link_Marker_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Forgot_Password_Create_Link_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Forgot_Password_Email_Send_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Forgot_Password_Email_Send_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Forgot_Password_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Forgot_Password_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_SMS_Statisctics_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_SMS_Statisctics_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="List_Templates_By_ParentTemplate_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/List_Templates_By_ParentTemplate_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Attach_Subjects_To_Actor_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Attach_Subjects_To_Actor_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Attach_Actors_To_Subject_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Attach_Actors_To_Subject_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_All_Entities_Subjects_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_All_Entities_Subjects_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_All_Templates_Subjects_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_All_Templates_Subjects_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_All_Roots_To_An_Actor_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_All_Roots_To_An_Actor_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Hierarchy_Get_All_Geotags_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Hierarchy_Get_All_Geotags_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Entity_Template_Names_of_Attached_Entities_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Entity_Template_Names_of_Attached_Entities_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Create_Tag_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Create_Tag_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Find_Tag_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Find_Tag_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_List_Tag_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_List_Tag_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_All_Tags_Of_An_Actor_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_All_Tags_Of_An_Actor_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Map_Subjects_To_An_Actor_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Map_Subjects_To_An_Actor_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Map_Tags_To_Entity_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Map_Tags_To_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Get_Tagged_Subject_Entities_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Get_Tagged_Subject_Entities_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Get_Tagged_Subject_Templates_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Get_Tagged_Subject_Templates_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="TagType_Create_TagType_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/TagType_Create_TagType_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="TagType_Get_All_TagType_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/TagType_Get_All_TagType_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="TagType_Get_TagType_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/TagType_Get_TagType_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Hierarchy_Update_Status_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Hierarchy_Update_Status_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Get_Marker_Entity_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Get_Marker_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Get_Template_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Get_Template_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Get_Tenant_Entity_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Get_Tenant_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Get_User_Entity_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Get_User_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Template_Status_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Update_Template_Status_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Hierarchy_Update_Nodes_Status_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Hierarchy_Update_Nodes_Status_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Validate_Payload_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Validate_Payload_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Tenants_Features_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Tenants_Features_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Permissions_To_Assign_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Permissions_To_Assign_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Assign_Templates_By_Feature_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Assign_Templates_By_Feature_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Tenant_Assign_Features_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Tenant_Assign_Features_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Hierarchy_Search_Relation_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Hierarchy_Search_Relation_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Document_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Update_Document_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="List_Document_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/List_Document_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Find_Document_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Find_Document_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Document_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Create_Document_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Tag_Entities_By_Node_Range_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Tag_Entities_By_Node_Range_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Find_All_Markers_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Find_All_Markers_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Attach_Multiple_Actors_To_Multiple_Subjects_EP" groupId="com.example.alpine-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Attach_Multiple_Actors_To_Multiple_Subjects_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Search_Tag_Entity_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Search_Tag_Entity_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Subject_Entities_By_Tags_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Subject_Entities_By_Tags_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Subject_Entities_By_Tags_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Subject_Entities_By_Tags_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="XSLT_To_Remove_Dataprovider" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/XSLT_To_Remove_Dataprovider.xslt</file>
+            <path>/_system/config/xslt/alpine</path>
+            <mediaType>application/xslt+xml</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Tag_Get_All_Marker_Templates_EP" groupId="alpine-esb.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Tag_Get_All_Marker_Templates_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Markers_Between_Tenants_EP" groupId="com.example.alpine-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Markers_Between_Tenants_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Tagged_Entity_Count_EP" groupId="com.example.alpine-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Tagged_Entity_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Tagged_Entity_List_Count_EP" groupId="com.example.alpine-registry-resource-staging.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/alpine/Get_Tagged_Entity_List_Count_EP.xml</file>
+            <path>/_system/config/endpoints/alpine</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

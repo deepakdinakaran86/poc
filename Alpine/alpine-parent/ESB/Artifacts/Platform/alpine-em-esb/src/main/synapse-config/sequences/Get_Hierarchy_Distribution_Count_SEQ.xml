@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Get_Hierarchy_Distribution_Count_SEQ" >
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_Hierarchy_Distribution_Count_SEQ"
+			value="--------" />
+	</log>
+	<script language="js"><![CDATA[authProperty = mc.getProperty('Authorization');
+           	if(authProperty != null){
+           		mc.setProperty('Authorization',authProperty);           	
+           	}else{
+			mc.setProperty('Authorization',"null");
+			}]]></script>
+	<filter regex="null" source="get-property('Authorization')">
+		<then></then>
+		<else>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+		</else>
+	</filter>
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<send>
+		<endpoint
+			key="conf:/endpoints/alpine/Get_Hierarchy_Distribution_EP.xml" />
+	</send>
+</sequence>

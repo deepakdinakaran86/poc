@@ -1,0 +1,435 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<api xmlns="http://ws.apache.org/ns/synapse" name="User_API" context="/alpine/services/users">
+   <resource methods="POST" url-mapping="/">
+      <inSequence>
+         <property name="seqName" value="Create_User_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/admin">
+      <inSequence>
+         <property name="seqName" value="Create_Admin_User_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/find">
+      <inSequence>
+         <property name="seqName" value="Find_User_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" uri-template="/list">
+      <inSequence>
+         <property name="seqName" value="List_User_SEQ" scope="default" type="STRING"/>
+         <property name="isParentDomainQueryParam" value="true" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" uri-template="/list?domain_name={domainName}">
+      <inSequence>
+         <property name="seqName" value="List_User_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain_name" expression="get-property('query.param.domain_name')" scope="default" type="STRING"/>
+         <property name="isParentDomainQueryParam" value="true" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="PUT" url-mapping="/">
+      <inSequence>
+         <property name="seqName" value="Update_User_SEQ" scope="default" type="STRING"/>       
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/delete">
+      <inSequence>
+         <property name="seqName" value="Delete_User_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/validate">
+      <inSequence>
+         <property name="seqName" value="Validate_User_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/permissions">
+      <inSequence>
+         <property name="seqName" value="Create_Permission_Group_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="PUT" url-mapping="/permissions">
+      <inSequence>
+         <property name="seqName" value="Update_Permission_Group_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" uri-template="/permissions/{pathparameter}">
+      <inSequence>
+         <property name="seqName" value="Get_Permission_Group_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter" expression="get-property('uri.var.pathparameter')" scope="default" type="STRING"/>
+         <property name="isParentDomainQueryParam" value="true" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" uri-template="/permissions/{pathparameter}?domain={domain}">
+      <inSequence>
+         <property name="seqName" value="Get_Permission_Group_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter" expression="get-property('uri.var.pathparameter')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain" expression="get-property('query.param.domain')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.domain" expression="get-property('uri.var.domain')" scope="default" type="STRING"/>
+         <property name="isParentDomainQueryParam" value="true" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="DELETE" uri-template="/permissions/{pathparameter}">
+      <inSequence>
+         <property name="seqName" value="Delete_Permission_Group_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter" expression="get-property('uri.var.pathparameter')" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="DELETE" uri-template="/permissions/{pathparameter}?domain={domain}">
+      <inSequence>
+         <property name="seqName" value="Delete_Permission_Group_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter" expression="get-property('uri.var.pathparameter')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain" expression="get-property('query.param.domain')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.domain" expression="get-property('uri.var.domain')" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" url-mapping="/permissions">
+      <inSequence>
+         <property name="seqName" value="Get_Domain_Permission_Group_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain" expression="get-property('query.param.domain')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.domain" expression="get-property('uri.var.domain')" scope="default" type="STRING"/>
+         <property name="isParentDomainQueryParam" value="true" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" url-mapping="/permissions/current">
+      <inSequence>
+         <property name="seqName" value="Get_Current_User_Permission_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/roles">
+      <inSequence>
+         <property name="seqName" value="Create_Role_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="PUT" url-mapping="/roles">
+      <inSequence>
+         <property name="seqName" value="Update_Role_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" uri-template="/roles/{pathparameter}">
+      <inSequence>
+         <property name="seqName" value="Get_Role_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter" expression="get-property('uri.var.pathparameter')" scope="default" type="STRING"/>
+         <property name="isParentDomainQueryParam" value="true" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" uri-template="/roles/{pathparameter}?domain_name={domain}">
+      <inSequence>
+         <property name="seqName" value="Get_Role_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter" expression="get-property('uri.var.pathparameter')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain_name" expression="get-property('query.param.domain_name')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.domain_name" expression="get-property('uri.var.domain_name')" scope="default" type="STRING"/>
+         <property name="isParentDomainQueryParam" value="true" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" url-mapping="/roles">
+      <inSequence>
+         <property name="seqName" value="Get_Domain_Role_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain" expression="get-property('query.param.domain_name')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.domain" expression="get-property('uri.var.domain_name')" scope="default" type="STRING"/>
+         <property name="isParentDomainQueryParam" value="true" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="DELETE" uri-template="/roles/{pathparameter}">
+      <inSequence>
+         <property name="seqName" value="Delete_Role_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter" expression="get-property('uri.var.pathparameter')" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence/>
+   </resource>
+   <resource methods="DELETE" uri-template="/roles/{pathparameter}?domain_name={domain}">
+      <inSequence>
+         <property name="seqName" value="Delete_Role_SEQ" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter" expression="get-property('uri.var.pathparameter')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain_name" expression="get-property('query.param.domain_name')" scope="default" type="STRING"/>
+         <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.domain_name" expression="get-property('uri.var.domain_name')" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/count">
+      <inSequence>
+         <property name="seqName" value="Get_User_Count_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/reset_password">
+      <inSequence>
+         <property name="seqName" value="Reset_Password_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/status/count">
+      <inSequence>
+         <property name="seqName" value="Get_Users_Count_By_Status_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/forgot_password">
+      <inSequence>
+         <property name="seqName" value="Forgot_Password_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/change_password">
+      <inSequence>
+         <property name="seqName" value="Change_Password_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="GET" url-mapping="/SMS-statistics">
+      <inSequence>
+         <property name="seqName" value="Get_SMS_Statisctics_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+</api>

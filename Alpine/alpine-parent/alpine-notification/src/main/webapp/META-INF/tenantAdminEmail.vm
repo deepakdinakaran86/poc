@@ -1,0 +1,12 @@
+<html>
+    <body>
+       Dear Customer,	
+        <div></br>
+         Please find the link to create an admin user; <a href=${content}>Admin User</a>
+        </div></br>
+        
+         Regards,</br>
+		 Galaxy 2021 Team</br></br>
+         This is a system generated message. Please do not reply to this mail.
+    </body>
+</html>

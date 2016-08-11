@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="List_Templates_By_ParentTemplate_SEQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+  <log separator=",">
+    <property name="List_Templates_By_ParentTemplate_SEQ" value="--------"/>
+  </log>
+  <property expression="get-property('Authorization')"
+    name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+  <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+  <send>
+    <endpoint key="conf:/endpoints/alpine/List_Templates_By_ParentTemplate_EP.xml"/>
+  </send>
+</sequence>

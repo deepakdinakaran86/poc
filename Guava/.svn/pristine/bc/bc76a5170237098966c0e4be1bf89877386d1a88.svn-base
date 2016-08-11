@@ -1,0 +1,74 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="Guava_Route_API" context="/galaxy-route/services/route">
+   <resource methods="POST" url-mapping="/create" inSequence="Create_Guava_Route_POI_SEQ">
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence/>
+   </resource>
+   <resource methods="POST" url-mapping="/delete" inSequence="Delete_Guava_Route_Poi_SEQ">
+      <outSequence>
+         <log separator=",">
+            <property name="Inside Out Sequence" value="--------"/>
+         </log>
+         <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+            <then>
+               <header name="To" action="remove"/>
+               <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+               <property name="HTTP_SC" value="200" scope="axis2"/>
+               <payloadFactory media-type="json">
+                  <format> {"errorCode":"$1","errorMessage":"$2"}        </format>
+                  <args>
+                     <arg evaluator="xml" expression="//jsonObject/errorCode"/>
+                     <arg evaluator="xml" expression="//jsonObject/errorMessage"/>
+                  </args>
+               </payloadFactory>
+               <log level="full"/>
+               <respond/>
+            </then>
+            <else>
+               <property name="info" scope="default">
+                  <ns:Information xmlns:ns="www.google.com"/>
+               </property>
+               <aggregate id="deletePoi">
+                  <completeCondition>
+                     <messageCount/>
+                  </completeCondition>
+                  <onComplete expression="//jsonObject" enclosingElementProperty="info">
+                     <log separator=",">
+                        <property name="Inside ONCOMPLETE " value="---------------------"/>
+                     </log>
+                     <filter source="boolean(//errorMessage)" regex="true">
+                        <then>
+                           <header name="To" action="remove"/>
+                           <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+                           <property name="HTTP_SC" value="200" scope="axis2"/>
+                           <payloadFactory media-type="json">
+                              <format> {"errorCode":"$1","errorMessage":"$2"}        </format>
+                              <args>
+                                 <arg evaluator="xml" expression="//jsonObject/errorCode"/>
+                                 <arg evaluator="xml" expression="//jsonObject/errorMessage"/>
+                              </args>
+                           </payloadFactory>
+                           <log level="full"/>
+                           <send/>
+                        </then>
+                        <else>
+                           <sequence key="Delete_Guava_Route_SEQ"/>
+                        </else>
+                     </filter>
+                  </onComplete>
+               </aggregate>
+               <payloadFactory media-type="json">
+                  <format>{ "status": "SUCCESS"}</format>
+                  <args/>
+               </payloadFactory>
+               <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+               <property name="HTTP_SC" value="200" scope="axis2" type="STRING"/>
+               <send/>
+            </else>
+         </filter>
+      </outSequence>
+      <faultSequence/>
+   </resource>
+</api>
+                        

@@ -1,0 +1,10 @@
+   registryHost : 10.234.31.201
+   registryPort : 1099   
+   registryName : distributor
+   host : 10.234.31.158
+   port : 9763
+   scheme : http
+   getAllActiveDeviceApi : /datasource-api-1.0.0/services/datasources/device_activity/active
+   getAllDeviceApi : /datasource-api-1.0.0/services/datasources/devices/findall
+   persistTransitionApi : /datasource-api-1.0.0/services/datasources/device_activity/transition
+

@@ -1,0 +1,18 @@
+brokerHosts : 192.168.2.8:2181
+messageTopicName : 
+                   - datastore
+zookeeperRoot :  /persistence
+topologyName : persistence-topology
+parentSpoutName : persist-message-spout
+parentSpoutMaxParallelism : 2
+topologyEmitInterval : 1000
+topologyMode : CLUSTER
+topologyMaxParallelism : 2
+numberOfWorkers : 2
+persistBolt : persist-bolt
+eventCandidateBolt : event-candidate-bolt
+persistBoltMaxParallelism : 2
+eventCandidateBoltMaxParallelism : 1
+kafkaStartOffSet : -1
+keyspace : devicecloud_test
+udtName : fieldmap

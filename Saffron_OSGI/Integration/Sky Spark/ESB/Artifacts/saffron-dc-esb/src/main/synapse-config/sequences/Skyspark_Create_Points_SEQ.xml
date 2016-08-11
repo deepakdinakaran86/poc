@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Skyspark_Create_Points_SEQ">
+	<log separator=",">
+		<property name="Enter Skyspark_Create_Points_SEQ" value="--------Skyspark_Create_Points_SEQ--------" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<property name="messageType" value="text/plain" scope="axis2" />
+			<script language="js"><![CDATA[
+				var escapedPayload =   mc.getProperty('escapedPayload'); 
+				
+ 				var payloadInfo ="\"assignPointsToDevices("+escapedPayload+")\""; 
+				var payLoad = "ver:\"2.0\" \n expr \n"+ payloadInfo; 
+              mc.setPayloadXML(<ns:text xmlns:ns="http://ws.apache.org/commons/ns/payload">{payLoad} 
+           </ns:text>);  
+        ]]></script> 
+			<property name="Authorization" value="Basic ZGV2aWNlY2xvdWQ6ZGV2aWNlY2xvdWQ="
+				scope="transport" type="STRING" />
+			<send receive="Skyspark_Create_Points_Response_SEQ">
+				<endpoint key="conf:/endpoints/saffron/Skyspark_Create_Points_EP.xml" />
+			</send>
+
+		</else>
+	</filter>
+</sequence>

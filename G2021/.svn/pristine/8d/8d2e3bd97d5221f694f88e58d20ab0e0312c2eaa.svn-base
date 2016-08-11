@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="description" content="UI for IOT platform">
+        <meta name="author" content="galaxy">
+		<title>Welcome to Galaxy</title>
+		<link rel="shortcut icon" href="<%=urlPrefix%><%=utils.resolveUrl('images/favicon.ico')%>">
+		<!-- Material Design fonts -->
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" />
+		<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+		
+		
+		<!-- BEGIN GLOBAL MANDATORY STYLES -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/font-awesome/css/font-awesome.min.css')%>" rel="stylesheet" type="text/css"/>
+		
+		
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/simple-line-icons/simple-line-icons.min.css')%>" rel="stylesheet" type="text/css"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/bootstrap/css/bootstrap.min.css')%>" rel="stylesheet" type="text/css"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/uniform/css/uniform.default.css')%>" rel="stylesheet" type="text/css"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css')%>" rel="stylesheet" type="text/css"/>
+		<!-- END GLOBAL MANDATORY STYLES -->
+		<!-- BEGIN PAGE LEVEL PLUGIN STYLES -->
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css')%>" rel="stylesheet" type="text/css"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/fullcalendar/fullcalendar.min.css')%>" rel="stylesheet" type="text/css"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/jqvmap/jqvmap/jqvmap.css')%>" rel="stylesheet" type="text/css"/>
+		<!-- END PAGE LEVEL PLUGIN STYLES -->
+		<!-- BEGIN PAGE STYLES -->
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/css/tasks.css')%>" rel="stylesheet" type="text/css"/>
+		<!-- END PAGE STYLES -->
+		<!-- BEGIN THEME STYLES -->
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/css/components.css')%>" id="style_components" rel="stylesheet" type="text/css"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/global/css/plugins.css')%>" rel="stylesheet" type="text/css"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/css/layout.css')%>" rel="stylesheet" type="text/css"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/css/themes/darkblue.css')%>" rel="stylesheet" type="text/css" id="style_color"/>
+		<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/css/custom.css')%>" rel="stylesheet" type="text/css"/>
+		<!-- END THEME STYLES -->
+			<!-- KendoUI Styles -->
+		<link rel="stylesheet" type="text/css" href="<%=urlPrefix%>plugins/uniform/css/uniform.default.css" />
+		<link rel="stylesheet" type="text/css" href="<%=urlPrefix%>plugins/bootstrap-switch/css/bootstrap-switch.min.css" />
+		<link rel="stylesheet" type="text/css" href="<%=urlPrefix%>css/KendoUI/kendo.common.min.css"  />
+		<link rel="stylesheet" type="text/css" href="<%=urlPrefix%>css/KendoUI/kendo.material.css"  />
+		
+		<style>
+		
+		
+		</style>
+
+	</head>	

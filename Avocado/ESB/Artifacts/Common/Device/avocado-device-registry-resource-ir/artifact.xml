@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Alpine_Device_Create_EP" groupId="avocado-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/Alpine_Device_Create_EP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Alpine_Device_Update_EP" groupId="avocado-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/Alpine_Device_Update_EP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Alpine_Hierarchy_Update_EP" groupId="avocado-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/Alpine_Hierarchy_Update_EP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Device_Claim_EP" groupId="avocado-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/Saffron_Device_Claim_EP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Device_Create_EP" groupId="avocado-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/Saffron_Device_Create_EP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Device_Update_EP" groupId="avocado-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/Saffron_Device_Update_EP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Template_Assign_EP" groupId="avocado-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/Saffron_Template_Assign_EP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

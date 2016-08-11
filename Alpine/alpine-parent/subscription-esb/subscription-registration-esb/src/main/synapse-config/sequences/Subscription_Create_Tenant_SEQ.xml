@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Create_Tenant_SEQ">
+    <log separator=",">
+        <property name="Enter Subscription_Create_Tenant_SEQ" value="Subscription_Create_Tenant_SEQ"/>
+    </log>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="create_app_status" expression="$body/jsonObject/error" scope="default" type="BOOLEAN"/>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" source="(get-property('create_app_status'))" regex="false">
+        <then>
+            <payloadFactory media-type="json">
+                <format>{  "fieldValues": [    {      "key": "tenantName",      "value": "$1"    }, {      "key": "tenantId",      "value": "$1"    },   {      "key": "contactEmail",      "value": "$2"    },    {      "key": "firstName",      "value": "$3"    },    {      "key": "lastName",      "value": "$4"    }  ]}</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('application')"/>
+                    <arg evaluator="xml" expression="get-property('email')"/>
+                    <arg evaluator="xml" expression="get-property('firstname')"/>
+                    <arg evaluator="xml" expression="get-property('lastname')"/>
+                </args>
+            </payloadFactory>
+            <property name="x-jwt-assertion" expression="get-property('Authorization')" scope="transport" type="STRING"/>
+            <property name="messageType" value="application/json" scope="axis2" type="STRING"/>
+            <send receive="Subscription_Create_Tenant_Node_SEQ">
+                <endpoint key="conf:/endpoints/subscription/Subscription_Create_Tenant_EP.xml"/>
+            </send>
+        </then>
+        <else>
+            <payloadFactory media-type="json">
+                <format>{"errorMessage":"Error creating Application in API Manager"}</format>
+                <args/>
+            </payloadFactory>
+            <header name="To" scope="default" action="remove"/>
+            <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+            <send/>
+        </else>
+    </filter>
+</sequence>

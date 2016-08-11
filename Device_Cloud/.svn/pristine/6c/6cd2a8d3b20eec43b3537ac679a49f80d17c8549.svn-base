@@ -1,0 +1,6 @@
+   registryHost : 10.234.60.12
+   registryPort : 1099   
+   registryName : distributor
+   persistAPIHost : 10.234.31.153
+   persistAPIPort : 9763
+   persistAPIBatchURL : datasource-api-1.0.0/services/datasources/data

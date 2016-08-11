@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Component_Find_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Service_Component_Find_SEQ" value="----Service_Component_Find_SEQ----"/>
+    </log>
+    <property expression="$trp:x-jwt-assertion" name="Authorization"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.)" name="serviceComponentIdPayload"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <payloadFactory media-type="json">
+        <format>$1</format>
+        <args>
+            <arg evaluator="xml"
+                expression="get-property('serviceComponentIdPayload')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <property expression="get-property('Authorization')"
+        name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <log separator=",">
+        <property expression="json-eval($.)" name="Payload Check" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <send receive="Service_Component_Find_Service_Item_Hierarchy_SEQ">
+        <endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Find_Entity_EP.xml"/>
+    </send>
+</sequence>

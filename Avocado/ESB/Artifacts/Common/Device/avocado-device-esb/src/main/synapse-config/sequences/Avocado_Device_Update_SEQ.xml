@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Avocado_Device_Update_SEQ">
+
+	<log separator=",">
+		<property name="Enter Avocado_Device_Update_SEQ" value="Avocado_Device_Update_SEQ" />
+	</log>
+	<property expression="json-eval($.saffronDevice)" name="saffronDevice"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.alpineDevice)" name="alpineDevice"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.assignTemplate)" name="assignTemplate"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.updateHierarchy)" name="updateHierarchy"
+		scope="default" type="BOOLEAN" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="x-jwt-assertion"
+		expression="$trp:x-jwt-assertion" scope="default" type="STRING"></property>
+
+	<log separator=",">
+		<property expression="get-property('saffronDevice')" name="saffronDevice"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<log separator=",">
+		<property expression="get-property('alpineDevice')" name="alpineDevice"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<log separator=",">
+		<property expression="get-property('assignTemplate')" name="assignTemplate"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+
+	<log separator=",">
+		<property expression="get-property('updateHierarchy')" name="updateHierarchy"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('saffronDevice')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+		</args>
+	</payloadFactory>
+	<property name="x-jwt-assertion" expression="get-property('x-jwt-assertion')"
+		scope="transport" type="STRING"></property>
+
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.sourceId"
+		expression="get-property('uri.var.sourceId')" scope="default" type="STRING"></property>
+
+	<send receive="Alpine_Device_Update_SEQ">
+		<endpoint key="conf:/endpoints/Saffron_Device_Update_EP.xml" />
+	</send>
+</sequence>

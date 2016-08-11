@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Avocado_List_Facility_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Avocado_List_Facility_SEQ" value="--------Avocado_List_Facility_SEQ--------" />
+	</log>
+	<property action="set" expression="$trp:x-jwt-assertion" name="Authorization"
+		scope="default" type="STRING" />
+	<property name="messageType" value="application/json" scope="axis2"
+		type="STRING"></property>
+	<send>
+		<endpoint key="conf:/endpoints/avocado/List_Facility_Marker_EP.xml" />
+	</send>
+</sequence>

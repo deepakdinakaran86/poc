@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Generic_Domain_Access_Router_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Generic_Domain_Access_Router_SEQ"
+			value="--------" />
+	</log>
+	<property expression="$trp:x-jwt-assertion" name="Authorization"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.)" name="originalBody"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<property expression="get-property('query.param.domain_name')"
+		name="query.param.domain_name" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="get-property('seqName')" name="seqName"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<script language="js"><![CDATA[payload = mc.getPayloadJSON();
+           	if(payload.domain != null){
+           		mc.setProperty('accessDomain',payload.domain);           	
+           	}
+           	if(payload.parentDomain != null){
+           		mc.setProperty('accessDomain',payload.parentDomain);           	
+           	}
+            if(payload.domainName != null){
+           		mc.setProperty('accessDomain',payload.domainName);           	
+           	}
+            if(payload.domain!=null && payload.domain.domainName != null){ 
+             	mc.setProperty('accessDomain',payload.domain.domainName);    
+           	} 
+            if (payload.parentIdentity!=null && payload.parentIdentity.domain!=null && payload.parentIdentity.domain.domainName != null){ 
+        		mc.setProperty('accessDomain',payload.parentIdentity.domain.domainName); 
+            } 
+            if (payload.documents!=null && payload.documents.domain!=null && payload.documents.domain.domainName != null){ 
+        		mc.setProperty('accessDomain',payload.documents.domain.domainName); 
+            }
+            if (payload.actor!=null && payload.actor.domain!=null && payload.actor.domain.domainName != null){ 
+            		mc.setProperty('accessDomain',payload.actor.domain.domainName);   
+          	} 
+         	var domainNameQueryParam = mc.getProperty("query.param.domain_name");
+          	if(domainNameQueryParam!=null && domainNameQueryParam!='null'){
+          		mc.setProperty('domainNameQueryParamFilter',domainNameQueryParam);   
+         	}else{
+         	mc.setProperty('query.param.domain_name','');
+         	}
+         	 
+       		var domainQueryParam = mc.getProperty("query.param.domain");
+          	if(domainQueryParam!=null && domainQueryParam!='null'){
+	          	mc.setProperty('domainQueryParamFilter',domainQueryParam);  
+          	}else{
+         	mc.setProperty('query.param.domain','');
+         	}
+         	var isParentDomainQueryParam = mc.getProperty('isParentDomainQueryParam');
+         	if(isParentDomainQueryParam!=null && isParentDomainQueryParam!='null'){
+	          	mc.setProperty('isParentDomainQueryParam','true');  
+          	}else{
+         	mc.setProperty('isParentDomainQueryParam','false');
+         	}
+         	
+         	 if (payload.startEntity!=null && payload.startEntity.domain!=null && payload.startEntity.domain.domainName != null){ 
+            		mc.setProperty('accessDomain',payload.startEntity.domain.domainName);   
+          	}
+          	
+         	]]></script>
+	<filter regex="true" source="boolean(get-property('domainQueryParamFilter'))"
+		xmlns:ns="http://org.apache.synapse/xsd">
+		<then>
+			<property expression="get-property('domainQueryParamFilter')"
+				name="accessDomain" scope="default" type="STRING" />
+		</then>
+	</filter>
+	
+	<filter regex="true"
+		source="boolean(get-property('domainNameQueryParamFilter'))" xmlns:ns="http://org.apache.synapse/xsd">
+		<then>
+			<property expression="get-property('domainNameQueryParamFilter')"
+				name="accessDomain" scope="default" type="STRING" />
+			<property action="set" expression="get-property('accessDomain')"
+				name="uri.var.accessdomain" scope="default" type="STRING"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+			<log separator="$$$$">
+				<property expression="boolean(get-property('accessDomain'))"
+					name="accessDomain status" xmlns:ns="http://org.apache.synapse/xsd" />
+			</log>
+		</then>
+	</filter>
+
+	<!-- actor domain -->
+
+	<!-- check if domain is passed in payload in any of the above ways -->
+	<filter regex="true" source="boolean(get-property('accessDomain'))"
+		xmlns:ns="http://org.apache.synapse/xsd">
+		<then>
+			<!-- Validate the access domain -->
+			<property expression="get-property('accessDomain')"
+			name="uri.var.domainAccess" scope="default" type="STRING"/>
+			<send receive="Generic_Domain_Access_Router_Res_SEQ">
+				<endpoint key="conf:/endpoints/alpine/Get_Domain_Accessible_EP.xml" />
+			</send>
+		</then>
+		<else>
+			<log separator=",">
+				<property expression="get-property('originalBody')" name="payload" />
+			</log>
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('originalBody')" />
+				</args>
+			</payloadFactory>
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<sequence key="{get-property('seqName')}" />
+		</else>
+	</filter>
+</sequence>

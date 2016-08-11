@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Marker_Distribution_Count_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_Marker_Distribution_Count_SEQ"
+			value="--------" />
+	</log>
+	<property name="domain"
+		expression="$body/jsonObject/parentDomain" scope="default"
+		type="STRING"></property>
+	<property name="statusName" expression="$body/jsonObject/statusName"
+		scope="default" type="STRING"></property>
+	<property name="searchTemplateName" expression="$body/jsonObject/searchTemplateName"
+		scope="default" type="STRING"></property>
+	<property name="statusName" expression="$body/jsonObject/statusName"
+		scope="default" type="STRING"></property>
+	<payloadFactory media-type="json">
+		<format>
+			{
+			"parentIdentity": {
+			"globalEntity": {
+			"globalEntityType":
+			"TENANT"
+			},
+			"domain": {
+			"domainName": "$1"
+			}
+			},
+			"searchTemplateName": "$2",
+			"statusName":
+			"$3"
+			}
+		</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('domain')" />
+			<arg evaluator="xml" expression="get-property('searchTemplateName')" />
+			<arg evaluator="xml" expression="get-property('statusName')" />
+		</args>
+	</payloadFactory>
+	<send>
+		<endpoint
+			key="conf:/endpoints/alpine/Get_Marker_Distribution_Count_EP.xml" />
+	</send>
+</sequence>

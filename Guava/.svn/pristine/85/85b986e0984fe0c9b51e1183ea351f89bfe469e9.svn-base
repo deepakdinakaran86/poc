@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Service_Schedule_Find_Res_SEQ" >
+<log separator=",">
+        <property
+            name="----------------Entering Service_Component_Find_Res_SEQ----------------" value="----Service_Component_Find_Res_SEQ----"/>
+        <property expression="json-eval($.)"
+            name="JSON Payload find all Entities!" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.)" name="serviceComponentEntities"
+				scope="default" type="STRING" />
+            <payloadFactory media-type="json">
+                <format>
+				{
+					  "domain": {
+					    "domainName": "$1"
+					  },
+					  "serviceScheduleName": "$2",
+					  "description": "$3",
+					  "occuranceType": "$4",
+					  "serviceScheduleStatus": {
+					    "statusName": "$5"
+					  },
+					  "serviceScheduleIdentifier": {
+					    "key": "$6",
+					    "value": "$7"
+					  },
+					  "serviceComponentEntities": $8
+				}
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('domainName')"/>
+                    <arg evaluator="xml" expression="get-property('serviceScheduleName')"/>
+                    <arg evaluator="xml" expression="get-property('description')"/>
+                    <arg evaluator="xml" expression="get-property('occuranceType')"/>
+                    <arg evaluator="xml" expression="get-property('status')"/>
+                    <arg evaluator="xml" expression="get-property('identifierKey')"/>
+                    <arg evaluator="xml" expression="get-property('identifierValue')"/>
+                    <arg evaluator="xml" expression="get-property('serviceComponentEntities')"/>
+                </args>
+            </payloadFactory>
+            <property name="RESPONSE" scope="default" type="STRING" value="true"/>
+            <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+            <send/>
+        </else>
+    </filter>
+</sequence>

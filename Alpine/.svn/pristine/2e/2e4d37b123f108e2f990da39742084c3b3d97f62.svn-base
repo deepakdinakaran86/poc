@@ -1,0 +1,39 @@
+
+Import to Api manager : please update the directory path where zip folders are stored
+-----------------------------------------------------------------------------------
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Avocado_AirHandler_APIs.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Avocado_Device_Management_APIs.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Avocado_Facility_Management.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Avocado_Genset_APIs.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Avocado_Tenant_Management.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Avocado_User_Management.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Hierarchy.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Notification.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Saffron.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Subscription.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Templates.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Tenants.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Users.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Markers.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\Avocado_AssetType_APIs.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+curl -H "Authorization:Basic YWRtaW46YWRtaW4" -F file=@"D:\export\CCD_Galaxy.zip" -k -X POST "https://10.234.31.152:9445/api-import-export-v0.9.1/import-api"
+
+
+Export from Api manager - please update the ip before executing below commands
+-----------------------------------------------------------------------------------
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Avocado_AirHandler_APIs&version=1.0.0&provider=admin" -k> Avocado_AirHandler_APIs.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Avocado_Device_Management_APIs&version=1.0.0&provider=admin" -k>  Avocado_Device_Management_APIs.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Avocado_Facility_Management&version=1.0.0&provider=admin" -k>  Avocado_Facility_Management.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Avocado_Genset_APIs&version=1.0.0&provider=admin" -k>  Avocado_Genset_APIs.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Avocado_Tenant_Management&version=1.0.0&provider=admin" -k>  Avocado_Tenant_Management.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Avocado_User_Management&version=1.0.0&provider=admin" -k>  Avocado_User_Management.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Hierarchy&version=1.0.0&provider=admin" -k>  Hierarchy.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Notification&version=1.0.0&provider=admin" -k>  Notification.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Saffron&version=1.0.0&provider=admin" -k>  Saffron.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Subscription&version=1.0.0&provider=admin" -k>  Subscription.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Templates&version=1.0.0&provider=admin" -k>  Templates.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Tenants&version=1.0.0&provider=admin" -k>  Tenants.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Users&version=1.0.0&provider=admin" -k>  Users.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Markers&version=1.0.0&provider=admin" -k>  Markers.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=Avocado_AssetType_APIs&version=1.0.0&provider=admin" -k>  AvocadoAssetTypeAPIs.zip
+curl -H "Authorization:Basic YWRtaW46YWRtaW4=" -X GET "https://10.234.31.152:9445/api-import-export-v0.9.1/export-api?name=CCD_Galaxy&version=1.0.0&provider=admin" -k>  CCD_Galaxy.zip

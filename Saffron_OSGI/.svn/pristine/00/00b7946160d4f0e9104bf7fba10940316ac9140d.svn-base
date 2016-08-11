@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.pcs.osgi</groupId>
+    <artifactId>bundler</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>jetty-alpn-osgi</artifactId>
+  <name>jetty-alpn-osgi</name>
+  <url>http://maven.apache.org</url>
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <unpack.version>1.1.2</unpack.version>
+		<export.package />
+  </properties>
+  <dependencies>
+    <dependency>
+	<groupId>org.eclipse.jetty.alpn</groupId>
+	<artifactId>alpn-api</artifactId>
+	<version>1.1.2.v20150522</version>
+</dependency>
+
+    
+  </dependencies>
+  <packaging>bundle</packaging>
+</project>

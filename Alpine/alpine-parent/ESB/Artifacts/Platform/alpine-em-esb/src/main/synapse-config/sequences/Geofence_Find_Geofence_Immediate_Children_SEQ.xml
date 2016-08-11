@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Geofence_Find_Geofence_Immediate_Children_SEQ"
+    trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator="$$$$$$">
+        <property
+            name="----------------Entering Geofence_Find_Geofence_Immediate_Children_SEQ----------------" value="----Geofence_Find_Geofence_Immediate_Children_SEQ----"/>
+        <property expression="json-eval($.)"
+            name="JSON Payload find marker!" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+    <property expression="json-eval($.)" name="identityDto"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.fieldValues)"
+        name="geofencePayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+     <property action="set"
+                expression="$body/jsonObject/domain/domainName"
+                name="domainName" scope="default" type="STRING"/>
+     <property action="set"
+                expression="$body/jsonObject/identifier/key"
+                name="identifierKey" scope="default" type="STRING"/>
+                     <property action="set"
+                expression="$body/jsonObject/identifier/value"
+                name="identifierValue" scope="default" type="STRING"/>
+     <property action="set"
+                expression="$body/jsonObject/entityTemplate/entityTemplateName"
+                name="entityTemplateName" scope="default" type="STRING"/>
+    <script language="js"><![CDATA[var payload=eval("("+mc.getProperty('geofencePayload')+")");
+                         			var value;      	      	      
+                         			for(var i in payload ){
+                         				     var key = payload[i].key;      	 		                         
+                         				     if(key		== 'type'){       	 			                   
+                         				     	type = payload[i].value;       	 			                     
+                         				     	mc.setProperty("type",type);	
+                         				     	}
+                         				     if(key		== 'geofenceName'){       	 			                   
+                         				     	geofenceName = payload[i].value;       	 			                     
+                         				     	mc.setProperty("geofenceName",geofenceName);	
+                         				     	}         
+                         				     if(key		== 'desc'){       	 			                   
+                         				     	desc = payload[i].value;       	 			                     
+                         				     	mc.setProperty("desc",desc);	
+                         				     	}                               
+                         			}]]></script>
+    <payloadFactory media-type="json">
+        <format>
+			{"actor": $1,
+			"searchTemplateName":"$2"
+			}
+		</format>
+        <args>
+            <arg evaluator="xml"
+                expression="get-property('identityDto')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml" expression="get-property('type')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <property expression="get-property('Authorization')"
+        name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <send receive="Geofence_Find_Geofence_Type_Details_SEQ">
+        <endpoint key="conf:/endpoints/alpine/Get_Immediate_Children_EP.xml"/>
+    </send>
+    </else>
+    </filter>
+</sequence>

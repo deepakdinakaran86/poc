@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventPublisher name="KafkaPublisher" statistics="enable" trace="enable" xmlns="http://wso2.org/carbon/eventpublisher">
+  <from streamName="PCOutputStream" version="1.0.0"/>
+  <mapping customMapping="disable" type="json"/>
+  <to eventAdapterType="kafka">
+    <property name="topic">galaxy-cep-alarm</property>
+    <property name="meta.broker.list">10.234.31.234:9092</property>
+  </to>
+</eventPublisher>

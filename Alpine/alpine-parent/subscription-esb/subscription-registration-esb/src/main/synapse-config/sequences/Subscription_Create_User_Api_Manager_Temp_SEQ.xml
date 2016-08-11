@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Create_User_Api_Manager_Temp_SEQ">
+    <log>
+        <property name="Enter Subscription_Create_User_Api_Manager_Temp_SEQ" value="--------"/>
+    </log>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="Authorization" expression="$trp:x-jwt-assertion" scope="default" type="STRING"/>
+    <log>
+        <property xmlns:ns="http://org.apache.synapse/xsd" name="Token Header" expression="get-property('Authorization')"/>
+    </log>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="username" expression="$body/jsonObject/userName" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="password" expression="$body/jsonObject/password" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="firstname" expression="$body/jsonObject/firstName" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="lastname" expression="$body/jsonObject/lastName" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="email" expression="$body/jsonObject/email" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="application" expression="$body/jsonObject/application" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="tier" expression="$body/jsonObject/tier" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="description" expression="$body/jsonObject/description" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="content" expression="$body/jsonObject/content" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.application" expression="get-property('application')" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.tier" expression="get-property('tier')" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.description" expression="get-property('description')" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.username" expression="get-property('username')" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.password" expression="get-property('password')" scope="default" type="STRING"/>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.subscriber" expression="$body/jsonObject/application" scope="default" type="STRING"></property>   
+     <log>
+        <property xmlns:ns="http://org.apache.synapse/xsd" name="***subscriber****" expression="get-property('uri.var.subscriber')"/>
+    </log>
+    <send receive="Subscription_Login_Api_Manager_SEQ">
+        <endpoint key="conf:endpoints/subscription/Subscription_Create_User_Api_Manager_Temp_EP.xml"/>
+    </send>
+</sequence>

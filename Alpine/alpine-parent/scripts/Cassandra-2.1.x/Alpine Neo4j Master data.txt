@@ -1,0 +1,5 @@
+// To Clear Neo4j nodes for TENANT and MARKERS.
+MATCH (tenant:TENANT),(marker:MARKER) OPTIONAL MATCH (tenant)-[tRel:Child]-(), (marker)-[mRel:Child]-() DELETE tenant,marker,tRel,mRel;
+
+// To Create Alpine.com the first node for the platform.
+CREATE (n:TENANT {identifierKey:'tenantId' ,identifierValue:'alpine' ,templateName:'DefaultTenant', domain:'root.galaxy',myDomain:'alpine.galaxy',status:'ACTIVE'}) return n;

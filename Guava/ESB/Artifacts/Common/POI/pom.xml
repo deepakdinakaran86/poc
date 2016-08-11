@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.pcs.guava-esb</groupId>
+  <artifactId>guava-poi-esb</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>guava-poi-esb</name>
+  <description>guava-poi-esb</description>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <buildcommands />
+          <projectnatures>
+            <projectnature>org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature</projectnature>
+          </projectnatures>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <modules>
+    <module>guava-poi-esb</module>
+    <module>guava-poi-composite-app</module>
+    <module>guava-poi-registry-resource-dev</module>
+	<module>guava-poi-registry-resource-dev-composite-app</module>
+	<module>guava-poi-registry-resource-ir</module>
+	<module>guava-poi-registry-resource-ir-composite-app</module>
+	<module>guava-poi-registry-resource-staging</module>
+	<module>guava-poi-registry-resource-staging-composite-app</module>
+  </modules>
+</project>

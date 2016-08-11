@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Geofence_Update_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Geofence_Update_SEQ" value="----Geofence_Update_SEQ----"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.fieldValues)"
+                name="geofencePayload" scope="default" type="STRING"/>
+            <script language="js"><![CDATA[var geofencePayload		= eval("("+mc.getProperty('geofencePayload')+")"); 
+      var geoName;	
+      var geoType;      	 
+      var geoUpdateName = mc.getProperty('geofenceName');
+      var geoUpdateType = mc.getProperty('geofenceType');	  
+      for(var i in geofencePayload )      	
+       {       	 	
+       	 		
+       var key = geofencePayload[i].key;      	 		
+        if(key		== 'geofenceName')       	 		
+       {       	 			
+        geoName = geofencePayload[i].value;       	 			        	 		
+       } 
+        if(key		== 'type')       	 		
+       {       	 			
+        geoType = geofencePayload[i].value;       	 			        	 		
+       } 
+if(geoUpdateName == geoName)	  { 
+mc.setProperty("geoNameError","false");
+       }else{
+       mc.setProperty("geoNameError","true");
+       }
+       
+       if(geoUpdateType == geoType)	  { 
+mc.setProperty("geoTypeError","false");
+       }else{
+       mc.setProperty("geoTypeError","true");
+       }
+}]]></script>
+            <filter regex="true" source="get-property('geoTypeError')">
+                <then>
+                    <log separator=",">
+                        <property name="Enter Geofence_Update_SEQ" value="----Geofence_Update_SEQ----"/>
+                    </log>
+                    <header action="remove" name="To"/>
+                    <property name="RESPONSE" scope="default"
+                        type="STRING" value="true"/>
+                    <property name="HTTP_SC" scope="axis2" value="200"/>
+                    <payloadFactory media-type="json">
+                        <format>{
+						"errorCode": "526",
+							"field": "Geofence Type"
+							}</format>
+                    </payloadFactory>
+                    <send/>
+                </then>
+            </filter>
+            <log separator=",">
+                <property name="normal" value="----Geofence_Update_SEQ normal1----"/>
+            </log>
+            <filter regex="true" source="get-property('geoNameError')">
+                <then>
+                    <log separator=",">
+                        <property
+                            expression="get-property('geoNameError')" name="normal2"/>
+                    </log>
+                    <header action="remove" name="To"/>
+                    <property name="RESPONSE" scope="default"
+                        type="STRING" value="true"/>
+                    <property name="HTTP_SC" scope="axis2" value="200"/>
+                    <payloadFactory media-type="json">
+                        <format>{ "errorCode": "526",
+							"field": "Geofence Name"}</format>
+                    </payloadFactory>
+                    <send/>
+                </then>
+                <else>
+                    <payloadFactory media-type="json">
+                        <format>$1</format>
+                        <args>
+                            <arg evaluator="xml" expression="get-property('geofenceEntityPayload')"/>
+                        </args>
+                    </payloadFactory>
+                    <property expression="get-property('Authorization')"
+                        name="x-jwt-assertion" scope="transport" type="STRING"/>
+                    <property name="messageType" scope="axis2"
+                        type="STRING" value="application/json"/>
+                    <send receive="Geofence_Find_Geofence_Type_For_Update_SEQ">
+                        <endpoint key="conf:/endpoints/alpine/Update_Marker_EP.xml"/>
+                    </send>
+                </else>
+            </filter>
+        </else>
+    </filter>
+</sequence>

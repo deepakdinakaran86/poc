@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Physical_Quantity_API" context="/saffron/services/phy_quantity">
+    <resource methods="GET" url-mapping="/all" inSequence="Saffron_Get_All_Physical_Quantity_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" inSequence="Saffron_Create_Physical_Quantity_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="DELETE PUT GET" uri-template="/{pathparameter}" inSequence="Saffron_Read_Update_Delete_Physical_Quantity_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

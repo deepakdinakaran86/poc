@@ -1,0 +1,11 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Avocado_Get_Tenant_Resources_EP" >
+	<http uri-template="http://10.236.166.114:8281/alpine/services/users/permissions?domain={query.param.domain}" method="get">
+		<suspendOnFailure>
+			<progressionFactor>1.0</progressionFactor>
+		</suspendOnFailure>
+		<markForSuspension>
+			<retriesBeforeSuspension>0</retriesBeforeSuspension>
+			<retryDelay>0</retryDelay>
+		</markForSuspension>
+	</http>
+</endpoint>

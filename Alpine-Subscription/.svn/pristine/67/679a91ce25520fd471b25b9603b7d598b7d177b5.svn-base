@@ -1,0 +1,68 @@
+/**
+* Copyright 2014 Pacific Controls Software Services LLC (PCSS). All Rights Reserved.
+*
+* This software is the property of Pacific Controls  Software  Services LLC  and  its
+* suppliers. The intellectual and technical concepts contained herein are proprietary 
+* to PCSS. Dissemination of this information or  reproduction  of  this  material  is
+* strictly forbidden  unless  prior  written  permission  is  obtained  from  Pacific 
+* Controls Software Services.
+* 
+* PCSS MAKES NO REPRESENTATION OR WARRANTIES ABOUT THE SUITABILITY  OF  THE  SOFTWARE,
+* EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE  IMPLIED  WARRANTIES  OF
+* MERCHANTANILITY, FITNESS FOR A PARTICULAR PURPOSE,  OR  NON-INFRINGMENT.  PCSS SHALL
+* NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF  USING,  MODIFYING
+* OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+**/
+
+/**
+* Version    :   1.0 
+* User       :   PCS
+* Function   :   CSS file for Manage Entity Template Action.
+**/
+
+
+
+.inputform-control {
+	display: block;
+	width: 100%;
+	height: 34px;
+	padding: 6px 12px;
+	margin-top: 5px;
+	margin-left: -80px;
+	font-size: 14px;
+	line-height: 1.42857143;
+	color: #555;
+	background-color: #fff;
+	background-image: none;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	-webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
+	-o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+	transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+.panel {
+	margin-bottom: 0px;
+	background-color: #fff;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+.alert {
+	padding: 15px;
+	margin-bottom: 5px;
+	border: 1px solid transparent;
+	border-radius: 4px;
+}
+
+.gridToolbar {
+	min-height: 20px;
+	padding: 5px 10px 5px 10px;
+	margin-top: 0px;
+	background-color: #FFFFFF;
+	border-bottom: 1px solid #FFFFFF;
+}

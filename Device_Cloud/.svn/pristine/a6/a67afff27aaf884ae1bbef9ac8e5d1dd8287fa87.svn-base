@@ -1,0 +1,11 @@
+RW5naW5lIE9pbCBUZW1wZXJhdHVyZSAxOm4wLTI1MA==        :   engOilTemp
+RW5naW5lIEZ1ZWwgUmF0ZTpuNDktODY3                    :   engFuelRate
+QWNjZWxlcmF0b3IgUGVkYWwgUG9zaXRpb24gMTpuNDktNzky    :   acceleratorPedalPos
+RW5naW5lIFNwZWVkOm4wLTM0                            :   engSpeed
+QmFyb21ldHJpYyBQcmVzc3VyZTpuMC0zMjM=                :   barometricPressure
+TGF0aXR1ZGU=                                        :   latitude
+TG9uZ2l0dWRl                                        :   longitude
+RW5naW5lIE9pbCBQcmVzc3VyZTpuMC0yNTU=                :   engOilPressure
+Q3J1aXNlIENvbnRyb2wgU2V0IFNwZWVkOm4wLTI2MA==        :   cruiseControlSetSpeed
+V2hlZWwtQmFzZWQgVmVoaWNsZSBTcGVlZDpuNDktODEx        :   wheelBasedVehicleSpeed
+RnVlbCBMZXZlbCAxOm40OS04NzM=                        :   fuelLevel

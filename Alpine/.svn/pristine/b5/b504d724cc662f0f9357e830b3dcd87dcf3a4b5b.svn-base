@@ -1,0 +1,222 @@
+
+===============================
+Cassandra for Enity tables
+====================================
+
+CREATE KEYSPACE galaxy_master WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+USE galaxy_master;
+
+CREATE TYPE fieldmap (
+  key text,
+  value text
+);
+
+CREATE TABLE galaxy_master.status (
+    uuid timeuuid PRIMARY KEY,
+    status_key int,
+    status_name text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 500
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX galaxy_master_status_status_name_idx_1 ON galaxy_master.status (status_name);
+
+CREATE TABLE galaxy_master.domain (
+    name text,
+    domain_url text,
+    max_concurrent_users int,
+    max_users int,
+    status_key int,
+    PRIMARY KEY (name,status_key,max_concurrent_users,max_users)
+) WITH CLUSTERING ORDER BY (status_key ASC,max_concurrent_users ASC,max_users ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 300
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+
+CREATE TABLE galaxy_master.platform_entity_template (
+    platform_entity_type text,
+    field_validation map<text, text>,
+    platform_entity_template_name text,
+    html_page blob,
+    identifier_field text,
+    is_modifiable boolean,
+    is_sharable boolean,
+    status_key int,
+	access_scope text,
+    PRIMARY KEY (platform_entity_type,platform_entity_template_name,status_key)
+) WITH CLUSTERING ORDER BY (platform_entity_template_name ASC,status_key ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 300
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX galaxy_master_platform_entity_template_is_modifiable_idx ON galaxy_master.platform_entity_template (is_modifiable);
+CREATE INDEX galaxy_master_platform_entity_template_is_sharable_idx ON galaxy_master.platform_entity_template (is_sharable);
+CREATE INDEX galaxy_master_platform_entity_template_accessscope ON galaxy_master.platform_entity_template (access_scope);
+CREATE INDEX galaxy_master_platform_entity_template_fieldvalidation ON galaxy_master.platform_entity_template (keys(field_validation));
+
+
+CREATE TABLE galaxy_master.entity_template (
+    domain text,
+    domain_type text,
+	entity_template_id timeuuid,
+    entity_template_name text,
+    field_validation map<text, text>,
+    platform_entity_template_name text,
+    platform_entity_type text,
+	parent_template text,
+    html_page blob,
+    identifier_field text,
+    is_modifiable boolean,
+    is_sharable boolean,
+    status_key int,
+    status_name text,
+	access_scope text,
+	PRIMARY KEY ((domain,platform_entity_type),status_key,entity_template_id)
+) WITH CLUSTERING ORDER BY (status_key ASC)
+	AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 300
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX galaxy_master_entity_template_is_modifiable_idx ON galaxy_master.entity_template (is_modifiable);
+CREATE INDEX galaxy_master_entity_template_is_sharable_idx ON galaxy_master.entity_template (is_sharable);
+CREATE INDEX galaxy_master_entity_template_is_entity_template_name ON galaxy_master.entity_template (entity_template_name);
+CREATE INDEX galaxy_master_entity_template_accessscope ON galaxy_master.entity_template (access_scope);
+CREATE INDEX galaxy_master_entity_template_fieldvalidation ON galaxy_master.entity_template (keys(field_validation));
+
+CREATE MATERIALIZED VIEW galaxy_master.entity_template_parent AS
+    SELECT *
+    FROM galaxy_master.entity_template
+    WHERE domain IS NOT NULL AND platform_entity_type IS NOT NULL AND status_key IS NOT NULL AND entity_template_id IS NOT NULL and parent_template is not null
+    PRIMARY KEY ((domain, platform_entity_type), parent_template,status_key, entity_template_id)
+    WITH CLUSTERING ORDER BY (parent_template ASC,status_key ASC, entity_template_id ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND comment = ''
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99PERCENTILE';
+
+CREATE TABLE galaxy_master.entity (
+	entity_id text,
+    dataprovider list<frozen<fieldmap>>,
+    domain text,
+    domain_type text,
+    entity_template_name text,
+    field_values list<frozen<fieldmap>>,
+    platform_entity_type text,
+    identifier frozen<fieldmap>,
+    status_key int,
+    status_name text,
+    tree frozen<fieldmap>,
+	access_scope text,
+	PRIMARY KEY((domain,entity_template_name),platform_entity_type,status_key,entity_id)
+) WITH CLUSTERING ORDER BY (platform_entity_type DESC,status_key ASC,entity_id ASC)
+	AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 300
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX galaxy_master_entity_dataprovider_idx ON galaxy_master.entity (dataprovider);
+CREATE INDEX galaxy_master_entity_field_values_idx_1 ON galaxy_master.entity (field_values);
+CREATE INDEX galaxy_master_entity_tree_idx ON galaxy_master.entity (tree);
+CREATE INDEX galaxy_master_entity_access_scope ON galaxy_master.entity (access_scope);
+CREATE INDEX galaxy_master_entity_identifier_idx ON galaxy_master.entity (identifier);
+
+CREATE TABLE galaxy_master.platform_entity (
+    description text,
+    platform_entity_type text,
+    is_default boolean,
+    is_sharable boolean,
+    status_key int,
+    type_code text,
+	access_scope text,
+	PRIMARY KEY(platform_entity_type,status_key,is_sharable,is_default)
+) WITH CLUSTERING ORDER BY (status_key ASC,is_sharable ASC,is_default ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = {'keys':'ALL', 'rows_per_partition':'NONE'}
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 300
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX platform_entity_ACCESS_SCOPE ON galaxy_master.platform_entity (access_scope);
+CREATE INDEX platform_entity_type_code_idx_1 ON galaxy_master.platform_entity (type_code);
+
+// For platform_audit_log
+CREATE TABLE galaxy_master.platform_audit_log (
+    actor text,
+    user_name text,
+	action text,
+	target text,
+	target_identity text,
+	ip_address text,
+	start_time text,
+	end_time text,
+	total_time text,
+	remarks text,
+	actor_identity text,
+	resource_url text,
+	PRIMARY KEY(user_name, start_time, resource_url)
+);
+
+CREATE INDEX galaxy_master_stg_entity_template_parent_template ON galaxy_master.entity_template (parent_template);

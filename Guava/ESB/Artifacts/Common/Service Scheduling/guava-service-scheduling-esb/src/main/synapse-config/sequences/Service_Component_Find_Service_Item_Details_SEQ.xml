@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Component_Find_Service_Item_Details_SEQ"
+	trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property
+			name="----------------Entering Service_Component_Find_Service_Item_Details_SEQ"
+			value="----Service_Component_Find_Service_Item_Details_SEQ----" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.[0])" name="immidiateChildrenPayload"
+				scope="default" type="STRING" />
+			<payloadFactory media-type="json">
+				<format>[$1]</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('immidiateChildrenPayload')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="Service_Component_Find_Res_SEQ">
+				<endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Find_All_Entities_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

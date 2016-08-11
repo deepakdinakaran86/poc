@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Create_Points_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Avocado_Create_Points_SEQ" value="--------"/>
+    </log>
+    <payloadFactory media-type="json">
+        <format>{
+			"entities": $1,
+			"domain": {
+			"domainName": "$2"
+			}
+			}</format>
+        <args>
+            <arg evaluator="xml" expression="get-property('payload')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml"
+                expression="get-property('equipDomain')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <property expression="get-property('Authorization')"
+        name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <send receive="Avocado_Attach_Point_Parents_SEQ">
+        <endpoint key="conf:/endpoints/air-handler/Avocado_Create_Points_EP.xml"/>
+    </send>
+</sequence>

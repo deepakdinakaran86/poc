@@ -1,0 +1,8 @@
+   zookeeperRoot : /kafka
+   nimbusHost : 10.234.31.234
+   thriftPort : 6627
+   zookeeperPort : 2181
+   zookeeperServers: 10.234.31.234
+   zookeeperHosts: 10.234.31.234:2182
+   maxSpoutSpending: 1000
+   

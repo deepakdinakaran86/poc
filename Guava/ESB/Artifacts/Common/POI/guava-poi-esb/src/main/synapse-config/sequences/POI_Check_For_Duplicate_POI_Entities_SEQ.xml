@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="POI_Check_For_Duplicate_POI_Entities_SEQ"
+	xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property expression="json-eval($.)"
+			name="Enter POI_Check_For_Duplicate_POI_Entities_SEQ" xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<property expression="$trp:x-jwt-assertion" name="Authorization"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.)" name="poiPayload" scope="default"
+		type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<payloadFactory media-type="json">
+		<format> {"poiEntities": $1 }</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('poiPayload')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+		</args>
+	</payloadFactory>
+	<iterate attachPath="//jsonObject" expression="//poiEntities"
+		id="poiUniqnessCheck" preservePayload="true" xmlns:ns="http://org.apache.synapse/xsd">
+		<target>
+			<sequence>
+				<log level="custom">
+					<property expression="json-eval($.poiEntities)" name="poiPayload" />
+				</log>
+				<property expression="json-eval($.poiEntities.poiEntity)"
+					name="currentpoiEntityPayload" scope="default" type="STRING" />
+				<property expression="json-eval($.poiEntities.poiEntity.fieldValues)"
+					name="poiEntityFieldValues" scope="default" type="STRING" />
+				<property expression="//poiEntities/poiEntity/domain/domainName"
+					name="poiDomain" scope="default" type="STRING" />
+				<property
+					expression="//poiEntities/poiEntity/entityTemplate/entityTemplateName"
+					name="poiTemplate" scope="default" type="STRING" />
+				<script language="js"><![CDATA[var fieldValues		=eval("("+mc.getProperty('poiEntityFieldValues')+")"); 
+           	      	 
+      for(var i in fieldValues )      	 
+       {       	 	     	 		
+        var key = fieldValues[i].key;      	 		 
+     
+        if(key		== 'poiName')       	 		
+       {       	 			 
+       	poiName = fieldValues[i].value;       	 			 
+         mc.setProperty("poiName",poiName);	 		
+        }  
+       }]]></script>
+				<payloadFactory media-type="json">
+					<format>{
+						"searchFields": [
+						{
+						"key": "poiName",
+						"value": "$1"
+						}
+						],
+						"domain": {
+						"domainName": "$2"
+						},
+						"entityTemplate": {
+						"entityTemplateName": "$3"
+						}
+						}</format>
+					<args>
+						<arg evaluator="xml" expression="get-property('poiName')" />
+						<arg evaluator="xml" expression="get-property('poiDomain')" />
+						<arg evaluator="xml" expression="get-property('poiTemplate')" />
+					</args>
+				</payloadFactory>
+				<property name="varUniqnessCheck" pattern="regex" scope="default"
+					type="BOOLEAN" value="true" />
+				<property expression="get-property('Authorization')" name="x-jwt-assertion"
+					scope="transport" type="STRING" />
+				<property name="messageType" scope="axis2" type="STRING"
+					value="application/json" />
+				<log separator=",">
+					<property expression="json-eval($.)" name="Check Search payload" />
+				</log>
+				<send>
+					<endpoint key="conf:/endpoints/poi/POI_Get_Entity_Search_EP.xml" />
+				</send>
+			</sequence>
+		</target>
+	</iterate>
+</sequence>

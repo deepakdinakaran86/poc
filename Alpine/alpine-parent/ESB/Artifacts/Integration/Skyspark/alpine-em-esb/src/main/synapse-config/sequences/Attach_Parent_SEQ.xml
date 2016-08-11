@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Attach_Parent_SEQ">
+    <log separator=",">
+        <property name="Enter Attach_Parent_SEQ" value="--------"/>
+    </log>
+    <send>
+        <endpoint key="conf:/endpoints/alpine/Attach_Parent_EP.xml"/>
+    </send>
+</sequence>

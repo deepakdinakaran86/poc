@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="List_User_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter List_User_SEQ" value="--------"/>
+    </log>
+    <property expression="get-property('query.param.domain_name')"
+        name="query.param.domain" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <log>
+        <property expression="get-property('query.param.domain_name')"
+            name="Domain" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter regex="false"
+        source="boolean(get-property('query.param.domain_name'))" xmlns:ns="http://org.apache.synapse/xsd">
+        <then>
+            <log level="custom">
+                <property name="*********" value="NULL Property Value"/>
+            </log>
+            <property name="query.param.domain_name" scope="default"
+                type="STRING" value=""/>
+        </then>
+        <else>
+            <log level="custom">
+                <property name="*********" value="NOT NULL Property Value"/>
+            </log>
+        </else>
+    </filter>
+    <property expression="get-property('Authorization')"
+        name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <send>
+        <endpoint key="conf:/endpoints/alpine/List_User_EP.xml"/>
+    </send>
+</sequence>

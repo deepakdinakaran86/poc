@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+ 
+    <definition name="BaseTemplate"
+      template="/WEB-INF/jsp/defaultTemplate.jsp">
+        <put-attribute name="title"     value="Galaxy 2021" />
+        <put-attribute name="headTag"   value="/WEB-INF/jsp/fragments/headTag.jsp" />
+        <put-attribute name="header"    value="/WEB-INF/jsp/fragments/bodyHeader.jsp" />
+        <put-attribute name="menu"      value="/WEB-INF/jsp/fragments/menu.jsp" />
+        <put-attribute name="content"   value="/WEB-INF/jsp/device.jsp" />
+        <put-attribute name="footer"    value="/WEB-INF/jsp/fragments/footer.jsp" />
+    </definition>
+    
+</tiles-definitions>

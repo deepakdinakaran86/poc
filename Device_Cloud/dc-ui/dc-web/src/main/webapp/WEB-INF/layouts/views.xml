@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="login" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/login.jsp" />
+		<put-attribute name="menu" value="" />
+	</definition>
+
+	<definition name="device" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/device.jsp" />
+	</definition>
+
+	<definition name="devicetab" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/devicetab.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+
+	<definition name="managedevice" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/devicemgt.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+
+	<definition name="livetracking" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/liveTracking.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+		<definition name="historytracking" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/historytracking.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+			<definition name="writeback" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/writeback.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="createdevice" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/createdevice.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="writebackbatch" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/writebackbatch.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+
+	<definition name="writebacklog" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/writebacklog.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="configTemplate" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/configTemplate.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="createConfigTemplate" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/createConfigTemplate.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="mapParameterConfig" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/mapParameterConfig.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="mapParameterEdit" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/mapParameterEdit.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="parameterConfiguration" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/parameterConfiguration.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="parameterDeviceConfiguration" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/parameterDeviceConfiguration.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+	<definition name="parameterView" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/parameterView.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="headTag" value="" />
+		<put-attribute name="header" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+	
+
+</tiles-definitions>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="POI_Find_POI_Res_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property
+            name="----------------Entering POI_Find_POI_Res_SEQ----------------" value="----POI_Find_POI_Res_SEQ----"/>
+        <property expression="json-eval($.)"
+            name="JSON Payload find marker!" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.[0].dataprovider)"
+                name="poiTypePayload" scope="default" type="STRING"/>
+            <payloadFactory media-type="json">
+                <format>
+			 {
+			  "domainName": "$1",
+			  "poiType": "$2",
+			  "poiName": "$3",
+			  "poiIdentifier": {
+			    "key": "$4",
+			    "value": "$5"
+			  },
+			  "poiTypeValues": $6,
+			  "status": "$7",
+			  "latitude": "$8",
+			  "longitude": "$9",
+			  "radius": "$10",
+			  "description": "$11"
+			}
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('domainName')"/>
+                    <arg evaluator="xml" expression="get-property('poiType')"/>
+                    <arg evaluator="xml" expression="get-property('poiName')"/>
+                    <arg evaluator="xml" expression="get-property('identifierKey')"/>
+                    <arg evaluator="xml" expression="get-property('identifierValue')"/>
+                    <arg evaluator="xml" expression="get-property('poiTypePayload')"/>
+                    <arg evaluator="xml" expression="get-property('status')"/>
+                    <arg evaluator="xml" expression="get-property('latitude')"/>
+                    <arg evaluator="xml" expression="get-property('longitude')"/>
+                    <arg evaluator="xml" expression="get-property('radius')"/>
+                    <arg evaluator="xml" expression="get-property('description')"/>
+                </args>
+            </payloadFactory>
+            <property name="RESPONSE" scope="default" type="STRING" value="true"/>
+            <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+            <send/>
+        </else>
+    </filter>
+</sequence>

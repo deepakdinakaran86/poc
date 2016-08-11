@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Create_Guava_Schedule_Route_Hierarchy_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Create_Guava_Schedule_Route_Hierarchy_SEQ" value="--------"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <payloadFactory media-type="json">
+                <format> {"actor": $1,
+                   			 "subjects": [$2] }</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('routeIdentity')"/>
+                    <arg evaluator="xml" expression="get-property('scheduleIdentifier')"/>
+                </args>
+            </payloadFactory>
+            <log separator=",">
+                <property expression="json-eval($.)" name="heirarchy"/>
+            </log>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send>
+                <endpoint key="conf:/endpoints/schedule/Create_Guava_Schedule_Route_Hierarchy_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

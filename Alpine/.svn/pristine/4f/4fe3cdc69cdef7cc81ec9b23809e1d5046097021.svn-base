@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Marker_Distribution_Count_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_Marker_Distribution_Count_SEQ"
+			value="--------" />
+	</log>
+
+	<script language="js"><![CDATA[
+		payload = mc.getPayloadJSON();
+	 	if(payload.parentDomain != null){ 
+             mc.setProperty('domain',payload.parentDomain);    
+         } 
+        if(payload.searchTemplateName != null){ 
+             mc.setProperty('searchTemplateName',payload.searchTemplateName);    
+         } 
+        if(payload.statusName !=null){ 
+            mc.setProperty('statusName',payload.statusName);    
+         } 
+         if(payload.isParentDomain!=null){ 
+            mc.setProperty('isParentDomain',payload.isParentDomain);    
+         }else{
+          mc.setProperty('isParentDomain',false);  
+         }
+    	]]></script>
+	<payloadFactory media-type="json">
+		<format>
+			{
+			"parentIdentity": {
+			"platformEntity": {
+			"platformEntityType":
+			"TENANT"
+			},
+			"domain": {
+			"domainName": "$1"
+			}
+			},
+			"searchTemplateName": "$2",
+			"searchEntityType": "MARKER",
+			"statusName":
+			"$3",
+			"isParentDomain":"$4"
+			}
+		</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('domain')" />
+			<arg evaluator="xml" expression="get-property('searchTemplateName')" />
+			<arg evaluator="xml" expression="get-property('statusName')" />
+			<arg evaluator="xml" expression="get-property('isParentDomain')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+		</args>
+	</payloadFactory>
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<send>
+		<endpoint
+			key="conf:/endpoints/alpine/Get_Marker_Distribution_Count_EP.xml" />
+	</send>
+</sequence>

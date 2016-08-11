@@ -1,0 +1,44 @@
+.fb-component{padding:2px;cursor:move}.fb-component input{cursor:move}.fb-component label{cursor:move}.fb-component select{cursor:move}.fb-component textarea{cursor:move;height:50px;}.fb-form-object-editable{padding:10px}.fb-form-object-editable.fb-draggable{cursor:move}.fb-form-object-editable.fb-draggable input{cursor:move}.fb-form-object-editable.fb-draggable label{cursor:pointer}.fb-form-object-editable.fb-draggable select{cursor:move}.fb-form-object-editable.fb-draggable textarea{cursor:move}.fb-form-object-editable.empty{cursor:default;margin:6px;height:80px;border:dashed 1px #aaa;background-color:#eee}.fb-draggable.dragging{background-color:#ffffff;position:absolute;z-index:800;-webkit-box-shadow:#666 0 0 13px;-moz-box-shadow:#666 0 0 13px;box-shadow:#666 0 0 13px}.fb-required:after{color:#b94a48;content:' *'}.fb-builder{min-height:250px}.popover{max-width:400px;}.popover .control-label{text-align:left}.popover form{width:auto;}
+
+.fb-component .gxIcon-uiToolTextInput {
+background-image: url("../../../../../themes/default/images/designer/textbox.png");
+width:13px;
+height:13px;
+display: block;
+}
+.fb-component .gxIcon-uiToolTextArea {
+background-image: url("../../../../../themes/default/images/designer/textarea.png");
+width:13px;
+height:13px;
+display: block;
+}
+.fb-component .gxIcon-uiToolRadio {
+background-image: url("../../../../../themes/default/images/designer/radio.png");
+width:13px;
+height:13px;
+display: block;
+}
+.fb-component .gxIcon-uiToolCheckbox {
+background-image: url("../../../../../themes/default/images/designer/checkbox.png");
+width:13px;
+height:13px;
+display: block;
+}
+.fb-component .gxIcon-uiToolDropDown {
+background-image: url("../../../../../themes/default/images/designer/dropdown.png");
+width:13px;
+height:13px;
+display: block;
+}
+.fb-component .gxIcon-uiToolDateTimePicker {
+background-image: url("../../../../../themes/default/images/designer/dt.png");
+width:13px;
+height:13px;
+display: block;
+}
+.fb-component .gxIcon-uiToolButton {
+background-image: url("../../../../../themes/default/images/designer/but.png");
+width:13px;
+height:13px;
+display: block;
+}

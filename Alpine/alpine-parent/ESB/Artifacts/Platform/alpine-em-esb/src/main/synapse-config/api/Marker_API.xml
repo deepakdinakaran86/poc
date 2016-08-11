@@ -1,0 +1,242 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Marker_API" context="/alpine/services/markers">
+   <resource methods="POST" url-mapping="/">
+      <inSequence>
+         <property name="seqName" value="Create_Marker_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/find">
+      <inSequence>
+         <property name="seqName" value="Find_Marker_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/list">
+      <inSequence>
+         <property name="seqName" value="List_Marker_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/list/filter">
+      <inSequence>
+         <property name="seqName" value="List_Filter_Marker_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="PUT" url-mapping="/">
+      <inSequence>
+         <property name="seqName" value="Update_Marker_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/delete">
+      <inSequence>
+         <property name="seqName" value="Delete_Marker_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/validate">
+      <inSequence>
+         <property name="seqName" value="Validate_Marker_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/count">
+      <inSequence>
+         <property name="seqName" value="Get_Marker_Count_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/children/count">
+      <inSequence>
+         <property name="seqName" value="Get_Marker_Children_Count_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/children">
+      <inSequence>
+         <property name="seqName" value="Get_Marker_Children_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/distribution/count">
+      <inSequence>
+         <property name="seqName" value="Get_Marker_Distribution_Count_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/distribution">
+      <inSequence>
+         <property name="seqName" value="Get_Marker_Distribution_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/fieldvalue/search/count">
+      <inSequence>
+         <property name="seqName" value="Get_Marker_Search_Count_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/fieldvalue/search">
+      <inSequence>
+         <property name="seqName" value="Get_Marker_Search_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/batch">
+      <inSequence>
+         <property name="seqName" value="Create_Marker_Batch_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+     <resource methods="POST" uri-template="/status/{statusName}">
+      <inSequence>
+         <property name="seqName" value="Update_Markers_Status_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+   <resource methods="POST" url-mapping="/findAll">
+      <inSequence>
+         <property name="seqName" value="Find_All_Markers_SEQ" scope="default" type="STRING"/>
+         <sequence key="Generic_Domain_Access_Router_SEQ"/>
+      </inSequence>
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence>
+         <log level="custom">
+            <property name="message" expression="get-property('ERROR_MESSAGE')"/>
+         </log>
+      </faultSequence>
+   </resource>
+</api>
+                        

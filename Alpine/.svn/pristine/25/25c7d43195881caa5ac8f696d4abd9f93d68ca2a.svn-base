@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Update_Tenant_Node_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Update_Tenant_Node_SEQ" value="--------" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<property name="entityTemplateName"
+				expression="$body/jsonObject/entityTemplate/entityTemplateName"
+				scope="default" type="STRING"></property>
+			<property name="domain" expression="$body/jsonObject/domain/domainName"
+				scope="default" type="STRING"></property>
+			<payloadFactory media-type="json">
+				<format>{
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"globalEntity": {
+					"globalEntityType":
+					"TENANT"
+					},
+					"identifier": {
+					"key": "tenantName",
+					"value": "$3"
+					},
+					"entityStatus": {
+					"statusName": "$4"
+					}
+					}</format>
+				<args>
+					<arg expression="get-property('domain')" evaluator="xml"></arg>
+					<arg expression="get-property('entityTemplateName')" evaluator="xml"></arg>
+					<arg expression="get-property('identifierValue')" evaluator="xml"></arg>
+					<arg expression="get-property('status')" evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<property name="x-jwt-assertion" expression="get-property('Authorization')"
+				scope="transport" type="STRING"></property>
+			<property name="messageType" value="application/json" scope="axis2"
+				type="STRING"></property>
+			<send>
+				<endpoint key="conf:/endpoints/alpine/Hierarchy_Update_Node_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

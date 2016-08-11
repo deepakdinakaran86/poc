@@ -1,0 +1,13 @@
+brokerHosts : 10.131.5.12:2181
+messageTopicName : device-activity-communication				   
+zookeeperRoot :  /kafka
+topologyName : device-activity-monitor-topology
+parentSpoutName : device-activity-monitor-spout
+parentSpoutMaxParallelism : 2
+topologyEmitInterval : 2000
+topologyMode : LOCAL
+topologyMaxParallelism : 2
+numberOfWorkers : 2
+kafkaStartOffSet : -1
+keyspace : devicecloud_datacenter
+timetolive : 15

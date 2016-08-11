@@ -1,0 +1,8 @@
+#File monitor configurations
+
+#directory to be modified for changes.
+scan.directory=D:\\Monitor
+#Scan frequency in milli seconds
+scan.interval=500
+#Kafka topic for fault message
+fault.message.stream=fault_data_stream

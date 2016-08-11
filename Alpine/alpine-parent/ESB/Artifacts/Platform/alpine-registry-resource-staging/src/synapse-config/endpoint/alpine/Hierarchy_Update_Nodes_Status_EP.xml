@@ -1,0 +1,11 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Hierarchy_Update_Nodes_Status_EP" >
+	<http uri-template="http://10.236.166.111:9763/alpine-hierarchy-1.0.0/services/hierarchy/batch/status/{uri.var.statusName}" method="put">
+		<suspendOnFailure>
+			<progressionFactor>1.0</progressionFactor>
+		</suspendOnFailure>
+		<markForSuspension>
+			<retriesBeforeSuspension>0</retriesBeforeSuspension>
+			<retryDelay>0</retryDelay>
+		</markForSuspension>
+	</http>
+</endpoint>

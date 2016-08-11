@@ -1,0 +1,12 @@
+   rmiServerHost : localhost
+   rmiPort : 1099   
+   jmsHostUrl : tcp://localhost:61616
+   kafkaBrokers : pcss-hdop04:9093
+   kafkaBrokerSeeds : pcss-hdop04
+   kafkaPort : 9093
+   zookeeper : pcss-hdop04:2181
+   zookeeperSessionTimeout : 4000
+   zookeeperSyncTime : 200
+   kafkaAutoCommitInterval : 1000
+   kafkaAutooffsetReset : smallest
+

@@ -1,0 +1,4 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Get_Marker_Count_EP" >
+<!-- 	 <http method="post" uri-template="http://10.234.31.201:9764/alpine-marker-1.0.0/services/markers/count"/> -->
+     <http method="post" uri-template="http://10.234.31.154:9763/alpine-marker-1.0.0/services/markers/count"/>
+</endpoint>

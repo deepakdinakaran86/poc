@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Register_Datasource_SEQ">
+    <log separator=",">
+        <property name="Enter Saffron_Register_Datasource_SEQ" value="--------"/>
+    </log>
+    <send>
+        <endpoint key="conf:/endpoints/saffron/Saffron_Register_Datasource_EP.xml"/>
+    </send>
+</sequence>

@@ -1,0 +1,11 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Update_Markers_Status_EP" > 
+	<address method="post" uri="http://10.234.31.201:8080/alpine-marker-1.0.0/services/markers/status/{uri.var.statusName}" > 
+		<suspendOnFailure>
+			<progressionFactor>1.0</progressionFactor>
+		</suspendOnFailure>
+		<markForSuspension>
+		  	<retriesBeforeSuspension>0</retriesBeforeSuspension>
+			<retryDelay>0</retryDelay>
+		</markForSuspension>
+	</address>
+</endpoint>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Validate_Tags_Entities_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Validate_Tags_Entities_SEQ" value="--------"></property>
+	</log>
+	<!-- Fetch tag entities and send as request to End service -->
+	<iterate attachPath="//jsonObject" expression="//tags" id="IterateTagsEntities" preservePayload="true" continueParent="false"
+		xmlns:ns="http://org.apache.synapse/xsd"
+	>
+		<target>
+			<sequence>
+				<!-- validate each tag entity payload -->
+				<sequence key="Tag_Validate_Tags_Entity_SEQ" />
+				<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+				<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+				<payloadFactory media-type="json">
+					<format>
+						{
+						"searchFields": [
+						{
+						"key": "name",
+						"value": "$1"
+						}
+						],
+						"domain": {
+						"domainName": "$2"
+						},
+						"entityTemplate": {
+						"entityTemplateName": "$3"
+						}
+						}
+					</format>
+					<args>
+						<arg evaluator="xml" expression="//tags/name" />
+						<arg evaluator="xml" expression="//tags/domain/domainName" />
+						<arg evaluator="xml" expression="//tags/tagType" />
+					</args>
+				</payloadFactory>
+				<send>
+					<endpoint key="conf:/endpoints/alpine/Tag_Search_Tag_Entity_EP.xml"></endpoint>
+				</send>
+			</sequence>
+		</target>
+	</iterate>
+</sequence>	

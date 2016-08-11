@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Process_G2021_Commands_SEQ">
+    <log separator=",">
+        <property name="Enter Saffron_Process_G2021_Commands_SEQ" value="--------"/>
+    </log>
+    <send>
+        <endpoint key="conf:/endpoints/saffron/Saffron_Process_G2021_Commands_EP.xml"/>
+    </send>
+</sequence>

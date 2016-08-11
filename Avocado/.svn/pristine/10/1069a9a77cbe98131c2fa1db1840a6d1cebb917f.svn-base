@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Avocado_Asset_API" groupId="avocado-asset-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Avocado_Asset_API.xml</file>
+    </artifact>
+    <artifact name="Update_Avocado_Point_Status_Hierarchy_SEQ" groupId="avocado-asset-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Avocado_Point_Status_Hierarchy_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Create_Points_SEQ" groupId="avocado-asset-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Create_Points_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Attach_Point_Parents_SEQ" groupId="avocado-asset-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Attach_Point_Parents_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Validate_DS_DisplayName_Unique_SEQ" groupId="avocado-asset-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Validate_DS_DisplayName_Unique_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Attach_Points_To_Device_Asset_SEQ" groupId="avocado-asset-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Attach_Points_To_Device_Asset_SEQ.xml</file>
+    </artifact>
+</artifacts>

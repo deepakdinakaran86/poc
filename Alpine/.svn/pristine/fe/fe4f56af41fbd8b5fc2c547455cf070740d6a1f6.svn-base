@@ -1,0 +1,415 @@
+
+===============================
+Cassandra for Enity tables
+====================================
+
+CREATE KEYSPACE alpine_development WITH replication = {'class': 'SimpleStrategy', 'replication_factor': '1'}  AND durable_writes = true;
+
+USE alpine_development;
+
+CREATE TYPE fieldmap (
+  key text,
+  value text
+);
+
+CREATE TABLE alpine_development.status (
+    uuid timeuuid PRIMARY KEY,
+    begining int,
+    revision_time timeuuid,
+    status_key int,
+    status_name text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX status_begining_idx_1 ON alpine_development.status (begining);
+CREATE INDEX status_revision_time_idx_1 ON alpine_development.status (revision_time);
+CREATE INDEX status_status_name_idx_1 ON alpine_development.status (status_name);
+
+CREATE TABLE alpine_development.domain (
+    uuid timeuuid,
+    name text,
+    begining int,
+    domain_url text,
+    max_concurrent_users int,
+    max_users int,
+    revision_time timeuuid,
+    status_key int,
+    PRIMARY KEY (uuid, name)
+) WITH CLUSTERING ORDER BY (name ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX domain_name_idx_1 ON alpine_development.domain (name);
+CREATE INDEX domain_begining_idx_1 ON alpine_development.domain (begining);
+CREATE INDEX domain_max_users_idx_1 ON alpine_development.domain (max_users);
+CREATE INDEX domain_revision_time_idx_1 ON alpine_development.domain (revision_time);
+CREATE INDEX domain_status_key_idx_1 ON alpine_development.domain (status_key);
+
+CREATE TABLE alpine_development.feature_group (
+    name text,
+    uuid timeuuid,
+    begining int,
+    descr text,
+    features list<frozen<fieldmap>>,
+    revision_time timeuuid,
+    status_key int,
+    PRIMARY KEY (name, uuid)
+) WITH CLUSTERING ORDER BY (uuid ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX feature_group_begining_idx ON alpine_development.feature_group (begining);
+CREATE INDEX feature_group_features_idx ON alpine_development.feature_group (features);
+CREATE INDEX feature_group_revision_time_idx ON alpine_development.feature_group (revision_time);
+CREATE INDEX feature_group_status_key_idx ON alpine_development.feature_group (status_key);
+
+CREATE TABLE alpine_development.entity_validation (
+    uuid timeuuid PRIMARY KEY,
+    begining int,
+    global_entity_template_name text,
+    revision_time timeuuid,
+    status text,
+    validation_details list<frozen<fieldmap>>
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX entity_validation_begining_idx_1 ON alpine_development.entity_validation (begining);
+CREATE INDEX entity_validation_revision_time_idx_1 ON alpine_development.entity_validation (revision_time);
+
+CREATE TABLE alpine_development.global_entity_template (
+    uuid timeuuid,
+    global_entity_type text,
+    begining int,
+    field_validation map<text, text>,
+    global_entity_template_name text,
+    html_page blob,
+    identifier_field text,
+    is_modifiable boolean,
+    is_sharable boolean,
+    revision_time timeuuid,
+    status_key int,
+    PRIMARY KEY (uuid, global_entity_type)
+) WITH CLUSTERING ORDER BY (global_entity_type ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX global_entity_template_begining_idx_1 ON alpine_development.global_entity_template (begining);
+CREATE INDEX global_entity_template_global_entity_template_name_idx_1 ON alpine_development.global_entity_template (global_entity_template_name);
+CREATE INDEX global_entity_template_is_modifiable_idx ON alpine_development.global_entity_template (is_modifiable);
+CREATE INDEX global_entity_template_is_sharable_idx ON alpine_development.global_entity_template (is_sharable);
+CREATE INDEX global_entity_template_revision_time_idx_1 ON alpine_development.global_entity_template (revision_time);
+CREATE INDEX global_entity_template_status_key_idx_1 ON alpine_development.global_entity_template (status_key);
+
+CREATE TABLE alpine_development.privileges (
+    uuid timeuuid,
+    name text,
+    begining int,
+    code text,
+    descr text,
+    revision_time timeuuid,
+    status_key int,
+    PRIMARY KEY (uuid, name)
+) WITH CLUSTERING ORDER BY (name ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX privileges_name_idx_1 ON alpine_development.privileges (name);
+CREATE INDEX privileges_begining_idx_1 ON alpine_development.privileges (begining);
+CREATE INDEX privileges_revision_time_idx_1 ON alpine_development.privileges (revision_time);
+CREATE INDEX privileges_status_key_idx_1 ON alpine_development.privileges (status_key);
+
+CREATE TABLE alpine_development.entity_template (
+    uuid timeuuid PRIMARY KEY,
+    begining int,
+    domain text,
+    domain_type text,
+    entity_template_name text,
+    field_validation map<text, text>,
+    global_entity_template_name text,
+    global_entity_type text,
+    html_page blob,
+    identifier_field text,
+    is_modifiable boolean,
+    is_sharable boolean,
+    revision_time timeuuid,
+    status_key int,
+    status_name text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX entity_template_domain_idx_1 ON alpine_development.entity_template (domain);
+
+CREATE TABLE alpine_development.server_validation (
+    uuid timeuuid PRIMARY KEY,
+    begining int,
+    end_point text,
+    in_payload text,
+    out_payload text,
+    revision_time timeuuid,
+    status_key int,
+    validation_type text,
+    validation_type_id int
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX server_validation_begining_idx_1 ON alpine_development.server_validation (begining);
+CREATE INDEX server_validation_revision_time_idx_1 ON alpine_development.server_validation (revision_time);
+CREATE INDEX server_validation_status_key_idx_1 ON alpine_development.server_validation (status_key);
+CREATE INDEX server_validation_validation_type_idx_1 ON alpine_development.server_validation (validation_type);
+CREATE INDEX server_validation_validation_type_id_idx_1 ON alpine_development.server_validation (validation_type_id);
+
+CREATE TABLE alpine_development.role (
+    uuid timeuuid PRIMARY KEY,
+    begining int,
+    created_date timeuuid,
+    descr text,
+    domain text,
+    feature_group list<frozen<fieldmap>>,
+    isdefault int,
+    menu list<frozen<fieldmap>>,
+    name text,
+    no_of_users int,
+    revision_time timeuuid,
+    status_key int
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX role_begining_idx_1 ON alpine_development.role (begining);
+CREATE INDEX role_domain_idx ON alpine_development.role (domain);
+CREATE INDEX role_name_idx_1 ON alpine_development.role (name);
+CREATE INDEX role_revision_time_idx_1 ON alpine_development.role (revision_time);
+
+CREATE TABLE alpine_development.global_entity_validation (
+    uuid timeuuid PRIMARY KEY,
+    begining int,
+    global_entity_template_name text,
+    revision_time timeuuid,
+    status text,
+    validation_details list<frozen<fieldmap>>
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX global_entity_validation_begining_idx_1 ON alpine_development.global_entity_validation (begining);
+CREATE INDEX global_entity_validation_revision_time_idx_1 ON alpine_development.global_entity_validation (revision_time);
+
+CREATE TABLE alpine_development.menu (
+    uuid timeuuid,
+    name text,
+    begining int,
+    category_name text,
+    descr text,
+    revision_time timeuuid,
+    status_key int,
+    url_link text,
+    PRIMARY KEY (uuid, name)
+) WITH CLUSTERING ORDER BY (name ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX menu_name_idx_1 ON alpine_development.menu (name);
+CREATE INDEX menu_begining_idx_1 ON alpine_development.menu (begining);
+CREATE INDEX menu_revision_time_idx_1 ON alpine_development.menu (revision_time);
+CREATE INDEX menu_status_key_idx_1 ON alpine_development.menu (status_key);
+
+CREATE TABLE alpine_development.feature (
+    name text,
+    uuid timeuuid,
+    begining int,
+    descr text,
+    privileges list<frozen<fieldmap>>,
+    revision_time timeuuid,
+    status_key int,
+    PRIMARY KEY (name, uuid)
+) WITH CLUSTERING ORDER BY (uuid ASC)
+    AND bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX feature_status_key_idx_1 ON alpine_development.feature (status_key);
+
+CREATE TABLE alpine_development.entity (
+    entity_id uuid PRIMARY KEY,
+    begining int,
+    dataprovider list<frozen<fieldmap>>,
+    domain text,
+    domain_type text,
+    entity_template_name text,
+    field_values list<frozen<fieldmap>>,
+    global_entity_type text,
+    identifier frozen<fieldmap>,
+    revision_time timeuuid,
+    status_key int,
+    status_name text,
+    tree frozen<fieldmap>,
+    uuid timeuuid
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX entity_begining_idx_1 ON alpine_development.entity (begining);
+CREATE INDEX entity_dataprovider_idx ON alpine_development.entity (dataprovider);
+CREATE INDEX entity_domain_idx_1 ON alpine_development.entity (domain);
+CREATE INDEX entity_field_values_idx_1 ON alpine_development.entity (field_values);
+CREATE INDEX entity_global_entity_type_idx_1 ON alpine_development.entity (global_entity_type);
+CREATE INDEX entity_identifier_idx ON alpine_development.entity (identifier);
+CREATE INDEX entity_revision_time_idx_1 ON alpine_development.entity (revision_time);
+CREATE INDEX entity_status_key_idx_1 ON alpine_development.entity (status_key);
+CREATE INDEX entity_tree_idx ON alpine_development.entity (tree);
+
+CREATE TABLE alpine_development.global_entity (
+    uuid timeuuid PRIMARY KEY,
+    begining int,
+    description text,
+    global_entity_type text,
+    is_default boolean,
+    is_sharable boolean,
+    revision_time timeuuid,
+    status_key int,
+    type_code text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = '{"keys":"ALL", "rows_per_partition":"NONE"}'
+    AND comment = ''
+    AND compaction = {'min_threshold': '4', 'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32'}
+    AND compression = {'sstable_compression': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99.0PERCENTILE';
+CREATE INDEX global_entity_begining_idx_1 ON alpine_development.global_entity (begining);
+CREATE INDEX global_entity_global_entity_type_idx_1 ON alpine_development.global_entity (global_entity_type);
+CREATE INDEX global_entity_is_default_idx ON alpine_development.global_entity (is_default);
+CREATE INDEX global_entity_revision_time_idx_1 ON alpine_development.global_entity (revision_time);
+CREATE INDEX global_entity_status_key_idx_1 ON alpine_development.global_entity (status_key);
+CREATE INDEX global_entity_type_code_idx_1 ON alpine_development.global_entity (type_code);

@@ -1,0 +1,17 @@
+brokerHosts : 10.234.31.234:2182
+messageTopicName : 
+                   - status_double
+zookeeperRoot :  /kafka
+topologyName : persistence-topology
+parentSpoutName : persist-message-spout
+parentSpoutMaxParallelism : 2
+topologyEmitInterval : 10
+topologyMode : LOCAL
+topologyMaxParallelism : 6
+numberOfWorkers : 2
+persistBolt : persist-bolt
+eventCandidateBolt : event-candidate-bolt
+persistBoltMaxParallelism : 2
+eventCandidateBoltMaxParallelism : 2
+kafkaStartOffSet : -1
+

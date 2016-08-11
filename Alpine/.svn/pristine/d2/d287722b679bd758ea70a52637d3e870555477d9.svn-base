@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_Geofence_Type_SEQ">
+	<log separator=",">
+		<property name="Enter Create_Geofence_Type_SEQ" value="Create_Geofence_Type_SEQ"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="geofenceEntityIdentifier"
+				expression="json-eval($.)" scope="default" type="STRING"></property>
+
+			<property name="geofenceEntityDomain" expression="$body/jsonObject/domain/domainName"
+				scope="default" type="STRING"></property>
+			<property name="geofenceEntityIdKey" expression="$body/jsonObject/identifier/key"
+				scope="default" type="STRING"></property>
+			<property name="geofenceEntityIdValue" expression="$body/jsonObject/identifier/value"
+				scope="default" type="STRING"></property>
+			<property name="geofenceEntityTemplate"
+				expression="$body/jsonObject/entityTemplate/entityTemplateName"
+				scope="default" type="STRING"></property>
+
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg expression="get-property('geofenceTypeEntityPayload')"
+						evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="Attach_Geofence_With_Type_SEQ">
+				<endpoint key="conf:/endpoints/alpine/Create_Marker_EP.xml"></endpoint>
+			</send>
+		</else>
+	</filter>
+</sequence>

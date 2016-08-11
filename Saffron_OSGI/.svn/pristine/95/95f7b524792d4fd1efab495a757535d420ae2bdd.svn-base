@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Skyspark_Create_Equip_Response_SEQ">
+	<log separator=",">
+		<property name="Enter Skyspark_Create_Equip_Response_SEQ"
+			value="--------Skyspark_Create_Equip_Response_SEQ--------"></property>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="****Point Details****"
+					expression="get-property('pointPayload')" />
+	</log>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="createEquipResponse"
+		expression="$body" scope="default" type="STRING"></property>
+	<property name="messageType" value="application/json" scope="axis2"
+		type="STRING"></property>
+	<script language="js">
+      <![CDATA[var response =   mc.getProperty('createEquipResponse'); 		var index = response.toLowerCase().indexOf("success");		var status = "false";		if(index>-1){		status = "true";		}		mc.setProperty("equipStatus",status);]]></script>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" source="(get-property('equipStatus'))"
+		regex="true">
+		<then>
+			<log separator=",">
+				<property name="success from equip" value="--------success from equip--------"></property>
+			</log>
+
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(get-property('pointPayload'))"
+				regex="true">
+				<then>
+					<log level="custom">
+						<property name="Points Exist" value="NOT NULL Property Value" />
+					</log>
+
+					<property name="messageType" value="text/plain" scope="axis2" />
+					<script language="js"><![CDATA[
+				var escapedPayload =   mc.getProperty('pointPayload'); 
+				
+ 				var payloadInfo ="\"assignPointsToDevices("+escapedPayload+")\""; 
+				var payLoad = "ver:\"2.0\" \n expr \n"+ payloadInfo; 
+              mc.setPayloadXML(<ns:text xmlns:ns="http://ws.apache.org/commons/ns/payload">{payLoad} 
+           </ns:text>);  
+        ]]></script>
+					<property name="Authorization" value="Basic ZGV2aWNlY2xvdWQ6ZGV2aWNlY2xvdWQ="
+						scope="transport" type="STRING" />
+					<send receive="Skyspark_Create_Points_Response_SEQ">
+						<endpoint key="conf:/endpoints/saffron/Skyspark_Create_Points_EP.xml" />
+					</send>
+				</then>
+				<else>
+					<log level="custom">
+						<property name="*********" value=" NULL Property Value" />
+					</log>
+					<header name="To" action="remove"></header>
+					<property name="RESPONSE" value="true" scope="default"
+						type="STRING"></property>
+					<property name="HTTP_SC" value="200" scope="axis2"></property>
+					<payloadFactory media-type="json">
+						<format>{ "status": "SUCCESS"}</format>
+					</payloadFactory>
+					<send></send>
+				</else>
+			</filter>
+		</then>
+		<else>
+			<log separator=",">
+				<property name="failure from equip" value="--------failure from equip--------"></property>
+			</log>
+
+			<header name="To" action="remove"></header>
+			<property name="RESPONSE" value="true" scope="default" type="STRING"></property>
+			<property name="HTTP_SC" value="400" scope="axis2"></property>
+			<payloadFactory media-type="json">
+				<format>{ "status": "FAILURE"}</format>
+			</payloadFactory>
+			<send></send>
+		</else>
+	</filter>
+</sequence>

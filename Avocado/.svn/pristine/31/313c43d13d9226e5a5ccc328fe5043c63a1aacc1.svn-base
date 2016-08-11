@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Create_User_Sequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="full">
+        <property name="Entering Avocado Create User" value="Entering Avocado Create User"/>
+    </log>
+    <property expression="json-eval($.userEntity)" name="userEntity"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$trp:x-jwt-assertion" name="x-jwt-assertion"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.linkEmailESBDTO.entityStatus)"
+        name="emailEntityStatus" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.linkEmailESBDTO.fieldValues)"
+        name="emailFieldValues" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.linkEmailESBDTO.domain)"
+        name="emailDomain" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.linkEmailESBDTO.entityTemplate)"
+        name="emailEntityTemplate" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.linkEmailESBDTO.email)"
+        name="emailPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.linkEmailESBDTO.email.subject)"
+        name="emailSubject" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="json-eval($.linkEmailESBDTO.email.emailTemplate)"
+        name="emailTemplate" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="json-eval($.linkEmailESBDTO.email.toAddresses)"
+        name="emailToAddresses" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.linkEmailESBDTO.email.content)"
+        name="emailContent" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.linkEmailESBDTO.email.to)"
+        name="to" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.linkEmailESBDTO.email.userName)"
+        name="userName" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <payloadFactory media-type="json">
+        <format>$1</format>
+        <args>
+            <arg evaluator="xml" expression="get-property('userEntity')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <property expression="get-property('x-jwt-assertion')"
+        name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <send receive="Avocado_Create_Link_Marker_Sequence">
+        <endpoint key="conf:/endpoints/user/Avocado_Create_User_EP.xml"/>
+    </send>
+</sequence>

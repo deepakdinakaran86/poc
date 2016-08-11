@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eventReceiver name="KafkaIRReceiver" statistics="enable" trace="enable" xmlns="http://wso2.org/carbon/eventreceiver">
+    <from eventAdapterType="kafka">
+        <property name="events.duplicated.in.cluster">false</property>
+        <property name="zookeeper.connect">10.234.31.234</property>
+        <property name="group.id">groupid</property>
+        <property name="threads">4</property>
+        <property name="topic">galaxy-cep-in-temp</property>
+    </from>
+    <mapping customMapping="enable" type="json">
+        <property>
+            <from jsonPath="sourceId"/>
+            <to name="meta_sourceId" type="string"/>
+        </property>
+        <property>
+            <from jsonPath="engOilTemp"/>
+            <to name="meta_engOilTemp" type="float"/>
+        </property>
+        <property>
+            <from jsonPath="engFuelRate"/>
+            <to name="meta_engFuelRate" type="float"/>
+        </property>
+        <property>
+            <from jsonPath="acceleratorPedalPos"/>
+            <to name="meta_acceleratorPedalPos" type="float"/>
+        </property>
+        <property>
+            <from jsonPath="engSpeed"/>
+            <to name="meta_engSpeed" type="float"/>
+        </property>
+        <property>
+            <from jsonPath="barometricPressure"/>
+            <to name="meta_barometricPressure" type="float"/>
+        </property>
+        <property>
+            <from jsonPath="receivedTime"/>
+            <to name="meta_receivedTime" type="long"/>
+        </property>
+        <property>
+            <from jsonPath="time"/>
+            <to name="meta_time" type="long"/>
+        </property>
+        <property>
+            <from jsonPath="latitude"/>
+            <to name="meta_latitude" type="double"/>
+        </property>
+        <property>
+            <from jsonPath="longitude"/>
+            <to name="meta_longitude" type="double"/>
+        </property>
+        <property>
+            <from jsonPath="engOilPressure"/>
+            <to name="meta_engOilPressure" type="float"/>
+        </property>
+        <property>
+            <from jsonPath="cruiseControlSetSpeed"/>
+            <to name="meta_cruiseControlSetSpeed" type="float"/>
+        </property>
+        <property>
+            <from jsonPath="wheelBasedVehicleSpeed"/>
+            <to name="meta_wheelBasedVehicleSpeed" type="float"/>
+        </property>
+        <property>
+            <from jsonPath="fuelLevel"/>
+            <to name="meta_fuelLevel" type="float"/>
+        </property>
+    </mapping>
+    <to streamName="PCInputStream" version="1.0.0"/>
+</eventReceiver>

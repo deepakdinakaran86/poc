@@ -1,0 +1,108 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.pcs.jms</groupId>
+	<artifactId>jmshelper</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>bundle</packaging>
+
+	<name>jmshelper</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<embed-dep>*;scope=compile;type=!pom;inline=true</embed-dep>
+	</properties>
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-all</artifactId>
+			<version>5.12.1</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>javax.jms-api</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<compilerVersion>1.8</compilerVersion>
+					<executable>${/usr/libexec/java_home}</executable>
+				</configuration>
+			</plugin>
+			
+<!-- 			<plugin> -->
+<!-- 				<artifactId>maven-assembly-plugin</artifactId> -->
+<!-- 				<configuration> -->
+<!-- 					<descriptorRefs> -->
+<!-- 						<descriptorRef>jar-with-dependencies</descriptorRef> -->
+<!-- 					</descriptorRefs> -->
+<!-- 					<archive> -->
+<!-- 						<manifest> -->
+<!-- 							<mainClass>com.pcs.jms.jmshelper.App</mainClass> -->
+<!-- 						</manifest> -->
+<!-- 					</archive> -->
+<!-- 				</configuration> -->
+<!-- 				<executions> -->
+<!-- 					<execution> -->
+<!-- 						<id>make-assembly</id> -->
+<!-- 						<phase>package</phase> -->
+<!-- 						<goals> -->
+<!-- 							<goal>single</goal> -->
+<!-- 						</goals> -->
+<!-- 					</execution> -->
+<!-- 				</executions> -->
+<!-- 			</plugin> -->
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>1.4.0</version>
+				<extensions>true</extensions>
+				<goals>
+					<goal>bundleall</goal>
+				</goals>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${pom.groupId}.${pom.artifactId}</Bundle-SymbolicName>
+						<Bundle-Name>${pom.artifactId}</Bundle-Name>
+						<Bundle-Version>1.0.0</Bundle-Version>
+						<Bundle-Activator></Bundle-Activator>
+						<Export-Package>
+							com.pcs.jms.jmshelper,
+							com.pcs.jms.jmshelper.consumers,
+							com.pcs.jms.jmshelper.consumers.common,
+							com.pcs.jms.jmshelper.consumers.delegates,
+							com.pcs.jms.jmshelper.enums,
+							com.pcs.jms.jmshelper.enums.common,
+							com.pcs.jms.jmshelper.publishers,
+							javax.jms,
+							org.apache.activemq.*
+						</Export-Package>
+						<Embed-Dependency>${embed-dep}</Embed-Dependency>
+						<Import-Package>
+							org.osgi.framework,
+							*;resolution:=optional
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+</project>

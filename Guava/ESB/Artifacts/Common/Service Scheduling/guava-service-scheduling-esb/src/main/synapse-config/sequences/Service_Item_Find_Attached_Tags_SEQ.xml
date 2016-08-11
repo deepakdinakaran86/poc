@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Item_Find_Attached_Tags_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property
+			name="----------------Entering Service_Item_Find_Attached_Tags_SEQ----------------"
+			value="----Service_Item_Find_Attached_Tags_SEQ----" />
+		<property expression="json-eval($.)" name="JSON Payload find marker!"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.)" name="serviceItemIdentifier"
+				scope="default" type="STRING" />
+			<property expression="json-eval($.fieldValues)" name="serviceItemFieldValues"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/domain/domainName"
+				name="domainName" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/entityStatus/statusName"
+				name="status" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/key" name="identifierKey"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/value"
+				name="identifierValue" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/entityStatus/statusName"
+				name="status" />
+			<script language="js"><![CDATA[var payload=eval("("+mc.getProperty('serviceItemFieldValues')+")");
+                         			var value;      	      	      
+                         			for(var i in payload ){
+                         				     var key = payload[i].key;      	 		                         
+                         				     if(key		== 'serviceItemName'){       	 			                   
+                         				     	serviceItemName = payload[i].value;       	 			                     
+                         				     	mc.setProperty("serviceItemName",serviceItemName);	
+                         				     	}         
+                         				     if(key		== 'description'){       	 			                   
+                         				     	description = payload[i].value;       	 			                     
+                         				     	mc.setProperty("description",description);	
+                         				     	}                               
+                         			}]]></script>
+			<payloadFactory media-type="json">
+				<format>
+					{
+					  "actorType": "ENTITY",
+					  "actor": {
+					    "entity": $1
+					  }
+					}
+				</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('serviceItemIdentifier')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="Service_Item_Find_Res_SEQ">
+				<endpoint
+					key="conf:/endpoints/serviceSchedule/Service_Schedule_Find_Attached_Tags_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

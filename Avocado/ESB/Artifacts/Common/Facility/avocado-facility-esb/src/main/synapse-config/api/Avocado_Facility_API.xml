@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/galaxy-em/services/facilities"
+  name="Avocado_Facility_API" xmlns="http://ws.apache.org/ns/synapse">
+  <resource inSequence="Avocado_Create_Facility_SEQ" methods="POST"
+    protocol="http" url-mapping="/">
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+  <resource inSequence="Avocado_Find_Facility_SEQ" methods="POST"
+    protocol="http" url-mapping="/find">
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+  <resource inSequence="Avocado_List_Facility_SEQ" methods="POST"
+    protocol="http" url-mapping="/list">
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+  <resource inSequence="Avocado_Update_Facility_SEQ" methods="PUT"
+    protocol="http" url-mapping="/">
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+</api>

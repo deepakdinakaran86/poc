@@ -1,0 +1,4 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Get_Children_Count_EP" >
+<!-- 	<http method="post" uri-template="http://10.234.31.201:9764/alpine-hierarchy-1.0.0/services/hierarchy/children/count"/> -->
+<http method="post" uri-template="http://10.234.31.201:8080/alpine-hierarchy-1.0.0/services/hierarchy/children/count"/>
+</endpoint>

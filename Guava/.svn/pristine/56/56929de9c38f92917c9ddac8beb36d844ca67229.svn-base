@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="POI_Attach_POI_With_POI_Type_Entity_SEQ">
+	<log separator=",">
+		<property name="Enter POI_Attach_POI_With_POI_Type_Entity_SEQ"
+			value="--------POI_Attach_POI_With_POI_Type_Entity_SEQ--------" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.)" name="poiTypeEntityIdentifier"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/key" name="poiTypeIdKey"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/value"
+				name="poiTypeIdValue" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/domain/domainName"
+				name="poiTypeDomain" scope="default" type="STRING" />
+			<payloadFactory media-type="json">
+				<format>{"actor":$1,"subjects":[$2]}</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('poiEntityIdentifier')" />
+					<arg evaluator="xml" expression="get-property('poiTypeEntityIdentifier')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<property expression="json-eval($.)" name="checkAttachPayload"
+				scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+			<send>
+				<endpoint key="conf:/endpoints/poi/POI_Attach_Children_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

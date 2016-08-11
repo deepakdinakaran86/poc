@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_CCD_Contacts_SEQ">
+	<log separator=",">
+		<property name="Enter Create_CCD_Contacts_SEQ" value="--------" />
+	</log>
+
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<log separator=",">
+				<property name="Error in get ccd" value="--------" />
+			</log>
+			<property expression="$body/jsonObject/errorCode" name="errorCode"
+				scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="get-property('errorCode')"
+				regex="500">
+				<then>
+					<payloadFactory media-type="json">
+						<format>{
+							"fieldValues": [
+							{
+							"key": "id",
+							"value": "$1"
+							},
+							{
+							"key": "name",
+							"value": "$2"
+							},
+							{
+							"key":
+							"firstName",
+							"value": "$3"
+							},
+							{
+							"key": "lastName",
+							"value": "$4"
+							}
+							],
+							"entityTemplate": {
+							"entityTemplateName": "$5"
+							},
+							"domain":{
+							"domainName":"$6"
+							}
+							}
+						</format>
+						<args>
+							<arg expression="get-property('tenantId')" evaluator="xml"></arg>
+							<arg expression="get-property('tenantName')" evaluator="xml"></arg>
+							<arg expression="get-property('tenantContactFName')"
+								evaluator="xml"></arg>
+							<arg expression="get-property('tenantContactLName')"
+								evaluator="xml"></arg>
+							<arg expression="get-property('tenantTemplate')" evaluator="xml"></arg>
+							<arg expression="get-property('myDomain')" evaluator="xml"></arg>
+						</args>
+					</payloadFactory>
+					<property name="x-jwt-assertion" expression="get-property('Authorization')"
+						scope="transport" type="STRING"></property>
+					<property name="messageType" value="application/json"
+						scope="axis2" type="STRING"></property>
+					<send receive="Create_CCD_Tenant_Node_SEQ">
+						<endpoint key="conf:/endpoints/ccd/Create_CCD_Tenant_EP.xml" />
+					</send>
+				</then>
+				<else>
+					<send></send>
+				</else>
+			</filter>
+		</then>
+		<else>
+			<filter source="boolean(get-property('tenantMarkerId'))"
+				regex="false">
+				<then>
+					<property xmlns:ns="http://org.apache.synapse/xsd" name="tenantPayload"
+						expression="json-eval($.)" scope="default" type="STRING"></property>
+					<log separator="##">
+						<property name="tenantPayload" expression="get-property('tenantPayload')" />
+						<property name="tenantMarkerId" expression="get-property('tenantMarkerId')" />
+					</log>
+					<script language="js"><![CDATA[var tenantPayload		=eval("("+mc.getProperty('tenantPayload')+")");     
+for ( var i in tenantPayload) {
+	var id = tenantPayload[i].identifier;
+    var idKey=id.key; 
+    var idValue;
+    if(idKey== 'identifier'){
+    idValue = tenantPayload[i].identifier.value;
+    }
+    mc.setProperty("tenantId",idValue);
+}]]></script>
+				</then>
+				<else>
+					<property expression="get-property('tenantMarkerId')"
+						name="tenantId" scope="default" type="STRING"
+						xmlns:ns="http://org.apache.synapse/xsd" />
+					<log separator="##">
+						<property name="tenantId" expression="get-property('tenantId')" />
+						<property name="tenantId from create" value="tenantId from create" />
+					</log>
+				</else>
+			</filter>
+
+
+			<payloadFactory media-type="json">
+				<format> {"contacts": $1 }</format>
+				<args>
+					<arg expression="get-property('contactsPayload')" evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<property name="it_count" value="0" scope="operation" />
+			<iterate continueParent="true" expression="//contacts">
+				<target>
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" />
+					<property name="NO_ENTITY_BODY" scope="axis2" action="remove" />
+
+					<sequence>
+						<property name="contactName" expression="//contacts/name"
+							scope="default" type="STRING"></property>
+						<property name="contactEmail" expression="//contacts/email"
+							scope="default" type="STRING"></property>
+						<property name="contactNumber" expression="//contacts/contactNumber"
+							scope="default" type="STRING"></property>
+						<property name="contactType" expression="//contacts/contactType"
+							scope="default" type="STRING"></property>
+						<payloadFactory media-type="json">
+							<format>
+								{
+								"fieldValues": [
+								{
+								"key": "name",
+								"value": "$1"
+								},
+								{
+								"key":
+								"email",
+								"value": "$2"
+								},
+								{
+								"key": "contactNumber",
+								"value": "$3"
+								},
+								{
+								"key": "contactType",
+								"value": "$4"
+								}
+								],
+								"entityTemplate": {
+								"entityTemplateName": "$5"
+								},
+								"domain": {
+								"domainName": "$6"
+								}
+								}
+							</format>
+							<args>
+								<arg expression="get-property('contactName')" evaluator="xml"></arg>
+								<arg expression="get-property('contactEmail')" evaluator="xml"></arg>
+								<arg expression="get-property('contactNumber')" evaluator="xml"></arg>
+								<arg expression="get-property('contactType')" evaluator="xml"></arg>
+								<arg expression="get-property('contactTemplate')" evaluator="xml"></arg>
+								<arg expression="get-property('myDomain')" evaluator="xml"></arg>
+							</args>
+						</payloadFactory>
+						<property name="x-jwt-assertion" expression="get-property('Authorization')"
+							scope="transport" type="STRING"></property>
+						<property name="messageType" value="application/json"
+							scope="axis2" type="STRING"></property>
+						<send receive="Create_CCD_Contact_Hierarchy_SEQ">
+							<endpoint key="conf:/endpoints/ccd/Create_CCD_Contacts_EP.xml"></endpoint>
+						</send>
+
+						<property name="synapse_it_count" expression="get-property('operation', 'it_count')" />
+						<script language="js">var cnt_str =
+							mc.getProperty('synapse_it_count');
+							var cnt = parseInt(cnt_str);
+							cnt++;
+							mc.setProperty('synapse_it_count', cnt.toString());
+						</script>
+
+						<property name="it_count" expression="get-property('synapse_it_count')"
+							scope="operation" />
+						<log level="custom">
+							<property name="number of symbols" expression="get-property('it_count')" />
+							<property name="number of symbols" expression="get-property('synapse_it_count')" />
+						</log>
+
+					</sequence>
+				</target>
+			</iterate>
+			
+
+			<!-- <header name="To" action="remove"></header> -->
+			<!-- <property name="RESPONSE" value="true" scope="default" type="STRING"></property> -->
+			<!-- <property name="HTTP_SC" value="200" scope="axis2"></property> -->
+			<!-- <payloadFactory media-type="json"> -->
+			<!-- <format>{ "status": "SUCCESS"}</format> -->
+			<!-- </payloadFactory> -->
+			<!-- <send></send> -->
+			<!-- </aggregate> -->
+			<!-- </out> -->
+		</else>
+	</filter>
+</sequence>

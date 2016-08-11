@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Validate_Tag_Map_Subjects_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Validate_Tag_Map_Subjects_SEQ" value="--------"></property>
+	</log>
+	<property expression="$trp:x-jwt-assertion" name="Authorization" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.)" name="originalPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.entities)" name="originalPayload_entities" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.templates)" name="originalPayload_templates" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	
+	<!-- Validate Tag entity payload and check if entity is existing -->
+	<sequence key="Tag_Validate_Tag_Entity_SEQ" />
+
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('originalPayload')" />
+		</args>
+	</payloadFactory>
+
+	<!-- Check if templates are existing -->
+	<filter regex="true" source="boolean(//jsonObject/templates)">
+		<then>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+			<payloadFactory media-type="json">
+				<format>
+					{
+					"templates": $1
+					}
+
+				</format>
+				<args>
+					<arg evaluator="json" expression="json-eval($.templates)" />
+				</args>
+			</payloadFactory>
+			<call>
+				<endpoint key="conf:/endpoints/alpine/Tag_Validate_Payload_EP.xml"></endpoint>
+			</call>
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)" regex="true">
+				<then>
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>
+							{"errorCode":"$1","errorMessage":"$2"}
+						</format>
+						<args>
+							<arg evaluator="xml" expression="//jsonObject/errorCode" />
+							<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+						</args>
+					</payloadFactory>
+					<respond />
+				</then>
+			</filter>
+
+			<!-- templates are existing in payload, validate each template -->
+			<sequence key="Tag_Validate_Tag_Template_Subjects_SEQ" />
+		</then>
+		<else>
+			<!-- templates are not existing, Check if entities are existing -->
+			<filter regex="true" source="boolean(//jsonObject/entities)">
+				<then>
+					<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+					<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+					<payloadFactory media-type="json">
+						<format>{"entities":$1}
+						</format>
+						<args>
+							<arg evaluator="json" expression="json-eval($.entities)" />
+						</args>
+					</payloadFactory>
+					<!-- entities are existing, validate entities payload -->
+					<call>
+						<endpoint key="conf:/endpoints/alpine/Tag_Validate_Payload_EP.xml"></endpoint>
+					</call>
+					<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)" regex="true">
+						<then>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default" type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>
+									{"errorCode":"$1","errorMessage":"$2"}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//jsonObject/errorCode" />
+									<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+								</args>
+							</payloadFactory>
+							<respond />
+						</then>
+						<else>
+						</else>
+					</filter>
+					<!--validate each entity -->
+					<sequence key="Tag_Validate_Tag_Entities_Subjects_SEQ" />
+				</then>
+				<else>
+					<!-- Generate Error message for incomplete request -->
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>{"errorCode":"501","errorMessage":"Request is incomplete"}</format>
+						<args />
+					</payloadFactory>
+					<property name="messageType" value="application/json" scope="axis2" />
+					<send />
+				</else>
+			</filter>
+		</else>
+	</filter>
+</sequence>

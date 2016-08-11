@@ -1,0 +1,85 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.pcs.saffron</groupId>
+		<artifactId>EOS</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>EOS-connectivity</artifactId>
+	<name>EOS-connectivity</name>
+	<url>http://maven.apache.org</url>
+
+
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<compilerVersion>1.8</compilerVersion>
+					<executable>${/usr/libexec/java_home}</executable>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>1.4.0</version>
+				<extensions>true</extensions>
+				<goals>
+					<goal>bundleall</goal>
+				</goals>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${pom.groupId}.${pom.artifactId}</Bundle-SymbolicName>
+						<Bundle-Name>${pom.artifactId}</Bundle-Name>
+						<Bundle-Version>1.0.0</Bundle-Version>
+						<Bundle-Activator>com.pcs.saffron.osgi.ConnectivityActivator</Bundle-Activator>
+						<Private-Package>com.pcs.saffron.osgi</Private-Package>
+						<Export-Package>
+							com.pcs.saffron.connectivity,
+							com.pcs.saffron.connectivity.config,
+							com.pcs.saffron.connectivity.exception,
+							com.pcs.saffron.connectivity.tcp,
+							com.pcs.saffron.connectivity.tcp.client,
+							com.pcs.saffron.connectivity.udp,
+							com.pcs.saffron.connectivity.udp.client,
+							com.pcs.saffron.connectivity.client.handler,
+							com.pcs.saffron.connectivity.utils,
+							com.pcs.saffron.connectivity.mqtt.*,
+							com.pcs.saffron.connectivity.mqtt.impl.*,
+							com.pcs.saffron.osgi
+						</Export-Package>
+						<Import-Package>
+							org.osgi.framework,
+							*;resolution:=optional
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.eclipse.paho</groupId>
+			<artifactId>org.eclipse.paho.client.mqttv3</artifactId>
+			<version>1.0.2</version>
+		</dependency>
+
+	</dependencies>
+	<packaging>bundle</packaging>
+</project>

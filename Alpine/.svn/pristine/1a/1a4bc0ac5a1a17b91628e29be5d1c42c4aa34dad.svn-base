@@ -1,0 +1,122 @@
+/* ----------------Master Data for EM-----------------*/
+//1) Data in global_entity table;
+INSERT INTO global_entity(uuid,begining,description,global_entity_type,is_default,is_sharable,revision_time,status_key,type_code) VALUES (b9432730-697a-11e4-9c97-cfd5c989dc9c,null,'entity type is MARKER','MARKER',false,null,null,0,'MARKER');
+INSERT INTO global_entity(uuid,begining,description,global_entity_type,is_default,is_sharable,revision_time,status_key,type_code) VALUES (ba399520-697a-11e4-9c97-cfd5c989dc9c,null,'entity type is TENANT','TENANT',true,null,null,0,'TENANT');
+INSERT INTO global_entity(uuid,begining,description,global_entity_type,is_default,is_sharable,revision_time,status_key,type_code) VALUES (b15992c0-6b0a-11e4-9c97-cfd5c989dc9c,null,'User Global Entity which is not sharable','USER',true,null,null,0,'USER');
+	
+//2) Data in status table;
+INSERT INTO status(uuid,begining,revision_time,status_key,status_name) VALUES (3720e7f1-2c40-11e4-afa9-4951ead6a629,null,null,0,'ACTIVE');
+INSERT INTO status(uuid,begining,revision_time,status_key,status_name) VALUES (3e3ea721-2c40-11e4-afa9-4951ead6a629,null,null,1,'INACTIVE');
+INSERT INTO status(uuid,begining,revision_time,status_key,status_name) VALUES (444acf41-2c40-11e4-afa9-4951ead6a629,null,null,3,'DELETED');
+INSERT INTO status(uuid,begining,revision_time,status_key,status_name) VALUES (now(),null,null,2,'ALLOCATED');
+
+			
+//3) Create an entry in entity table for Pacific Controls;
+	INSERT INTO entity(entity_id, field_values,status_key,status_name,domain,global_entity_type, entity_template_name,identifier) 
+VALUES (7a963717-883f-4d6b-b796-82f97a92726c,[{key:'contactEmail', value:'abc@alpine.galaxy'}, {key:'domain', value:'alpine.galaxy'}, 
+	{key:'firstName', value:'jack'}, {key:'lastName', value:'Smith'},  
+	{key:'tenantName', value:'alpine'}, {key:'superTenant', value:'true'},{key:'image', value:''},{key:'tenantId', value:'alpine'}
+],0,'ACTIVE','root.galaxy','TENANT','DefaultTenant',{key:'tenantId', value:'alpine'});
+
+	
+//4) Create entry in global_entity_template
+
+INSERT INTO global_entity_template(uuid,global_entity_type,begining,
+	field_validation,global_entity_template_name,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key
+) VALUES (e7e11840-605a-11e5-b1c0-013ce44bb741,'TENANT',1,
+	{'contactEmail':'{"client":[],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+	'domain':'{"client":[],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+	'firstName':'{"client":[],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+	'image':'{"client":[],"server":[],"showOnGrid":false,"showOnTree":false}',
+	'lastName':'{"client":[],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+	'tenantId':'{"client":[],"server":["mandatory","uniqueAcrossApplication"],"showOnGrid":true,"showOnTree":false}'
+	,'tenantName':'{"client":[],"server":["mandatory"],"showOnGrid":true,"showOnTree":true}'
+	},'DefaultTenant',0x636865636b,'tenantId',true,true,33ef4bf1-7ed2-11e4-972a-cfd5c989dc9c,0
+);
+
+	
+INSERT INTO global_entity_template (uuid,global_entity_type,begining,field_validation,global_entity_template_name,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key) VALUES (33ef4bf0-7ed2-11e4-972a-cfd5c989dc9c,'USER',1,{'contactNumber':'{"client":[],"server":[],"showOnGrid":true}','firstName':'{"client":[],"server":[],"showOnGrid":true}','lastName':'{"client":[],"server":["mandatory"],"showOnGrid":true}','password':'{"client":[],"server":[],"showOnGrid":false}','emailId':'{"client":[],"server":["mandatory"],"showOnGrid":true}','roleName':'{"client":[],"server":["mandatory"],"showOnGrid":true}','userName':'{"client":[],"server":["mandatory","uniqueAcrossDomain"],"showOnGrid":true}'},'DefaultUser',0x636865636b,'userName',true,true,33ef4bf1-7ed2-11e4-972a-cfd5c989dc9c,0);
+INSERT INTO global_entity_template(uuid,global_entity_type,begining,field_validation,global_entity_template_name,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key) VALUES (3611aa40-6130-11e5-a191-69f7e4981395,'MARKER',1,{'entityName':'{"client":[],"server":[],"showOnGrid":false,"showOnTree":false}','identifier':'{"client":[],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}'},'GlobalMARKERTemplate',0x636865636b,'identifier',true,true,3611d150-6130-11e5-a191-69f7e4981395,0);
+
+//5) Create marker templates
+
+
+ INSERT INTO entity_template(uuid,begining,domain,domain_type,entity_template_name,field_validation,
+	global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name
+) VALUES (5e58cf50-c9aa-11e5-b1c0-013ce44bb741,1,'pcs.galaxy',null,'Device',
+	{'allocated':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+	'configuration':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+	'datasourceName':'{"client":[""],"server":["uniqueAcrossDomain"],"showOnGrid":true,"showOnTree":false}',
+	'deviceIp':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+	'deviceName':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+	'devicePort':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+	'deviceType':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+	'entityName':'{"client":[""],"server":["mandatory","uniqueAcrossDomain"],"showOnGrid":true,"showOnTree":false}',
+	'gmtOffset':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+	'gmtOffsetSign':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+	'identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+	'latitude':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}',
+	'longitude':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}',
+	'make':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+	'model':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+	'networkProtocol':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+	'password':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+	'protocol':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','publish':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','slot':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','tags':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','timeZone':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','url':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','userName':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','version':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','writebackPort':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',true,true,01cb2ec1-603e-11e5-b1c0-013ce44bb741,0,'ACTIVE'
+);
+ 
+ INSERT INTO entity_template
+(uuid,begining,domain,entity_template_name,field_validation,global_entity_template_name,
+	global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name
+) VALUES (now(),1,'pcs.galaxy',
+'ResetPassword',{'entityName':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+'identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+'timeStamp':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+'valid':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate',
+'MARKER',0x636865636b,'identifier',true,true,now(),0,'ACTIVE');
+
+INSERT INTO entity_template(uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name) VALUES (a4bf1b60-901c-11e5-b1c0-013ce44bb741,1,'pcs.galaxy',null,'TenantAdminUser',{'emailId':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','entityName':'{"client":[""],"server":["mandatory","uniqueAcrossDomain"],"showOnGrid":true,"showOnTree":false}','identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','myDomain':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','timeStamp':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','valid':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',true,true,0996a3e1-9032-11e5-b1c0-013ce44bb741,0,'ACTIVE');
+
+INSERT INTO entity_template
+(uuid,begining,domain,entity_template_name,field_validation,global_entity_template_name,
+	global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name
+) VALUES (now(),1,'pcs.galaxy',
+'AlertDefinition',
+{'entityName':'{"client":[""],"server":["mandatory","uniqueAcrossDomain"],"showOnGrid":true,"showOnTree":false}',
+'identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}',
+'sourceId':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}',
+'pointName':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+'alertType':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}',
+'maxValue':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}',
+'minValue':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}',
+'compareValue':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}',
+'valid':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}'}
+,'GlobalMarkerTemplate',
+'MARKER',0x636865636b,'identifier',true,true,now(),0,'ACTIVE');
+
+INSERT INTO entity_template(uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name,parent_template) VALUES (now(),1,'pcs.galaxy',null,'Asset',{'assetId':'{"client":[""],"server":["mandatory", "uniqueAcrossTemplate"],"showOnGrid":true,"showOnTree":true}','assetName':'{"client":[""],"server":["mandatory", "uniqueAcrossTemplate"],"showOnGrid":true,"showOnTree":false}','assetType':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','description':'{"client":[""],"server":[],"showOnGrid":true,"showOnTree":false}','identifier':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','serialNumber':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,now(),0,'ACTIVE','MARKER');
+
+INSERT INTO entity_template(uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name) VALUES (5490cdc0-e6a0-11e5-b1c0-013ce44bb741,1,'pcs.galaxy',null,'Polygon',{'borderAlpha':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','borderColor':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','borderThickness':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','coordinates':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','fillAlpha':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','fillColor':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','zoom':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,5f160690-e29d-11e5-b068-759764b0e323,0,'ACTIVE');
+
+INSERT INTO entity_template(uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name) VALUES (5491df30-e6a0-11e5-b1c0-013ce44bb741,1,'pcs.galaxy',null,'Circle',{'borderAlpha':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','borderColor':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','borderThickness':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','fillAlpha':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','fillColor':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','zoom':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','latitude':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','longitude':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','radius':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,5f160690-e29d-11e5-b068-759764b0e323,0,'ACTIVE');
+
+INSERT INTO entity_template(uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name) VALUES (ed016bb0-e69f-11e5-b1c0-013ce44bb741,1,'pcs.galaxy',null,'Route',{'borderAlpha':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','borderColor':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','borderThickness':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','coordinates':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','fillAlpha':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','fillColor':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','zoom':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','width':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,5f160690-e29d-11e5-b068-759764b0e323,0,'ACTIVE');
+
+INSERT INTO entity_template(uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name) VALUES (3d0bb1c1-e85c-11e5-b1c0-013ce44bb741,1,'pcs.galaxy',null,'Geofence',{'desc':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','geofenceName':'{"client":[""],"server":["mandatory","uniqueAcrossDomain"],"showOnGrid":true,"showOnTree":false}','identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','type':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,5f160690-e29d-11e5-b068-759764b0e323,0,'ACTIVE');
+
+INSERT INTO entity_template(uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name) VALUES (3f8099f0-06c7-11e6-b1c0-013ce44bb741,1,'pcs.galaxy',null,'Geotag',{'identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','latitude':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','longitude':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,5f160690-e29d-11e5-b068-759764b0e323,0,'ACTIVE');
+
+INSERT INTO entity_template(uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,revision_time,status_key,status_name) VALUES (now(),1,'pcs.galaxy',null,'UnRecognizedDevice',{'assetId':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','assetMake':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','assetModel':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','assetName':'{"client":[""],"server":["", ""],"showOnGrid":true,"showOnTree":false}','assetType':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','description':'{"client":[""],"server":[],"showOnGrid":true,"showOnTree":false}','deviceDomain':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','entityTemplate':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','globalEntity':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','identifierKey':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','identifierValue':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','owner':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','parent':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','serialNumber':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','sourceId':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":true}','superTenant':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',true,true,now(),0,'ACTIVE');
+
+INSERT INTO entity_template (uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,parent_template,revision_time,status_key,status_name) VALUES (now(),1,'pcs.galaxy',null,'Tag',{'identifier':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":true}','name':'{"client":[""],"server":["mandatory","uniqueAcrossTemplate"],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,null,1643e671-1c32-11e6-b5c4-e3d7bb1231c0,0,'ACTIVE');
+
+INSERT INTO entity_template (uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,parent_template,revision_time,status_key,status_name) VALUES (now(),1,'pcs.galaxy',null,'Poi',{'description':'{"client":[""],"server":[],"showOnGrid":true,"showOnTree":false}','identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','latitude':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','longitude':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','poiName':'{"client":[""],"server":["mandatory", "uniqueAcrossDomain"],"showOnGrid":true,"showOnTree":false}','poiType':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}','radius':'{"client":[""],"server":["mandatory"],"showOnGrid":true,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',true,true,'MARKER',now(),0,'ACTIVE');
+
+INSERT INTO entity_template (uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,parent_template,revision_time,status_key,status_name) VALUES (now(),1,'pcs.galaxy',null,'PoiType',{'identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,'MARKER',now(),0,'ACTIVE');
+
+INSERT INTO entity_template (uuid,begining,domain,domain_type,entity_template_name,field_validation,global_entity_template_name,global_entity_type,html_page,identifier_field,is_modifiable,is_sharable,parent_template,revision_time,status_key,status_name) VALUES (now(),1,'pcs.galaxy',null,'AssetType',{'identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}'},'GlobalMarkerTemplate','MARKER',0x636865636b,'identifier',false,true,'MARKER',now(),0,'ACTIVE');
+
+INSERT INTO entity_template (domain,platform_entity_type,status_key,entity_template_id,access_scope,domain_type,entity_template_name,field_validation,html_page,identifier_field,is_modifiable,is_sharable,parent_template,platform_entity_template_name,status_name) VALUES ('pcs.galaxy','MARKER',0,now(),null,null,'Document',{'documentName': '{"client":[""],"server":["mandatory", "uniqueAcrossTemplate"],"showOnGrid":true,"showOnTree":true}','documentType': '{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','isExpired': '{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','ExpiryDate': '{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','notification': '{"client":[""],"server":[],"showOnGrid":true,"showOnTree":false}','notifyStart': '{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','notifyType': '{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','notifyRecFreq': '{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}'},null,'identifier',false,true,'platformMarkerTemplate','platformMarkerTemplate','ACTIVE');
+
+INSERT INTO entity_template (domain,platform_entity_type,status_key,entity_template_id,access_scope,domain_type,entity_template_name,field_validation,html_page,identifier_field,is_modifiable,is_sharable,parent_template,platform_entity_template_name,status_name) VALUES ('pcs.galaxy','MARKER',0,now(),null,null,'LICENSE',{'country':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','expiryDate':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','identifier':'{"client":[""],"server":[""],"showOnGrid":false,"showOnTree":false}','issueDate':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','licenseNo':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}','vehicleType':'{"client":[""],"server":[""],"showOnGrid":true,"showOnTree":false}'},null,'identifier',false,true,'Document','platformMarkerTemplate','ACTIVE');
+
+

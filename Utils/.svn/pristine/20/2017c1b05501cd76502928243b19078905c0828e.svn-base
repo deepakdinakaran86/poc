@@ -1,0 +1,54 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.pcs.alpine</groupId>
+	<artifactId>token-manager</artifactId>
+	<version>1.0.0</version>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.pcs.alpine</groupId>
+			<artifactId>commons-cache</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.pcs.alpine</groupId>
+			<artifactId>commons-rest</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<!-- J D K C O M P I L E R I N C L U S I O N -->
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.12.4</version>
+				<configuration>
+					<skip>${unit.tests.skip}</skip>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<!-- R E S O U R C E S I N C L U S I O N -->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+	</build>
+</project>

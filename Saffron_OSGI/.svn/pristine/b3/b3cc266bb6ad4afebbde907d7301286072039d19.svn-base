@@ -1,0 +1,64 @@
+##### Login Credentials #####
+autoclaim.login.clientid=pHEzAwhML1taFqRmrWZsi0Cz2VQa
+autoclaim.login.clientsecret=I8FnHkK_dCo37lYDUHMHFInoeIoa
+autoclaim.login.username=pcsadmin@pcs.galaxy
+autoclaim.login.password=password
+autoclaim.supertenant=pcs.galaxy
+autoclaim.domain=.galaxy
+autoclaim.point.config.count=50
+
+autoclaim.user.permission=Asset_Access
+autoclaim.emaillink=https://galaxy.pacificcontrols.net/portal/resetpassword
+
+## Super Tenant Name
+autoclaim.cummins.supertenant.list=cummins
+
+##### Server Details #####
+autoclaim.saffron.apimanager.url=http://10.131.5.6:8282
+autoclaim.alpine.apimanager.url=http://10.131.5.6:8282
+autoclaim.avocado.apimanager.url=http://10.131.5.6:8282
+
+
+##### End Points #####
+autoclaim.saffron.device.register=saffron/1.0.0/devices/register
+autoclaim.saffron.device.get=saffron/1.0.0/devices/{source_id}
+autoclaim.saffron.device.claim=saffron/1.0.0/devices/{source_id}/claim
+autoclaim.saffron.device.getpoints=saffron/1.0.0/devices/{source_id}/configurations
+
+autoclaim.alpine.device.create=/markers/1.0.0/markers
+autoclaim.alpine.tenant.find=/tenants/1.0.0/tenants/find
+autoclaim.alpine.hierarchy.children=/hierarchy/1.0.0/hierarchy/children
+autoclaim.alpine.marker.validate=/markers/1.0.0/markers/validate
+autoclaim.alpine.marker.search=/markers/1.0.0/markers/fieldvalue/search
+autoclaim.alpine.hierarchy.parents=/hierarchy/1.0.0/hierarchy/range/tenants
+autoclaim.alpine.hierarchy.attach.children=/hierarchy/1.0.0/hierarchy/attach/children
+
+autoclaim.alpine.asset.mappoints=/galaxy-am/1.0.0/assets/points
+autoclaim.alpine.asset.create=/galaxy-am/1.0.0/assets
+autoclaim.alpine.asset.find=/galaxy-am/1.0.0/assets/find
+autoclaim.alpine.asset.update=/galaxy-am/1.0.0/assets/{asset_name}
+
+autoclaim.avocado.create.user=/galaxy-um/1.0.0/users
+autoclaim.avocado.user.permission=/galaxy-um/1.0.0/resources
+autoclaim.alpine.user.permission=/users/1.0.0/users/permissions
+autoclaim.avocado.user.role=/galaxy-um/1.0.0/roles
+
+autoclaim.alpine.tagmng.tag=/galaxy-tags/1.0.0/tags/actors
+
+autoclaim.alpine.asset.make=Make:n0
+autoclaim.alpine.asset.model=Model:n0
+autoclaim.alpine.asset.slno=Serial Number:n0
+autoclaim.alpine.asset.assetid=Unit Number(Power Unit):n0
+##No need to updated assetName
+autoclaim.alpine.asset.assetname=Vehicle Identification Number:n0
+
+
+
+
+
+
+
+
+
+
+

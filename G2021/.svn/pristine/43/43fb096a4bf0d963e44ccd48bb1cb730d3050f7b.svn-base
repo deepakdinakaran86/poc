@@ -1,0 +1,245 @@
+
+<% 
+	var APPCONF = require('/configs/appconfig.jag');
+	var APICONF = require('/configs/apiproperties.jag');
+	var usr = require('/modules/user.js');
+	include(utils.resolvePath('templates/portal-header.jag')); 
+%>
+<link rel="stylesheet" href="<%=urlPrefix%>plugins/leaflet/leaflet.css" type="text/css"/>
+<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/css/indexpage.css')%>" rel="stylesheet" type="text/css"/>
+
+<style type="text/css">		
+	#treeview span.k-in.k-state-selected {
+		color: #26a69a !important;
+	}
+		.monitoring-popup figure {
+		width: 33%;
+		padding: 5px;
+		height: 110px;
+		float: left;
+		text-align: center;	
+		background: #c3c4c3 url("<%=urlPrefix%><%=utils.resolveUrl('/assets/admin/layout/img/equipicon.svg')%>") no-repeat;
+		background-position: center center;
+		background-size: 44px 44px;
+		margin-top: 7px;
+	}
+	
+	#treeview span.k-in.k-state-selected {
+			color: #2b3643 !important;
+			font-weight: bold;
+		}
+</style>
+
+<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid page-footer-fixed page-quick-sidebar-open" >
+
+<div class="se-pre-con"></div>
+<!-- BEGIN HEADER -->
+	<%include(utils.resolvePath('templates/page-header.jag')); %>
+<!-- END HEADER -->
+
+
+<!-- BEGIN CONTAINER -->
+<div class="page-container">	
+	<%include(utils.resolvePath('templates/page-sidebar.jag')); %>
+			
+			
+	
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content" style="min-height:720px">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title hidden">	Map <small></small></h3>
+			<div class="page-bar hidden">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Page Layouts</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Blank Page</a>
+					</li>
+				</ul>		
+			</div>
+			<!-- END PAGE HEADER-->
+			
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<section id="assetsmonitoringmap"  style="width:99%; min-height:680px"></section>
+					
+					<section id="assetcountdetails">					
+						<span id="assettotal"><a href="Javascript:void(0)" id="asset-toggle" onclick="FnManageAssetInfo()">0</a></span>
+						<div id="assetcountpanel">
+							<ul class="nav nav-tabs" role="tablist">
+							<li role="presentation" class="active"><a href="#assettype_details_count" aria-controls="profile" role="tab" data-toggle="tab" id="assettype_details_count-id"><span>Assets List</span></a></li>
+							<li role="presentation" ><a href="#gapp-chart" aria-controls="home" role="tab" data-toggle="tab" id="gapp-chart-id"><span>Points chart</span></a></li>
+							
+							</ul>
+							<div class="tab-content">
+								<div role="tabpanel" class="asset-icon-list tab-pane fade in active" id="assettype_details_count">
+									<div id="assettype_details_list">No Records to display</div>
+								</div>
+								<div role="tabpanel" class="tab-pane fade" id="gapp-chart">
+									<div id="gapp_point_history">No Records to display</div>
+								</div>
+								<div role="tabpanel" class="tab-pane fade" id="gapp-geofence-list">
+									<div id="gapp_geofence">No Records to display</div>
+								</div>
+							</div>					
+						</div>					
+					</section>	
+				</div>		
+			</div>
+				<div class="clearfix"><!-- END First ROW -->
+				
+		<form id="gapp-genset-dashboard" role="form" action="" name="gapp-genset-dashboard" method="post">									
+				<input type="hidden" id="dashboard_equip_id" name="dashboard_equip_id" />
+				<input type="hidden" id="gapp-tenant-key" name="gapp-tenant-key" value="<%=VarTenantKey%>" />
+			</form>
+	
+			</div>
+			
+			
+			
+			
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+	<% include(utils.resolvePath('templates/page-quickbar.jag')); %> 
+	
+</div>
+<!-- END CONTAINER -->
+
+
+<!-- Start Small modal -->
+	<div class="bootbox modal fade in" tabindex="-1"  id="myModal" role="dialog" aria-hidden="false" style=" padding-right: 15px;">
+		<div class="modal-dialog" style="max-width:575px;">
+			<div class="modal-content">
+			
+				<div class="modal-header">
+					<button type="button" class="bootbox-close-button close" data-dismiss="modal" aria-hidden="true">×</button>
+					<h4 class="modal-title" id="asset-name-history">Custom title</h4>
+				</div>
+				
+				<div class="modal-body" style="420px">				
+					<div class="bootbox-body text-center">
+						<form class="form-inline" role="form">
+							<div class="form-group"><span class='pull-left'>From &nbsp;&nbsp;</span>
+								
+								
+								<input type="text" class="form-control style="margin-right:15px;" date-picker" name="startDate" id="startDate" tabindex="2"  placeholder="Select Date" required/>
+							</div>
+							<div class="form-group">
+								<span class='pull-left'>&nbsp;&nbsp;To&nbsp;&nbsp;</span>
+								
+								<input type="text" class="form-control date-picker" name="endDate" id="endDate" tabindex="3" placeholder="Select Date" required/>
+							</div>
+							&nbsp;<button class="btn green" type="button"  id="BtnPlotAsset" onclick="return FnPlotAssetHistory()">Plot</button>
+							
+							<input type="hidden" name="VarIdentifier" id="VarIdentifier" value="">
+							<input type="hidden" name="VarAssetName" id="VarAssetName" value="">
+							<input type="hidden" name="VarDataSourceName" id="VarDataSourceName" value="">
+							
+						</form>
+					</div>
+				</div>
+				
+				<div class="modal-footer">
+					<!--<button data-bb-handler="success" type="button" class="btn green">Success!</button>-->
+					
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End Small Modal-->
+	
+	<form id="gapp-genset-dashboard" role="form" action="" name="gapp-genset-dashboard" method="post">									
+					<input type="hidden" id="dashboard_equip_id" name="dashboard_equip_id" />
+					<input type="hidden" id="gapp-tenant-key" name="gapp-tenant-key" value="<%=VarTenantKey%>" />
+				</form>
+<%
+	include(utils.resolvePath('templates/portal-footer.jag'));
+	include('/controllers/includes/theme-portal-scripts.jag');
+
+ %>
+
+	
+		
+	<script type="text/javascript">
+		var VarListAssetsUrl = '<%=APICONF.GAPP_SERVICES.assets.monitoring%>';
+		
+		var VarSearchDeviceUrl = '<%=APICONF.GAPP_SERVICES.assets.searchdevice%>';
+		var VarLiveSubscribeUrl = '<%=APICONF.GAPP_SERVICES.device.datasourcesubscribe%>';
+		var VarGetAssetLatestUrl = '<%=APICONF.GAPP_SERVICES.equipments.asset.latestdevice%>';
+		var VarGetDeviceDataUrl = '<%=APICONF.GAPP_SERVICES.device.find%>';
+		var VarListGeofenceUrl = '<%=APICONF.GAPP_SERVICES.geofence.list%>';
+		var VarViewGeofenceUrl = '<%=APICONF.GAPP_SERVICES.geofence.view%>';
+		var VarPlotLatestDataUrl = '<%=APICONF.GAPP_SERVICES.assets.plot%>';	
+		var VarLivePointLatestUrl = '<%=APICONF.GAPP_SERVICES.device.search%>';		
+		
+		
+		var VarLUDomainName = '<%=usr.domainName()%>';
+		var VarCurrentTenantInfo = $.parseJSON('<%=VarCurrentTenantInfo%>');
+		var VarAppImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_PATH%>';
+		var VarAppAssetImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_ASSET%>';
+		var VarAppAssetTypeImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_ASSETTYPE%>';
+		var VarAppMarkerImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_ASSETTYPE_MARKER%>';
+		var VarAppDefaultImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_DEFAULT%>';		
+		var VarAssetsHistoryUrl = '<%=APICONF.GAPP_SERVICES.assets.findhistory%>';	
+		
+		var VarAppImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_PATH%>';
+		var VarAppAssetImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_ASSET%>';
+		var VarAppAssetTypeImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_ASSETTYPE%>';
+		var VarAppMarkerImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_ASSETTYPE_MARKER%>';
+		var VarAppDefaultImagePath = '<%=APPCONF.GAPP_CONF.DOMAIN_IMG_DEFAULT%>';	
+		
+		<!-- Variables/Urls for Websocket Connection-->
+		var VarWebSocketType        = '<%=APPCONF.GAPP_CONF.APP_WEBSOCKET_TYPE%>';
+		var VarLiveSubscribeUrl     = '<%=APICONF.GAPP_SERVICES.websocket.weborb%>';	
+		var VarMqttLiveSubscribeUrl = '<%=APICONF.GAPP_SERVICES.websocket.mqtt%>';
+		
+</script>
+
+	<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/leaflet.js"></script>	
+	<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/bouncemarker.js"></script>
+	<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/MovingMarker.js"></script>
+	<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/L.Polyline.SnakeAnim1.js"></script>
+	<script type='text/javascript' src="<%=urlPrefix%>plugins/leaflet/leaflet.polylineoffset.js"></script>	
+	<script src="<%=urlPrefix%>js/websocket/WebORB.js"></script>
+	<script type='text/javascript' src="<%=urlPrefix%>js/mask.js"></script>
+	<script type="text/javascript" src="<%=urlPrefix%><%=utils.resolveUrl('js/dapp.js')%>"></script>
+	
+<!-- Scripts for Websocket Connection-->
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('js/websocket.js')%>"></script>
+<script src="<%=urlPrefix%>js/websocket/mqtt/mqttws31-min.js"></script>
+<script src="<%=urlPrefix%>js/websocket/WebORB.js"></script>
+

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Item_Attach_Entity_To_Tags_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Service_Item_Attach_Entity_To_Tags_SEQ"
+			value="Service_Item_Attach_Entity_To_Tags_SEQ" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.)" name="serviceItemIdentifier"
+				scope="default" type="STRING" />
+			<payloadFactory media-type="json">
+				<format>{"tags":$1,"entity":$2}</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('listOfTagsPayload')" />
+					<arg evaluator="xml" expression="get-property('serviceItemIdentifier')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+			<log separator="$$$$$$">
+				<property expression="json-eval($.)" name="JSON Payload tag actor!" />
+			</log>
+			<send>
+				<endpoint
+					key="conf:/endpoints/serviceSchedule/Service_Schedule_Attach_Entity_To_Tags_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

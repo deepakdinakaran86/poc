@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Geofence_Type_Delete_SEQ">
+	<log separator=",">
+		<property name="Enter Geofence_Type_Delete_SEQ" value="----Geofence_Type_Delete_SEQ----" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<log separator="####">
+				<property name="error" value="----error----" />
+			</log>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.[0].identifier.key)" name="geofenceTypeIdKey"
+				scope="default" type="STRING" />
+			<property expression="json-eval($.[0].identifier.value)"
+				name="geofenceTypeIdValue" scope="default" type="STRING" />
+			<property expression="json-eval($.[0].domain.domainName)"
+				name="geofenceTypeDomain" scope="default" type="STRING" />
+			<payloadFactory media-type="json">
+				<format>{
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"platformEntity": {
+					"platformEntityType":
+					"MARKER"
+					},
+					"identifier": {
+					"key": "$3",
+					"value": "$4"
+					}
+					}</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('geofenceTypeDomain')" />
+					<arg evaluator="xml" expression="get-property('geofenceType')" />
+					<arg evaluator="xml" expression="get-property('geofenceTypeIdKey')" />
+					<arg evaluator="xml" expression="get-property('geofenceTypeIdValue')" />
+				</args>
+			</payloadFactory>
+			 <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send receive="Geofence_Delete_SEQ">
+                <endpoint key="conf:/endpoints/alpine/Delete_Marker_EP.xml"/>
+            </send>
+		</else>
+	</filter>
+</sequence>

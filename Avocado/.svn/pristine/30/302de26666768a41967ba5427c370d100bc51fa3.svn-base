@@ -1,0 +1,55 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="Avocado_Tenant_API"
+	context="/galaxy-tm/services/tenants">
+	<resource methods="POST" url-mapping="/"
+		inSequence="Create_Avocado_Tenant_SEQ">
+		<outSequence>
+			<log separator=",">
+				<property name="OUT SEQ***********" expression="json-eval($.)" />
+			</log>
+			<property name="info" scope="default">
+				<ns:Information xmlns:ns="www.google.com" />
+			</property>
+			<aggregate id="RESOURCE_ITERATE">
+				<completeCondition>
+					<messageCount />
+				</completeCondition>
+				<onComplete expression="$body//jsonObject"
+					enclosingElementProperty="info">
+					<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="//errorMessage">
+						<then>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<send />
+						</then>
+						<else>
+							<log level="full" />
+							<xslt key="conf:/xslt/tenant/XMLtoJSONarrayInstructions.xslt" />
+							<log separator=",">
+								<property name="***CHECK EITH XSLT SEQ***********"
+									expression="json-eval($.)" />
+							</log>
+							<property name="resourcesPermissionPayload" expression="json-eval($.Information)"
+								scope="default" type="STRING" />
+							<sequence key="Create_Tenant_Admin_Role_SEQ" />
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format> $1</format>
+								<args>
+									<arg evaluator="xml" expression="get-property('createTenantResponse')" />
+								</args>
+							</payloadFactory>
+							<send />
+						</else>
+					</filter>
+				</onComplete>
+			</aggregate>
+		</outSequence>
+		<faultSequence />
+	</resource>
+</api>
+                        

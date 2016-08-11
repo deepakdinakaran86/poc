@@ -1,0 +1,4 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Create_App_Api_Manager_EP" >
+<!--  <http method="post" uri-template="http://10.234.31.201:9765/store/site/blocks/application/application-add/ajax/application-add.jag?action=addApplication&amp;application={query.param.application}&amp;tier={query.param.tier}&amp;description={query.param.description}&amp;callbackUrl"/> -->
+ <http method="post" uri-template="http://10.236.166.115:9765/store/site/blocks/application/application-add/ajax/application-add.jag?action=addApplication&amp;application={query.param.application}&amp;tier={query.param.tier}&amp;description={query.param.description}&amp;callbackUrl"/>
+</endpoint>

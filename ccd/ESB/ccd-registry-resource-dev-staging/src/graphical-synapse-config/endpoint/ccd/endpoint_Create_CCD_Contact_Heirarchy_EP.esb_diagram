@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:esb="http:///org/wso2/developerstudio/eclipse/gmf/esb" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_EcrAAM2GEeWUn4lOZpMSIg" type="Esb" name="endpoint_Create_CCD_Contact_Heirarchy_EP.esb_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_EhZH8M2GEeWUn4lOZpMSIg" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_EhZvBM2GEeWUn4lOZpMSIg" type="7001"/>
+    <children xmi:type="notation:Shape" xmi:id="_En7NwM2GEeWUn4lOZpMSIg" type="3642" fontName="Segoe UI">
+      <children xmi:type="notation:BasicCompartment" xmi:id="_En700M2GEeWUn4lOZpMSIg" type="7041">
+        <children xmi:type="notation:Node" xmi:id="_EoJ3QM2GEeWUn4lOZpMSIg" type="3712">
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_EoJ3Qc2GEeWUn4lOZpMSIg"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_EoJ3Qs2GEeWUn4lOZpMSIg" fontName="Segoe UI"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_EoJ3Q82GEeWUn4lOZpMSIg"/>
+          <element xmi:type="esb:HTTPEndpoint" href="endpoint_Create_CCD_Contact_Heirarchy_EP.esb#//@server/@children.0/@child"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EoJ3RM2GEeWUn4lOZpMSIg" width="75" height="75"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_En700c2GEeWUn4lOZpMSIg" showTitle="true"/>
+      </children>
+      <element xmi:type="esb:EndpointDiagram" href="endpoint_Create_CCD_Contact_Heirarchy_EP.esb#//@server/@children.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_En7Nwc2GEeWUn4lOZpMSIg" width="118" height="100"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_EhZvAM2GEeWUn4lOZpMSIg"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_EhZvAc2GEeWUn4lOZpMSIg" fontName="Segoe UI"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_EhZvAs2GEeWUn4lOZpMSIg"/>
+    <element xmi:type="esb:EsbServer" href="endpoint_Create_CCD_Contact_Heirarchy_EP.esb#//@server"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_EhZvA82GEeWUn4lOZpMSIg"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_EcrAAc2GEeWUn4lOZpMSIg"/>
+  <element xmi:type="esb:EsbDiagram" href="endpoint_Create_CCD_Contact_Heirarchy_EP.esb#/"/>
+</notation:Diagram>

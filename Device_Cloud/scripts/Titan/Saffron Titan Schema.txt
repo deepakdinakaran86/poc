@@ -1,0 +1,241 @@
+graph = TitanFactory.open('conf/gremlin-server/titan-cassandra-es.properties')
+graph.tx().rollback();
+mgmt = graph.openManagement();
+
+//////////////////////////Property Keys/////////////////////////////////////////
+
+name = mgmt.makePropertyKey('name').dataType(String.class).make();
+dataStore = mgmt.makePropertyKey('dataStore').dataType(String.class).make();
+status = mgmt.makePropertyKey('status').dataType(String.class).make();
+statusKey = mgmt.makePropertyKey('statusKey').dataType(Integer.class).make();
+isWritable = mgmt.makePropertyKey('isWritable').dataType(Boolean.class).make();
+systemCommand = mgmt.makePropertyKey('systemCommand').dataType(Boolean.class).make();
+dataStore = mgmt.makePropertyKey('dataStore').dataType(String.class).make();
+isSi = mgmt.makePropertyKey('isSi').dataType(Boolean.class).make();
+conversion = mgmt.makePropertyKey('conversion').dataType(String.class).make();
+symbol = mgmt.makePropertyKey('symbol').dataType(String.class).make();
+pointId = mgmt.makePropertyKey('pointId').dataType(String.class).make();
+pointName = mgmt.makePropertyKey('pointName').dataType(String.class).make();
+displayName = mgmt.makePropertyKey('displayName').dataType(String.class).make();
+accessType = mgmt.makePropertyKey('accessType').dataType(String.class).make();
+description = mgmt.makePropertyKey('description').dataType(String.class).make();
+subId = mgmt.makePropertyKey('subId').dataType(String.class).make();
+unitId = mgmt.makePropertyKey('unitId').dataType(Integer.class).make();
+sourceId = mgmt.makePropertyKey('sourceId').dataType(String.class).make();
+deviceId = mgmt.makePropertyKey('deviceId').dataType(String.class).make();
+isPublishing = mgmt.makePropertyKey('isPublishing').dataType(Boolean.class).make();
+datasourceName = mgmt.makePropertyKey('datasourceName').dataType(String.class).make();
+ip = mgmt.makePropertyKey('ip').dataType(String.class).make();
+connectedPort = mgmt.makePropertyKey('connectedPort').dataType(Integer.class).make();
+writebackPort = mgmt.makePropertyKey('writebackPort').dataType(Integer.class).make();
+isActive = mgmt.makePropertyKey('isActive').dataType(Boolean.class).make();
+dataType = mgmt.makePropertyKey('dataType').dataType(String.class).make();
+unit = mgmt.makePropertyKey('unit').dataType(String.class).make();
+contextName = mgmt.makePropertyKey('contextName').dataType(String.class).make();
+isDeleted = mgmt.makePropertyKey('isDeleted').dataType(Boolean.class).make();
+physicalQuantity = mgmt.makePropertyKey('physicalQuantity').dataType(String.class).make();
+type = mgmt.makePropertyKey('type').dataType(String.class).make();
+contextName = mgmt.makePropertyKey('contextName').dataType(String.class).make();
+precedence = mgmt.makePropertyKey('precedence').dataType(String.class).make();
+expression = mgmt.makePropertyKey('expression').dataType(String.class).make();
+pointAccessType = mgmt.makePropertyKey('pointAccessType').dataType(String.class).make();
+systemTag = mgmt.makePropertyKey('systemTag').dataType(String.class).make();
+acquisition = mgmt.makePropertyKey('acquisition').dataType(String.class).make();
+extensions = mgmt.makePropertyKey('extensions').dataType(String.class).make();
+alarmExtensions = mgmt.makePropertyKey('alarmExtensions').dataType(String.class).make();
+requestId = mgmt.makePropertyKey('requestId').dataType(Integer.class).make();
+requestedAt = mgmt.makePropertyKey('requestedAt').dataType(Long.class).make();
+value = mgmt.makePropertyKey('value').dataType(String.class).make();
+customInfo = mgmt.makePropertyKey('customInfo').dataType(String.class).make();
+customSpecs = mgmt.makePropertyKey('customSpecs').dataType(String.class).make();
+updatedAt = mgmt.makePropertyKey('updatedAt').dataType(Long.class).make();
+command = mgmt.makePropertyKey('command').dataType(String.class).make();
+customTag = mgmt.makePropertyKey('customTag').dataType(String.class).make();
+remarks = mgmt.makePropertyKey('remarks').dataType(String.class).make();
+desc = mgmt.makePropertyKey('desc').dataType(String.class).make();
+
+
+
+
+/////////////////Edge Labels////////////////////////////////////
+
+mgmt.makeEdgeLabel('owns').make();
+mgmt.makeEdgeLabel('hasTag').make();
+mgmt.makeEdgeLabel('hasTemplate').make();
+mgmt.makeEdgeLabel('talksIn').make();
+mgmt.makeEdgeLabel('transportsIn').make();
+mgmt.makeEdgeLabel('isTaggedWith').make();
+mgmt.makeEdgeLabel('executed').make();
+mgmt.makeEdgeLabel('isConfiguredWith').make();
+mgmt.makeEdgeLabel('includes').make();
+mgmt.makeEdgeLabel('hasParameter').make();
+mgmt.makeEdgeLabel('subscribedTo').make();
+mgmt.makeEdgeLabel('hasType').make();
+mgmt.makeEdgeLabel('hasModel').make();
+mgmt.makeEdgeLabel('hasVersion').make();
+mgmt.makeEdgeLabel('hasPoint').make();
+mgmt.makeEdgeLabel('hasUnitId').make();
+mgmt.makeEdgeLabel('canExecute').make();
+mgmt.makeEdgeLabel('measuresIn').make();
+mgmt.makeEdgeLabel('containedIn').make();
+mgmt.makeEdgeLabel('isOfType').make();
+mgmt.makeEdgeLabel('configuredAs').make();
+
+
+/////////////////DATA_TYPE/////////////////
+
+dataType = mgmt.makeVertexLabel('DATA_TYPE').make();
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexDataTypeName', Vertex.class).addKey(name).indexOnly(dataType).unique().buildCompositeIndex();
+
+/////////////////ACCESS_TYPE/////////////////
+
+accessType = mgmt.makeVertexLabel('ACCESS_TYPE').make()
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexAccessTypeName', Vertex.class).addKey(name).indexOnly(accessType).unique().buildCompositeIndex();
+
+/////////////////NW_PROTOCOL/////////////////
+nwProtocol = mgmt.makeVertexLabel('NW_PROTOCOL').make()
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexNwProtocolName', Vertex.class).addKey(name).indexOnly(nwProtocol).unique().buildCompositeIndex();
+
+/////////////////MAKE/////////////////
+make = mgmt.makeVertexLabel('MAKE').make()
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexMakeName', Vertex.class).addKey(name).indexOnly(make).unique().buildCompositeIndex();
+
+/////////////////DEVICE_TYPE/////////////////
+deviceType = mgmt.makeVertexLabel('DEVICE_TYPE').make()
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexDeviceTypeName', Vertex.class).addKey(name).indexOnly(deviceType).buildCompositeIndex();
+
+/////////////////MODEL/////////////////
+model = mgmt.makeVertexLabel('MODEL').make()
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexModelName', Vertex.class).addKey(name).indexOnly(model).buildCompositeIndex();
+
+/////////////////DEVICE_PROTOCOL/////////////////
+deviceProtocol = mgmt.makeVertexLabel('DEVICE_PROTOCOL').make()
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexDeviceProtocolName', Vertex.class).addKey(name).indexOnly(deviceProtocol).buildCompositeIndex();
+
+/////////////////PROTOCOL_VERSION/////////////////
+protVersion = mgmt.makeVertexLabel('PROTOCOL_VERSION').make()
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexProtocolVersionName', Vertex.class).addKey(name).indexOnly(protVersion).buildCompositeIndex();
+
+/////////////////COMMAND_TYPE/////////////////
+commandType = mgmt.makeVertexLabel('COMMAND_TYPE').make()
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexCommandTypeName', Vertex.class).addKey(name).indexOnly(commandType).buildCompositeIndex();
+
+/////////////////PHYSICAL_QUANTITY/////////////////
+pq = mgmt.makeVertexLabel('PHYSICAL_QUANTITY').make()
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexPhysicalQuantityName', Vertex.class).addKey(name).indexOnly(pq).unique().buildCompositeIndex();
+
+/////////////////UNIT/////////////////
+unit = mgmt.makeVertexLabel('UNIT').make()
+name = mgmt.getPropertyKey('name');
+
+mgmt.buildIndex('indexUnitName', Vertex.class).addKey(name).indexOnly(unit).unique().buildCompositeIndex();
+mgmt.buildIndex('indexUnitSymbol', Vertex.class).addKey(name).indexOnly(unit).unique().buildCompositeIndex();
+
+/////////////////SYSTEM_TAG/////////////////
+
+systemTag = mgmt.makeVertexLabel('SYSTEM_TAG').make();
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexSystemTagName', Vertex.class).addKey(name).indexOnly(systemTag).unique().buildCompositeIndex();
+
+///////////////POINT//////////////////////
+
+point = mgmt.makeVertexLabel('POINT').make();
+pointId = mgmt.getPropertyKey('pointId');
+pointName = mgmt.getPropertyKey('pointName');
+mgmt.buildIndex('indexPointId', Vertex.class).addKey(pointId).indexOnly(point).buildCompositeIndex();
+mgmt.buildIndex('indexPointName', Vertex.class).addKey(pointName).indexOnly(point).buildCompositeIndex();
+
+
+///////////////SUBSCRIPTION//////////////////////
+
+subscription = mgmt.makeVertexLabel('SUBSCRIPTION').make();
+subId = mgmt.getPropertyKey('subId');
+
+mgmt.buildIndex('indexSubscriptionSubId', Vertex.class).addKey(subId).indexOnly(subscription).unique().buildCompositeIndex();
+
+///////////////RECYCLE//////////////////////
+
+recycle = mgmt.makeVertexLabel('RECYCLE').make();
+
+///////////////DEVICE//////////////////////
+
+device = mgmt.makeVertexLabel('DEVICE').make();
+
+sourceId = mgmt.getPropertyKey('sourceId');
+mgmt.buildIndex('indexDeviceSourceId', Vertex.class).addKey(sourceId).indexOnly(device).unique().buildCompositeIndex();
+
+///////////////DEVICE_TAG//////////////////////
+
+deviceTag = mgmt.makeVertexLabel('DEVICE_TAG').make();
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexDeviceTagName', Vertex.class).addKey(name).indexOnly(deviceTag).buildCompositeIndex();
+
+///////////////DATA_SOURCE//////////////////////
+
+dataSource = mgmt.makeVertexLabel('DATA_SOURCE').make();
+datasourceName = mgmt.getPropertyKey('datasourceName');
+mgmt.buildIndex('indexDeviceSourceId', Vertex.class).addKey(datasourceName).indexOnly(dataSource).unique().buildCompositeIndex();
+
+///////////////DATA_SOURCE_PARAMETERS//////////////////////
+
+dataSourceParam = mgmt.makeVertexLabel('DATA_SOURCE_PARAMETERS').make();
+
+///////////////DATA_SOURCE_CONTEXT//////////////////////
+
+dataSourceContext = mgmt.makeVertexLabel('DATA_SOURCE_CONTEXT').make();
+
+///////////////DEVICE_CONFIG_TEMP//////////////////////
+
+deviceConfigTemp = mgmt.makeVertexLabel('DEVICE_CONFIG_TEMP').make();
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexDeviceConfigTempName', Vertex.class).addKey(name).indexOnly(deviceConfigTemp).buildCompositeIndex();
+
+isDeleted = mgmt.getPropertyKey('isDeleted');
+mgmt.buildIndex('indexDeviceConfigTempIsDeleted', Vertex.class).addKey(isDeleted).indexOnly(deviceConfigTemp).buildCompositeIndex();
+
+
+///////////////CONFIGURED_POINT//////////////////////
+
+configuredPoint = mgmt.makeVertexLabel('CONFIGURED_POINT').make();
+displayName = mgmt.getPropertyKey('displayName');
+mgmt.buildIndex('indexConfiguredPointDisplayName', Vertex.class).addKey(displayName).indexOnly(configuredPoint).buildCompositeIndex();
+
+pointId = mgmt.getPropertyKey('pointId');
+mgmt.buildIndex('indexConfiguredPointPointId', Vertex.class).addKey(pointId).indexOnly(configuredPoint).buildCompositeIndex();
+
+///////////////PARAMETER//////////////////////
+
+parameter = mgmt.makeVertexLabel('PARAMETER').make();
+name = mgmt.getPropertyKey('name');
+mgmt.buildIndex('indexParameterName', Vertex.class).addKey(name).indexOnly(parameter).buildCompositeIndex();
+
+
+///////////////COMMAND//////////////////////
+
+command = mgmt.makeVertexLabel('COMMAND').make();
+requestId = mgmt.getPropertyKey('requestId');
+mgmt.buildIndex('indexCommandRequestId', Vertex.class).addKey(requestId).indexOnly(command).buildCompositeIndex();
+
+status = mgmt.getPropertyKey('status');
+mgmt.buildIndex('indexCommandStatus', Vertex.class).addKey(status).indexOnly(command).buildCompositeIndex();
+
+
+///////////////BATCH//////////////////////
+
+batch = mgmt.makeVertexLabel('BATCH').make();
+
+////////////////////////////////////////
+
+mgmt.commit();
+
+/////////////////////////////////////

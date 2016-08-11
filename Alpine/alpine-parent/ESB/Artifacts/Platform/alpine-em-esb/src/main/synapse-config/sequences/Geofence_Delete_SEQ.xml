@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Geofence_Delete_SEQ">
+	<log separator=",">
+		<property name="Enter Geofence_Delete_SEQ" value="---Geofence_Delete_SEQ----" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send/>
+		</then>
+		<else>
+			<property value="DELETED" name="geofenceStatus" scope="default"
+				type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('geofenceIdPayload')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="Geofence_Node_Update_SEQ">
+				<endpoint key="conf:/endpoints/alpine/Delete_Marker_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

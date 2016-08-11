@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"
+	name="Service_Component_Find_Service_Item_Hierarchy_SEQ">
+	<log separator="$$$$$$">
+		<property
+			name="----------------Entering Service_Component_Find_Service_Item_Hierarchy_SEQ"
+			value="----Service_Component_Find_Service_Item_Hierarchy_SEQ----" />
+		<property expression="json-eval($.)" name="JSON Payload find marker!"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.)" name="serviceComponentPayload"
+				scope="default" type="STRING" />
+			<property expression="json-eval($.fieldValues)" name="serviceComponentFieldValues"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/domain/domainName"
+				name="domainName" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/entityStatus/statusName"
+				name="status" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/key" name="identifierKey"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/value"
+				name="identifierValue" scope="default" type="STRING" />
+			<log separator=",">
+				<property expression="$body/jsonObject/entityStatus/statusName"
+					name="status" />
+			</log>
+			<script language="js"><![CDATA[var payload=eval("("+mc.getProperty('serviceComponentFieldValues')+")");
+                         			var value;      	      	      
+                         			for(var i in payload ){
+                         				     var key = payload[i].key;      	 		                         
+                         				     if(key		== 'serviceComponentName'){       	 			                   
+                         				     	serviceComponentName = payload[i].value;       	 			                     
+                         				     	mc.setProperty("serviceComponentName",serviceComponentName);	
+                         				     	}         
+                         				     if(key		== 'description'){       	 			                   
+                         				     	description = payload[i].value;       	 			                     
+                         				     	mc.setProperty("description",description);	
+                         				     	} 
+											 if(key		== 'frequencyInDistance'){       	 			                   
+                         				     	frequencyInDistance = payload[i].value;       	 			                     
+                         				     	mc.setProperty("frequencyInDistance",frequencyInDistance);	
+                         				     	}
+                         				     if(key		== 'frequencyInRunningHours'){       	 			                   
+                         				     	frequencyInRunningHours = payload[i].value;       	 			                     
+                         				     	mc.setProperty("frequencyInRunningHours",frequencyInRunningHours);	
+                         				     	}
+                       				     	 if(key		== 'frequencyInTime'){       	 			                   
+                         				     	frequencyInTime = payload[i].value;       	 			                     
+                         				     	mc.setProperty("frequencyInTime",frequencyInTime);	
+                         				     	}
+                         				     if(key		== 'notificationInDistance'){       	 			                   
+                         				     	notificationInDistance = payload[i].value;       	 			                     
+                         				     	mc.setProperty("notificationInDistance",notificationInDistance);	
+                         				     	}
+                       				     	 if(key		== 'notificationInRunningHours'){       	 			                   
+                         				     	notificationInRunningHours = payload[i].value;       	 			                     
+                         				     	mc.setProperty("notificationInRunningHours",notificationInRunningHours);	
+                         				     	}
+                         				     if(key		== 'notificationInTime'){       	 			                   
+                         				     	notificationInTime = payload[i].value;       	 			                     
+                         				     	mc.setProperty("notificationInTime",notificationInTime);	
+                         				     	}  
+                         			}]]></script>
+			<payloadFactory media-type="json">
+				<format>
+					{"actor": $1,
+					"searchTemplateName":"ServiceItem"
+					}
+				</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('serviceComponentPayload')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="Service_Component_Find_Service_Item_Details_SEQ">
+				<endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Get_Immediate_Children_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

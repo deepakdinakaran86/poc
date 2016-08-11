@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_Role_SEQ">
+	<log separator=",">
+		<property name="Enter Create_Role_SEQ" value="--------" />
+	</log>
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Create_Role_EP.xml" />
+	</send>
+</sequence>

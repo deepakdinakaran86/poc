@@ -1,0 +1,23 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>com.pcs</groupId>
+	<artifactId>device-cloud</artifactId>
+	<name>Device Cloud</name>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>devicecloud-commons</module>
+		<module>device-framework</module>
+		<module>data-distributor</module>
+		<module>device-gateway</module>
+		<module>event-escalation</module>
+		<module>data-analyzer</module>
+		<module>datasource</module>
+		<module>cache-loader</module>
+	</modules>
+
+</project>

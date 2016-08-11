@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Get_Tenant_Resources_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Avocado_Get_Tenant_Resources_SEQ" value="--Avocado_Get_Tenant_Resources_SEQ--------"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+        <property expression="json-eval($.)"
+                name="createTenantResponse" scope="default" type="STRING"/>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send receive="Avocado_Get_Resource_Permissions_SEQ">
+                <endpoint key="conf:/endpoints/tenant/Avocado_Get_Tenant_Resources_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

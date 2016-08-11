@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Create_Saffron_Subscription_SEQ">
+    <log separator=",">
+        <property name="Enter Subscription_Create_Saffron_Subscription_SEQ" value="--------Subscription_Create_Saffron_Subscription_SEQ--------"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property name="x-jwt-assertion" expression="get-property('Authorization')" scope="transport" type="STRING"/>
+            <property name="messageType" value="application/json" scope="axis2"
+				type="STRING" />
+            <send receive="Subscription_Send_Email_SEQ">
+                <endpoint key="conf:/endpoints/subscription/Subscription_Create_Saffron_Subscription_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

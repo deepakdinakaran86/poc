@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Forgot_Password_SEQ" >
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Forgot_Password_SEQ" value="Forgot_Password_SEQ" />
+	</log>
+
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<send receive="Forgot_Password_Create_Link_Marker_SEQ">
+		<endpoint key="conf:/endpoints/alpine/Forgot_Password_EP.xml" />
+	</send>
+</sequence>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+	http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd 
+	http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd 
+	http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd  
+	http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd">
+
+
+	<context:annotation-config />
+	<context:component-scan base-package="com.pcs.avocado" />
+	<!-- Property File configuration loaded per container refresh -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.context.support.PropertySourcesPlaceholderConfigurer">
+		<property name="ignoreUnresolvablePlaceholders" value="false" />
+		<property name="locations">
+			<list>
+				<value>
+					file:${CARBON_HOME}/repository/conf/galaxy/avocado-user.properties
+				</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="apimServerClient" class="com.pcs.avocado.rest.client.BaseClient">
+		<constructor-arg name="serviceEndpoint" value="${platform.esb.url}" />
+	</bean>
+	
+	<bean id="platformESBClient" class="com.pcs.avocado.rest.client.BaseClient">
+		<constructor-arg name="serviceEndpoint" value="${platform.esb.url}" />
+	</bean>
+
+	<bean id="avocadoESBClient" class="com.pcs.avocado.rest.client.BaseClient">
+		<constructor-arg name="serviceEndpoint" value="${avocado.esb.url}" />
+	</bean>
+
+
+
+	<!--bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"> 
+		<property name="host" value="${smtp.host}" /> <property name="port" value="${alpine.email.port}" 
+		/> <property name="username" value="${alpine.email.user.name}" /> <property 
+		name="password" value="${alpine.email.password}" /> <property name="javaMailProperties"> 
+		<props> <prop key="mail.smtp.auth">true</prop> <prop key="mail.smtp.starttls.enable">true</prop> 
+		</props> </property> </bean -->
+
+	<!--bean id="customeMailMessage" class="org.springframework.mail.SimpleMailMessage"> 
+		<property name="from" value="${alpine.email.user.name}" /> </bean -->
+
+	<!--bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean"> 
+		<property name="resourceLoaderPath" value="/META-INF" /> </bean -->
+
+
+	<!-- Turn off apply authorization for dev mode -->
+	<!-- <bean id="galaxyPlatformAuthorizer" class="com.pcs.galaxy.security.authorization.GalaxyPlatformAuthorizer"> 
+		<constructor-arg name="applyAuthorization" value="false" /> </bean> -->
+
+	<tx:annotation-driven />
+
+</beans>

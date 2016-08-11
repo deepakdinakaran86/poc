@@ -1,0 +1,64 @@
+{
+  "name": "PCInputStream",
+  "version": "1.0.0",
+  "nickName": "",
+  "description": "",
+  "metaData": [
+    {
+      "name": "sourceId",
+      "type": "STRING"
+    },
+    {
+      "name": "engOilTemp",
+      "type": "FLOAT"
+    },
+    {
+      "name": "engFuelRate",
+      "type": "FLOAT"
+    },
+    {
+      "name": "acceleratorPedalPos",
+      "type": "FLOAT"
+    },
+    {
+      "name": "engSpeed",
+      "type": "FLOAT"
+    },
+    {
+      "name": "barometricPressure",
+      "type": "FLOAT"
+    },
+    {
+      "name": "receivedTime",
+      "type": "LONG"
+    },
+    {
+      "name": "time",
+      "type": "LONG"
+    },
+    {
+      "name": "latitude",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "longitude",
+      "type": "DOUBLE"
+    },
+    {
+      "name": "engOilPressure",
+      "type": "FLOAT"
+    },
+    {
+      "name": "cruiseControlSetSpeed",
+      "type": "FLOAT"
+    },
+    {
+      "name": "wheelBasedVehicleSpeed",
+      "type": "FLOAT"
+    },
+    {
+      "name": "fuelLevel",
+      "type": "FLOAT"
+    }
+  ]
+}

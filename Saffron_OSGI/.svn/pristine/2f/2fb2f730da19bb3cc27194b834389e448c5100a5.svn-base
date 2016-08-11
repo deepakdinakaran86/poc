@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Device_Config_SEQ">
+	<log separator=",">
+		<property name="Enter Saffron_Device_Config_SEQ" value="--------Saffron_Device_Config_SEQ--------" />
+	</log>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="Authorization"
+		expression="$trp:x-jwt-assertion" scope="default" type="STRING" />
+
+	<property name="payloadIn" expression="json-eval($.)" scope="default"
+		type="STRING"></property>
+
+	<log>
+		<property xmlns:ns="http://org.apache.synapse/xsd" name="Token Header"
+			expression="get-property('Authorization')" />
+	</log>
+
+	<in>
+		<log separator=","></log>
+		<property name="Message" value="DefaultMessage" scope="default"
+			type="STRING"></property>
+		<class name="com.pcs.custom.StringifyMediator"></class>
+		<log separator=",">
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="===========Escaped Value=========="
+				expression="get-property('escapedPayload')"></property>
+		</log>
+	</in>
+
+	<property name="x-jwt-assertion" expression="get-property('Authorization')"
+		scope="transport" type="STRING" />
+	<property name="messageType" value="application/json" scope="axis2"
+		type="STRING" />
+	<send receive="Skyspark_Create_Points_SEQ">
+		<endpoint key="conf:/endpoints/saffron/Saffron_Device_Config_EP.xml" />
+	</send>
+
+</sequence>

@@ -1,0 +1,15 @@
+apiMgrClientId : mFKIMYke8RDHfSWhTNbFYU8bQxMa
+apiMgrClientSecret : TSjeicMmKRBQ1Zdfj0SDJDqcPjka
+gxyApiMgrClientId : 0OL3gBfj4avRRg7pGG4Vvw2kJhwa
+gxyApiMgrClientSecret : KTL6JdswtTRJRABSUiH9UwN_OMka
+host : 10.234.31.152
+port : 8282
+scheme : http
+getAssetsApi : markers/1.0.0/markers/fieldvalue/search
+getLatestDataApi : saffron/1.0.0/data/{source_id}/latest
+getCcdAssetsApi : /ccd/1.0.0/equipment/findall
+getAllCcdTenantsApi : /ccd/1.0.0/tenants/findall
+ccdUser : ccdadmin@ccd.galaxy
+ccdUserPwd : password
+gxyUser : ccdadmin@pcs.galaxy
+gxyUserPwd : password

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Configuration_Template_API" context="/saffron/services/config_templates">
+    <resource methods="POST PUT" inSequence="Saffron_Create_Update_Configuration_Template_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" url-mapping="/deactivate" inSequence="Saffron_Deactivate_Configuration_Template_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}" inSequence="Saffron_Get_Point_Configurations_Of_Template_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/all" inSequence="Saffron_Get_All_Configuration_Template_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}/isexist" inSequence="Saffron_Check_Configurations_Template_Exists_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

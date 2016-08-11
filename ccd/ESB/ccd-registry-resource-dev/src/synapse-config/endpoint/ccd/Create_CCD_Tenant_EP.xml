@@ -1,0 +1,3 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Create_CCD_Tenant_EP" >
+	<http uri-template="http://10.234.31.155:8281/alpine/services/markers" method="post"/>
+</endpoint>

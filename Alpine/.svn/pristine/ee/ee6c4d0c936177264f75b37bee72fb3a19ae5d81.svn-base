@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="Get_Subject_Entities_By_Tags_EP" xmlns="http://ws.apache.org/ns/synapse">
+	<http method="post" uri-template="http://10.236.166.111:9763/alpine-hierarchy-1.0.0/services/hierarchy/entities" />
+</endpoint>

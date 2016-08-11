@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+ 
+    <definition name="BaseTemplate"
+      template="/WEB-INF/jsp/defaultTemplate.jsp">
+        <put-attribute name="title"     value="Galaxy FMS" />
+        <put-attribute name="headTag"   value="/WEB-INF/jsp/fragments/headTag.jsp" />
+        <put-attribute name="header"    value="/WEB-INF/jsp/fragments/bodyHeader.jsp" />
+        <put-attribute name="menu"      value="/WEB-INF/jsp/fragments/menu.jsp" />
+        <put-attribute name="sidebar"      value="/WEB-INF/jsp/fragments/sidebar.jsp" />
+        <put-attribute name="rightbar"      value="/WEB-INF/jsp/fragments/rightbar.jsp" />
+        <put-attribute name="footer"    value="/WEB-INF/jsp/fragments/footer.jsp" />
+    </definition>
+    
+     <definition name="ExternalTemplate"
+      template="/WEB-INF/jsp/externalTemplate.jsp">
+    </definition>
+    
+</tiles-definitions>

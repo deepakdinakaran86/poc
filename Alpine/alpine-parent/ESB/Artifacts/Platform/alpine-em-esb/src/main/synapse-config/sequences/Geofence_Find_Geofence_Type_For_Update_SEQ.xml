@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Geofence_Find_Geofence_Type_For_Update_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property
+            name="Enter Geofence_Find_Geofence_Type_For_Update_SEQ" value="----Geofence_Find_Geofence_Type_For_Update_SEQ----"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <log separator="####">
+                <property name="error" value="----error----"/>
+            </log>
+            <send/>
+        </then>
+        <else>
+            <payloadFactory media-type="json">
+                <format>{
+					"actor": {
+					"platformEntity": {
+					"platformEntityType": "MARKER"
+					},
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"identifier": {
+					"key": "$3",
+					"value":
+					"$4"
+					}
+					},
+					"searchTemplateName": "$5",
+					"searchEntityType": "MARKER"
+					}</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('geofenceEntityDomain')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceEntityTemplate')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceEntityIdKey')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceEntityIdValue')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceType')"/>
+                </args>
+            </payloadFactory>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <log separator="----------------------">
+                <property expression="json-eval($.)" name="geofenceEntityTypePayload"/>
+                <property expression="get-property('Authorization')" name="geofenceEntityTypePayload"/>
+            </log>
+            <send receive="Geofence_Type_Update_SEQ">
+                <endpoint key="conf:/endpoints/alpine/Get_Immediate_Children_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

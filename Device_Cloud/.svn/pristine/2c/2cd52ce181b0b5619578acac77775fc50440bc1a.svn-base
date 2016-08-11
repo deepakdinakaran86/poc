@@ -1,0 +1,14 @@
+brokerHosts : localhost:2181
+messageTopicName : ALARM_MESSAGE_QUEUE
+zookeeperRoot :  /kafka
+topologyName : alarm-topology
+parentSpoutName : alarm-persist-spout
+parentSpoutMaxParallelism : 1
+topologyEmitInterval : 2000
+topologyMode : LOCAL
+topologyMaxParallelism : 5
+numberOfWorkers : 5
+persistBolt : AlarmPersistBolt
+persistBoltMaxParallelism : 5
+kafkaStartOffSet : -2
+

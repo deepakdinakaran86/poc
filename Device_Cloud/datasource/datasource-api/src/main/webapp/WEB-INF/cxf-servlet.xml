@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd 
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd 
+		http://www.springframework.org/schema/context	http://www.springframework.org/schema/context/spring-context.xsd ">
+
+	<import resource="/spring/datasource-app-context.xml" />
+	<import resource="/spring/app-datasource.xml" />
+	<import resource="classpath*:META-INF/cassandra/cassandra-conf.xml" />
+	<import resource="classpath*:META-INF/cassandra/datasource-cassandra.xml" />
+	<!-- <import resource="classpath*:META-INF/cache/hazelcast-client.xml"/> -->
+
+
+	<jaxrs:server id="galaxyDatasourceManagementServices"
+		address="/datasources">
+		<jaxrs:serviceBeans>
+			<ref bean="analyticsResource" />
+			<ref bean="alarmResource" />
+			<ref bean="dataResource" />
+			<ref bean="deviceResource" />
+			<ref bean="cmdExecutorResource" />
+			<ref bean="dsResource" />
+			<ref bean="phyQuantityResource" />
+			<ref bean="unitResource" />
+			<ref bean="deviceTagResource" />
+			<ref bean="writeBackResource" />
+			<!-- <ref bean="parameterResource" /> -->
+			<ref bean="deviceConfigResource" />
+			<ref bean="pointTagResource" />
+			<ref bean="systemResource" />
+			<ref bean="deviceActivityResource" />
+			<ref bean="swaggerResource" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonJsonProvider" />
+			<ref bean="exceptionHandler" />
+			<ref bean="swaggerWriter" />
+		</jaxrs:providers>
+	</jaxrs:server>
+
+	<bean id="jsonObjectMapper" class="com.pcs.devicecloud.rest.mapper.DeviceCloudObjectMapper" />
+	<bean id="exceptionHandler"
+		class="com.pcs.devicecloud.commons.exception.DeviceCloudExceptionHandler" />
+	<bean id="jacksonJsonProvider"
+		class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider">
+		<constructor-arg name="mapper" ref="jsonObjectMapper" />
+		<constructor-arg name="annotationsToUse">
+			<null />
+		</constructor-arg>
+	</bean>
+	<!-- Swagger writers -->
+	<bean id="swaggerWriter" class="io.swagger.jaxrs.listing.SwaggerSerializers" />
+
+	<!-- Swagger Configuration -->
+	<bean id="swaggerConfig" class="io.swagger.jaxrs.config.BeanConfig">
+		<property name="resourcePackage" value="com.pcs.datasource.resource" />
+		<property name="version" value="1.0.0" />
+		<property name="basePath" value="/saffron" />
+		<property name="title" value="Saffron-API" />
+		<property name="description" value="" />
+		<property name="scan" value="true" />
+	</bean>
+
+	<!-- <bean id="hazelcastCacheManager" class="com.hazelcast.spring.cache.HazelcastCacheManager"> -->
+	<!-- <constructor-arg ref="client"/> -->
+	<!-- </bean> -->
+	<bean id="analyticsResource" class="com.pcs.datasource.resource.AnalyticsResource" />
+	<bean id="alarmResource" class="com.pcs.datasource.resource.AlarmResource" />
+	<bean id="dataResource" class="com.pcs.datasource.resource.DataResource" />
+	<bean id="deviceResource" class="com.pcs.datasource.resource.DeviceResource" />
+	<bean id="cmdExecutorResource" class="com.pcs.datasource.resource.G2021CommandResource" />
+	<bean id="dsResource" class="com.pcs.datasource.resource.DataSourceResource" />
+	<bean id="phyQuantityResource" class="com.pcs.datasource.resource.PhyQuantityResource" />
+	<bean id="unitResource" class="com.pcs.datasource.resource.UnitResource" />
+	<bean id="deviceTagResource" class="com.pcs.datasource.resource.DeviceTagResouce" />
+	<bean id="writeBackResource" class="com.pcs.datasource.resource.WriteBackResource" />
+	<bean id="parameterResource" class="com.pcs.datasource.resource.ParameterResource" />
+	<bean id="deviceConfigResource" class="com.pcs.datasource.resource.DeviceConfigResource" />
+	<bean id="pointTagResource" class="com.pcs.datasource.resource.PointTagResource" />
+	<bean id="systemResource" class="com.pcs.datasource.resource.SystemResource" />
+	<bean id="deviceActivityResource" class="com.pcs.datasource.resource.DeviceActivityResource" />
+	<!-- Swagger API listing resource -->
+	<bean id="swaggerResource" class="io.swagger.jaxrs.listing.ApiListingResource" />
+</beans>

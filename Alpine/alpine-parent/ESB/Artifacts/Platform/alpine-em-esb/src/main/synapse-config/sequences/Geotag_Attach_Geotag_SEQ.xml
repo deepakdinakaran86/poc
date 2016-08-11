@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Geotag_Attach_Geotag_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Geotag_Attach_Geotag_SEQ" value="Geotag_Attach_Geotag_SEQ" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.)" name="geotagEntityIdentifier"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/key" name="geotagEntityIdKey"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/value"
+				name="geotagEntityIdValue" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/domain/domainName"
+				name="geotagEntityDomain" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/entityTemplate/entityTemplateName"
+				name="geotagEntityTemplate" scope="default" type="STRING" />
+			<payloadFactory media-type="json">
+				<format>{"actor":$1,"subjects":[$2]}</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('geotagEntityIdentifier')" />
+					<arg evaluator="xml" expression="get-property('parentIdentityPayload')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send>
+				<endpoint key="conf:/endpoints/alpine/Attach_Parent_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

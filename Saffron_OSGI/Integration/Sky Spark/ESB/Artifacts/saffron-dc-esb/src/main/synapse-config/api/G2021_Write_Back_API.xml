@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="G2021_Write_Back_API" context="/saffron/services/g2021">
+    <resource methods="POST" uri-template="/commands/{pathparameter}" inSequence="Saffron_Process_G2021_Commands_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

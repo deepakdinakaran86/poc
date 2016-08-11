@@ -1,0 +1,69 @@
+graph = TitanFactory.open('conf/gremlin-server/titan-cassandra-es.properties')
+graph.tx().rollback();
+mgmt = graph.openManagement();
+
+//////////////////////////Property Keys/////////////////////////////////////////
+
+myDomain = mgmt.makePropertyKey('myDomain').dataType(String.class).make();
+domain = mgmt.makePropertyKey('domain').dataType(String.class).make();
+templateName = mgmt.makePropertyKey('templateName').dataType(String.class).make();
+identifierKey = mgmt.makePropertyKey('identifierKey').dataType(String.class).make();
+identifierValue = mgmt.makePropertyKey('identifierValue').dataType(String.class).make();
+
+/////////////////Edge Labels////////////////////////////////////
+
+mgmt.makeEdgeLabel('child').make();
+
+/////////////////TENANT/////////////////
+
+
+tenant = mgmt.makeVertexLabel('TENANT').make();
+
+myDomain = mgmt.getPropertyKey('myDomain');
+domain = mgmt.getPropertyKey('domain');
+templateName = mgmt.getPropertyKey('templateName');
+identifierKey = mgmt.getPropertyKey('identifierKey');
+identifierValue = mgmt.getPropertyKey('identifierValue');
+
+mgmt.buildIndex('indexTenantMyDomain', Vertex.class).addKey(myDomain).indexOnly(tenant).buildCompositeIndex();
+mgmt.buildIndex('indexTenantDomain', Vertex.class).addKey(domain).indexOnly(tenant).buildCompositeIndex();
+mgmt.buildIndex('indexTenantTemplateName', Vertex.class).addKey(templateName).indexOnly(tenant).buildCompositeIndex();
+mgmt.buildIndex('indexTenantIdentifierValue', Vertex.class).addKey(identifierValue).indexOnly(tenant).buildCompositeIndex();
+mgmt.buildIndex('indexTenantIdentifierKey', Vertex.class).addKey(identifierKey).indexOnly(tenant).buildCompositeIndex();
+
+
+/////////////////MARKER/////////////////
+marker = mgmt.makeVertexLabel('MARKER').make();
+
+domain = mgmt.getPropertyKey('domain');
+templateName = mgmt.getPropertyKey('templateName');
+identifierKey = mgmt.getPropertyKey('identifierKey');
+identifierValue = mgmt.getPropertyKey('identifierValue');
+
+mgmt.buildIndex('indexMarkerDomain', Vertex.class).addKey(domain).indexOnly(marker).buildCompositeIndex();
+mgmt.buildIndex('indexMarkerTemplateName', Vertex.class).addKey(templateName).indexOnly(marker).buildCompositeIndex();
+mgmt.buildIndex('indexMarkerIdentifierValue', Vertex.class).addKey(identifierValue).indexOnly(marker).buildCompositeIndex();
+mgmt.buildIndex('indexMarkerIdentifierKey', Vertex.class).addKey(identifierKey).indexOnly(marker).buildCompositeIndex();
+
+////////////////////////////////////////
+
+mgmt.commit();
+
+//////////////////////////////////////// clear vertices ////////////////////////////
+
+graph = TitanFactory.open('conf/gremlin-server/titan-cassandra-es.properties')
+g = graph.traversal()
+
+g.V().hasLabel('TENANT').drop();
+g.V().hasLabel('MARKER').drop();
+
+graph.tx().commit();
+
+///////////////////////////////// Add Vertex   /////////////////////////////////////
+
+t = graph.addVertex(label,'TENANT','myDomain','alpine.com','domain','com','templateName','DefaultPCSTemplate_TENANT','identifierKey','tenantName','status','ACTIVE','identifierValue','alpine');
+graph.tx().commit();
+
+/////////////////////////////////////////////////////////////////////////////////
+
+

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Service_Component_Create_SEQ" >
+    <log separator=",">
+        <property name="Enter Service_Component_Create_SEQ" value="--------"/>
+    </log>
+    <property expression="json-eval($.serviceComponent)"
+        name="serviceComponentPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.serviceItem)"
+        name="serviceItemPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <payloadFactory media-type="json">
+        <format>$1</format>
+        <args>
+            <arg evaluator="xml"
+                expression="get-property('serviceComponentPayload')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <property expression="get-property('Authorization')"
+        name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <send receive="Service_Component_Attach_Service_Item_SEQ">
+        <endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Create_Entity_EP.xml"/>
+    </send>
+</sequence>

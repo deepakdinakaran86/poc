@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Geotags_Get_Entities_Tag_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property
+            name="----------------Entering Geotags_Get_Entities_Tag_SEQ----------------" value="----Geotags_Get_Entities_Tag_SEQ----"/>
+        <property expression="json-eval($.geotagEntity.fieldValues)"
+            name="input payload" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <property expression="$trp:x-jwt-assertion" name="Authorization"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.parentIdentity)"
+        name="parentIdentity" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.geotagEntity.fieldValues)"
+        name="geotagEntityFieldValues" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/geotagEntity/entityTemplate/entityTemplateName"
+        name="geotagEntityTemplate" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/geotagEntity/platformEntity/platformEntityType"
+        name="geotagType" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/geotagEntity/entityStatus/statusName"
+        name="geotagEntityStatus" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <payloadFactory media-type="json">
+        <format>{
+			"actor": $1 ,
+			"searchTemplateName": "$2",
+			"searchEntityType":
+			"$3",
+			"statusName": "ACTIVE"
+			}</format>
+        <args>
+            <arg evaluator="xml"
+                expression="get-property('parentIdentity')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml"
+                expression="get-property('geotagEntityTemplate')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml" expression="get-property('geotagType')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <property expression="get-property('Authorization')"
+        name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <send receive="Geotag_Update_SEQ">
+        <endpoint key="conf:/endpoints/alpine/Get_Immediate_Children_EP.xml"/>
+    </send>
+</sequence>

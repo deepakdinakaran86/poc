@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint name="Create_Tenant_EP" xmlns="http://ws.apache.org/ns/synapse">
+	<!-- <http method="post" uri-template="http://10.234.31.201:9764/alpine-tenant-1.0.0/services/tenants"/> -->
+	<http method="post"
+		uri-template="http://10.234.31.201:8080/alpine-tenant-1.0.0/services/tenants" />
+</endpoint>

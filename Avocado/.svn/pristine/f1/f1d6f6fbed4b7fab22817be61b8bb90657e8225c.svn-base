@@ -1,0 +1,9 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Skyspark_Create_Point_SEQ">
+	<log separator=",">
+		<property name="Enter Skyspark_Create_Point_SEQ"
+			value="--------Skyspark_Create_Point_SEQ--------"></property>
+	</log>
+		<send>
+		<endpoint key="conf:/endpoints/skyspark/Skyspark_Create_Point_EP.xml" />
+	</send>
+</sequence>

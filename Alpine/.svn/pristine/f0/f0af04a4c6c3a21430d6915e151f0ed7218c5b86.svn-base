@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Marker_Children_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_Marker_Children_SEQ" value="--------" />
+	</log>
+
+	<property name="domain"
+		expression="$body/jsonObject/parentIdentity/domain/domainName" scope="default"
+		type="STRING"></property>
+	<property name="entityTemplate"
+		expression="$body/jsonObject/parentIdentity/entityTemplate/entityTemplateName"
+		scope="default" type="STRING"></property>
+	<property name="key"
+		expression="$body/jsonObject/parentIdentity/identifier/key" scope="default"
+		type="STRING"></property>
+	<property name="value"
+		expression="$body/jsonObject/parentIdentity/identifier/value" scope="default"
+		type="STRING"></property>
+	<property name="searchTemplateName"
+		expression="$body/jsonObject/parentIdentity/searchTemplateName" scope="default"
+		type="STRING"></property>
+	<property name="statusName" expression="$body/jsonObject/parentIdentity/statusName"
+		scope="default" type="STRING"></property>
+
+	
+	<payloadFactory media-type="json">
+		<format>
+			{
+			"parentIdentity": {
+			"globalEntity": {
+			"globalEntityType":
+			"MARKER"
+			},
+			"domain": {
+			"domainName": "$1"
+			},
+			"entityTemplate": {
+			"entityTemplateName": "$2"
+			},
+			"identifier": {
+			"key": "$3",
+			"value": "$4"
+			}
+			},
+			"searchTemplateName": "$5",
+			"searchEntityType": "MARKER",
+			"statusName":
+			"$6"
+			}
+		</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('domain')" />
+			<arg evaluator="xml" expression="get-property('entityTemplate')" />
+			<arg evaluator="xml" expression="get-property('key')" />
+			<arg evaluator="xml" expression="get-property('value')" />
+			<arg evaluator="xml" expression="get-property('searchTemplateName')" />
+			<arg evaluator="xml" expression="get-property('statusName')" />
+		</args>
+	</payloadFactory>
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Get_Marker_Children_EP.xml" />
+	</send>
+
+
+</sequence>

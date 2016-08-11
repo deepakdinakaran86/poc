@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Delete_Marker_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Delete_Marker_SEQ" value="--------" />
+	</log>
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Delete_Marker_EP.xml" />
+	</send>
+</sequence>

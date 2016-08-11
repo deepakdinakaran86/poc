@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="login" extends="LoginTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/login.jsp" />
+		<put-attribute name="menu" value="" />
+	</definition>
+
+	<definition name="home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/home.jsp" />
+	</definition>
+
+	<definition name="device_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/devices/device_home.jsp" />
+	</definition>
+
+	<definition name="device_form" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/devices/device_form.jsp" />
+	</definition>
+
+	<definition name="user_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/user_home.jsp" />
+	</definition>
+
+	<definition name="user_form" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/user_form.jsp" />
+	</definition>
+
+	<definition name="genset_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/genset/genset_home.jsp" />
+	</definition>
+
+	<definition name="genset_form" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/genset/genset_form.jsp" />
+	</definition>
+
+	<definition name="generator_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/generator/generator_home.jsp" />
+	</definition>
+
+	<definition name="generator_form" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/generator/generator_form.jsp" />
+	</definition>
+
+	<definition name="commuter_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/commuter/commuter_home.jsp" />
+	</definition>
+
+	<definition name="commuter_form" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/commuter/commuter_form.jsp" />
+	</definition>
+
+	<definition name="historytracking" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/history/historytracking.jsp" />
+	</definition>
+
+	<definition name="live_tracking" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/live_tracking.jsp" />
+	</definition>
+
+	<definition name="resource_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/resource/resource_home.jsp" />
+	</definition>
+
+	<definition name="resource_form" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/resource/resource_form.jsp" />
+	</definition>
+
+	<definition name="role_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/role/role_home.jsp" />
+	</definition>
+
+	<definition name="role_form" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/role/role_form.jsp" />
+	</definition>
+
+</tiles-definitions>

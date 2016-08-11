@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd 
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd 
+		http://www.springframework.org/schema/context	http://www.springframework.org/schema/context/spring-context.xsd ">
+
+	<import resource="/spring/saffron-app-context.xml" />
+	
+	<jaxrs:server id="saffronCEPServices"
+		address="/cep">
+		<jaxrs:serviceBeans>
+			<ref bean="benchmarkResource" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonJsonProvider" />
+			<ref bean="exceptionHandler" />
+			<ref bean="swaggerWriter" />
+		</jaxrs:providers>
+	</jaxrs:server>
+
+	<bean id="jsonObjectMapper" class="com.pcs.devicecloud.rest.mapper.DeviceCloudObjectMapper" />
+	<bean id="exceptionHandler"
+		class="com.pcs.devicecloud.commons.exception.DeviceCloudExceptionHandler" />
+	<bean id="jacksonJsonProvider"
+		class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider">
+		<constructor-arg name="mapper" ref="jsonObjectMapper" />
+		<constructor-arg name="annotationsToUse">
+			<null />
+		</constructor-arg>
+	</bean>
+	<!-- Swagger writers -->
+	<bean id="swaggerWriter" class="io.swagger.jaxrs.listing.SwaggerSerializers" />
+	
+	<!-- Swagger Configuration -->
+	<bean id="swaggerConfig" class="io.swagger.jaxrs.config.BeanConfig">
+		<property name="resourcePackage" value="com.pcs.datasource.resource" />
+		<property name="version" value="1.0.0" />
+		<property name="basePath" value="/datasource-api-1.0.0/services/datasources" />
+		<property name="title" value="Saffron Services" />
+		<property name="description" value="" />
+		<property name="scan" value="true" />
+	</bean>
+	
+	<bean id="benchmarkResource" class="com.pcs.cep.resource.BenchmarkResource" />
+</beans>

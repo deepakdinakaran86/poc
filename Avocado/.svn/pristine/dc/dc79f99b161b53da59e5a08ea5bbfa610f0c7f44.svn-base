@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Attach_Points_To_Device_Asset_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Avocado_Attach_Points_To_Device_Asset_SEQ" value="--------"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property name="attachParents" scope="default" type="STRING" value="true"/>
+            <property expression="json-eval($.)" name="pointsPayload"
+                scope="default" type="STRING"/>
+            <payloadFactory media-type="json">
+                <format> {
+					"actors": $1,
+					"subjects": [
+					{
+					"domain": {
+					"domainName": "$2"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$3"
+					},
+					"platformEntity":
+					{
+					"platformEntityType": "MARKER"
+					},
+					"identifier": {
+					"key":
+					"identifier",
+					"value": "$4"
+					}
+					},
+					{
+					"domain": {
+					"domainName": "$5"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "Device"
+					},
+					"platformEntity": {
+					"platformEntityType": "MARKER"
+					},
+					"identifier": {
+					"key": "identifier",
+					"value": "$6"
+					}
+					}
+					]
+					}</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('pointsPayload')"/>
+                    <arg evaluator="xml" expression="get-property('equipDomain')"/>
+                    <arg evaluator="xml" expression="get-property('equipTemplate')"/>
+                    <arg evaluator="xml" expression="get-property('equipIdValue')"/>
+                    <arg evaluator="xml" expression="get-property('deviceDomain')"/>
+                    <arg evaluator="xml" expression="get-property('deviceIdValue')"/>
+                </args>
+            </payloadFactory>
+            <log separator=",">
+                <property expression="json-eval($.)" name="----------NEW HIERARCGY"/>
+            </log>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send>
+                <endpoint key="conf:/endpoints/asset/Avocado_Attach_Points_To_Device_Asset_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

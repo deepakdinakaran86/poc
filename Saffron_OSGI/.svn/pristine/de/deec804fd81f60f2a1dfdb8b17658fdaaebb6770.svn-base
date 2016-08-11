@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Claim_Device_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Claim_Device_SEQ" value="--------" />
+	</log>
+	 <property xmlns:ns="http://org.apache.synapse/xsd" name="Authorization" expression="$trp:x-jwt-assertion" scope="default" type="STRING"></property>
+	<property action="set" expression="get-property('uri.var.pathparameter')"
+		name="uri.var.pathparameter" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+		<property name="x-jwt-assertion" expression="get-property('Authorization')"
+		scope="transport" type="STRING" />
+	<send receive="Get_Device_Details_For_Claim_SEQ">
+		<endpoint key="conf:/endpoints/saffron/Claim_Device_EP.xml" />
+	</send>
+</sequence>

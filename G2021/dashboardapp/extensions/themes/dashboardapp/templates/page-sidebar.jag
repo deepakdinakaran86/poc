@@ -1,0 +1,254 @@
+
+<% 
+	var APPCONF = require('/configs/appconfig.jag');
+	var APICONF = require('/configs/apiproperties.jag');
+	var usr = require('/modules/user.js');
+	%>
+	
+	<style>
+					
+					.profile{}
+					.profile-usertitle-name {
+						color: #95e14b;
+						font-size: 16px;
+						font-weight: 600;
+						margin-bottom: 7px;
+						text-transform:uppercase;
+					}
+					.profile-userpic img {
+						float: none;
+						margin: 0 auto;
+						width: 50%;
+						height: 50%;
+						-webkit-border-radius: 50% !important;
+						-moz-border-radius: 50% !important;
+						border-radius: 50% !important;
+					}
+					.profile-usertitle {
+							text-align: center;
+							margin-top: 20px;
+						}
+						.profile-usertitle-job {
+							text-transform: uppercase;
+							color: #5b9bd1;
+							font-size: 13px;
+							font-weight: 800;
+							margin-bottom: 7px;
+							color:#fff;
+						}
+						.profile-userbuttons {
+							text-align: center;
+							margin-top: 10px;
+						}
+						.single-user-writeback{}
+						.single-user-writeback img {
+							margin: 0 auto;
+							/*padding: 6px 0 12px 0;*/
+							
+							margin: 0 auto;
+							    display: block;
+    max-width: 245px;
+    max-height: 250px;
+    width: auto;
+    height: auto;
+							
+							
+							
+							
+						}
+						
+						.deviceTorch h3 {
+							color: #A8A8A8;
+							font-size: 16px;
+							font-weight: 600;
+							margin-bottom: 7px;
+							text-align: center;
+						}
+						.deviceTorch{ position:relative; display:block; padding: 6px 0 12px 0; margin: 0 auto;}
+						.k-dropdown, span.k-colorpicker {
+							background-color: #fafafa;
+							margin: 0 auto;
+							/* text-align: center; */
+							/* position: relative; */
+							display: table;
+							background: none !important;
+						}
+						
+								.select-asset-label{
+						color: #1caf9a;
+						text-align: center;
+						display: block;
+						margin: 3px 0 !important;
+					}
+					#select-asset{
+							/*width: 90%;*/
+							text-align: center;
+							margin: 0 auto;
+							border-radius:2px!important;
+					}
+				
+				</style>	
+	
+
+<!-- BEGIN SIDEBAR -->
+	<div class="page-sidebar-wrapper">
+		<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+		<!-- DOC: Change data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		<div class="page-sidebar navbar-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->
+			<!-- DOC: Apply "page-sidebar-menu-light" class right after "page-sidebar-menu" to enable light sidebar menu style(without borders) -->
+			<!-- DOC: Apply "page-sidebar-menu-hover-submenu" class right after "page-sidebar-menu" to enable hoverable(hover vs accordion) sub menu mode -->
+			<!-- DOC: Apply "page-sidebar-menu-closed" class right after "page-sidebar-menu" to collapse("page-sidebar-closed" class must be applied to the body element) the sidebar sub menu mode -->
+			<!-- DOC: Set data-auto-scroll="false" to disable the sidebar from auto scrolling/focusing -->
+			<!-- DOC: Set data-keep-expand="true" to keep the submenues expanded -->
+			<!-- DOC: Set data-auto-speed="200" to adjust the sub menu slide up/down speed -->
+		
+			<ul class="page-sidebar-menu " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+				<!-- DOC: To remove the sidebar toggler from the sidebar you just need to completely remove the below "sidebar-toggler-wrapper" LI element -->
+				<li class="sidebar-toggler-wrapper">
+					<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+					<div class="sidebar-toggler">
+					</div>
+					<!-- END SIDEBAR TOGGLER BUTTON -->
+				</li>
+			
+							
+				<!-- BEGIN PROFILE SIDE BLOCK -->
+				
+					<!--<div class="profile">profile</div> -->
+									
+					<div class="portlet dark profile-sidebar-portlet">
+							<!-- SIDEBAR USERPIC -->
+							<div class="profile-userpic">				
+								
+								 <img  src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/media/profile/profile_user.jpg')%>" alt="logo" class="img-responsive"/>
+								
+							</div>
+							<!-- END SIDEBAR USERPIC -->
+							<!-- SIDEBAR USER TITLE -->
+							<div class="profile-usertitle">
+								<div class="profile-usertitle-name">
+									<%=user.username%>
+								</div>
+								<!--
+								<div class="profile-usertitle-job">
+									+971 557199767
+								</div>
+								-->
+							</div>
+							<!-- END SIDEBAR USER TITLE -->
+							<!-- SIDEBAR BUTTONS -->
+							<!--
+							<div class="profile-userbuttons">
+								<button type="button" class="btn btn-circle green-haze btn-sm">Follow</button>
+								<button type="button" class="btn btn-circle btn-danger btn-sm">Message</button>
+							</div>
+							-->
+							<!-- END SIDEBAR BUTTONS -->
+					
+						</div>	
+
+						<div class="single-user-writeback hidden" id="single-user-writeback">	
+						<a href="javascript:;"  id="deviceTorchBtn">						
+								<img src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/img/devicetorch_on.png')%>" alt="logo" class="img-responsive"/></a>
+						
+						<div class="deviceTorch">						
+								<h3 class="title">Choose Flash Color</h3>
+								<input id="picker"   value="#cc2222" data-role="colorpicker" data-palette="basic" />
+													
+						</div>
+				</div>
+				
+		
+				
+				<li>				
+						<label class="select-asset-label">Select Asset</label>
+						<select id="select-asset" class="form-control" title="select-asset"></select>
+						<br/>
+				</li>
+				
+				
+				<!-- END PROFILE SIDE BLOCK -->
+				<li class="start active open">
+					<a href="<%=urlPrefix%>prototype">
+					<i class="icon-home"></i>
+					<span class="title">Home</span>
+					<span class="selected"></span>
+					<!--<span class="arrow open"></span> -->
+					</a>
+					<!--<ul class="sub-menu">
+						<li class="active">
+							<a href="dashboard.html">
+							<i class="icon-bar-chart"></i>
+							 Dashboard</a>
+						</li>
+						
+					</ul>
+					-->
+				</li>
+				<li>
+					<a href="<%=urlPrefix%>dashboard">
+					<i class="icon-bar-chart"></i>
+					<span class="title">Dashboard</span>					
+					</a>			
+				</li>
+			
+				<li>
+					<a href="<%=urlPrefix%>history">
+					<i class="icon-briefcase"></i>
+					<span class="title">History</span>
+					
+					</a>			
+				</li>
+				<li class="last">
+					<a href="<%=urlPrefix%>writeback">
+					<i class="icon-settings"></i>
+					<span class="badge badge-roundless badge-danger">controls</span>
+					<span class="title">Writeback</span>
+					
+					</a>			
+				</li>
+				<!--<li class="last">
+					<a href="<%=urlPrefix%>alarm">
+					<i class="icon-bulb"></i>
+					
+					<span class="title">Alarm</span>
+					
+					</a>			
+				</li>-->
+		
+			<!--				
+				<li class="last ">
+					<a href="javascript:;">
+					<i class="icon-pointer"></i>
+					<span class="title">Alarm</span>
+					<span class="arrow "></span>
+					</a>
+					<ul class="sub-menu">
+						<li>
+							<a href="maps_google.html">
+							Google Maps</a>
+						</li>
+						
+					</ul>
+				</li>
+				-->
+			</ul>
+			<!-- END SIDEBAR MENU -->
+		</div>
+	</div>
+	<!-- END SIDEBAR -->
+	<Script>
+	var VarWriteBackOffSrc="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/img/devicetorch_off.png')%>";
+	var VarWriteBackOnSrc="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/img/devicetorch_on.png')%>";
+	var VarAssetWriteBackCommandUrl  = '<%=APICONF.GAPP_SERVICES.assets.writeback%>';
+	var VarListDeviceUrl = '<%=APICONF.GAPP_SERVICES.device.list%>';
+	var UserCurrentRoleName = '<%=ObjUser['roles']%>';
+	
+	var UserCurrentPermissions = '<%=ObjUser['permissions']%>';
+	var ObjUserData='<%=ObjUser%>';
+	//console.log(ObjUserData);
+	//alert(UserCurrentRoleName);
+	
+	
+	</script>

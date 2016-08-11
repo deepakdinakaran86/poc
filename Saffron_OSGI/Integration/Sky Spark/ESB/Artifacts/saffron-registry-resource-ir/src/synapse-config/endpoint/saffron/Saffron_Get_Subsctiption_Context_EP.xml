@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Get_Subsctiption_Context_EP">
+    <http method="get" uri-template="http://10.234.31.158:9763/datasource-api-1.0.0/services/datasources/ds/context/{uri.var.pathparameter}"/>
+</endpoint>

@@ -1,0 +1,144 @@
+<!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li class=" treeview">
+          <a href="#">
+            <i class="fa fa-dashboard"></i> <span>Home</span>		
+          </a>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
+            <i class="fa fa-user" aria-hidden="true"></i>
+            <span>Admin</span>
+             <!--<span class="label label-primary pull-right">4</span>-->
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../clients/list.html"><i class="fa fa-circle-o"></i> Client Management</a></li>
+            <li><a href="../users/list.html"><i class="fa fa-hand-o-down" aria-hidden="true"></i> User Management</a>
+					 <ul class="treeview-menu">
+						<li class="treeview"><a href="../users/list.html"><i class="fa fa-circle-o"></i> User </a></li>
+						<li class="treeview"><a href="../users/roles.html"><i class="fa fa-circle-o"></i> Roles </a></li>
+					
+			 		 </ul>
+			
+			</li>
+            <li><a href="../device/list.html"><i class="fa fa-circle-o"></i> Device Management</a>
+				 <ul class="treeview-menu">
+						
+						<li class="treeview"><a href="../device/list.html"><i class="fa fa-circle-o"></i> Device Onboard </a></li>
+						<li class="treeview"><a href="../device/list.html"><i class="fa fa-circle-o"></i> Device Status </a></li>
+			 		 </ul>
+			
+			</li>
+            <li><a href="../device/auditlogs.html"><i class="fa fa-circle-o"></i> Audit Logs</a></li>
+          </ul>
+        </li>
+		 <li class="treeview">
+          <a href="#">
+            <i class="fa fa-cog" aria-hidden="true"></i>
+            <span>Configuration</span>
+             <!--<span class="label label-primary pull-right">4</span>-->
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../configuration/list.html"><i class="fa fa-circle-o"></i> Configuration Template</a></li>
+			
+            <li><a href="../configuration/list.html"><i class="fa fa-hand-o-down" aria-hidden="true"></i> Vehicle Configuration</a>
+					 <ul class="treeview-menu">
+						<li class="treeview"><a href="../vehicle/type.html"> Vehicle Type </a></li>
+						<li class="treeview"><a href="../vehicle/onboarding.html">  Vehicle Onboarding</a></li>
+						
+			 		 </ul>
+			
+			</li>
+            <li><a href="../configuration/poi/list.html"><i class="fa fa-hand-o-down" aria-hidden="true"></i> POI Configuration</a>
+			<ul class="treeview-menu">	
+						<li class="treeview"><a href="../poi/type.html">POI Type  </a></li>
+						<li class="treeview"><a href="../poi/definition.html">POI Definition </a></li>						
+						
+			 </ul>
+			
+			</li>
+            <li><a href="../configuration/tags/list.html"><i class="fa fa-hand-o-down" aria-hidden="true"></i> Tag Configuration</a>
+						<ul class="treeview-menu">	
+						<li class="treeview"><a href="../tag/type.html">Tag Type  </a></li>
+						<li class="treeview"><a href="../tag/definition.html">Tag Definition </a></li>						
+						
+			 </ul>
+			</li>
+			
+			
+			<li><a href="../configuration/geofence/list.html"><i class="fa fa-hand-o-down" aria-hidden="true"></i> Geofence Configuration</a>
+			<ul class="treeview-menu">												
+						<li class="treeview"><a href="../geofence/list.html"> <i class="fa fa-circle-o"></i> Geofence  </a></li>
+			 		 </ul>
+				
+			</li>
+          </ul>
+        </li>
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-location-arrow" aria-hidden="true"></i>
+            <span>Tracking</span>
+             <!--<span class="label label-primary pull-right">4</span>-->
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../assets/monitoring.html"><i class="fa fa-circle-o"></i> Live Tracking</a></li>
+            <li><a href="../vehicles/monitoring.html"><i class="fa fa-circle-o"></i> Vehicle Details</a> 
+			<span class="label label-primary pull-right">4</span></li>
+            <li><a href="../assets/history-tracking.html"><i class="fa fa-circle-o"></i> History Tracking</a></li>
+            <li><a href="../assets/history-vehicle.html"><i class="fa fa-circle-o"></i> Vehicle History</a></li>
+          </ul>
+        </li>
+		<li class="treeview">
+          <a href="#">
+           <i class="fa fa-bell" aria-hidden="true"></i>
+            <span>Alert Management</span>
+             <!--<span class="label label-primary pull-right">4</span>-->
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../alerts/definition.html"><i class="fa fa-circle-o"></i>Alert Definition</a></li>
+            <li><a href="../alerts/console.html"><i class="fa fa-circle-o"></i>Alert Console</a></li>
+            <li><a href="../alerts/logs.html"><i class="fa fa-circle-o"></i>Alert logs</a></li>
+          </ul>
+        </li>
+		<li class="treeview">
+          <a href="#">
+           <i class="fa fa-circle-o-notch" aria-hidden="true"></i>
+            <span>Service Maintenance</span>
+             <!--<span class="label label-primary pull-right">4</span>-->
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../service/serviceitem/list.html"><i class="fa fa-circle-o"></i>Service Items</a></li>
+            <li><a href="../service/servicecomponent/list.html"><i class="fa fa-circle-o"></i>Service Components</a></li>
+            <li><a href="../service/serviceschedule/list.html"><i class="fa fa-circle-o"></i>Service Scheduling</a></li>
+			<li><a href="../service/assignandnotify/list.html"><i class="fa fa-circle-o"></i>Assign & Notify </a></li>
+          </ul>
+        </li>
+		<li class="treeview">
+          <a href="#">
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            <span>Routing & Scheduling</span>
+            <!--<span class="label label-primary pull-right">4</span>-->
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../route/definition.html"><i class="fa fa-circle-o"></i>Route Definition</a></li>
+            <li><a href="../route/scheduling.html"><i class="fa fa-circle-o"></i>Route Scheduling</a></li>
+            <li><a href="../route/Rostering.html"><i class="fa fa-circle-o"></i>Rostering</a></li>
+			<li><a href="../route/assignandnotify.html"><i class="fa fa-circle-o"></i>Assign & Notify </a></li>
+          </ul>
+        </li>
+		<li class="treeview">
+          <a href="#">
+           <i class="fa fa-file-text" aria-hidden="true"></i>
+            <span>Reporting</span>
+             <!--<span class="label label-primary pull-right">4</span>-->
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="../repots/vehicle.html"><i class="fa fa-circle-o"></i>Vehicle Reports</a></li>
+            <li><a href="../repots/driver.html"><i class="fa fa-circle-o"></i>Driver Reports</a></li>
+            <li><a href="../repots/alert.html"><i class="fa fa-circle-o"></i>Alert reports</a></li>
+			<li><a href="../repots/trip.html"><i class="fa fa-circle-o"></i>Trip Reports</a></li>
+          </ul>
+        </li>
+      </ul>

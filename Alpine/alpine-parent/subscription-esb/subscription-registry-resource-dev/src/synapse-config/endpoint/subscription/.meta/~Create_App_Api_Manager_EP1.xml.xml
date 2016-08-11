@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><resource name="Create_App_Api_Manager_EP1.xml" isCollection="false" path="/_system/config/endpoints/subscription/subscription/Create_App_Api_Manager_EP1.xml" registryUrl="https://localhost:9443/registry" md5="f0a109891e39c8ea74e4330dc18712ee">
+    <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+    <version>1844</version>
+    <creator>admin</creator>
+    <createdTime>1443847879625</createdTime>
+    <lastUpdater>admin</lastUpdater>
+    <lastModified>1443847879625</lastModified>
+    <registryState>1</registryState>
+    <description/>
+</resource>

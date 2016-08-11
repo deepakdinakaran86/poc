@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Update_Tenant_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Update_Tenant_SEQ" value="--------" />
+	</log>
+	<property name="domain" expression="$body/jsonObject/domain/domainName"
+		scope="default" type="STRING"></property>
+	<property name="identifierValue" expression="$body/jsonObject/identifier/value"
+		scope="default" type="STRING"></property>
+	<property name="status" expression="$body/jsonObject/entityStatus/statusName"
+		scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="Authorization"
+		expression="$trp:x-jwt-assertion" scope="default" type="STRING"></property>
+	<send receive="Get_Tenant_Node_Details_SEQ">
+		<endpoint key="conf:/endpoints/alpine/Update_Tenant_EP.xml" />
+	</send>
+</sequence>

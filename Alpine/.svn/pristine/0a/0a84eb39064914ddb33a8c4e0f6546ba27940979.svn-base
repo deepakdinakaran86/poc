@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_Tenant_Node_SEQ">
+	<log separator=",">
+		<property name="Enter Create_Tenant_Node_SEQ" value="Create_Tenant_Node_SEQ"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<property name="actorDomain" expression="$body/jsonObject/domain/domainName"
+				scope="default" type="STRING"></property>
+			<property name="tenantKey" expression="$body/jsonObject/identifier/key"
+				scope="default" type="STRING"></property>
+			<property name="tenantValue" expression="$body/jsonObject/identifier/value"
+				scope="default" type="STRING"></property>
+			<property name="template"
+				expression="$body/jsonObject/entityTemplate/entityTemplateName"
+				scope="default" type="STRING"></property>
+			<log>
+				<property name="actorDomain" expression="get-property('actorDomain')"></property>
+				<property name="tenantKey" expression="get-property('tenantKey')"></property>
+				<property name="tenantValue" expression="get-property('tenantValue')"></property>
+				<property name="template" expression="get-property('template')"></property>
+				<property name="myDomainFieldValue" expression="get-property('myDomainFieldValue')"></property>
+			</log>
+<!-- 			<filter source="boolean(get-property('myDomainFieldValue'))" -->
+<!-- 				regex="false"> -->
+<!-- 				<then> -->
+<!-- 					<property name="domainNameField" expression="get-property('tenantValue')"></property> -->
+<!-- 					<log> -->
+<!-- 						<property name="domainNameEmpty" expression="get-property('domainNameField')"></property> -->
+<!-- 					</log> -->
+<!-- 				</then> -->
+<!-- 				<else> -->
+<!-- 					<property name="domainNameField" expression="get-property('myDomainFieldValue')"></property> -->
+<!-- 					<log> -->
+<!-- 						<property name="domainNameField" expression="get-property('domainNameField')"></property> -->
+<!-- 					</log> -->
+<!-- 				</else> -->
+<!-- 			</filter> -->
+<!-- 			<script language="js"> -->
+<!--             <![CDATA[var domainName = mc.getProperty("domainNameField");      var domainN = 	domainName.split(' ').join('');                      mc.setProperty("myTenantDomain",domainN);]]></script> -->
+			<property name="myDomain"
+				expression="fn:concat(get-property('tenantValue'),'.galaxy')"
+				scope="default" type="STRING"></property>
+			<log>
+				<property name="actorDomain" expression="get-property('actorDomain')"></property>
+				<property name="DOmain_With_Parent" expression="get-property('myDomain')"></property>
+			</log>
+			<payloadFactory media-type="json">
+				<format>{
+					"actor": {
+					"myDomain": {
+					"domainName": "$1"
+					}
+					},
+					"tenant": {
+					"myDomain": {
+					"domainName": "$2"
+					},
+					"identifier": {
+					"key": "$3",
+					"value": "$4"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$5"
+					},
+					"entityStatus": {
+					"statusName": "$6"
+					}
+					}
+					}</format>
+				<args>
+					<arg expression="get-property('actorDomain')" evaluator="xml"></arg>
+					<arg expression="get-property('myDomain')" evaluator="xml"></arg>
+					<arg expression="get-property('tenantKey')" evaluator="xml"></arg>
+					<arg expression="get-property('tenantValue')" evaluator="xml"></arg>
+					<arg expression="get-property('template')" evaluator="xml"></arg>
+					<arg expression="get-property('status')" evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<property name="x-jwt-assertion" expression="get-property('Authorization')"
+				scope="transport" type="STRING"></property>
+			<property name="messageType" value="application/json" scope="axis2"
+				type="STRING"></property>
+			<send receive="Create_Tenant_Assign_Features_SEQ">
+				<endpoint key="conf:/endpoints/alpine/Create_Tenant_Node_EP.xml"></endpoint>
+			</send>
+		</else>
+	</filter>
+</sequence>

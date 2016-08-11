@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="POI_Check_POI_Type_Template_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter POI_Check_POI_Type_Template_SEQ" value="----POI_Check_POI_Type_Template_SEQ----" />
+		<property expression="json-eval($.)" name="Payload"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<property expression="$trp:x-jwt-assertion" name="Authorization"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.poiEntity)" name="poiEntityPayload"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.poiTypeEntity)" name="poiTypeEntityPayload"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.poiTypeEntity.fieldValues)"
+		name="poiTypeEntityFieldValues" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/poiEntity/domain/domainName"
+		name="poiEntityDomain" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property
+		expression="$body/jsonObject/poiEntity/platformEntity/platformEntityType"
+		name="poiTypePlatformEntityType" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property
+		expression="$body/jsonObject/poiEntity/entityTemplate/entityTemplateName"
+		name="poiEntityTemplate" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/poiEntity/identifier/key"
+		name="poiEntityIdKey" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/poiEntity/identifier/value"
+		name="poiEntityIdValue" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/poiName" name="poiName"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/poiType" name="poiType"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/poiTypeEntity/entityStatus/statusName"
+		name="poiStatus" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<payloadFactory media-type="json">
+		<format>{
+			"domain": {
+			"domainName": "$1"
+			},
+			"platformEntityType": "$2",
+			"entityTemplateName": "$3",
+			"parentTemplate": "PoiType"
+			}
+		</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('poiEntityDomain')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+			<arg evaluator="xml" expression="get-property('poiTypePlatformEntityType')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+			<arg evaluator="xml" expression="get-property('poiType')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+			<arg evaluator="xml" expression="get-property('poiEntityPayload')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+		</args>
+	</payloadFactory>
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<filter regex="Create_A_List_of_POIs" source="get-property('createListSeq')"
+		xmlns:ns="http://org.apache.synapse/xsd">
+		<then>
+			<send receive="POI_Create_POI_Entity">
+				<endpoint key="conf:/endpoints/poi/POI_Get_Template_EP.xml" />
+			</send>
+		</then>
+		<else>
+			<filter regex="POI_Find_POI_For_Update_SEQ" source="get-property('seqToGo')">
+				<then>
+					<send receive="POI_Find_POI_For_Update_SEQ">
+						<endpoint key="conf:/endpoints/poi/POI_Get_Template_EP.xml" />
+					</send>
+				</then>
+				<else>
+					<send receive="POI_Create_POI_Entity">
+						<endpoint key="conf:/endpoints/poi/POI_Get_Template_EP.xml" />
+					</send>
+				</else>
+			</filter>
+		</else>
+	</filter>
+</sequence>

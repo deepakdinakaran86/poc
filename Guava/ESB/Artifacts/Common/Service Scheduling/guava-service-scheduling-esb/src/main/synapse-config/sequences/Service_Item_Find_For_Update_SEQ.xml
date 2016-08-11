@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Item_Find_For_Update_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Service_Item_Find_For_Update_SEQ" value="----Service_Item_Find_For_Update_SEQ----"/>
+    </log>
+    <property expression="$trp:x-jwt-assertion" name="Authorization"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.serviceItem)"
+        name="serviceItemPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.listOfTags)" name="listOfTagsPayload"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+    <property
+        expression="$body/jsonObject/serviceItem/domain/domainName"
+        name="serviceItemDomain" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$body/jsonObject/serviceItem/identifier/key"
+        name="serviceItemIdKey" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$body/jsonObject/serviceItem/identifier/value"
+        name="serviceItemIdValue" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/serviceItem/entityTemplate/entityTemplateName"
+        name="serviceItemTemplate" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.serviceItem.fieldValues)"
+        name="serviceItemFieldValues" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/serviceItem/entityStatus/statusName"
+        name="serviceItemStatus" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <payloadFactory media-type="json">
+        <format>{
+			"domain": {
+			"domainName": "$1"
+			},
+			"entityTemplate": {
+			"entityTemplateName": "$2"
+			},
+			"identifier": {
+			"key": "$3",
+			"value": "$4"
+			}
+			}</format>
+        <args>
+            <arg evaluator="xml"
+                expression="get-property('serviceItemDomain')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml"
+                expression="get-property('serviceItemTemplate')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml"
+                expression="get-property('serviceItemIdKey')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml"
+                expression="get-property('serviceItemIdValue')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <property expression="get-property('Authorization')"
+        name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+    <log separator=",">
+        <property expression="json-eval($.)" name="Payload Check" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <send receive="Service_Item_Update_SEQ">
+        <endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Find_Entity_EP.xml"/>
+    </send>
+</sequence>

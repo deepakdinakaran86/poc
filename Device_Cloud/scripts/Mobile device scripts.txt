@@ -1,0 +1,14 @@
+CREATE  (a:MAKE {name:'Apple'}) -[r1:hasType]-> (t:DEVICE_TYPE {name:'mobile'}) -[r2:hasModel]-> (c:MODEL {name:'Mobile'}) -[r3:talksIn]-> (d:DEVICE_PROTOCOL {name:'ios'}) -[r4:hasVersion]-> (e:PROTOCOL_VERSION {name:'x.xx'}) CREATE a-[:hasModel]->c;
+
+MATCH (n:`MAKE` {name:'Apple'})-[r1:hasType]->(t:DEVICE_TYPE {name:'mobile'})-[r2:hasModel]->(m:MODEL {name:'Mobile'})-[r3:talksIn]->(dp:DEVICE_PROTOCOL {name:'ios'})-[r4:hasVersion]->(pv:PROTOCOL_VERSION {name:'x.xx'}) RETURN r1,r2,r3,r4;
+
+
+MATCH (t:DEVICE_TYPE {name:'mobile'}) CREATE  (a:MAKE {name:'Google'}) -[r1:hasType]-> (t) -[r2:hasModel]->(c:MODEL {name:'Mobile'}) -[r3:talksIn]-> (d:DEVICE_PROTOCOL {name:'Android'}) -[r4:hasVersion]-> (e:PROTOCOL_VERSION {name:'x.xx'}) CREATE a-[:hasModel]->c;
+
+MATCH (n:`MAKE` {name:'Google'})-[r1:hasType]->(t:DEVICE_TYPE {name:'mobile'})-[r2:hasModel]->(m:MODEL {name:'Mobile'})-[r3:talksIn]->(dp:DEVICE_PROTOCOL {name:'Android'})-[r4:hasVersion]->(pv:PROTOCOL_VERSION {name:'x.xx'}) RETURN r1,r2,r3,r4;
+
+//jace
+CREATE  (a:MAKE {name:'PCS'}) -[r1:hasType]-> (t:DEVICE_TYPE {name:'Gateway'}) -[r2:hasModel]-> (c:MODEL {name:'Jace'}) -[r3:talksIn]-> (d:DEVICE_PROTOCOL {name:'Custom'}) -[r4:hasVersion]-> (e:PROTOCOL_VERSION {name:'1.0.0'});
+
+
+

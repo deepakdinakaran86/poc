@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Avocado_Facility_API" groupId="avocado-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Avocado_Facility_API.xml</file>
+    </artifact>
+    <artifact name="Avocado_Create_Facility_SEQ" groupId="avocado-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Create_Facility_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Create_Facility_In_SkySpark_SEQ" groupId="avocado-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Create_Facility_In_SkySpark_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Create_Facility_Response_SEQ" groupId="avocado-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Create_Facility_Response_SEQ.xml</file>
+    </artifact>    
+    <artifact name="Avocado_Find_Facility_SEQ" groupId="avocado-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Find_Facility_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_List_Facility_SEQ" groupId="avocado-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_List_Facility_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Update_Facility_SEQ" groupId="avocado-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Update_Facility_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Update_Facility_In_SkySpark_SEQ" groupId="avocado-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Update_Facility_In_SkySpark_SEQ.xml</file>
+    </artifact>
+</artifacts>

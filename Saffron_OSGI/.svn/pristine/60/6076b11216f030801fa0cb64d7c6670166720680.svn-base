@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.pcs.saffron</groupId>
+		<artifactId>EOS</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>EOS-scheduler</artifactId>
+	<name>EOS-scheduler</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.quartz-scheduler</groupId>
+			<artifactId>quartz</artifactId>
+			<version>2.2.2</version>
+			<scope>provided</scope>
+		</dependency>
+
+	</dependencies>
+	
+	<build>
+		<defaultGoal>install</defaultGoal>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>1.4.0</version>
+				<extensions>true</extensions>
+				<goals>
+					<goal>bundleall</goal>
+				</goals>
+				<configuration>
+					<instructions>
+						<Bundle-SymbolicName>${pom.groupId}.${pom.artifactId}</Bundle-SymbolicName>
+						<Bundle-Name>${pom.artifactId}</Bundle-Name>
+						<Bundle-Version>1.0.0</Bundle-Version>
+						<Bundle-Activator>com.pcs.saffron.scheduler.osgi.SchedulerActivator</Bundle-Activator>
+						<Private-Package>com.pcs.saffron.scheduler.*</Private-Package>
+						<Export-Package>com.pcs.saffron.scheduler.*</Export-Package>
+						<Import-Package>
+							org.quartz.*,
+							org.osgi.framework,
+							*;resolution:=optional
+						</Import-Package>
+					</instructions>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<packaging>bundle</packaging>
+</project>

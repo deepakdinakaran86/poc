@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Range_Get_Tags_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Range_Get_Tags_SEQ" value="--------"></property>
+	</log>
+	<script language="groovy"><![CDATA[
+		import groovy.json.*;
+		def content = mc.getProperty("aggregatedPayload");
+        def slurper = new JsonSlurper().parseText(content.toString());
+		def infoIsAnArray = slurper instanceof List;
+		mc.setProperty('infoIsAnArray',infoIsAnArray);
+	]]></script>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" source="get-property('infoIsAnArray')" regex="false">
+		<then>
+			<payloadFactory media-type="json">
+				<format>
+					{"Information" : [$1]}
+				</format>
+				<args>
+					<arg evaluator="json" expression="$.Information" />
+				</args>
+			</payloadFactory>
+		</then>
+	</filter>
+
+	<property action="set" expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property action="set" name="messageType" scope="axis2" type="STRING" value="application/json" />
+	<payloadFactory media-type="json">
+		<format>
+			{
+			"startNodeType": "$1",
+			"endNodeType": "$2",
+			"startNode": $3,
+			"endNode": $4,
+			"tagTypes": $5
+			}
+		</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('originalPayload_startNodeType')" />
+			<arg evaluator="xml" expression="get-property('originalPayload_endNodeType')" />
+			<arg evaluator="xml" expression="get-property('originalPayload_startNode')" />
+			<arg evaluator="xml" expression="get-property('originalPayload_endNode')" />
+			<arg evaluator="json" expression="$.Information" />
+		</args>
+	</payloadFactory>
+	<send receive="Tag_General_Res_SEQ">
+		<endpoint key="conf:/endpoints/alpine/Get_Tag_Entities_By_Node_Range_EP.xml"></endpoint>
+	</send>
+</sequence>

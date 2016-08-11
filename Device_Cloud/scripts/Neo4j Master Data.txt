@@ -1,0 +1,102 @@
+################################################# Constraints #########################################################################
+
+CREATE CONSTRAINT ON (dt:DEVICE_TYPE) ASSERT dt.name IS UNIQUE;
+CREATE CONSTRAINT ON (dt:DEVICE) ASSERT dt.source_id IS UNIQUE;
+CREATE CONSTRAINT ON (dt:DEVICE) ASSERT dt.device_id IS UNIQUE;
+CREATE CONSTRAINT ON (dt:NW_PROTOCOL) ASSERT dt.name IS UNIQUE;
+CREATE CONSTRAINT ON (dt:SUBSCRIPTION) ASSERT dt.sub_id IS UNIQUE;
+CREATE CONSTRAINT ON (dt:SUBSCRIPTION) ASSERT dt.subscriber IS UNIQUE;
+CREATE CONSTRAINT ON (dt:BATCH) ASSERT dt.id IS UNIQUE;
+CREATE CONSTRAINT ON (dt:DATA_SOURCE) ASSERT dt.datasource_name IS UNIQUE;
+CREATE CONSTRAINT ON (dt:SUBSCRIPTION_CONTEXT) ASSERT dt.context_name IS UNIQUE;
+CREATE CONSTRAINT ON (make:MAKE) ASSERT make.name IS UNIQUE;
+CREATE CONSTRAINT ON (dt:DATA_TYPE) ASSERT dt.name IS UNIQUE;
+CREATE CONSTRAINT ON (dt:PHYSICAL_QUANTITY) ASSERT dt.name IS UNIQUE;
+CREATE CONSTRAINT ON (dt:UNIT) ASSERT dt.name IS UNIQUE;
+CREATE CONSTRAINT ON (dt:ACCESS_TYPE) ASSERT dt.name IS UNIQUE;
+CREATE CONSTRAINT ON (dt:SYSTEM_TAG) ASSERT dt.name IS UNIQUE;
+
+
+################################################# Make, Type, Model, Protocol, Version #########################################################################
+
+CREATE  (a:MAKE {name:'G2021'}) -[r1:hasType]-> (b:DEVICE_TYPE {name:'Edge Device'}) -[r2:hasModel]-> (c:MODEL {name:'EDCP'}) -[r3:talksIn]->  (d:DEVICE_PROTOCOL {name:'EDCP'})  -[r4:hasVersion]->  (e:PROTOCOL_VERSION {name:'0.9.4'}) create a-[:hasModel]->c create(cmd1:`COMMAND_TYPE` {name:'Server Command',system_command:true}) create(cmd2:`COMMAND_TYPE` {name:'Point Write Command',system_command:false}) create e-[:canExecute]->cmd1 create e-[:canExecute]->cmd2;
+
+MATCH  (a:MAKE {name:'G2021'}) CREATE a-[r1:hasType]-> (b:DEVICE_TYPE {name:'RMS'}) -[r2:hasModel]-> (c:MODEL {name:'Alarmnet'}) -[r3:talksIn]->  (d:DEVICE_PROTOCOL {name:'Honeywell'})-[r4:hasVersion]->  (e:PROTOCOL_VERSION {name:'8.9.0'}) CREATE a-[:hasModel]->c;
+
+CREATE  (a:MAKE {name:'Teltonika'}) -[r1:hasType]-> (b:DEVICE_TYPE {name:'Telematics'}) -[r2:hasModel]-> (c:MODEL {name:'FMS'}) -[r3:talksIn]->  (d:DEVICE_PROTOCOL {name:'FM4200'})  -[r4:hasVersion]->  (e:PROTOCOL_VERSION {name:'1.0.0'}) CREATE a-[:hasModel]->c;
+
+MATCH (mk:`MAKE` {name:'Teltonika'})-[r1:hasType]->(ty:DEVICE_TYPE {name:'Telematics'})-[r2:hasModel]->(md:MODEL {name:'FMS'}) CREATE (dp:`DEVICE_PROTOCOL` {name:'FM5300'}) create md-[r3:talksIn]->dp RETURN dp;
+
+MATCH (mk:`MAKE` {name:'Teltonika'})-[r1:hasType]->(ty:DEVICE_TYPE {name:'Telematics'})-[r2:hasModel]->(md:MODEL {name:'FMS'})-[r3:talksIn]->(dp:`DEVICE_PROTOCOL` {name:'FM5300'}) create (v:PROTOCOL_VERSION {name:'v2.13'})  create dp-[r4:hasVersion]->v RETURN v;
+
+CREATE  (a:MAKE {name:'Meitrack Group'}) -[r1:hasType]-> (b:DEVICE_TYPE {name:'GPS Tracker'}) -[r2:hasModel]-> (c:MODEL {name:'Vehicle Tracker'}) -[r3:talksIn]->  (d:DEVICE_PROTOCOL {name:'MVT380'})  -[r4:hasVersion]->  (e:PROTOCOL_VERSION {name:'V1.21'}) CREATE a-[:hasModel]->c;
+
+MATCH (t:DEVICE_TYPE {name:'Telematics'}) CREATE  (a:MAKE {name:'Ruptela'}) -[r1:hasType]->t-[r2:hasModel]->(c:MODEL {name:'FMS'})-[r3:talksIn]-> (d:DEVICE_PROTOCOL {name:'FMPRO'}) -[r4:hasVersion]-> (e:PROTOCOL_VERSION {name:'1.02'}) CREATE a-[:hasModel]->c;
+
+################################################# Network Protocol  #############################################################################################
+
+CREATE (n:NW_PROTOCOL {name:'TCP'}) return n;
+CREATE (n:NW_PROTOCOL {name:'UDP'}) return n;
+CREATE (n:NW_PROTOCOL {name:'FTP'}) return n;
+CREATE (n:NW_PROTOCOL {name:'HTTP'}) return n;
+
+################################################# Command Type  ########################################################################################################
+
+MATCH  (a:MAKE {name:'PCS'}) -[r1:hasType]-> (b:DEVICE_TYPE {name:'Edge Device'}) -[r2:hasModel]-> (c:MODEL {name:'EDCP'}) -[r3:talksIn]->  (d:DEVICE_PROTOCOL {name:'EDCP'})  -[r4:hasVersion]->  (e:PROTOCOL_VERSION {name:'1.0.0'}) CREATE e-[:canExecute]->(:COMMAND_TYPE {name:'Point Write Command',system_command:false})
+CREATE e-[:canExecute]->(:COMMAND_TYPE {name:'Server Command',system_command:true});
+
+################################################# Data Type  ########################################################################################################
+
+CREATE (a:DATA_TYPE {name:'Boolean'}) return a;
+CREATE (a:DATA_TYPE {name:'Short'}) return a;
+CREATE (a:DATA_TYPE {name:'Integer'}) return a;
+CREATE (a:DATA_TYPE {name:'Long'}) return a;
+CREATE (a:DATA_TYPE {name:'Float'}) return a;
+CREATE (a:DATA_TYPE {name:'Double'}) return a;
+CREATE (a:DATA_TYPE {name:'String'}) RETURN a;
+CREATE (a:DATA_TYPE {name:'Latitude'}) RETURN a;
+CREATE (a:DATA_TYPE {name:'Longitude'}) RETURN a;
+CREATE (a:DATA_TYPE {name:'Point Type'}) RETURN a;
+MATCH (a:DATA_TYPE {name:'Point Type'}) CREATE (b:DATA_TYPE {name:'Numeric'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+MATCH (a:DATA_TYPE {name:'Point Type'}) MATCH (b:DATA_TYPE {name:'String'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+MATCH (a:DATA_TYPE {name:'Point Type'}) MATCH (b:DATA_TYPE {name:'Boolean'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+MATCH (a:DATA_TYPE {name:'Numeric'}) MATCH (b:DATA_TYPE {name:'Short'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+MATCH (a:DATA_TYPE {name:'Numeric'}) MATCH (b:DATA_TYPE {name:'Integer'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+MATCH (a:DATA_TYPE {name:'Numeric'}) MATCH (b:DATA_TYPE {name:'Long'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+MATCH (a:DATA_TYPE {name:'Numeric'}) MATCH (b:DATA_TYPE {name:'Float'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+MATCH (a:DATA_TYPE {name:'Numeric'}) MATCH (b:DATA_TYPE {name:'Double'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+MATCH (a:DATA_TYPE {name:'Numeric'}) MATCH (b:DATA_TYPE {name:'Latitude'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+MATCH (a:DATA_TYPE {name:'Numeric'}) MATCH (b:DATA_TYPE {name:'Longitude'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+
+################################################# Access Type  ########################################################################################################
+
+CREATE (a:ACCESS_TYPE {name:'READ_ONLY',is_writable:false}) return a;
+CREATE (a:ACCESS_TYPE {name:'WRITEABLE',is_writable:true}) return a;
+
+################################################# System Tag  ########################################################################################################
+(not using)
+MATCH (phy:PHYSICAL_QUANTITY {name:'temperature'}) CREATE (a:SYSTEM_TAG {name:'Room Temperature'} )-[:isOfType]->phy return  a,phy;
+MATCH (phy:PHYSICAL_QUANTITY {name:'velocity'}) CREATE (a:SYSTEM_TAG {name:'Wind Velocity'} )-[:isOfType]->phy return  a,phy;
+
+################################################# Unit  ########################################################################################################
+CREATE (u:UNIT {name:'unitless',status:'active',conversion:'-',symbol:'-',status_key:0,is_si:false,desc:'for mapping points without unit'}) return u;
+
+################################################# Physical Quantity ###################################################################################################
+(others will be created using apis)
+
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'String'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'status string',data_store:'status_string',status:'active',status_key:0,data_type:'STRING'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;
+
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'Long'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'status long',data_store:'status_long',status:'active',status_key:0,data_type:'LONG'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'Short'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'status short',data_store:'status_short',status:'active',status_key:0,data_type:'SHORT'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'Float'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'status float',data_store:'status_float',status:'active',status_key:0,data_type:'FLOAT'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'Integer'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'status integer',data_store:'status_integer',status:'active',status_key:0,data_type:'INTEGER'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'Double'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'status double',data_store:'status_double',status:'active',status_key:0,data_type:'DOUBLE'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'Boolean'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'status boolean',data_store:'status_boolean',status:'active',status_key:0,data_type:'BOOLEAN'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;
+
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'Longitude'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'longitude',data_store:'longitude',status:'active',status_key:0,data_type:'LONGITUDE'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;
+
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'Latitude'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'latitude',data_store:'latitude',status:'active',status_key:0,data_type:'LATITUDE'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;
+
+CREATE (a:DATA_TYPE {name:'Geopoint'}) RETURN a;
+MATCH (a:DATA_TYPE {name:'Numeric'}) MATCH (b:DATA_TYPE {name:'Geopoint'}) CREATE a-[r:isDataType]->(b) RETURN r ;
+match (u:UNIT {name:'unitless'}) match (dt:DATA_TYPE {name:'Geopoint'}) CREATE (pq:`PHYSICAL_QUANTITY` {name:'location',data_store:'location',status:'active',status_key:0,data_type:'GEOPOINT'})-[r:measuresIn]->u create pq-[:isOfType]->dt RETURN r;

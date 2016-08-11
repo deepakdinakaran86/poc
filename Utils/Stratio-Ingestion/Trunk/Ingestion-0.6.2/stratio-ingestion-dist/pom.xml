@@ -1,0 +1,237 @@
+<!--
+
+    Copyright (C) 2014 Stratio (http://stratio.com)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+            http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>stratio-ingestion-dist</artifactId>
+    <packaging>pom</packaging>
+
+    <parent>
+        <artifactId>stratio-ingestion-parent</artifactId>
+        <groupId>com.stratio.ingestion</groupId>
+        <version>0.6.2</version>
+    </parent>
+
+    <!-- Required here for unix-maven-plugin -->
+    <name>Stratio Ingestion</name>
+    <description>An improved Apache Flume distribution with extra components</description>
+    <licenses>
+        <license>
+            <name>Apache 2.0</name>
+        </license>
+    </licenses>
+    
+    <properties>
+		<java.home>C:\Program Files\Java\jdk1.8.0_65</java.home>
+	</properties>
+
+    <dependencies>
+       <!--  <dependency>
+            <groupId>org.kitesdk</groupId>
+            <artifactId>kite-morphlines-all</artifactId>
+            <version>${kite.version}</version>
+            <type>pom</type>
+            <exclusions>
+                <exclusion>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-annotations</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-auth</artifactId>
+                </exclusion>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-hdfs</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency> -->
+        <!-- <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-annotations</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-auth</artifactId>
+            <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hadoop</groupId>
+            <artifactId>hadoop-hdfs</artifactId>
+            <version>${hadoop.version}</version>
+            <exclusions>
+                    <exclusion>
+                        <groupId>io.netty</groupId>
+                        <artifactId>netty-all</artifactId>
+                    </exclusion>
+            </exclusions>
+        </dependency> -->
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-streaming-flume-sink_2.10</artifactId>
+            <version>1.1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.zookeeper</groupId>
+            <artifactId>zookeeper</artifactId>
+            <version>3.4.6</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-dist</artifactId>
+            <version>${flume.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-core</artifactId>
+            <version>${flume.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.flume</groupId>
+            <artifactId>flume-ng-sdk</artifactId>
+            <version>${flume.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-rest-source</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-snmptraps-source</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-cassandra-sink</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.morphlines</groupId>
+            <artifactId>morphlines-all</artifactId>
+            <version>${stratio.morphlines.version}</version>
+            <type>pom</type>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-druid-sink</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-elasticsearch-serializer</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-irc-source</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-jdbc-sink</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-kafka-sink</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-mongodb-sink</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-redis-source</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-decision-sink</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.stratio.ingestion</groupId>
+            <artifactId>stratio-xmlxpath-deserializer</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
+        <!-- Dependency needed in HDFS sink -->
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>1.10</version>
+        </dependency>
+
+    </dependencies>
+
+    <profiles>
+        <profile>
+            <id>package</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <!-- XXX:
+                            Tried version 2.5.3 but it was missing JARs.
+                            See https://github.com/Stratio/flume-ingestion/issues/45
+                        -->
+                        <version>2.4.1</version>
+                        <executions>
+                            <execution>
+                                <id>distro-assembly</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                                <configuration>
+                                    <descriptors>
+                                        <descriptor>src/main/assembly/bin.xml</descriptor>
+                                    </descriptors>
+                                    <tarLongFileMode>gnu</tarLongFileMode>
+                                    <finalName>stratio-ingestion-${project.version}</finalName>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>default</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <assembly.baseDirectory>stratio-ingestion-${project.version}-bin/</assembly.baseDirectory>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>

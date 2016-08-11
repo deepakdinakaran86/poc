@@ -1,0 +1,9 @@
+{
+  "domain": {
+    "domainName": "pcs.galaxy"
+  },
+  "identifier": {
+    "key": "tenantId",
+    "value": "jll"
+  }
+}

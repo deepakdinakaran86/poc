@@ -1,0 +1,28 @@
+# avocado facility esb endpoint
+avocado.esb.url=http://10.234.31.202:8281
+
+# avocado facility esb context
+avocado.esb.facility.context=/galaxy-em/services/facilities
+
+# avocado facility esb create facility url
+avocado.esb.create.facility=/galaxy-em/services/facilities/
+
+# avocado facility esb update facility url
+avocado.esb.update.facility=/galaxy-em/services/facilities/
+
+
+#################platform esb endpoint#####################
+platform.esb.url=http://10.234.31.202:8281
+
+
+# platform marker list/filter url
+platform.esb.marker.list=/alpine/services/markers/list/filter
+
+# platform marker search url
+platform.esb.marker.search=/alpine/services/markers/fieldvalue/search
+
+# platform facility esb context
+#platform.esb.facility.context=/galaxy-em/services/facilities
+
+# platform marker find url
+platform.esb.marker.find=/alpine/services/markers/find

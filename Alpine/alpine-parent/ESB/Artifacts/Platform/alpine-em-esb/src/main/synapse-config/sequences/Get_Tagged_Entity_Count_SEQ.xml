@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Tagged_Entity_Count_SEQ">
+	<log separator=",">
+		<property name="Enter Get_Tagged_Entity_Count_SEQ" value="---Get_Tagged_Entity_Count_SEQ-----" />
+	</log>
+	<script language="js"><![CDATA[authProperty = mc.getProperty('Authorization');
+           	if(authProperty != null){
+           		mc.setProperty('Authorization',authProperty);           	
+           	}else{
+			mc.setProperty('Authorization',"null");
+			}]]></script>
+	<filter regex="null" source="get-property('Authorization')"
+		xmlns:ns="http://org.apache.synapse/xsd">
+		<then />
+		<else>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+		</else>
+	</filter>
+	<property name="messageType" value="application/json" scope="axis2"
+		type="STRING" />
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Get_Tagged_Entity_Count_EP.xml" />
+	</send>
+</sequence>

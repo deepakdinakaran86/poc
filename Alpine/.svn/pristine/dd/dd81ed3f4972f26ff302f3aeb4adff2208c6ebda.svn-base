@@ -1,0 +1,153 @@
+<api xmlns="http://ws.apache.org/ns/synapse" context="/alpine/services/templates"
+	name="Template_API">
+	<resource methods="POST" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Create_Template_SEQ" scope="default"
+				type="STRING"></property>
+			
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="PUT" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Update_Template_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/find">
+		<inSequence>
+			<property name="seqName" value="Get_Template_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/list">
+		<inSequence>
+			<property name="seqName" value="Get_Domain_Templates_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/delete">
+		<inSequence>
+			<property name="seqName" value="Delete_Template_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/assign?domain={domain}">
+		<inSequence>
+			<property name="seqName" value="Assign_Templates_SEQ" scope="default"
+				type="STRING"></property>
+			<property action="set" expression="get-property('query.param.domain')"
+				name="query.param.domain" scope="default" type="STRING"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+			<property action="set" expression="get-property('uri.var.domain')"
+				name="uri.var.domain" scope="default" type="STRING"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+			<property name="isParentDomainQueryParam" value="true"
+				scope="default" type="STRING" />
+			<property name="isPayloadWithQueryParam" value="true" scope="default"
+				type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/assign">
+		<inSequence>
+			<property name="seqName" value="Assign_Templates_SEQ" scope="default"
+				type="STRING"></property>
+			<property name="isParentDomainQueryParam" value="true"
+				scope="default" type="STRING" />
+			<property name="isPayloadWithQueryParam" value="true" scope="default"
+				type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/listByParentTemplate">
+		<inSequence>
+			<property name="seqName" value="List_Templates_By_ParentTemplate_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" uri-template="/status/{statusName}">
+		<inSequence>
+			<property name="seqName" value="Update_Template_Status_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+</api>

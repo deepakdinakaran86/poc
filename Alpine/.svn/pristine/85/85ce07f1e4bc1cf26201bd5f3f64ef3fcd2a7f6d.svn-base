@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Geotag_Node_Update_SEQ" >
+<log separator=",">
+		<property name="Enter Geotag_Node_Update_SEQ" value="---Geotag_Node_Update_SEQ----"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>{
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"platformEntity": {
+					"platformEntityType":
+					"MARKER"
+					},
+					"identifier": {
+					"key": "$3",
+					"value": "$4"
+					},
+					"entityStatus": {
+					"statusName": "$5"
+					}
+					}</format>
+				<args>
+					<arg expression="get-property('geotagEntityDomain')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('geotagEntityTemplate')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('geotagEntityIdKey')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('geotagEntityIdValue')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('geotagEntityStatus')" evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="Geotag_Node_Update_Res_SEQ">
+				<endpoint key="conf:/endpoints/alpine/Hierarchy_Update_Node_EP.xml"></endpoint>
+			</send>
+		</else>
+	</filter>
+</sequence>

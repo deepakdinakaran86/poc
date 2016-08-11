@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Send_Email_SEQ">
+	<log separator=",">
+		<property name="Enter Subscription_Send_Email_SEQ" value="--------Subscription_Send_Email_SEQ--------" />
+		<property name="response of create site" expression="$body" />
+	</log>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="createSiteResponse"
+		expression="$body" scope="default" type="STRING"></property>
+	<script language="js"><![CDATA[
+	var response =   mc.getProperty('createSiteResponse'); 
+		var index = response.indexOf("SUCCESS");
+		var status = "false";
+		if(index>-1){
+		status = "true";
+		}
+		mc.setProperty("siteStatus",status);
+	]]></script>
+
+	<filter xmlns:ns="http://org.apache.synapse/xsd" source="(get-property('siteStatus'))"
+		regex="true">
+		<then>
+			<log separator=",">
+				<property name="success from site" value="--------success from site--------" />
+			</log>
+			<payloadFactory media-type="json">
+				<format>{ "toAddresses": "$1", "content": "$2", "emailTemplate":
+					"/subscriptionEmail.vm", "subject": "Registration Email", "to":
+					"$3", "userName": "$4" }
+				</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('email')" />
+					<arg evaluator="xml" expression="get-property('content')" />
+					<arg evaluator="xml" expression="get-property('lastname')" />
+					<arg evaluator="xml" expression="get-property('username')" />
+				</args>
+			</payloadFactory>
+			<property name="x-jwt-assertion" expression="get-property('Authorization')" scope="transport" type="STRING"/>
+            <property name="messageType" value="application/json" scope="axis2" type="STRING"/>
+			<send>
+				<endpoint
+					key="conf:/endpoints/subscription/Subscription_Send_Email_EP.xml" />
+			</send>
+		</then>
+		<else>
+			<log separator=",">
+				<property name="failure from site" value="--------failure from site--------" />
+			</log>
+			<payloadFactory media-type="json">
+				<format>{"errorMessage":"Unable to create site"}</format>
+				<args />
+			</payloadFactory>
+			<header name="To" scope="default" action="remove" />
+			<property name="RESPONSE" value="true" scope="default" type="STRING" />
+			<send />
+		</else>
+	</filter>
+</sequence>

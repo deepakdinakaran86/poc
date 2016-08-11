@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.pcs.osgi</groupId>
+	<artifactId>bundler</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+
+	<name>bundler</name>
+	<url>http://maven.apache.org</url>
+
+	<properties>
+		<export.packages>${export.package}*;version=${unpack.version}</export.packages>
+		<import.packages>*</import.packages>
+		<private.packages>!*</private.packages>
+		<symbolic.name>${pom.groupId}.${pom.artifactId}</symbolic.name>
+		<embed-dep>*;scope=compile;type=!pom;inline=true</embed-dep>
+		<unpack-bundle>false</unpack-bundle>
+	</properties>
+	
+	<build>
+
+		<directory>${env.BUILD_HOME}/dependencies/${symbolic.name}</directory>
+
+
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<compilerVersion>1.8</compilerVersion>
+					<executable>${/usr/libexec/java_home}</executable>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.felix</groupId>
+				<artifactId>maven-bundle-plugin</artifactId>
+				<version>1.4.0</version>
+				<configuration>
+					<unpackBundle>${unpack.bundle}</unpackBundle>
+					<instructions>
+						<Bundle-Name>${artifactId}</Bundle-Name>
+						<Bundle-SymbolicName>${symbolic.name}</Bundle-SymbolicName>
+						<Bundle-Description>${pom.name}</Bundle-Description>
+						<Import-Package>${import.packages}</Import-Package>
+						<Private-Package>${private.packages}</Private-Package>
+						<Include-Resource>${include.resources}</Include-Resource>
+						<Embed-Dependency>${embed-dep}</Embed-Dependency>
+						<DynamicImport-Package>*</DynamicImport-Package>
+						<_exportcontents>${export.packages}</_exportcontents>
+					</instructions>
+				</configuration>
+				<extensions>true</extensions>
+			</plugin>
+
+
+		</plugins>
+
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.*</include>
+				</includes>
+				<filtering>false</filtering>
+			</resource>
+		</resources>
+	</build>
+	
+	<dependencies>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>3.8.1</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+	<modules>
+		<module>hazelcast-all-osgi</module>
+		<module>kafka-all-osgi</module>
+		<module>yammer-osgi</module>
+		<module>joptsimple-osgi</module>
+		<module>zkclient-osgi</module>
+		<module>kafka-clients-osgi</module>
+		<module>zpountz-lz4-osgi</module>
+		<module>snappy-osgi</module>
+		<module>zookeeper-osgi</module>
+		<module>netty-osgi</module>
+		<module>barchart-udt-osgi</module>
+    <module>bounycastle-osgi</module>
+    <module>protobuf-osgi</module>
+    <module>jcraft-osgi</module>
+    <module>javaassist-osgi</module>
+    <module>rxtx-netty-osgi</module>
+    <module>commons.io.osgi</module>
+    <module>tomcat-jni-osgi</module>
+    <module>jetty-alpn-osgi</module>
+    <module>jetty-npn-osgi</module>
+    <module>jbos-marshelling-osgi</module>
+    <module>jboss-modules-osgi</module>
+    <module>jboss-netty-old-osgi</module>
+    <module>activemq-all-osgi</module>
+    <module>scalaosgi</module>
+    <module>rabbitmq-amqp-osgi</module>
+    <module>kafka-osgi</module>
+    <module>apache-http-core-osgi</module>
+    <module>http-components-osgi</module>
+    <module>apache-commons-codec-osgi</module>
+    <module>yaml-osgi</module>
+  </modules>
+</project>

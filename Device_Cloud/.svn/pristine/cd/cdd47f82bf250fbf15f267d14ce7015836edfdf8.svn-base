@@ -1,0 +1,4 @@
+##### SMS ########################
+sms.rest.api=http://api.clickatell.com/http/sendmsg?user=pcsadmin&password=GXNgcSDDSdVHbP&api_id=3533387&to={number}&text={content}
+sms.rest.method=GET
+sms.rest.payload=

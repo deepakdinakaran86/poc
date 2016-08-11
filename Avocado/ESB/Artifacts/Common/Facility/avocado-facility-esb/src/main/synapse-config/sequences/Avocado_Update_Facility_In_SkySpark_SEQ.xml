@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Avocado_Update_Facility_In_SkySpark_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Avocado_Update_Facility_In_SkySpark_SEQ"
+			value="--------Avocado_Update_Facility_In_SkySpark_SEQ--------" />
+	</log>
+	<log category="INFO" level="simple" separator=",">
+		<property expression="get-property('skysparkPayload')" name="skyspark_Payload" />
+	</log>
+
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<log separator=",">
+				<property name="Error FROM ALpineMarker --------------------"
+					value="++++++++++++ERROR+++++++++" />
+			</log>
+			<send />
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg expression="get-property('skysparkPayload')" />
+				</args>
+			</payloadFactory>
+			<property action="set" name="Authorization" scope="transport"
+				type="STRING" value="Basic ZGV2aWNlY2xvdWQ6ZGV2aWNlY2xvdWQ=" />
+			<send>
+				<endpoint key="conf:/endpoints/avocado/Update_Facility_SkySpark_EP.xml" />
+			</send>
+		</else>
+	</filter>
+
+
+</sequence>

@@ -1,0 +1,211 @@
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'2',point_name:'Digital Input 1',display_name:'Digital Input 1',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'3',point_name:'Digital Input 2',display_name:'Digital Input 2',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'4',point_name:'Digital Input 3',display_name:'Digital Input 3',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'5',point_name:'Digital Input 4',display_name:'Digital Input 4',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'6',point_name:'Modem Temperature',display_name:'Modem Temperature',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'7',point_name:'Time Record',display_name:'Time Record',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'8',point_name:'Distance Record',display_name:'Distance Record',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'9',point_name:'Course Record',display_name:'Course Record',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'10',point_name:'CANBUS Request Supported',display_name:'CANBUS Request Supported',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'11',point_name:'CANBUS Diagnostics Supported',display_name:'CANBUS Diagnostics Supported',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'12',point_name:'CANBUS FMS Software',display_name:'CANBUS FMS Software',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'13',point_name:'CANBUS Vehicle Motion',display_name:'CANBUS Vehicle Motion',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'14',point_name:'CANBUS Driver 1 Time',display_name:'CANBUS Driver 1 Time',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'15',point_name:'CANBUS Driver 1 Card',display_name:'CANBUS Driver 1 Card',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'16',point_name:'CANBUS Driver 2 Time',display_name:'CANBUS Driver 2 Time',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'17',point_name:'CANBUS Driver 2 Card',display_name:'CANBUS Driver 2 Card',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'18',point_name:'Fuel Counter 1',display_name:'Fuel Counter 1',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'19',point_name:'Fuel Counter 2',display_name:'Fuel Counter 2',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'20',point_name:'Fuel Counter 3',display_name:'Fuel Counter 3',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'21',point_name:'Fuel Counter 4',display_name:'Fuel Counter 4',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'22',point_name:'Analog Input 1',display_name:'Analog Input 1',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'23',point_name:'Analog Input 2',display_name:'Analog Input 2',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'27',point_name:'GSM Signal Strength',display_name:'GSM Signal Strength',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'28',point_name:'Current Profile',display_name:'Current Profile',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'29',point_name:'Power Supply Voltage',display_name:'Power Supply Voltage',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'30',point_name:'Battery Voltage',display_name:'Battery Voltage',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'32',point_name:'PCB Temperature',display_name:'PCB Temperature',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'34',point_name:'iButton ID',display_name:'iButton ID',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'35',point_name:'CANBUS Clutch Switch',display_name:'CANBUS Clutch Switch',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'36',point_name:'CANBUS Break Switch',display_name:'CANBUS Break Switch',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'37',point_name:'CANBUS Cruise Control Switch',display_name:'CANBUS Cruise Control Switch',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'38',point_name:'CANBUS PTO State',display_name:'CANBUS PTO State',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'39',point_name:'CANBUS Engine PLCS',display_name:'CANBUS Engine PLCS',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'40',point_name:'CANBUS Tire Location',display_name:'CANBUS Tire Location',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'41',point_name:'CANBUS Axle Weight',display_name:'CANBUS Axle Weight',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'42',point_name:'CANBUS System Event',display_name:'CANBUS system event',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'43',point_name:'CANBUS Handling Information',display_name:'CANBUS Handling Information',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'44',point_name:'CANBUS Direction Indicator',display_name:'CANBUS Direction Indicator',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'65',point_name:'Virtual Odometer',display_name:'Virtual Odometer',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'66',point_name:'Digital Fuel Sensor 1',display_name:'Digital Fuel Sensor 1',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'67',point_name:'Digital Fuel Sensor 2',display_name:'Digital Fuel Sensor 2',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'68',point_name:'Digital Fuel Sensor 3',display_name:'Digital Fuel Sensor 3',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'69',point_name:'Digital Fuel Sensor 4',display_name:'Digital Fuel Sensor 4',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'71',point_name:'Temperature Sensor ID 1',display_name:'Temperature Sensor ID 1',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'72',point_name:'Temperature Sensor ID 2',display_name:'Temperature Sensor ID 2',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'78',point_name:'Temperature Sensor 0',display_name:'Temperature Sensor 0',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'79',point_name:'Temperature Sensor 1',display_name:'Temperature Sensor 1',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'80',point_name:'Temperature Sensor 2',display_name:'Temperature Sensor 2',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'89',point_name:'CANBUS Ambient Air Temperature',display_name:'CANBUS Ambient Air Temperature',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'90',point_name:'CANBUS Fuel Economy',display_name:'CANBUS Fuel Economy',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'91',point_name:'CANBUS PTO',display_name:'CANBUS PTO',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'92',point_name:'CANBUS HRFC',display_name:'CANBUS HRFC',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'114',point_name:'CANBUS Distance',display_name:'CANBUS Distance',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'115',point_name:'CANBUS Coolant Temperature',display_name:'CANBUS Coolant Temperature',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'116',point_name:'CANBUS Fuel Rate',display_name:'CANBUS Fuel Rate',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'123',point_name:'CANBUS Vehicle Id 1',display_name:'CANBUS Vehicle Id 1',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'124',point_name:'CANBUS Vehicle Id 2',display_name:'CANBUS Vehicle Id 2',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'125',point_name:'CANBUS Vehicle Id 3',display_name:'CANBUS Vehicle Id 3',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'126',point_name:'CANBUS First Driver Id1',display_name:'CANBUS First Driver Id1',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'127',point_name:'CANBUS First Driver Id2',display_name:'CANBUS First Driver Id2',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'128',point_name:'CANBUS Second Driver Id 1',display_name:'CANBUS Second Driver Id 1',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'129',point_name:'CANBUS Second Driver Id 2',display_name:'CANBUS Second Driver Id 2',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'150',point_name:'GSM Operator',display_name:'GSM Operator',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'152',point_name:'TCO Vehicle ID 1',display_name:'TCO Vehicle ID 1',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'153',point_name:'TCO Vehicle ID 2',display_name:'TCO Vehicle ID 2',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'154',point_name:'TCO Vehicle ID 3',display_name:'TCO Vehicle ID 3',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'155',point_name:'TCO first Driver ID 1',display_name:'TCO first Driver ID 1',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'156',point_name:'TCO first Driver ID 2',display_name:'TCO first Driver ID 2',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'157',point_name:'TCO Second Driver ID 1',display_name:'TCO Second Driver ID 1',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'158',point_name:'TCO Second Driver ID 2',display_name:'TCO Second Driver ID 2',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'159',point_name:'TCO First Driver State',display_name:'TCO First Driver State',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'160',point_name:'TCO Second Driver State',display_name:'TCO Second Driver State',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'161',point_name:'TCO First Driver Card',display_name:'TCO First Driver Card',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'162',point_name:'TCO Second Driver Card',display_name:'TCO Second Driver Card',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'163',point_name:'TCO Distance',display_name:'TCO Distance',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'164',point_name:'TCO Trip',display_name:'TCO Trip',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'165',point_name:'TCO Vehicle Speed',display_name:'TCO Vehicle Speed',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'166',point_name:'TCO RPM',display_name:'TCO RPM',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'167',point_name:'TCO Registration Number 1',display_name:'TCO Registration Number 1',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'168',point_name:'TCO Registration Number 2',display_name:'TCO Registration Number 2',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'170',point_name:'Battery Current',display_name:'Battery Current',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'173',point_name:'Movement Sensor',display_name:'Movement Sensor',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'176',point_name:'GPS Speed',display_name:'GPS Speed',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'179',point_name:'Digital Fuel Sensor',display_name:'Digital Fuel Sensor',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'197',point_name:'CANBUS RPM',display_name:'CANBUS RPM',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'203',point_name:'CANBUS Engine Hours',display_name:'CANBUS Engine Hours',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'204',point_name:'CANBUS Service Distance',display_name:'CANBUS Service Distance',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'206',point_name:'CANBUS Accelerator Pedal Position',display_name:'CANBUS Accelerator Pedal Position',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'207',point_name:'Fuel Level Percentage',display_name:'Fuel Level Percentage',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'208',point_name:'CANBUS Fuel Used',display_name:'CANBUS Fuel Used',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'210',point_name:'CANBUS WBSpeed',display_name:'CANBUS WBSpeed',data_type:'Float',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'213',point_name:'CANBUS Tachograph Vehicle Speed',display_name:'CANBUS Tachograph Vehicle Speed',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'215',point_name:'CANBUS Driver 1 State',display_name:'CANBUS Driver 1 State',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'216',point_name:'CANBUS Driver 2 State',display_name:'CANBUS Driver 2 State',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'217',point_name:'CANBUS Tachograph Performance',display_name:'CANBUS Tachograph Performance',data_type:'Integer',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'218',point_name:'CANBUS Over Speed',display_name:'CANBUS Over Speed',data_type:'Boolean',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'219',point_name:'CANBUS Axle Location',display_name:'CANBUS Axle Location',data_type:'String',access_type:'READONLY'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'Angle',point_name:'Angle',display_name:'Angle',data_type:'Float',access_type:'READONLY',description:'Angle'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029  create (p:POINT {point_id:'Altitude',point_name:'Altitude',display_name:'Altitude',data_type:'Float',access_type:'READONLY',description:'Gps Altitude'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'Latitude',point_name:'Latitude',display_name:'Latitude',data_type:'Float',access_type:'READONLY',description:'Latitude'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'Longitude',point_name:'Longitude',display_name:'Longitude',data_type:'Float',access_type:'READONLY',description:'Longitude'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'Priority',point_name:'Priority',display_name:'Priority',data_type:'Integer',access_type:'READONLY',description:'Priority'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'Speed',point_name:'Speed',display_name:'Speed',data_type:'Integer',access_type:'READONLY',description:'Speed'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'Visible Satellites',point_name:'Visible Satellites',display_name:'Visible Satellites',data_type:'Integer',access_type:'READONLY',description:'Visible Satellites'}) create v-[r:hasPoint]->p return r,p;
+
+match (v:PROTOCOL_VERSION ) where id(v)=282029 create (p:POINT {point_id:'HDOP',point_name:'HDOP',display_name:'HDOP',data_type:'Integer',access_type:'READONLY',description:'HDOP'}) 
+create v-[r:hasPoint]->p return r,p;
+

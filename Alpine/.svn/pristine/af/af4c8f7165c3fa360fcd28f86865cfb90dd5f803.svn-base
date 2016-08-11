@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Get_Domain_Permission_Group_SEQ" >
+<log separator=",">
+      <property name="Enter Get_Domain_Permission_Group_SEQ" value="--------"></property>
+   </log>
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain" expression="get-property('query.param.domain')" scope="default" type="STRING"></property>
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.domain" expression="get-property('uri.var.domain')" scope="default" type="STRING"></property>
+   <log>
+      <property xmlns:ns="http://org.apache.synapse/xsd" name="Domain" expression="get-property('query.param.domain')"></property>
+      <property xmlns:ns="http://org.apache.synapse/xsd" name="DomainURI" expression="get-property('uri.var.domain')"></property>
+   </log>
+   <filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(get-property('query.param.domain'))" regex="false">
+      <then>
+         <log level="custom">
+            <property name="*********" value="NULL Property Value"></property>
+         </log>
+         <property name="query.param.domain" value="" scope="default" type="STRING"></property>
+      </then>
+      <else>
+         <log level="custom">
+            <property name="*********" value="NOT NULL Property Value"></property>
+         </log>
+      </else>
+   </filter>
+   <send>
+      <endpoint key="conf:/endpoints/alpine/Get_Domain_Permission_Group_EP.xml"></endpoint>
+   </send>
+</sequence>

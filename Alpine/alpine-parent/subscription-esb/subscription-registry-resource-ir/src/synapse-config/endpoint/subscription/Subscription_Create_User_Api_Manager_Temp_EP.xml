@@ -1,0 +1,6 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Create_User_Api_Manager_Temp_EP">
+<!-- 	<http method="post" -->
+<!-- 		uri-template="http://10.234.31.201:9764/alpine-notification-1.0.0/services/notification/user?username={query.param.username}&amp;password={query.param.password}" /> -->
+	<http method="post"
+		uri-template="http://10.234.31.154:9763/alpine-notification-1.0.0/services/notification/user?username={query.param.username}&amp;password={query.param.password}" />
+</endpoint>

@@ -1,0 +1,4 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="TagType_Get_All_TagType_EP" >
+	<http method="get"
+		uri-template="http://10.236.166.111:9763/alpine-tagservices-1.0.0/services/tagTypes?domain_name={query.param.domain_name}" />
+</endpoint>

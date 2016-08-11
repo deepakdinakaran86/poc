@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Test_EP" groupId="com.pcs.guava-service-scheduling-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/Test_EP.xml</file>
+            <path>/_system/config/endpoints</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

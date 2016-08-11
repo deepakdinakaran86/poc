@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Item_Update_Res_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Service_Item_Update_Res_SEQ" value="---Service_Item_Update_Res_SEQ--------" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<filter xpath="get-property('listOfTagsPayload')">
+				<then>
+					<log separator=",">
+						<property name="Entered Then" value="---list of tags present-----" />
+					</log>
+					<property expression="get-property('Authorization')" name="x-jwt-assertion"
+						scope="transport" type="STRING" />
+					<property name="messageType" scope="axis2" type="STRING"
+						value="application/json" />
+					<payloadFactory media-type="json">
+						<format>$1</format>
+						<args>
+							<arg evaluator="xml" expression="get-property('serviceItemEntity')" />
+						</args>
+					</payloadFactory>
+					<sequence key="Service_Item_Attach_Entity_To_Tags_SEQ" />
+				</then>
+				<else>
+					<log separator=",">
+						<property name="Entered else" value="----no tags present----" />
+					</log>
+					<payloadFactory media-type="json">
+						<format>{ "status": "SUCCESS"}</format>
+					</payloadFactory>
+					<property name="RESPONSE" scope="default" type="STRING"
+						value="true" />
+					<property name="HTTP_SC" scope="axis2" type="STRING"
+						value="200" />
+					<send />
+				</else>
+			</filter>
+		</then>
+		<else>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<filter xpath="get-property('listOfTagsPayload')">
+				<then>
+					<log separator=",">
+						<property name="In ELSE of hierarchy update, Entered Then as List Of Tags Present"
+							value="---list of tags present-----" />
+					</log>
+					<payloadFactory media-type="json">
+						<format>$1</format>
+						<args>
+							<arg evaluator="xml" expression="get-property('serviceItemEntity')" />
+						</args>
+					</payloadFactory>
+					<sequence key="Service_Item_Attach_Entity_To_Tags_SEQ" />
+				</then>
+				<else>
+					<log separator=",">
+						<property name="Entered else" value="----no tags present----" />
+					</log>
+					<payloadFactory media-type="json">
+						<format>{ "status": "SUCCESS"}</format>
+					</payloadFactory>
+					<property name="RESPONSE" scope="default" type="STRING"
+						value="true" />
+					<property name="HTTP_SC" scope="axis2" type="STRING"
+						value="200" />
+					<send />
+				</else>
+			</filter>
+		</else>
+	</filter>
+</sequence>

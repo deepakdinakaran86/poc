@@ -1,0 +1,13 @@
+apiMgrClientId : 2dPK71hyeqVOitj0KaTrA7E75Pga
+apiMgrClientSecret : 33e6mpmFYkv8jRIVZHdiCFNkugUa
+host : 10.236.166.115
+port : 8282
+scheme : http
+emailApi : ccd/1.0.0/notify/email
+getFaultEvtApi : ccd/1.0.0/faultEvent/latest
+persistFaultEvtApi : ccd/1.0.0/faultEvent
+updateFaultEvtApi : ccd/1.0.0/faultEvent
+getAttachedContactsApi : ccd/1.0.0/equipment/contacts
+ccdUser : ccdadmin@ccd.galaxy
+ccdUserPwd : password
+

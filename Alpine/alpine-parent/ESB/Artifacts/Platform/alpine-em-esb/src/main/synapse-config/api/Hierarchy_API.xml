@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/alpine/services/hierarchy" name="Hierarchy_API"
+	xmlns="http://ws.apache.org/ns/synapse">
+	<resource inSequence="Attach_Parent_SEQ" methods="POST"
+		protocol="http" url-mapping="/attach/parents">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Attach_Children_SEQ" methods="POST"
+		protocol="http" url-mapping="/attach/children">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/children">
+		<inSequence>
+			<property name="seqName" value="Get_Children_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/children/count">
+		<inSequence>
+			<property name="seqName" value="Get_Children_Count_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/status/count">
+		<inSequence>
+			<property name="seqName" value="Get_Hierarchy_Count_By_Status_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="PUT" protocol="http">
+		<inSequence>
+			<property name="seqName" value="Hierarchy_Update_Node_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/children/immediate">
+		<inSequence>
+			<property name="seqName" value="Get_Immediate_Children_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/parents/immediate">
+		<inSequence>
+			<property name="seqName" value="Get_Immediate_Parents_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/markers/assign">
+		<inSequence>
+			<property name="seqName" value="Get_Assignable_Markers_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/markers/owned">
+		<inSequence>
+			<property name="seqName" value="Get_Owned_Markers_By_Domain_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+
+	<resource methods="POST" protocol="http" url-mapping="/range/tenants">
+		<inSequence>
+			<property name="seqName" value="Get_Tenants_Within_Range_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/distribution/count"
+		protocol="http">
+		<inSequence>
+			<property name="seqName" value="Get_Hierarchy_Distribution_Count_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/distribution" protocol="http">
+		<inSequence>
+			<property name="seqName" value="Get_Hierarchy_Distribution_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Attach_Subjects_To_Actor_SEQ" methods="POST"
+		protocol="http" url-mapping="/attach/subjects">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Attach_Actors_To_Subject_SEQ" methods="POST"
+		protocol="http" url-mapping="/attach/actors">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Get_All_Entities_Subjects_SEQ" methods="POST"
+		protocol="http" url-mapping="/subjects/entities">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Get_All_Templates_Subjects_SEQ" methods="POST"
+		protocol="http" url-mapping="/subjects/templates">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Get_All_Roots_To_An_Actor_SEQ" methods="POST"
+		protocol="http" url-mapping="/roots/immediate">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/geotags">
+		<inSequence>
+			<property name="seqName" value="Hierarchy_Get_All_Geotags_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/attached/templates">
+		<inSequence>
+			<property name="seqName"
+				value="Get_Entity_Template_Names_of_Attached_Entities_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+
+	<resource methods="PUT" protocol="http" url-mapping="/status">
+		<inSequence>
+			<property name="seqName" value="Hierarchy_Update_Status_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="PUT" uri-template="/batch/status/{statusName}">
+		<inSequence>
+			<property name="seqName" value="Hierarchy_Update_Nodes_Status_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+
+	<resource methods="POST" uri-template="/search/relation"
+		protocol="http">
+		<inSequence>
+			<property name="seqName" value="Hierarchy_Search_Relation_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/range/tags">
+		<inSequence>
+			<!-- Generic domain router not required, this resouce is getting onvoked 
+				by Tag's /range api, domain access will be check there -->
+			<sequence key="Get_Tag_Entities_By_Node_Range_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" protocol="http" url-mapping="/entities">
+		<inSequence>
+			<!-- TODO Generic domain router not required, this resouce is getting 
+				onvoked by Tag's /range api, domain access will be check there -->
+			<sequence key="Get_Subject_Entities_By_Tags_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Attach_Multiple_Actors_To_Multiple_Subjects_SEQ"
+		methods="POST" protocol="http" url-mapping="/attach/markers/multiple">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Get_Markers_Between_Tenants_SEQ"
+		methods="POST" protocol="http" url-mapping="/range/tenants/markers">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Get_Tagged_Entity_Count_SEQ" methods="POST"
+		protocol="http" url-mapping="/attached/entity/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+</api>

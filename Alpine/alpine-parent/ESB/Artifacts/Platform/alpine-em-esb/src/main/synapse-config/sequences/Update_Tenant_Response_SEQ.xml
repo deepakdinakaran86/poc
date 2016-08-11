@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Update_Tenant_Response_SEQ">
+	<log separator=",">
+		<property name="Enter Update_Tenant_Response_SEQ" value="---Update_Tenant_Response_SEQ--------"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<header name="To" action="remove"></header>
+			<property name="RESPONSE" value="true" scope="default" type="STRING"></property>
+			<property name="HTTP_SC" value="200" scope="axis2"></property>
+			<payloadFactory media-type="json">
+				<format>{ "status": "SUCCESS"}</format>
+			</payloadFactory>
+			<send></send>
+		</else>
+	</filter>
+</sequence>

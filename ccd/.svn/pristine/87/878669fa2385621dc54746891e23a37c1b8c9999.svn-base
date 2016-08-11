@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_CCD_Tenant_Equip_SEQ">
+	<log separator=",">
+		<property name="Enter Get_CCD_Tenant_Equip_SEQ" value="--------" />
+	</log>
+
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="Authorization"
+		expression="$trp:x-jwt-assertion" scope="default" type="STRING"></property>
+
+	<property expression="$body/jsonObject/tenant/tenantId" name="tenantId"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	
+	<property expression="$body/jsonObject/tenant/tenantName" name="tenantName"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<property expression="$body/jsonObject/tenant/contactFName"
+		name="tenantContactFName" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<property expression="$body/jsonObject/tenant/contactLName"
+		name="tenantContactLName" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<property expression="$body/jsonObject/mydomain/domainName"
+		name="myDomain" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<property expression="$body/jsonObject/parent/domainName"
+		name="parentDomain" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	
+	<property expression="$body/jsonObject/parent/tenantName"
+		name="parentTenantName" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	
+	<property expression="$body/jsonObject/tenantMarkerTemplate"
+		name="tenantTemplate" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	
+	<property expression="$body/jsonObject/defaultTenantTemplate"
+		name="defaultTenantTemplate" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	
+	<property expression="$body/jsonObject/equipMarkerTemplate" name="equipTemplate"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="equipPayload"
+		expression="json-eval($.equipments)" scope="default" type="STRING"></property>
+	
+			
+	<log separator=",">
+		<property name="Equipment payload" value="--------" />
+	</log>
+
+	<payloadFactory media-type="json">
+		<format>{
+			"searchFields": [
+			{
+			"key": "name",
+			"value": "$1"
+			}
+			],
+			"domain": {
+			"domainName": "$2"
+			},
+			"entityTemplate": {
+			"entityTemplateName": "$3"
+			}
+			}</format>
+		<args>
+			<arg expression="get-property('tenantName')" evaluator="xml"></arg>
+			<arg expression="get-property('myDomain')" evaluator="xml"></arg>
+			<arg expression="get-property('tenantTemplate')" evaluator="xml"></arg>
+		</args>
+	</payloadFactory>
+
+	<property name="x-jwt-assertion" expression="get-property('Authorization')"
+		scope="transport" type="STRING"></property>
+	<property name="messageType" value="application/json" scope="axis2"
+		type="STRING"></property>
+
+<log separator=",">
+		<property name="get tenant" value="--------" />
+	</log>
+	<send receive="Create_CCD_Equipments_SEQ">
+		<endpoint key="conf:/endpoints/ccd/Get_CCD_Tenant_EP.xml" />
+	</send>
+</sequence>

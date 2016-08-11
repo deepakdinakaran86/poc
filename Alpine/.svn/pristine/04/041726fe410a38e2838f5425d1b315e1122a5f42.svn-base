@@ -1,0 +1,3 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Get_Marker_Distribution_EP" >
+	 <http method="post" uri-template="http://10.234.31.155:8281/alpine/services/hierarchy/distribution/"/>
+</endpoint>

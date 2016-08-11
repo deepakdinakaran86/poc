@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:esb="http:///org/wso2/developerstudio/eclipse/gmf/esb" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_2K17kGZrEeW7UMloVkAnfA" type="Esb" name="endpoint_Create_Tenant_EP.esb_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_2VzOYGZrEeW7UMloVkAnfA" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_2Vz1cGZrEeW7UMloVkAnfA" type="7001"/>
+    <children xmi:type="notation:Shape" xmi:id="_20mDMGZrEeW7UMloVkAnfA" type="3642" fontName="Segoe UI">
+      <children xmi:type="notation:BasicCompartment" xmi:id="_20mDMmZrEeW7UMloVkAnfA" type="7041">
+        <children xmi:type="notation:Node" xmi:id="_204-IGZrEeW7UMloVkAnfA" type="3712">
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_204-IWZrEeW7UMloVkAnfA"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_204-ImZrEeW7UMloVkAnfA" fontName="Segoe UI"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_204-I2ZrEeW7UMloVkAnfA"/>
+          <element xmi:type="esb:HTTPEndpoint" href="endpoint_Create_Tenant_EP.esb#//@server/@children.0/@child"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_204-JGZrEeW7UMloVkAnfA" width="75" height="75"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_20mDM2ZrEeW7UMloVkAnfA" showTitle="true"/>
+      </children>
+      <element xmi:type="esb:EndpointDiagram" href="endpoint_Create_Tenant_EP.esb#//@server/@children.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_20mDMWZrEeW7UMloVkAnfA" width="118" height="100"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_2VzOYWZrEeW7UMloVkAnfA"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_2VzOYmZrEeW7UMloVkAnfA" fontName="Segoe UI"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_2VzOY2ZrEeW7UMloVkAnfA"/>
+    <element xmi:type="esb:EsbServer" href="endpoint_Create_Tenant_EP.esb#//@server"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_2VzOZGZrEeW7UMloVkAnfA"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_2K17kWZrEeW7UMloVkAnfA"/>
+  <element xmi:type="esb:EsbDiagram" href="endpoint_Create_Tenant_EP.esb#/"/>
+</notation:Diagram>

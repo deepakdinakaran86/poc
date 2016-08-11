@@ -1,0 +1,22 @@
+   jmsHostUrl : tcp://192.168.4.9:61616
+   kafkaBrokers : 192.168.2.6:9092
+   kafkaBrokerSeeds : 192.168.2.6
+   kafkaPort : 9092
+   zookeeper : 192.168.2.8:2181
+   zookeeperSessionTimeout : 4000
+   zookeeperSyncTime : 200
+   kafkaAutoCommitInterval : 1000
+   kafkaAutooffsetReset : smallest
+   
+   
+   diagJmsHostUrl : tcp://10.236.166.132:61616
+   diagKafkaBrokers : 10.236.166.132:9092
+   diagKafkaBrokerSeeds : 10.236.166.132
+   diagKafkaPort : 9092
+   diagZookeeper : 10.236.166.132:2181
+   diagZookeeperSessionTimeout : 4000
+   diagZookeeperSyncTime : 200
+   diagKafkaAutoCommitInterval : 1000
+   diagKafkaAutooffsetReset : smallest
+   
+

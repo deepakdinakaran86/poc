@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Assign_Templates_By_Feature_SEQ">
+	<log separator=",">
+		<property name="Enter Assign_Templates_By_Feature_SEQ" value="----Assign_Templates_By_Feature_SEQ----"></property>
+	</log>
+	<property expression="json-eval($.resources)" name="resourcePayload"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.templates)" name="templatesPayload"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="domainName" expression="$body/jsonObject/domain/domainName"
+		scope="default" type="STRING"></property>
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING"
+		value="application/json" />
+	<property expression="get-property('domainName')" name="query.param.domain"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<log level="full" />
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('templatesPayload')" />
+		</args>
+	</payloadFactory>
+	<send receive="Get_Permissions_To_Assign_SEQ">
+		<endpoint key="conf:/endpoints/alpine/Assign_Templates_By_Feature_EP.xml"></endpoint>
+	</send>
+</sequence>

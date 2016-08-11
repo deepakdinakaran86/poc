@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Assign_Permissions_To_Tenant_SEQ">
+	<log separator=",">
+		<property name="Enter Assign_Permissions_To_Tenant_SEQ"
+			value="---Assign_Permissions_To_Tenant_SEQ-----"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<property expression="$body/jsonObject/resourceName" name="resourceName"
+				scope="default" type="STRING" />
+			<property expression="json-eval($.permissions)" name="permissions"
+				scope="default" type="STRING" />
+			<payloadFactory media-type="json">
+				<format>{
+					"resourceName": "$1",
+					"permissions": $2,
+					"domain": {
+					"domainName": "$3"
+					}
+					}</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('resourceName')" />
+					<arg evaluator="xml" expression="get-property('permissions')" />
+					<arg evaluator="xml" expression="get-property('domainName')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send>
+				<endpoint key="conf:/endpoints/alpine/Create_Permission_Group_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

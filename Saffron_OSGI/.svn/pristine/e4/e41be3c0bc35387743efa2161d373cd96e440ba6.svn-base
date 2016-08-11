@@ -1,0 +1,52 @@
+# Device Gateway Configurations Follows:
+
+#  startwithdelay y-with delay, n-without delay
+jace.devicegateway.startwithdelay=y
+#mode 1 - control server only,2 -  data server only, 3 - dual(preferred for initial phases)
+jace.devicegateway.startmode=3
+
+jace.devicegateway.udp.controlserverport=8184
+jace.devicegateway.udp.dataserverip=172.17.19.150
+jace.devicegateway.udp.dataserverport=8188
+jace.devicegateway.udp.dataserverdomain=PCS.COM
+jace.devicegateway.udp.dataservertype=2
+jace.devicegateway.udp.commandport=9595
+
+
+jace.devicegateway.tcp.controlserverport=8259
+#10.234.31.234,172.17.19.158
+jace.devicegateway.tcp.dataserverip=172.17.19.150
+jace.devicegateway.tcp.dataserverport=8191
+jace.devicegateway.tcp.dataserverdomain=PCS.COM
+jace.devicegateway.tcp.dataservertype=2
+jace.devicegateway.tcp.commandport=9595
+
+jace.devicemanager.datadistributor.analyzedmessagestream=analyzed-message
+jace.devicemanager.datadistributor.alarmmessagestream=ALARM_MESSAGE_QUEUE
+
+jace.devicegateway.command.required=y
+jace.devicegateway.command.register=jace-commands
+jace.devicegateway.command.url=tcp://10.236.166.120:61616
+jace.devicegateway.livedata=SENSOR_DATA
+jace.devicegateway.rabbitmq.livequeue=SENSOR_DATA
+jace.devicegateway.rabbitmq.host=10.64.70.1552
+jace.devicegateway.rabbitmq.port= 5672
+jace.devicegateway.rabbitmq.username=
+jace.devicegateway.rabbitmq.password=
+# Device Gateway Configurations Ends:
+
+#AutoClaim
+jace.autoclaim.api.port=9763
+jace.autoclaim.api.ip=10.234.31.158
+jace.autoclaim.api.scheme=http
+jace.autoclaim.url=galaxy-auto-register-1.0.0/services/autoregister/mappoints/{id}
+
+#Data pOll
+jace.datapoll.api.schema=http
+jace.datapoll.api.data.url=data
+jace.datapoll.api.history.url=history
+jace.datapoll.api.writeback.url=write
+
+
+#diagnostic
+diag.enable=false

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Current_User_Permission_SEQ">
+	<log separator=",">
+		<property name="Enter Get_Current_User_Permission_SEQ" value="--------"></property>
+	</log>
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Get_Current_User_Permission_EP.xml"></endpoint>
+	</send>
+</sequence>

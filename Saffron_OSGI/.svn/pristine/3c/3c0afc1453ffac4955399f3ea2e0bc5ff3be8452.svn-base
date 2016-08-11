@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.pcs.osgi</groupId>
+		<artifactId>bundler</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>hazelcast-all-osgi</artifactId>
+	<name>hazelcast-all-osgi</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<unpack.version>3.4.4</unpack.version>
+		<export.package>
+			!org.apache.logging.log4j,
+			!org.apache.logging.log4j.spi,
+			!org.hibernate,
+			!org.hibernate.cache,
+			!org.hibernate.cache.access,
+			!org.hibernate.cache.entry,
+			!org.hibernate.cfg,
+			!org.hibernate.engine,
+			!org.hibernate.type,
+			!org.hibernate.util,
+			!org.springframework.security.core.session,
+			!org.springframework.security.web.session,
+			!org.springframework.web.context,
+			!org.springframework.web.context.support,
+			*
+
+		</export.package>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>com.hazelcast</groupId>
+			<artifactId>hazelcast-all</artifactId>
+			<version>3.4.4</version>
+		</dependency>
+
+
+	</dependencies>
+	<packaging>bundle</packaging>
+</project>

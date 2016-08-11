@@ -1,0 +1,154 @@
+<api xmlns="http://ws.apache.org/ns/synapse" context="/guava/services/service-schedule"
+	name="Guava_Service_Schedule_API">
+	<resource methods="POST" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Service_Schedule_Create_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="PUT" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Service_Schedule_Find_for_Update_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/find">
+		<inSequence>
+			<property name="seqName" value="Service_Schedule_Find_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send/>
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/service-item">
+		<inSequence>
+			<property name="seqName" value="Service_Item_Create_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/service-item/find">
+		<inSequence>
+			<property name="seqName" value="Service_Item_Find_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="PUT" url-mapping="/service-item">
+		<inSequence>
+			<property name="seqName" value="Service_Item_Find_For_Update_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/service-item/attached-service-components">
+		<inSequence>
+			<property name="seqName"
+				value="Service_Items_Get_Attached_Service_Components_SEQ" scope="default"
+				type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/service-component">
+		<inSequence>
+			<property name="seqName" value="Service_Component_Create_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/service-component/find">
+		<inSequence>
+			<property name="seqName" value="Service_Component_Find_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="PUT" url-mapping="/service-component">
+		<inSequence>
+			<property name="seqName" value="Service_Component_Find_for_Update_SEQ"
+				scope="default" type="STRING" />
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+</api>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Generic_Domain_Access_Router_Res_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Generic_Domain_Access_Router_Res_SEQ"
+			value="Generic_Domain_Access_Router_Res_SEQ" />
+		<property expression="get-property('seqName')" name="seq"
+			xmlns:ns="http://org.apache.synapse/xsd" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="$body/jsonObject/isParentDomain" name="isParentDomain"
+				scope="default" type="STRING" />
+
+			<filter regex="false" source="get-property('isParentDomainQueryParam')">
+				<then>
+					<script language="groovy">
+         <![CDATA[        
+                import groovy.json.*;
+        def content = mc.getProperty("originalBody");
+        def slurper = new JsonSlurper().parseText(content.toString());
+        
+        def isParentDomain= mc.getProperty('isParentDomain');
+
+        if (isParentDomain != null && isParentDomain != "") {
+            slurper.isParentDomain = evaluate("(" + isParentDomain + ")");
+        }
+
+        def json = JsonOutput.toJson(slurper);
+
+        mc.setPayloadJSON(JsonOutput.prettyPrint(json.toString()));
+        ]]>
+					</script>
+				</then>
+				<else>
+					<property expression="get-property('isParentDomain')"
+						name="query.param.isParentDomain" scope="default" type="STRING" />
+					<filter regex="true" source="get-property('isPayloadWithQueryParam')">
+						<then>
+							<payloadFactory media-type="json">
+								<format>$1</format>
+								<args>
+									<arg expression="get-property('originalBody')" evaluator="xml"></arg>
+								</args>
+							</payloadFactory>
+						</then>
+					</filter>
+				</else>
+			</filter>
+			<log>
+				<property expression="json-eval($.)" name="pointEntityPayload" />
+			</log>
+			<sequence key="{get-property('seqName')}" />
+		</else>
+	</filter>
+</sequence>

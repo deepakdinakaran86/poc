@@ -1,0 +1,62 @@
+### ---teltonika Gateway Properties--- ###
+## Cache Configuration
+#teltonika.devicemanager.cacheprovider=InMemory
+teltonika.devicemanager.cacheprovider=HazelCast
+teltonika.devicemanager.cacheprovider.config.path=hazelcast-client.xml
+## Time out in seconds
+teltonika.devicemanager.cache.session.timeout=15
+
+## Device manager remote system configuration
+teltonika.devicemanager.remote.platform.hostIp=10.234.31.153
+teltonika.devicemanager.remote.platform.port=9763
+teltonika.devicemanager.remote.platform.scheme=http
+teltonika.devicemanager.remote.authentication.url=datasource-api-1.0.0/services/datasources/devices/{id}/authenticate
+teltonika.devicemanager.remote.configuration.url=datasource-api-1.0.0/services/datasources/devices/{id}/configurations
+teltonika.devicemanager.datasource.register.url=datasource-api-1.0.0/services/datasources/ds/register
+teltonika.devicemanager.datasource.publish.url=datasource-api-1.0.0/services/datasources/ds/publish/{datasource_name}
+teltonika.devicemanager.datasource.update.url=datasource-api-1.0.0/services/datasources/ds/{datasource_name}
+teltonika.devicemanager.datasource.device.points=datasource-api-1.0.0/services/datasources/device_types/{device_name}/protocols/{protocol_name}/points
+
+teltonika.devicemanager.datasource.platform.hostIp=10.234.31.153
+teltonika.devicemanager.datasource.platform.port=9763
+
+#used for device datasource update functionality
+#10.234.31.203
+teltonika.devicemanager.entity.platform.hostIp=10.234.31.203
+teltonika.devicemanager.device.datasource.update.url=galaxy/services/um/devices/datasource
+teltonika.devicemanager.entity.platform.port=8282
+
+teltonika.devicemanager.datadistributor.ip=10.236.62.106
+teltonika.devicemanager.datadistributor.registryname=distributor
+teltonika.devicemanager.datadistributor.analyzedmessagestream=analyzed-message
+teltonika.devicemanager.datadistributor.port=1099
+
+
+# Device Gateway Configurations Follows:
+
+#  startwithdelay y-with delay, n-without delay
+teltonika.devicegateway.startwithdelay=y
+#mode 1 - control server only,2 -  data server only, 3 - dual(preferred for initial phases)
+teltonika.devicegateway.startmode=3
+
+teltonika.devicegateway.udp.controlserverport=8182
+teltonika.devicegateway.udp.dataserverip=10.236.60.13
+teltonika.devicegateway.udp.dataserverport=8184
+teltonika.devicegateway.udp.dataserverdomain=PCS.COM
+teltonika.devicegateway.udp.commandport=9595
+
+teltonika.devicegateway.tcp.controlserverport=8181
+teltonika.devicegateway.tcp.dataserverip=10.236.60.13
+teltonika.devicegateway.tcp.dataserverport=8183
+teltonika.devicegateway.tcp.dataserverdomain=PCS.COM
+teltonika.devicegateway.tcp.commandport=8185
+
+teltonika.devicegateway.command.register.url=tcp://10.236.63.100:61616
+teltonika.devicegateway.command.register=teltonika-commands
+teltonika.devicegateway.livedata=SENSOR_DATA
+teltonika.devicegateway.rabbitmq.livequeue=SENSOR_DATA
+teltonika.devicegateway.rabbitmq.host=10.64.70.1552
+teltonika.devicegateway.rabbitmq.port= 5672
+teltonika.devicegateway.rabbitmq.username=
+teltonika.devicegateway.rabbitmq.password=
+# Device Gateway Configurations Ends:

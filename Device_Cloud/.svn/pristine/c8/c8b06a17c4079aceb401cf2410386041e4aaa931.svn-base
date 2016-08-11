@@ -1,0 +1,19 @@
+brokerHosts : localhost:2181
+messageTopicName : analyzed-message
+zookeeperRoot :  /kafka
+topologyName : distributor-topology
+parentSpoutName : analyzed-message-spout
+parentSpoutMaxParallelism : 1
+topologyEmitInterval : 2000
+topologyMode : CLUSTER
+topologyMaxParallelism : 5
+numberOfWorkers : 5
+persistBolt : persist-bolt
+persistBoltMaxParallelism : 5
+eventAnalyzerPublisherBolt : event-analyzer-publisher-bolt
+eventAnalyzerPublisherBoltMaxParallelism : 5
+eventAnalyzerQueueName : cep-input-queue
+pushServicePublisherBolt : push-service-publisher-bolt
+pushServicePublisherBoltMaxParallelism : 5
+pushServiceTopicName : kaazing-input-topic
+

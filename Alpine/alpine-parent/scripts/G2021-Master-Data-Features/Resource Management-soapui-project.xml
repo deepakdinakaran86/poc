@@ -1,0 +1,349 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project activeEnvironment="Default" name="Resource Management IR" soapui-version="5.0.0" abortOnError="false" runType="SEQUENTIAL" resourceRoot="${projectDir}" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:RestService" wadlVersion="http://wadl.dev.java.net/2009/02" name="http://10.234.31.152:8282" type="rest" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart=""/><con:endpoints><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:endpoint>http://10.236.166.115:8282</con:endpoint></con:endpoints><con:resource name="Permissions" path="/galaxy-um/1.0.0/resources"><con:settings/><con:parameters><con:parameter><con:name>Authorization </con:name><con:value>Bearer a04599d79299ec33887b5ce46f35a869</con:value><con:style>HEADER</con:style><con:default>Bearer a04599d79299ec33887b5ce46f35a869</con:default></con:parameter></con:parameters><con:method name="client_management" method="POST"><con:settings/><con:parameters/><con:representation type="RESPONSE"><con:mediaType>application/json</con:mediaType><con:status>200</con:status><con:params/><con:element xmlns:res="http://10.234.31.152/galaxy-um/1.0.0/resources">res:Response</con:element></con:representation><con:representation type="REQUEST"><con:mediaType>application/json</con:mediaType><con:params/></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="RESPONSE"><con:mediaType xsi:nil="true"/><con:status>0</con:status><con:params/><con:element>data</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/xml; charset=UTF-8</con:mediaType><con:status>401</con:status><con:params/><con:element xmlns:sec="http://wso2.org/apimanager/security">sec:fault</con:element></con:representation><con:representation type="FAULT"><con:mediaType>application/json</con:mediaType><con:status>400</con:status><con:params/><con:element xmlns:res="http://10.234.31.152/galaxy-um/1.0.0/resources">res:Fault</con:element></con:representation><con:request name="client_management" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "client_management",
+  "permissions": [
+   "create",
+   "create admin",
+   "edit",
+   "list",
+   "view",
+   "Navigate"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="device_management" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "device_management",
+  "permissions": [
+    "claim and assign devices",
+    "create",
+    "edit",
+    "list",
+    "view"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="role_management" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "role_management",
+  "permissions": [
+    "create",
+    "edit",
+    "list",
+    "view"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="user_management" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "user_management",
+  "permissions": [
+    "create",
+    "delete",
+    "edit",
+    "list",
+    "view"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="asset_monitoring" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "asset_monitoring",
+  "permissions": [
+    "view",
+    "view history",
+    "view live grid"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="asset_history" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "asset_history",
+  "permissions": [
+    "view",
+    "export"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="alarm_console" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "alarm_console",
+  "permissions": [
+    "view"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="alarm_logs" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "alarm_logs",
+  "permissions": [
+    "view"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="connected_diagnostics" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "connected_diagnostics",
+  "permissions": [
+   "all"
+
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="asset_types" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "asset_types",
+  "permissions": [
+   "view",
+   "list",
+   "create"
+
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="asset_management" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "asset_management",
+  "permissions": [
+  "create",
+    "edit",
+    "list",
+    "view",
+    "map points",
+    "asset dashboard"
+
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="geofence" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "geofence",
+  "permissions": [
+  "create",
+    "edit",
+    "list",
+    "view",
+    "delete"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="device_status" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "device_status",
+  "permissions": [
+   "view"   
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="poi_types" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "poi_types",
+  "permissions": [
+   "view",
+   "list",
+   "create"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="poi_management" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "poi_management",
+  "permissions": [
+  "create",
+    "edit",
+    "list",
+    "view",
+    "Delete"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="tag_type" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "tag_type",
+  "permissions": [
+  "create",
+    "list",
+    "view"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="tag" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "tag",
+  "permissions": [
+  "create",
+    "list",
+    "view",
+    "edit"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="asset_details" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "asset_details",
+  "permissions": [
+    "view"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="alarm_definition" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "alarm_definition",
+   "permissions":    [
+      "define",
+      "view"
+   ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="claim_device" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "claim_device",
+   "permissions":    [
+      "Create",
+      "Edit",
+      "View"
+   ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="dashboards" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "dashboards",
+   "permissions": ["View"]
+   ,
+    "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="geo" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "geotag",
+   "permissions":    [
+      "create",
+      "delete",
+      "edit",
+      "list",
+      "view"
+   ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="service_scheduling" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "service_scheduling",
+   "permissions":    [
+      "create",
+      "edit",
+      "list",
+      "view"
+   ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="Asset_Access" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "Asset_Access",
+  "permissions": [
+    "view"
+  ],
+  "domain": {
+    "domainName": "mobiledemo.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="devices" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "devices",
+  "permissions": [
+    "list",
+    "assign device"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="audit logs" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "audit_logs",
+  "permissions": [
+    "list"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="vehicle types" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "vehicle_types",
+   "permissions":    [
+      "create",
+      "edit",
+      "list",
+      "view"
+   ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="vehicle management" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "vehicle_management",
+   "permissions":    [
+      "create",
+      "edit",
+      "list",
+      "view",
+      "map points"
+   ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="service items" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "service_items",
+   "permissions":    [
+      "create",
+      "edit",
+      "list",
+      "view"
+   ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="service components" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "service_components",
+   "permissions":    [
+      "create",
+      "edit",
+      "list",
+      "view"
+   ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="route scheduling" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+   "resourceName": "route_scheduling",
+   "permissions":    [
+      "create",
+      "edit",
+      "list",
+      "view"
+   ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="vehicle_history" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "vehicle_history",
+  "permissions": [
+    "view",
+    "export"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="vehicle details" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "vehicle_details",
+  "permissions": [
+    "vehicle details",
+    "alert",
+    "service schedule",
+    "documents",
+    "fuel and mileage"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request><con:request name="live tracking" mediaType="application/json" postQueryString="false"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:endpoint>http://10.234.31.152:8282</con:endpoint><con:request>{
+  "resourceName": "live_tracking",
+  "permissions": [
+    "map"
+  ],
+  "domain": {
+    "domainName": "pcs.galaxy"
+  }
+}</con:request><con:originalUri>http://10.234.31.152/galaxy-um/1.0.0/resources</con:originalUri><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:parameters/><con:parameterOrder><con:entry/></con:parameterOrder></con:request></con:method></con:resource></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

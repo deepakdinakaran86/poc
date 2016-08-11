@@ -1,0 +1,7 @@
+platformHost : telematics.cummins.com
+platformPort : 8443
+platformScheme : https
+platformUrl : /DataService/postData?AuthToken={token}
+providerKey : 1601030906
+seed : 62754
+

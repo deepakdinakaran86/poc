@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_All_Tags_Of_An_Actor_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_All_Tags_Of_An_Actor_SEQ" value="--------"></property>
+	</log>
+	<property action="set" expression="$trp:x-jwt-assertion" name="Authorization" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+
+	<property expression="json-eval($.)" name="originalPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.actor)" name="originalPayload_actor" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<filter regex="false" source="boolean(//jsonObject/actorType)">
+		<then>
+			<!-- Generate Error message for actorType -->
+			<header name="To" action="remove" />
+			<property name="RESPONSE" value="true" scope="default" type="STRING" />
+			<property name="HTTP_SC" value="200" scope="axis2" />
+			<payloadFactory media-type="json">
+				<format>{"errorCode":"505","errorMessage":"Actor Type not specified"}</format>
+				<args />
+			</payloadFactory>
+			<send />
+			<drop />
+		</then>
+		<else>
+			<property expression="//jsonObject/actorType" name="actorType" scope="default" type="STRING" />
+			<switch source="get-property('actorType')">
+				<case regex="ENTITY">
+					<payloadFactory media-type="json">
+						<format>
+							$1
+						</format>
+						<args>
+							<arg evaluator="xml" expression="get-property('originalPayload_actor')" />
+						</args>
+					</payloadFactory>
+					<sequence key="Tag_Validate_Entity_SEQ" />
+				</case>
+				<case regex="TEMPLATE">
+					<payloadFactory media-type="json">
+						<format>
+							$1
+						</format>
+						<args>
+							<arg evaluator="xml" expression="get-property('originalPayload_actor')" />
+						</args>
+					</payloadFactory>
+					<sequence key="Tag_Validate_Template_SEQ" />
+
+				</case>
+				<default>
+					<!-- Invalid entity -->
+					<!-- Generate Error message for Invalid entity -->
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>{"errorCode":"508","errorMessage":"Actor Type is invalid"}</format>
+						<args />
+					</payloadFactory>
+					<property name="messageType" value="application/json" scope="axis2" />
+					<respond />
+				</default>
+			</switch>
+		</else>
+	</filter>
+
+	<property action="set" expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property action="set" name="messageType" scope="axis2" type="STRING" value="application/json" />
+	<payloadFactory media-type="json">
+		<format>
+			$1
+		</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('originalPayload')" />
+		</args>
+	</payloadFactory>
+	<log level="full" separator=", ">
+	</log>
+	<send receive="Tag_General_Res_SEQ">
+		<endpoint key="conf:/endpoints/alpine/Tag_All_Tags_Of_An_Actor_EP.xml"></endpoint>
+	</send>
+</sequence>

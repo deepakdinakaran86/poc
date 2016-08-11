@@ -1,0 +1,74 @@
+<api xmlns="http://ws.apache.org/ns/synapse" context="/saffron/services/system" name="System_API">
+ <resource inSequence="Get_System_Makes_SEQ" methods="GET" url-mapping="/makes">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+     <resource inSequence="Create_System_Subscription_SEQ" methods="POST" uri-template="/subscriptions/{pathparameter}">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_System_Protocols_SEQ" methods="POST" url-mapping="/protocols">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_System_Protocols_Version_SEQ" methods="POST" url-mapping="/protocols/versions">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_System_Make_Device_Types_SEQ" methods="GET" uri-template="/makes/{pathparameter}/device_types">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_System_Access_Types_SEQ" methods="GET" url-mapping="/access_types">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+     <resource inSequence="Get_System_Points_By_Protocol_Version_SEQ" methods="POST" url-mapping="/protocols/points">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_System_Network_Protocols_SEQ" methods="GET" url-mapping="/network_protocols">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_System_Protocol_Commands_SEQ" methods="POST" url-mapping="/protocols/commands">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+     <resource inSequence="Get_System_Models_SEQ" methods="POST" url-mapping="/models">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_System_Data_Types_SEQ" methods="GET" url-mapping="/data_types">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_System_Tags_SEQ" methods="GET" url-mapping="/system_tags">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

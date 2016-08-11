@@ -1,0 +1,77 @@
+/**
+* Copyright 2014 Pacific Controls Software Services LLC (PCSS). All Rights Reserved.
+*
+* This software is the property of Pacific Controls  Software  Services LLC  and  its
+* suppliers. The intellectual and technical concepts contained herein are proprietary 
+* to PCSS. Dissemination of this information or  reproduction  of  this  material  is
+* strictly forbidden  unless  prior  written  permission  is  obtained  from  Pacific 
+* Controls Software Services.
+* 
+* PCSS MAKES NO REPRESENTATION OR WARRANTIES ABOUT THE SUITABILITY  OF  THE  SOFTWARE,
+* EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE  IMPLIED  WARRANTIES  OF
+* MERCHANTANILITY, FITNESS FOR A PARTICULAR PURPOSE,  OR  NON-INFRINGMENT.  PCSS SHALL
+* NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF  USING,  MODIFYING
+* OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+**/
+
+/**
+* Version    :   1.0 
+* User       :   PCS
+* Function   :   CSS file for Delete Message Popup .
+**/
+
+
+
+tree-border {
+	overflow-y: auto;
+	height: 220px;
+	width: 96%;
+}
+
+.modal-header {
+	min-height: 16.43px;
+	padding: 15px;
+	border-bottom: 1px solid #e5e5e5;
+	background-color: #00A8E7;
+}
+
+.modal-title {
+	color: #FFFFFF;
+	margin-top: 0px;
+	font-size: 16px;
+	margin-bottom: 0px;
+	font-weight: 600;
+}
+
+.modal-footer {
+	padding: 10px;
+	text-align: right;
+	border-top: 1px solid #e5e5e5;
+	background-color: #eaeaea;
+	margin-bottom: -15px;
+	margin-top: 15px;
+}
+
+.btn-primary {
+	color: #fff;
+	background-color: #00A8E7;
+	border-color: #00A8E7;
+}
+
+.btn-primary[disabled] {
+	background-color: #ebebeb;
+	border-color: #ebebeb;
+	cursor: pointer;
+	color: #5B5B5B;
+	opacity: 1;
+}
+
+.btn-primary:hover,.btn-primary:focus,.btn-primary:active,.btn-primary.active,.open>.dropdown-toggle.btn-primary {
+	color: #fff;
+	background-color: #93268f;
+	border-color: #93268f;
+}
+
+.btn:focus,.btn:active:focus,.btn.active:focus {
+	outline: none;
+}

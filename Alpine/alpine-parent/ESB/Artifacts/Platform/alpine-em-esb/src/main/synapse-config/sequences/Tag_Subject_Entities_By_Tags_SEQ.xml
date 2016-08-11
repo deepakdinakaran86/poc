@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Subject_Entities_By_Tags_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Subject_Entities_By_Tags_SEQ" value="--------"></property>
+	</log>
+	<script language="groovy"><![CDATA[
+		import groovy.json.*;
+		def content = mc.getProperty("aggregatedPayload");
+        def slurper = new JsonSlurper().parseText(content.toString());
+		def infoIsAnArray = slurper instanceof List;
+		mc.setProperty('infoIsAnArray',infoIsAnArray);
+	]]></script>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" source="get-property('infoIsAnArray')" regex="false">
+		<then>
+			<payloadFactory media-type="json">
+				<format>
+					{"Information" : [$1]}
+				</format>
+				<args>
+					<arg evaluator="json" expression="$.Information" />
+				</args>
+			</payloadFactory>
+		</then>
+	</filter>
+
+	<!-- fetch entities -->
+	<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+	<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+	<payloadFactory media-type="json">
+		<format>
+			{"tags": $1, "filter": $2, "match": "$3"}
+		</format>
+		<args>
+			<arg evaluator="json" expression="$.Information" />
+			<arg evaluator="xml" expression="get-property('filterOriginalPayload')" />
+			<arg evaluator="xml" expression="get-property('matchOriginalPayload')" />
+		</args>
+	</payloadFactory>
+	<send receive="Tag_General_Res_SEQ">
+		<endpoint key="conf:/endpoints/alpine/Tag_Subject_Entities_By_Tags_EP.xml"></endpoint>
+	</send>
+</sequence>

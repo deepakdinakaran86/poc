@@ -1,0 +1,6 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Get_Role_EP">
+	<!-- <http method="get" uri-template="http://10.234.31.201:9764/alpine-user-1.0.0/services/users/roles/{uri.var.pathparameter}?domain_name={query.param.domain_name}"/> -->
+	<http method="get"
+		uri-template="http://10.236.166.111:9763/alpine-user-1.0.0/services/users/roles/{uri.var.pathparameter}?domain_name={query.param.domain_name}&amp;isParentDomain={query.param.isParentDomain}" />
+
+</endpoint>

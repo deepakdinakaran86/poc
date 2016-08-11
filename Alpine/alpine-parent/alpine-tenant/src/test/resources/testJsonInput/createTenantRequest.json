@@ -1,0 +1,27 @@
+{
+  "entityStatus": {
+    "statusName": "ACTIVE"
+  },
+  "fieldValues": [
+    {
+      "key": "tenantName",
+      "value": "sample01"
+    },
+    {
+      "key": "contactEmail",
+      "value": "sample@example.com"
+    },
+    {
+      "key": "firstName",
+      "value": "sample"
+    },
+    {
+      "key": "lastName",
+      "value": "sample"
+    },
+    {
+      "key": "tenantId",
+      "value": "sample01"
+    }
+  ]
+}

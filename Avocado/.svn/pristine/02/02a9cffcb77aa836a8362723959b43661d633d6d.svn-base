@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.pcs.avocado</groupId>
+  <artifactId>avocado-parent</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>avocado-pom</module>
+	<module>avocado-commons</module>
+	<module>commons</module>
+	<module>token-manager</module>
+	<module>avocado-user-management</module>
+	<module>avocado-tenant-management</module>
+	<module>avocado-device-management</module>
+	<module>avocado-facility-management</module>
+	<module>avocado-air-handler</module>
+	<module>avocado-genset</module>
+	<module>avocado-asset-management</module>
+  </modules>
+</project>

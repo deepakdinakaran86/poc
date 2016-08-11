@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" context="/alpine/services/tenants"
+	name="Tenant_API">
+	<resource methods="POST" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Create_Tenant_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<header name="To" action="remove" />
+			<property name="RESPONSE" value="true" scope="default" type="STRING" />
+			<property name="HTTP_SC" value="200" scope="axis2" />
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg expression="get-property('responsePayload')" evaluator="xml"></arg>
+
+				</args>
+			</payloadFactory>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/find">
+		<inSequence>
+			<property name="seqName" value="Find_Tenant_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/list">
+		<inSequence>
+			<property name="seqName" value="List_Tenant_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="PUT" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Update_Tenant_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/delete">
+		<inSequence>
+			<property name="seqName" value="Delete_Tenant_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/validate">
+		<inSequence>
+			<property name="seqName" value="Validate_Tenant_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/count">
+		<inSequence>
+			<property name="seqName" value="Get_Tenant_Count_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="GET" url-mapping="/domain/info">
+		<inSequence>
+			<property name="seqName" value="Get_Domain_Info_SEQ" scope="default"
+				type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/children">
+		<inSequence>
+			<property name="seqName" value="Get_Tenant_Children_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/children/count">
+		<inSequence>
+			<property name="seqName" value="Get_Tenant_Children_Count_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Get_Tenants_Features_SEQ" methods="GET"
+		protocol="http" url-mapping="/features">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource inSequence="Get_Tenants_Features_SEQ" methods="GET"
+		protocol="http" url-mapping="/features?domain={domain}">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property expression="get-property('ERROR_MESSAGE')" name="message" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/assign/features">
+		<inSequence>
+			<property name="seqName" value="Assign_Templates_By_Feature_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<property name="info" scope="default">
+				<ns:Information xmlns:ns="www.google.com" />
+			</property>
+			<aggregate id="FEATURE_ITERATE">
+				<completeCondition>
+					<messageCount />
+				</completeCondition>
+				<onComplete expression="$body//jsonObject"
+					enclosingElementProperty="info">
+					<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="//errorMessage">
+						<then>
+							<property name="errorCode" expression="//errorCode"
+								scope="default" type="STRING"></property>
+							<script language="js">
+								var
+								errorCodeString=mc.getProperty('errorCode');
+								if
+								(errorCodeString.indexOf("507") !=-1) {
+								mc.setProperty('status',"SUCCESS");
+								}else{
+								mc.setProperty('status',"FAILURE");
+								}
+							</script>
+							<filter xmlns:ns="http://org.apache.synapse/xsd" source="get-property('status')"
+								regex="SUCCESS">
+								<then>
+									<header name="To" action="remove" />
+									<property name="RESPONSE" value="true" scope="default"
+										type="STRING" />
+									<property name="HTTP_SC" value="200" scope="axis2" />
+									<payloadFactory media-type="json">
+										<format>{ "status": "SUCCESS"}</format>
+										<args />
+									</payloadFactory>
+									<send />
+								</then>
+								<else>
+									<header name="To" action="remove" />
+									<property name="RESPONSE" value="true" scope="default"
+										type="STRING" />
+									<property name="HTTP_SC" value="200" scope="axis2" />
+									<payloadFactory media-type="json">
+										<format>{ "status": "FAILED"}</format>
+										<args />
+									</payloadFactory>
+									<send />
+								</else>
+							</filter>
+						</then>
+						<else>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default"
+								type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>{ "status": "SUCCESS"}</format>
+								<args />
+							</payloadFactory>
+							<send />
+						</else>
+					</filter>
+				</onComplete>
+			</aggregate>
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+</api>

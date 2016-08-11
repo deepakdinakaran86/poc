@@ -1,0 +1,294 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.pcs.deviceframework</groupId>
+	<artifactId>data-distributor</artifactId>
+	<name>data-distributor</name>
+	<version>1.0.0</version>
+	<packaging>jar</packaging>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.10</version>
+		</dependency>
+
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.1.3</version>
+			<!-- <exclusions> 
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId> 
+				</exclusion>
+			</exclusions> -->
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-core</artifactId>
+			<version>1.1.3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.kafka</groupId>
+			<artifactId>kafka_2.10</artifactId>
+			<version>0.8.2.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<!-- <exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion> -->
+			</exclusions>
+		</dependency>
+
+
+		<dependency>
+			<groupId>javax.jms</groupId>
+			<artifactId>javax.jms-api</artifactId>
+			<version>2.0.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activemq-core</artifactId>
+			<version>5.7.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>activeio-core</artifactId>
+			<version>3.1.4</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.activemq</groupId>
+			<artifactId>kahadb</artifactId>
+			<version>5.7.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>org.yaml</groupId>
+			<artifactId>snakeyaml</artifactId>
+			<version>1.11</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.5.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.rzo.yajsw</groupId>
+			<artifactId>wrapper</artifactId>
+			<version>11.11</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-jdk14</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<!-- Unknow to be removed dependencies -->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>1.7.1</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.collections</groupId>
+			<artifactId>google-collections</artifactId>
+			<version>1.0-rc2</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>com.pcs.saffron</groupId>
+			<artifactId>EOS-cipher</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			<scope>system</scope>
+			<systemPath>D:\eos\EOS\EOS-cipher\target\EOS-cipher-0.0.1-SNAPSHOT.jar</systemPath>
+		</dependency>
+		<!-- Unknow to be removed dependencies -->
+	</dependencies>
+
+
+
+	<build>
+		<!-- <finalName>Datadistributor</finalName> -->
+		<plugins>
+			<!-- download source code in Eclipse, best practice -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-eclipse-plugin</artifactId>
+				<version>2.9</version>
+				<configuration>
+					<downloadSources>true</downloadSources>
+					<downloadJavadocs>false</downloadJavadocs>
+				</configuration>
+			</plugin>
+
+			<!-- Set a compiler level -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<!-- Make this jar executable -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<configuration>
+					<excludes>
+						<exclude>**/log4j.properties</exclude>
+					</excludes>
+					<!-- Configures the created archive -->
+					<archive>
+						<!-- Configures the content of the created manifest -->
+						<manifest>
+							<!-- Adds the classpath to the created manifest -->
+							<addClasspath>true</addClasspath>
+							<!-- Configures the main class of the application -->
+							<mainClass>com.pcs.datadist.core.ApplicationConfiguration</mainClass>
+							<!-- Specifies that all dependencies of our application are found 
+								from the lib directory. -->
+							<classpathPrefix>lib/</classpathPrefix>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-assembly-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<finalName>Datadistributor</finalName>
+					<!-- Configures the used assembly descriptor -->
+					<descriptors>
+						<descriptor>src/main/assembly/assembly.xml</descriptor>
+					</descriptors>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>single</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>2.6</version>
+				<executions>
+					<execution>
+						<id>Deleting all unnecessary files before package</id>
+						<phase>verify</phase>
+						<goals>
+							<goal>clean</goal>
+						</goals>
+					</execution>
+				</executions>
+				<configuration>
+					<excludeDefaultDirectories>true</excludeDefaultDirectories>
+					<filesets>
+						<fileset>
+							<directory>target/generated-sources</directory>
+						</fileset>
+						<fileset>
+							<directory>target/maven-archiver</directory>
+						</fileset>
+						<fileset>
+							<directory>target/classes</directory>
+						</fileset>
+						<fileset>
+							<directory>target/test-classes</directory>
+						</fileset>
+						<fileset>
+							<directory>target/archive-tmp</directory>
+						</fileset>
+					</filesets>
+					<verbose>true</verbose>
+				</configuration>
+			</plugin>
+		</plugins>
+
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
+				<!-- Ignore/Execute plugin execution -->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<!-- copy-dependency plugin -->
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.apache.maven.plugins</groupId>
+										<artifactId>maven-dependency-plugin</artifactId>
+										<versionRange>[1.0.0,)</versionRange>
+										<goals>
+											<goal>copy-dependencies</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore />
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+	</build>
+</project>

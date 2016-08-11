@@ -1,0 +1,380 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="login" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/login.jsp" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="sidebar" value="" />
+		<put-attribute name="rightbar" value="" />
+	</definition>
+
+	<definition name="owner_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/owner/home.jsp" />
+	</definition>
+
+	<definition name="client_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/client/home.jsp" />
+	</definition>
+
+	<definition name="user_default" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/home.jsp" />
+	</definition>
+
+	<definition name="device_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/device/device_home.jsp" />
+	</definition>
+
+	<definition name="device_form" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/device/device_form.jsp" />
+	</definition>
+
+	<definition name="write_back" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/write-back/wbbatch.jsp" />
+	</definition>
+
+	<definition name="wblogs" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/write-back/wblogs.jsp" />
+	</definition>
+
+	<definition name="event_conf" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/event/event_conf.jsp" />
+	</definition>
+
+	<definition name="ptconfigs" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/ptconfigs.jsp" />
+	</definition>
+
+	<definition name="users" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/users.jsp" />
+	</definition>
+
+	<definition name="tenant_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/tenant/tenant_home.jsp" />
+	</definition>
+
+	<definition name="tenant_create" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/tenant/tenant_create.jsp" />
+	</definition>
+
+	<definition name="geofence_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/geofence/geofence_home.jsp" />
+	</definition>
+
+	<definition name="geofence_list" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/geofence/geofence_list.jsp" />
+	</definition>
+
+	<definition name="vehicle_list" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/equipment/vehicle/vehicle_list.jsp" />
+	</definition>
+
+	<definition name="vehicle_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/equipment/vehicle/vehicle_home.jsp" />
+	</definition>
+
+	<definition name="vehicle_details" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/equipment/vehicle/vehicle_dashboard.jsp" />
+	</definition>
+
+
+	<definition name="geofence_list" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/geofence/geofence_list.jsp" />
+	</definition>
+
+	<definition name="user_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/user_home.jsp" />
+	</definition>
+
+	<definition name="set_password" extends="ExternalTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/set_password.jsp" />
+		<put-attribute name="title" value="Set Password" />
+	</definition>
+
+	<definition name="role_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/role/role_home.jsp" />
+	</definition>
+
+	<definition name="tagtype_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/tagtype/tagtype_home.jsp" />
+	</definition>
+
+	<definition name="tag_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/tag/tag_home.jsp" />
+	</definition>
+
+	<definition name="tag_view" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/tag/tag_create.jsp" />
+	</definition>
+
+	<definition name="tag_create" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/tag/tag_create.jsp" />
+	</definition>
+
+	<definition name="user_form" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/user/user_form.jsp" />
+	</definition>
+
+	<definition name="change_password" extends="ExternalTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/change_password.jsp" />
+		<put-attribute name="title" value="Change Password" />
+	</definition>
+
+	<definition name="live_tracking" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/live_tracking.jsp" />
+	</definition>
+
+	<definition name="historytracking" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/historytracking.jsp" />
+	</definition>
+
+	<definition name="device_config_template" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/config-template/device_config_template.jsp" />
+	</definition>
+
+	<definition name="config_template_form" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/config-template/config_template_form.jsp" />
+	</definition>
+
+	<definition name="config_template_create" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/config-template/config_template_create.jsp" />
+	</definition>
+
+	<definition name="claim_view" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/claim/claim_device_home.jsp" />
+	</definition>
+
+	<definition name="claim_form" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/claim/claim_device_form.jsp" />
+	</definition>
+
+	<definition name="assign_device" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/device/assign_device_form.jsp" />
+	</definition>
+	<definition name="tenant_send_email_form" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/tenant/tenant_send_email_form.jsp" />
+	</definition>
+
+	<definition name="tenant_admin_user_form" extends="ExternalTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/tenant/tenant_admin_user_form.jsp" />
+		<put-attribute name="title" value="Create Tenant Admin" />
+	</definition>
+
+	<definition name="tenant_user_created" extends="ExternalTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/tenant/tenant_user_created.jsp" />
+		<put-attribute name="title" value="Create Tenant Admin" />
+	</definition>
+
+	<definition name="alarm_console" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/alarm/alarm_console.jsp" />
+		<put-attribute name="title" value="Alarm Console" />
+	</definition>
+
+	<definition name="device_assign" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/device/device_assign.jsp" />
+		<put-attribute name="title" value="Assign Device" />
+	</definition>
+
+	<definition name="device_view" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/device/device_add.jsp" />
+		<put-attribute name="title" value="View Device" />
+	</definition>
+
+	<definition name="route_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/route/route_home.jsp" />
+		<put-attribute name="title" value="Route List" />
+	</definition>
+
+	<definition name="route_map" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/route/route_map.jsp" />
+		<put-attribute name="title" value="Route Map" />
+	</definition>
+
+	<definition name="item_add" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/service/serviceitem/item_add.jsp" />
+		<put-attribute name="title" value="Service Item Add" />
+	</definition>
+
+	<definition name="item_edit" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/service/serviceitem/item_add.jsp" />
+		<put-attribute name="title" value="Service Item Add" />
+	</definition>
+
+	<definition name="item_view" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/service/serviceitem/item_add.jsp" />
+		<put-attribute name="title" value="Service Item View" />
+	</definition>
+
+	<definition name="item_list" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/service/serviceitem/item_list.jsp" />
+		<put-attribute name="title" value="Service Item List" />
+	</definition>
+
+	<definition name="component_list" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/service/servicecomponent/component_list.jsp" />
+		<put-attribute name="title" value="ServiceComponent List" />
+	</definition>
+
+	<definition name="component_add" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/service/servicecomponent/component_add.jsp" />
+		<put-attribute name="title" value="ServiceComponent Add" />
+	</definition>
+
+	<definition name="schedule_list" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/service/serviceschedule/schedule_list.jsp" />
+		<put-attribute name="title" value="ServiceSchedule List" />
+	</definition>
+
+	<definition name="schedule_add" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/service/serviceschedule/schedule_add.jsp" />
+		<put-attribute name="title" value="ServiceSchedule Add" />
+	</definition>
+
+	<definition name="alert_definition" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/alarm/alert_definition.jsp" />
+		<put-attribute name="title" value="Alert Definition" />
+	</definition>
+
+	<definition name="alert_console" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/alarm/alert_console.jsp" />
+		<put-attribute name="title" value="Alert Console" />
+	</definition>
+
+	<definition name="alert_logs" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/alarm/alert_logs.jsp" />
+		<put-attribute name="title" value="Alert History" />
+	</definition>
+
+	<definition name="poi_type_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/poitype/poi_type_home.jsp" />
+		<put-attribute name="title" value="POI Type Home" />
+	</definition>
+
+	<definition name="poi_type_view" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/poitype/poi_type_view.jsp" />
+		<put-attribute name="title" value="POI Type Home" />
+	</definition>
+
+	<definition name="poi_def_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/poidef/poi_def_home.jsp" />
+		<put-attribute name="title" value="POI Home" />
+	</definition>
+
+	<definition name="poi_def_view" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/poidef/poi_def_view.jsp" />
+		<put-attribute name="title" value="POI Home" />
+	</definition>
+
+	<definition name="tagtype_create" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/tagtype/tagtype_create.jsp" />
+		<put-attribute name="title" value="Tag Create" />
+	</definition>
+
+	<definition name="alarm_definition" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/alarm/alarm_definition.jsp" />
+		<put-attribute name="title" value="Alarm Definition" />
+	</definition>
+
+	<definition name="poi_view" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/poidef/poi_def_view.jsp" />
+		<put-attribute name="title" value="Poi Create" />
+	</definition>
+
+	<definition name="vehicle_type_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/vehicletype/vehicle_type_home.jsp" />
+		<put-attribute name="title" value="Vehicle Type Home" />
+	</definition>
+
+	<definition name="vehicle_type_view" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/vehicletype/vehicle_type_view.jsp" />
+		<put-attribute name="title" value="Vehicle Type View" />
+	</definition>
+
+	<definition name="role_home" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/roles/role_home.jsp" />
+		<put-attribute name="title" value="Roles Home" />
+	</definition>
+
+	<definition name="role_view" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/roles/role_view.jsp" />
+		<put-attribute name="title" value="Roles View" />
+	</definition>
+
+	<definition name="points" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/pointsmapping/points.jsp" />
+		<put-attribute name="title" value="Points Mapping" />
+	</definition>
+
+	<definition name="config_home" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/configurationtemplates/config_home.jsp" />
+		<put-attribute name="title" value="Config Template Home" />
+	</definition>
+
+	<definition name="auditlog" extends="BaseTemplate">
+		<put-attribute name="content" value="/WEB-INF/jsp/auditlog.jsp" />
+		<put-attribute name="title" value="Audit Logs" />
+	</definition>
+
+	<definition name="vehicle_history" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/equipment/vehicle/vehicle_history.jsp" />
+		<put-attribute name="title" value="Vehicle History" />
+	</definition>
+	
+	<definition name="vehicle_tracking" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/equipment/vehicle/livetracking.jsp" />
+		<put-attribute name="title" value="Live Tracking" />
+	</definition>
+	
+	<definition name="point_list" extends="BaseTemplate">
+		<put-attribute name="content"
+			value="/WEB-INF/jsp/equipment/vehicle/point_list.jsp" />
+	</definition>
+</tiles-definitions>

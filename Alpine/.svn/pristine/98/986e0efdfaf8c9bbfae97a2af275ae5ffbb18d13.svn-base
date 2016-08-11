@@ -1,0 +1,34 @@
+##### WSO2 IS ##################
+is.endpoint.uri=https://10.234.31.152:9443/wso2-um/services/um
+is.base.uri=https://10.234.31.152:9443
+
+neo4j.rest.2.1.4.uri=http://10.234.31.160:7478
+
+cassandra.contact-point=10.234.31.171
+cassandra.contact-point.port=9042
+cassandra.keyspace-name=galaxy_master
+
+
+smtp.host=64.26.60.216
+alpine.email.id=galaxy2021admin@pacificcontrols.net
+alpine.email.sender.name=Galaxy
+alpine.email.user.name=galaxy2021admin@pacificcontrols.net
+alpine.email.password=PcsMailPass288
+alpine.email.port=25
+
+apiManager.host=10.234.31.152:9765
+
+# TITAN
+gremlin.server.ip=10.234.31.163
+gremlin.server.port=8182
+
+################## TWILIO ##################
+
+twilio.account.sid=ACc6321a8c060066caeb90192b9a172e57
+twilio.auth.token=aa84f77f20d4eca20c97e89c0a5c6964
+twilio.from.number=+12562063081 
+
+########Feature########
+platform.esb.domain.resources = /alpine/services/users/permissions
+platform.esb.assign.features = /alpine/services/tenants/assign/features
+platform.esb.url = http://10.234.31.155:8281

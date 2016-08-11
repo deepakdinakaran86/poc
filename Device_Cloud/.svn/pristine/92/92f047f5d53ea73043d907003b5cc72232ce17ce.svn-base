@@ -1,0 +1,6 @@
+##### Rest enpoint ########################
+rest.endpoint.host=10.234.60.26
+rest.endpoint.port=9763
+rest.endpoint.protocol=http
+rest.endpoint.context=/datasource-api-1.0.0
+rest.endpoint.url=/services/datasources/devices/rest

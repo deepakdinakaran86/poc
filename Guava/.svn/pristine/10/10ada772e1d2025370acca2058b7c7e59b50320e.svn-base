@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Create_Guava_Route_Hierarchy_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/route/Create_Guava_Route_Hierarchy_EP.xml</file>
+            <path>/_system/config/endpoints/route</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Guava_Route_POI_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/route/Create_Guava_Route_POI_EP.xml</file>
+            <path>/_system/config/endpoints/route</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Guava_Route_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/route/Create_Guava_Route_EP.xml</file>
+            <path>/_system/config/endpoints/route</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Delete_Guava_Route_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/route/Delete_Guava_Route_EP.xml</file>
+            <path>/_system/config/endpoints/route</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Delete_Guava_Route_Poi_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/route/Delete_Guava_Route_Poi_EP.xml</file>
+            <path>/_system/config/endpoints/route</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Delete_Guava_Route_Hierarchy_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/route/Delete_Guava_Route_Hierarchy_EP.xml</file>
+            <path>/_system/config/endpoints/route</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Guava_Schedule_Dest_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/schedule/Create_Guava_Schedule_Dest_EP.xml</file>
+            <path>/_system/config/endpoints/schedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Guava_Schedule_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/schedule/Create_Guava_Schedule_EP.xml</file>
+            <path>/_system/config/endpoints/schedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Guava_Schedule_Hierarchy_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/schedule/Create_Guava_Schedule_Hierarchy_EP.xml</file>
+            <path>/_system/config/endpoints/schedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Guava_Schedule_Route_Hierarchy_SEQ" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/schedule/Create_Guava_Schedule_Route_Hierarchy_SEQ.xml</file>
+            <path>/_system/config/endpoints/schedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_Guava_Schedule_Route_Hierarchy_EP" groupId="com.pcs.guava-routing-registry-resource-ir.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/main/synapse-config/endpoints/schedule/Create_Guava_Schedule_Route_Hierarchy_EP.xml</file>
+            <path>/_system/config/endpoints/schedule</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

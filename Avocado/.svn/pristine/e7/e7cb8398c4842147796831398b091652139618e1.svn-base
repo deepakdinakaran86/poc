@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Avocado_Reset_Password_SEQ" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+  <log separator=",">
+    <property name="Enter Avocado_Reset_Password_SEQ" value="----Avocado_Reset_Password_SEQ----"/>
+  </log>
+  <property expression="json-eval($.userDTO)" name="userDTO"
+    scope="default" type="STRING"/>
+  <property expression="json-eval($.identityDTO)" name="identityDTO"
+    scope="default" type="STRING"/>
+  <property expression="$trp:x-jwt-assertion" name="x-jwt-assertion"
+    scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+  <payloadFactory media-type="json">
+    <format>$1</format>
+    <args>
+      <arg evaluator="xml" expression="get-property('userDTO')" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </args>
+  </payloadFactory>
+  <send receive="Avocado_Reset_Password_Get_Marker_SEQ">
+    <endpoint key="conf:/endpoints/user/Avocado_Reset_Password_EP.xml"/>
+  </send>
+</sequence>

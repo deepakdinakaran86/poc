@@ -1,0 +1,272 @@
+# Api manager server url
+fms.platform.services.apim=http://10.234.31.152:8282/
+fms.auth.services.apim=https://10.234.31.152:8245/
+
+##FMS Client Related
+fms.client.id=fms
+fms.client.domainName=pcs.galaxy
+
+## File server Details
+fms.ftp.server.host=10.234.60.60
+fms.ftp.server.port=21
+fms.ftp.server.user=galaxyftpuser
+fms.ftp.server.pass=G2021@Pcs*$321
+
+### API MANAGER
+apimanager.clientid=fkoe7I5En0O2MUP2zG8DjWNRUu0a
+apimanager.clientSecret=f3G26ikmZULyaPZeLyZE6X8rKHsa
+
+### device management ###
+fms.device.list=/galaxy-dm/1.0.0/devices/list
+fms.device.configurations=/saffron/1.0.0/devices/{source_id}/configurations
+fms.device.children=/hierarchy/1.0.0/hierarchy/children/immediate
+fms.device.toassign.unassign=/hierarchy/1.0.0/hierarchy/markers/assign
+fms.device.toassign.search=/markers/1.0.0/markers/fieldvalue/search
+fms.device.assign.bulk=/galaxy-dm/1.0.0/devices/assignbulk
+fms.device.find=galaxy-dm/1.0.0/devices/{identifier}
+fms.device.location=galaxy-dm/1.0.0/devices/location?domain_name={domain_name}&mode={mode}
+
+### POI Type ########
+fms.poitype.list=/galaxy-poi/1.0.0/poiType
+fms.poitype.get=/galaxy-poi/1.0.0/poiType/{poi_type_name}
+fms.poitype.save=galaxy-poi/1.0.0/poiType
+
+## POI ###
+fms.poi.get=galaxy-poi/1.0.0/poi/find
+fms.poi.save=galaxy-poi/1.0.0/poi
+fms.poi.update=galaxy-poi/1.0.0/poi
+fms.poi.delete=galaxy-poi/1.0.0/poi/delete
+
+fms.device.retrieve=saffron/1.0.0/devices/all
+fms.device.data=saffron/1.0.0/devices
+fms.device.type=saffron/1.0.0/device_types
+fms.device.nwProtocol=/saffron/1.0.0/system/network_protocols
+fms.device.protocol=saffron/1.0.0/device_types/protocols
+fms.device.tags=/saffron/1.0.0/device_tags
+fms.device.getDeviceDetails=saffron/1.0.0/devices/{source_id}
+fms.saffron.device.createDevice=/saffron/1.0.0/devices
+fms.alpine.device.createDevice=/markers/1.0.0/markers
+fms.services.device.assingconfig=/saffron/1.0.0/devices/configurations/template
+
+fms.device.make=/saffron/1.0.0/system/makes
+fms.device.deviceTypes=/saffron/1.0.0/system/makes/{make_name}/device_types
+fms.device.models=/saffron/1.0.0/system/models
+fms.device.protocols=/saffron/1.0.0/system/protocols
+fms.device.protocolVersions=/saffron/1.0.0/system/protocols/versions
+
+fms.device.saveTemplate=/saffron/1.0.0/device_config
+fms.device.getAllPointsByProtocolVersion=/saffron/1.0.0/system/makes/device_types/models/protocols/versions/points
+fms.device.assignPointsToDevice=/saffron/1.0.0/devices/configurations
+
+#datasource api end points
+fms.getallparams=saffron/1.0.0/ds
+fms.websocket.connection=saffron/1.0.0/ds/subscribe
+fms.history.getallparams=saffron/1.0.0/devices/{source_id}/configurations
+fms.protocol.getallpoints=saffron/1.0.0/device_types/{device_type}/protocols/{protocol_name}/commands
+fms.protocol.getSourceParams=saffron/1.0.0/devices/{source_id}/configurations
+fms.protocol.getQueuedCommands=saffron/1.0.0/write_back/{source_id}/queued_commands
+fms.protocol.getAllLogs=saffron/1.0.0/write_back/logs?start_time={start_time}&end_time={end_time}
+fms.protocol.executeCommands=saffron/1.0.0/g2021/commands/{source_id}
+fms.protocol.getSystemCommands=saffron/1.0.0/g2021/commands/{source_id}
+fms.protocol.datasourcename.isexists=saffron/1.0.0/ds/{datasource_name}/isexist
+fms.protocol.points=/saffron/1.0.0/system/protocols/points
+fms.physicalquantity.getall=/saffron/1.0.0/phy_quantity/all
+fms.physicalquantity.unit=/saffron/1.0.0/units/{physical_quantity}
+
+
+#device data
+fms.data.getLatestData=saffron/1.0.0/data/{source_id}/latest
+
+#history data
+fms.device.history=saffron/1.0.0/data/find
+
+#System Data related services
+fms.system.getalldatatypes=/saffron/1.0.0/system/data_types
+fms.system.deactivatetemplate=saffron/1.0.0/device_config/deactivate
+fms.system.getalltemplates=saffron/1.0.0/device_config/all
+fms.system.getallaccesstypes=saffron/1.0.0/system/access_types
+fms.system.getallsystemTags=saffron/1.0.0/system/system_tags
+fms.system.mapparameterEdit=saffron/1.0.0/system/conf_templates/{conf_template}
+
+
+#parameter related services
+fms.params.getallparams=saffron/1.0.0/parameters
+fms.params.saveparams=saffron/1.0.0/parameters
+#fms.params.checkduplicates=saffron/1.0.0/parameters/{param_name}/{sub_id}/isexist
+fms.params.checkduplicates=saffron/1.0.0/parameters/{param_name}/isexist
+
+### user api end points ###
+fms.services.createUser=galaxy-um/1.0.0/users
+fms.services.deleteUser=galaxy-um/1.0.0/users/{user_name}?domain_name={domain_name}
+fms.services.findUser=galaxy-um/1.0.0/users/{user_name}?domain_name={domain_name}
+fms.services.listUser=galaxy-um/1.0.0/users?domain_name={domain_name}
+fms.services.updateUser=galaxy-um/1.0.0/users/{user_name}?domain_name={domain_name}
+fms.services.user.current=users/1.0.0/users/permissions/current
+fms.services.user.reset.password=galaxy-um/1.0.0/users/reset_password
+fms.services.findUserPasswordLink=markers/1.0.0/markers/find
+
+
+fms.services.updatePassword=/galaxy-um/1.0.0/users/change_password
+fms.services.forgotPassword=galaxy-um/1.0.0/users/forgot_password
+fms.services.validateUser=users/1.0.0/users/validate
+
+#roles api
+fms.services.createRole=galaxy-um/1.0.0/roles
+fms.services.saveRole=galaxy-um/1.0.0/resources
+fms.services.findRole=galaxy-um/1.0.0/roles/{role_name}?domain_name={domain_name}
+
+#resources api
+fms.services.getPermissions=galaxy-um/1.0.0/resources/{resource_name}/permissions?domain_name={domain_name}
+
+#audit api
+fms.services.getAppAudit=galaxy-audit/1.0.0/audit/application
+
+#UNUSED
+fms.services.createAdminUser=users/1.0.0/users/admin
+fms.services.userCount=users/1.0.0/users/count 
+fms.services.userStatusCount=users/1.0.0/users/status/count
+
+#device config api end points
+fms.all.config.templates=/saffron/1.0.0/config_templates/all
+fms.config.gettemplate=saffron/1.0.0/config_templates/{template_name}
+fms.config.checkduplicates=saffron/1.0.0/config_templates/{temp_name}/isexist
+fms.config.saveTemplate=/saffron/1.0.0/config_templates
+
+#marker api end points
+fms.marker.search=/markers/1.0.0/markers/search
+fms.marker.getdevices=/markers/1.0.0/markers/search
+fms.services.createDevice=/markers/1.0.0/markers
+fms.services.updateDevice=/markers/1.0.0/markers
+fms.services.findDevice=/markers/1.0.0/markers/find
+fms.services.listFilterDevice=/markers/1.0.0/markers/list/filter
+fms.services.validation=markers/1.0.0/markers/validate
+fms.services.insertUserEntryResetPwd=markers/1.0.0/markers
+fms.services.insertUserEntryCreateTenantAdmin=markers/1.0.0/markers
+fms.services.findTenantAdminLink=markers/1.0.0/markers/find
+
+fms.services.updateTenantAdminLinkStatus=markers/1.0.0/markers
+fms.services.deviceCount=markers/1.0.0/markers/count
+
+#tenant api
+fms.services.createTenant=galaxy-tm/1.0.0/tenants
+fms.services.updateTenant=galaxy-tm/1.0.0/tenants
+fms.services.findTenant=galaxy-tm/1.0.0/tenants
+fms.services.listTenant=galaxy-tm/1.0.0/tenants?domain_name={domain}
+fms.services.validateTenant=tenants/1.0.0/tenants/validate
+fms.services.tenantsCount=galaxy-tm/1.0.0/tenants/count
+fms.services.findTenantFeatures=tenants/1.0.0/tenants/features?domain={domain}
+fms.services.sendTenantAdminEmail=galaxy-tm/1.0.0/tenants/admin/email
+fms.services.createTenantAdmin=galaxy-tm/1.0.0/tenants/admin
+fms.services.tenant.domaininfo=tenants/1.0.0/tenants/domain/info
+
+#write-back related services
+fms.writeback.logs=/saffron/1.0.0/write_back/logs?start_time={start_time}&end_time={end_time}
+
+#hierarchy related services
+fms.hierarchy.get.children=/hierarchy/1.0.0/hierarchy/children
+fms.services.hierarch.attach.children=/hierarchy/1.0.0/hierarchy/attach/children
+fms.hierarchy.children.count=/hierarchy/1.0.0/hierarchy/children/count
+fms.hierarchy.status.count=/hierarchy/1.0.0/hierarchy/status/count
+fms.hierarchy.update.hierarchy=/hierarchy/1.0.0/hierarchy
+fms.hierarchy.range.markers=hierarchy/1.0.0/hierarchy/range/tenants/markers
+
+#history
+datasource.getallparams=saffron/1.0.0/devices/{source_id}/configurations
+datasource.device.history=saffron/1.0.0/data/find
+
+#notification related services
+fms.services.sendResetPWDEmail=/notification/1.0.0/notification/email
+
+#claim device
+fms.services.unclaimed.alldevices=/saffron/1.0.0/devices/unsubscribed
+fms.services.claim.device=/saffron/1.0.0/devices/{source_id}/claim
+
+#tagtype
+fms.services.createTagType=galaxy-tags/1.0.0/tagTypes
+fms.services.findTagType=galaxy-tags/1.0.0/tagTypes/{tag_type_name}?domain_name={domain}
+fms.services.listTagTypes=galaxy-tags/1.0.0/tagTypes?domain_name={domain}
+
+#tag
+fms.services.createTag=galaxy-tags/1.0.0/tags
+fms.services.listTags=galaxy-tags/1.0.0/tags
+fms.services.findTag=galaxy-tags/1.0.0/tags/find
+fms.services.mapTagToTemplates=galaxy-tags/1.0.0/tags/subjects
+fms.services.taggedTemplates=galaxy-tags/1.0.0/tags/subjects/templates
+
+#templates api
+fms.services.assignTemplate=templates/1.0.0/templates
+fms.services.findTemplate=templates/1.0.0/templates/find
+fms.services.getAllTemplates=templates/1.0.0/templates/listByParentTemplate
+
+
+#event
+fms.services.event.cep.benchmark=http://10.234.60.59:8281/cep/
+
+
+#GeoFence
+
+fms.services.createGeoFence=geo-services/1.0.0/geofence
+fms.services.updateGeoFence=geo-services/1.0.0/geofence
+fms.services.deleteGeoFence=geo-services/1.0.0/geofence/delete
+fms.services.findGeoFence=geo-services/1.0.0/geofence/find
+fms.services.listGeoFence=geo-services/1.0.0/geofence/list?domain_name={domain}
+
+#vehicle management
+fms.services.listvehicleType=galaxy-am/1.0.0/assetType?domain_name={domain}&parent_type={parent_type_name}
+fms.services.listvehicle=galaxy-am/1.0.0/assets?domain_name={domain}&asset_type={assetType}
+
+#Asset apis
+fms.services.vehicle=galaxy-am/1.0.0/assets
+fms.services.vehicleFind=/galaxy-am/1.0.0/assets/find
+fms.services.updateVehicle=galaxy-am/1.0.0/assets
+
+
+
+#Tags
+fms.services.findTagsForEntities=galaxy-tags/1.0.0/tags/entities
+fms.services.attachEntitiesTag=galaxy-tags/1.0.0/tags/actors
+
+### Vehicle Type ########
+fms.vehicleType.list=/galaxy-am/1.0.0/assetType
+fms.vehicleType.get=/galaxy-am/1.0.0/assetType/{asset_type_name}
+fms.vehicleType.save=galaxy-am/1.0.0/assetType
+
+#Geotag
+fms.services.createGeotag=geo-services/1.0.0/geotags
+fms.services.findGeotag=geo-services/1.0.0/geotags/find
+fms.services.deleteGeotag=geo-services/1.0.0/geotags/delete
+fms.services.updateGeotag=geo-services/1.0.0/geotags
+
+#Map Points
+fms.devices.ownedlist=galaxy-dm/1.0.0/devices/owned/list
+fms.devices.points=galaxy-am/1.0.0/assets/device/points
+fms.devices.mapPoints=galaxy-am/1.0.0/assets/points
+
+
+#ServiceItems
+fms.services.createServiceItem=galaxy-service-scheduling/1.0.0/item
+fms.services.findServiceItem=galaxy-service-scheduling/1.0.0/item/find
+fms.services.listServiceItems=galaxy-service-scheduling/1.0.0/item/list?domain_name={domain}
+fms.services.updateServiceItem=galaxy-service-scheduling/1.0.0/item
+
+#Route Services
+fms.services.route.list=galaxy-routing/1.0.0/route/list
+fms.services.createRoute=galaxy-routing/1.0.0/route
+fms.services.viewRoute=galaxy-routing/1.0.0/route/view/{route_name}?domain_name={domain}
+
+#ServiceComponents
+fms.services.listServiceComponents= galaxy-service-scheduling/1.0.0/component/list?domain_name={domain}
+fms.services.findServiceComponents= galaxy-service-scheduling/1.0.0/component/find
+fms.services.createServiceComponents= galaxy-service-scheduling/1.0.0/component
+fms.services.updateServiceComponents= galaxy-service-scheduling/1.0.0/component
+
+#LiveTracking
+fms.services.devicelocation = /galaxy-dm/1.0.0/devices/location
+fms.services.latestasset = /galaxy-am/1.0.0/assets/data/latest
+
+
+#ServiceSchedule
+fms.services.listServiceSchedule= galaxy-service-scheduling/1.0.0/schedule/list?domain_name={domain}
+fms.services.findServiceSchedule= galaxy-service-scheduling/1.0.0/schedule/find
+fms.services.createServiceSchedule= galaxy-service-scheduling/1.0.0/schedule
+fms.services.updateServiceSchedule= galaxy-service-scheduling/1.0.0/schedule

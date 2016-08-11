@@ -1,0 +1,499 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Saffron_Create_Device_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Create_Device_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Device_Config_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Device_Config_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Skyspark_Create_Equip_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Skyspark_Create_Equip_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Skyspark_Create_Points_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Skyspark_Create_Points_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Create_System_Subscription_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Create_System_Subscription_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Device_Details_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_Device_Details_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Access_Types_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Access_Types_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Data_Types_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Data_Types_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Make_Device_Types_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Make_Device_Types_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Makes_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Makes_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Models_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Models_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Network_Protocols_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Network_Protocols_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Points_By_Protocol_Version_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Points_By_Protocol_Version_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Protocol_Commands_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Protocol_Commands_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Protocols_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Protocols_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Protocols_Version_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Protocols_Version_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_System_Tags_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_System_Tags_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Write_Back_Device_Queued_Commands_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_Write_Back_Device_Queued_Commands_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Write_Back_Graph_Logs_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_Write_Back_Graph_Logs_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Write_Back_Logs_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_Write_Back_Logs_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Device_Details_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Update_Device_Details_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Write_Back_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Update_Write_Back_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Devices_Filtered_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_Devices_Filtered_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Device_Point_Config_Default_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_Device_Point_Config_Default_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Device_Point_Config_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_Device_Point_Config_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Device_Point_Config_Default_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Update_Device_Point_Config_Default_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Device_Point_Config_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Update_Device_Point_Config_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_All_Devices_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_All_Devices_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_All_Devices_Filtered_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_All_Devices_Filtered_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Get_Datasource_Name_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Get_Datasource_Name_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Claim_Device_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Claim_Device_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Register_Device_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Register_Device_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Multiple_Device_Point_Config_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Update_Multiple_Device_Point_Config_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Device_Config_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Update_Device_Config_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Authenticate_Device_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Authenticate_Device_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Fetch_Unclaimed_Devices_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Fetch_Unclaimed_Devices_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Update_Device_Tags_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Update_Device_Tags_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Create_Device_Data_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Create_Device_Data_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_Device_Data_Details_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_Device_Data_Details_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Create_Batch_Device_Data_Quantity_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Create_Batch_Device_Data_Quantity_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_Latest_Device_Data_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_Latest_Device_Data_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Create_Batch_Device_Data_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Create_Batch_Device_Data_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_All_Device_Tags_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_All_Device_Tags_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_All_Physical_Quantity_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_All_Physical_Quantity_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Create_Physical_Quantity_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Create_Physical_Quantity_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Read_Physical_Quantity_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Read_Physical_Quantity_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Update_Physical_Quantity_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Update_Physical_Quantity_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Delete_Physical_Quantity_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Delete_Physical_Quantity_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Create_Parameters_Of_Subscriber_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Create_Parameters_Of_Subscriber_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_All_Parameters_Of_Subscriber_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_All_Parameters_Of_Subscriber_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Check_Parameter_Exists_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Check_Parameter_Exists_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Publish_Data_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Publish_Data_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Check_Datasource_Exists_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Check_Datasource_Exists_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_All_Registered_Datasources_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_All_Registered_Datasources_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_All_Parameters_Of_Datasource_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_All_Parameters_Of_Datasource_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Update_Parameters_Of_Datasource_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Update_Parameters_Of_Datasource_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Deregister_Datasource_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Deregister_Datasource_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Subscribe_Datasource_Destination_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Subscribe_Datasource_Destination_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Register_Datasource_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Register_Datasource_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Create_Configuration_Template_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Create_Configuration_Template_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Update_Configuration_Template_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Update_Configuration_Template_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Deactivate_Configuration_Template_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Deactivate_Configuration_Template_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_Point_Configurations_Of_Template_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_Point_Configurations_Of_Template_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_All_Configuration_Template_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_All_Configuration_Template_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Check_Configurations_Template_Exists_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Check_Configurations_Template_Exists_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Process_G2021_Commands_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Process_G2021_Commands_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Create_Units_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Create_Units_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Update_Units_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Update_Units_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Delete_Units_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Delete_Units_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_Units_Of_Physical_Quantity_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_Units_Of_Physical_Quantity_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Saffron_Get_Subsctiption_Context_EP" groupId="saffron-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/saffron/Saffron_Get_Subsctiption_Context_EP.xml</file>
+            <path>/_system/config/endpoints/saffron</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

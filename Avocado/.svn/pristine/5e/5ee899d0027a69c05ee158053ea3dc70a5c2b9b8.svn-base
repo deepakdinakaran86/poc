@@ -1,0 +1,418 @@
+name:createUpdateSite
+id:@1e4b2349-19c27233
+func
+mod:2016-02-08T09:58:43.478Z
+src:
+  (jsonPayload) => do
+      
+      
+      /********** func to create point **********/
+      updateSite : (jsonPayload) =>do 
+      
+      siteRec : null
+      try do
+          siteRec = read(site and siteName == jsonPayload->facilityName.toStr and client==jsonPayload->clientName.toStr)
+       end 
+       catch(e) do
+          return {"errorCode":"801","errorMessage":"Cannot update a non existing Site"}
+       end
+  
+       data : null
+       logInfo("updateSite", "updateSite --- "+jsonPayload)
+       siteRec.each pt=>do
+      data = {
+        //siteName : jsonPayload->facilityName.toStr, facility name cannot be update
+        //navName : jsonPayload->facilityName.toStr,  facility name cannot be update
+        //dis : jsonPayload->facilityName.toStr,      facility name cannot be update
+        // client : jsonPayload->clientName.toStr, client cannot be updated
+        primaryFunction : if(not jsonPayload.missing("buildingType")) do jsonPayload->buildingType.toStr end else do removeMarker() end ,
+        vertical  : if(not jsonPayload.missing("vertical")) do jsonPayload->vertical.toStr end else do removeMarker() end ,
+        tz  : if(not jsonPayload.missing("timeZone")) do jsonPayload->timeZone.toStr end else do removeMarker() end ,
+        weatherStation : if(not jsonPayload.missing("weatherStation")) do jsonPayload->weatherStation.toStr end else do removeMarker() end ,
+        geoCity  : if(not jsonPayload.missing("city")) do jsonPayload->city.toStr end else do removeMarker() end ,
+        area : if(not jsonPayload.missing("squareFeet")) do jsonPayload->squareFeet.parseNumber end else do removeMarker() end ,
+        geoCountryName : if(not jsonPayload.missing("country")) do jsonPayload->country.toStr end else do removeMarker() end ,
+        geoState : if(not jsonPayload.missing("emirate")) do jsonPayload->emirate.toStr end else do removeMarker() end ,
+        structure : if(not jsonPayload.missing("buildingStructure")) do jsonPayload->buildingStructure.toStr end else do removeMarker() end ,
+        connDate : if(not jsonPayload.missing("rfsDate")) do jsonPayload->rfsDate.parseNumber.fromJavaMillis(jsonPayload->timeZone.toStr) end else do removeMarker() end ,
+        preEcmEndDate : if(not jsonPayload.missing("preEcmEndDate")) do jsonPayload->preEcmEndDate.parseNumber.fromJavaMillis(jsonPayload->timeZone.toStr) end else do removeMarker() end ,
+        startDate : if(not jsonPayload.missing("startDate")) do jsonPayload->startDate.parseNumber.fromJavaMillis(jsonPayload->timeZone.toStr) end else do removeMarker() end ,
+        targetSavings : if(not jsonPayload.missing("savingsTarget")) do jsonPayload->savingsTarget.parseNumber end else do removeMarker() end ,
+        maxValueEnergyProfile : if(not jsonPayload.missing("maxValueEnergyProfile")) do jsonPayload->maxValueEnergyProfile.parseNumber end else do removeMarker() end ,
+        }
+       end // end of siteRec.each
+       
+         commit(diff(siteRec,data))
+         return {"status":"SUCCESS"}
+      end // end of updateSite
+      
+      
+      /********** func to create site or facility **********/
+      createSite : (jsonPayload) =>do 
+      
+      siteRec : null
+      try do
+          siteRec = read(site and siteName == jsonPayload->facilityName.toStr and client==jsonPayload->clientName.toStr)
+       end 
+       catch(e) do
+          ""
+       end
+       if(siteRec != null) do return {"errorCode":"800","errorMessage":"Site already exists"}  end
+       
+      logInfo("createSiteByTwinkle", "jsonPayload->facilityName.toStr"+jsonPayload)
+      logInfo("createSiteByTwinkle", "jsonPayload->facilityName.toStr"+jsonPayload->facilityName.toStr)
+      data:{
+        site,
+        id : refGen(),
+        siteName : jsonPayload->facilityName.toStr,
+        navName : jsonPayload->facilityName.toStr,
+        dis : jsonPayload->facilityName.toStr,
+        client : jsonPayload->clientName.toStr,
+        primaryFunction : jsonPayload->buildingType.toStr,
+        vertical  : jsonPayload->vertical.toStr,
+        tz  : if(not jsonPayload.missing("timeZone")) do jsonPayload->timeZone.toStr end else do removeMarker() end ,
+        weatherStation : if(not jsonPayload.missing("weatherStation")) do jsonPayload->weatherStation.toStr end else do removeMarker() end ,
+        geoCity  : if(not jsonPayload.missing("city")) do jsonPayload->city.toStr end else do removeMarker() end ,
+        area : if(not jsonPayload.missing("squareFeet")) do jsonPayload->squareFeet.parseNumber end else do removeMarker() end ,
+        geoCountryName : jsonPayload->country.toStr,
+        geoState : jsonPayload->emirate.toStr,
+        structure : if(not jsonPayload.missing("buildingStructure")) do jsonPayload->buildingStructure.toStr end else do removeMarker() end ,
+        connDate : if(not jsonPayload.missing("rfsDate")) do jsonPayload->rfsDate.parseNumber.fromJavaMillis(jsonPayload->timeZone.toStr) end else do removeMarker() end ,
+        preEcmEndDate : if(not jsonPayload.missing("preEcmEndDate")) do jsonPayload->preEcmEndDate.parseNumber.fromJavaMillis(jsonPayload->timeZone.toStr) end else do removeMarker() end ,
+        startDate : if(not jsonPayload.missing("startDate")) do jsonPayload->startDate.parseNumber.fromJavaMillis(jsonPayload->timeZone.toStr) end else do removeMarker() end ,
+        targetSavings : if(not jsonPayload.missing("savingsTarget")) do jsonPayload->savingsTarget.parseNumber end else do removeMarker() end ,
+        maxValueEnergyProfile : if(not jsonPayload.missing("maxValueEnergyProfile")) do jsonPayload->maxValueEnergyProfile.parseNumber end else do removeMarker() end ,
+        }
+        
+        //commit to folio
+        commit(diff(null,data,{add}))
+        return {"status":"SUCCESS"}
+      end // end of createSite
+      
+      if(not jsonPayload->update.lower.parseBool) do 
+      createSite(jsonPayload)
+      end //end of if
+      else do 
+      updateSite(jsonPayload)
+      end //end of else
+      
+  end
+---
+name:createEquipment
+id:@1e4b237a-661b69c7
+func
+mod:2016-02-08T09:59:28.853Z
+src:
+  /**
+  * This function is used to create an equipment
+  *
+  * @author Twinkle
+  * @date January 2016
+  * @jsonPayload denotes the payload
+  */
+  (jsonPayload) => do
+  	siteRec : null
+    data : null
+    
+  	try do
+  		siteRec = read(site and siteName==jsonPayload->facilityName and client==jsonPayload->client)
+  	end //end of try
+  	catch (e) do
+  		logInfo("createEquipment", "Error occured in inactiveEquipment"+e)
+  		return {"status":"FAILURE"}
+  	end //end of catch
+    
+  	try do
+  		data = {
+  			equip,
+        client : siteRec->client,
+        description : jsonPayload->equipmentName.toStr,
+        dis : jsonPayload->equipmentName.toStr,
+        navName : jsonPayload->equipmentId.toStr,
+        siteRef : siteRec->id,
+        make : if(jsonPayload["make"] != null) do jsonPayload->make.toStr end else do removeMarker() end,
+        model : if(jsonPayload["model"] != null) do jsonPayload->model.toStr end else do removeMarker() end,
+        floor : if(jsonPayload["floor"] != null) do jsonPayload->floor.toStr end else do removeMarker() end,
+        
+        tz  : if(not jsonPayload.missing("timeZone")) do jsonPayload->timeZone.toStr end else do siteRec->tz end,
+        
+        hvacType : if(jsonPayload["hvacType"] != null) do jsonPayload->hvacType.toStr end else do removeMarker() end,
+        
+        ees : if(jsonPayload["ees"] != null and jsonPayload->ees.toStr.lower.parseBool) do marker() end else do removeMarker() end,
+        ahu : if(jsonPayload["ahu"] != null and jsonPayload->ahu.toStr.lower.parseBool) do marker() end else do removeMarker() end,
+        fcu : if(jsonPayload["fcu"] != null and jsonPayload->fcu.toStr.lower.parseBool) do marker() end else do removeMarker() end,
+        fahu : if(jsonPayload["fahu"] != null and jsonPayload->fahu.toStr.lower.parseBool) do marker() end else do removeMarker() end,
+  			airSide : if(jsonPayload["airSide"] != null and jsonPayload->airSide.toStr.lower.parseBool) do marker() end else do removeMarker() end,
+  			hvac : if(jsonPayload["hvac"] != null and jsonPayload->hvac.toStr.lower.parseBool) do marker() end else do removeMarker() end,
+  			id : refGen(),
+        
+        genset : if(jsonPayload["genset"] != null and jsonPayload->genset.toStr.lower.parseBool) do marker() end else do removeMarker() end,
+  		}
+  
+  	end //end of try
+  	catch (e) do
+  		logInfo("createEquipment", "Error occured in createEquipment in mapping tags block"+e)
+  	return {"status":"FAILURE"}
+  	end //end of catch
+  	
+  	//commit equips to folio
+  	if(not data.isEmpty) do
+  		commit(diff(null,data,{add}))
+    end
+      
+  end
+  //sample request : createEquipment({"facilityName":"Demo","client":"pacificcontrols","equipmentName":"FCU005","equipmentId":"FCU004","make":"Hundai","model":"A123","ees":true,"ahu":false,"fcu":true,"fahu":false,"airSide":true,"hvac":true,"hvacType":"Air Side","floor":"M+F","timeZone":"Dubai"})
+---
+name:updateEquipPoint
+id:@1e4b2389-677da376
+func
+mod:2016-02-09T08:39:17.93Z
+src:
+  /**
+  * This function is used to create an equipment
+  *
+  * @author Twinkle
+  * @date January 2016
+  * @jsonrEquipUpdate denotes the payload
+  */
+  
+  //make model and floor and tz
+  // Should have the same tz of the facility
+  (jsonrEquipUpdateInput) => do
+  
+  equipRecForUpdate : null
+  
+  pointsFromPayload : null
+  try do	
+  pointsFromPayload = if(not jsonrEquipUpdateInput.missing("points")) do jsonrEquipUpdateInput->points.toGrid end 
+  end
+  	catch(e) do
+  		logInfo("updateEquipPoint", "Equipment doesnot exists"+e)
+  		return {"status":"FAILUREaaaaaaaaa"}
+  	end
+  /*********************************************update equipment starts*********************************************/
+  updateEquip : (jsonrEquipUpdateInput) => do
+  jsonrEquipUpdate : jsonrEquipUpdateInput.remove("points")
+  equipRecForUpdate = [].toGrid
+  	try do
+  		equipRecForUpdate = read(equip and siteRef->siteName == jsonrEquipUpdate->facilityName.toStr and client==jsonrEquipUpdate->client.toStr and navName==jsonrEquipUpdate->equipmentId.toStr)
+  	end 
+  	catch(e) do
+  		logInfo("updateEquipPoint", "Equipment doesnot exists"+e)
+  		return {"status":"FAILURE"}
+  	end
+  
+      data : null
+  	try do
+  		data = {
+  			description : if(not jsonrEquipUpdate.missing("equipmentName")) do jsonrEquipUpdate->equipmentName.toStr end else do removeMarker() end ,
+  			dis : if(not jsonrEquipUpdate.missing("equipmentName")) do jsonrEquipUpdate->equipmentName.toStr end else do removeMarker() end ,
+  			make : if(not jsonrEquipUpdate.missing("make")) do jsonrEquipUpdate->make.toStr end else do removeMarker() end ,
+  			model : if(not jsonrEquipUpdate.missing("model")) do jsonrEquipUpdate->model.toStr end else do removeMarker() end ,
+  			floor : if(not jsonrEquipUpdate.missing("floor")) do jsonrEquipUpdate->floor.toStr end else do removeMarker() end ,
+        ees : if(not jsonrEquipUpdate.missing("ees") and jsonrEquipUpdate->ees) do marker() end else do removeMarker() end ,
+  		}
+  	end 
+  	catch(e) do
+  		logInfo("updateEquipPoint", "Error occured while mapping equip tags "+e)
+  		return {"status":"FAILURE"}
+  	end
+      commit(diff(equipRecForUpdate,data))
+  end // end of updateEquip : (jsonrEquipUpdateInput)
+  /*********************************************update equipment ends*********************************************/
+  
+  
+  /*********************************************map point tags starts*********************************************/
+  mapPointTags : (ptFromFolio, ptFromPayload) => do
+  tags : {
+          air : if(not ptFromPayload.missing("air") and ptFromPayload->air) do marker() end else do removeMarker() end ,
+          bfv : if(not ptFromPayload.missing("bfv") and ptFromPayload->bfv) do marker() end else do removeMarker() end ,
+          chilled : if(not ptFromPayload.missing("chilled") and ptFromPayload->chilled) do marker() end else do removeMarker() end ,
+          chillerMode : if(not ptFromPayload.missing("chillerMode") and ptFromPayload->chillerMode) do marker() end else do removeMarker() end ,
+          cmd : if(not ptFromPayload.missing("cmd") and ptFromPayload->cmd) do marker() end else do removeMarker() end ,
+          cooling : if(not ptFromPayload.missing("cooling") and ptFromPayload->cooling) do marker() end else do removeMarker() end ,
+          current : if(not ptFromPayload.missing("current") and ptFromPayload->current) do marker() end else do removeMarker() end ,
+          damper : if(not ptFromPayload.missing("damper") and ptFromPayload->damper) do marker() end else do removeMarker() end ,
+          discharge : if(not ptFromPayload.missing("discharge") and ptFromPayload->discharge) do marker() end else do removeMarker() end ,
+          energy : if(not ptFromPayload.missing("energy") and ptFromPayload->energy) do marker() end else do removeMarker() end ,
+          entering : if(not ptFromPayload.missing("entering") and ptFromPayload->entering) do marker() end else do removeMarker() end ,
+          exhaust : if(not ptFromPayload.missing("exhaust") and ptFromPayload->exhaust) do marker() end else do removeMarker() end ,
+          fan : if(not ptFromPayload.missing("fan") and ptFromPayload->fan) do marker() end else do removeMarker() end ,
+          fb : if(not ptFromPayload.missing("fb") and ptFromPayload->fb) do marker() end else do removeMarker() end ,
+          filter : if(not ptFromPayload.missing("filter") and ptFromPayload->filter) do marker() end else do removeMarker() end ,
+          freq : if(not ptFromPayload.missing("freq") and ptFromPayload->freq) do marker() end else do removeMarker() end ,
+          his : if(not ptFromPayload.missing("his") and ptFromPayload->his) do marker() end else do removeMarker() end ,
+          hisTotalized : if(not ptFromPayload.missing("hisTotalized") and ptFromPayload->hisTotalized) do marker() end else do removeMarker() end ,
+          hoa : if(not ptFromPayload.missing("hoa") and ptFromPayload->hoa) do marker() end else do removeMarker() end ,
+          leaving : if(not ptFromPayload.missing("leaving") and ptFromPayload->leaving) do marker() end else do removeMarker() end ,
+          load : if(not ptFromPayload.missing("load") and ptFromPayload->load) do marker() end else do removeMarker() end ,
+          mixed : if(not ptFromPayload.missing("mixed") and ptFromPayload->mixed) do marker() end else do removeMarker() end ,
+          motor : if(not ptFromPayload.missing("motor") and ptFromPayload->motor) do marker() end else do removeMarker() end ,
+          outside : if(not ptFromPayload.missing("outside") and ptFromPayload->outside) do marker() end else do removeMarker() end ,
+          pf : if(not ptFromPayload.missing("pf") and ptFromPayload->pf) do marker() end else do removeMarker() end ,
+          power : if(not ptFromPayload.missing("power") and ptFromPayload->power) do marker() end else do removeMarker() end ,
+          pressure : if(not ptFromPayload.missing("pressure") and ptFromPayload->pressure) do marker() end else do removeMarker() end ,
+          primaryLoop : if(not ptFromPayload.missing("primaryLoop") and ptFromPayload->primaryLoop) do marker() end else do removeMarker() end ,
+          return : if(not ptFromPayload.missing("rEturn") and ptFromPayload->rEturn) do marker() end else do removeMarker() end ,
+          run : if(not ptFromPayload.missing("run") and ptFromPayload->run) do marker() end else do removeMarker() end ,
+          sensor : if(not ptFromPayload.missing("sensor") and ptFromPayload->sensor) do marker() end else do removeMarker() end ,
+          sp : if(not ptFromPayload.missing("sp") and ptFromPayload->sp) do marker() end else do removeMarker() end ,
+          speed : if(not ptFromPayload.missing("speed") and ptFromPayload->speed) do marker() end else do removeMarker() end ,
+          temp : if(not ptFromPayload.missing("temp") and ptFromPayload->temp) do marker() end else do removeMarker() end ,
+          trip : if(not ptFromPayload.missing("trip") and ptFromPayload->trip) do marker() end else do removeMarker() end ,
+          valve : if(not ptFromPayload.missing("valve") and ptFromPayload->valve) do marker() end else do removeMarker() end ,
+          vfd : if(not ptFromPayload.missing("vfd") and ptFromPayload->vfd) do marker() end else do removeMarker() end ,
+          volt : if(not ptFromPayload.missing("volt") and ptFromPayload->volt) do marker() end else do removeMarker() end ,
+          water : if(not ptFromPayload.missing("water") and ptFromPayload->water) do marker() end else do removeMarker() end ,
+        }
+  	commit(diff(ptFromFolio, tags))
+  end // end of mapPointTags : (ptFromFolio, ptFromPayload)
+  /*********************************************map point tags ends*********************************************/
+  
+  
+  /*********************************************main function starts*********************************************/
+  //update equipment first
+  eqRec : updateEquip(jsonrEquipUpdateInput)
+  
+  //fetch all the points asociated with this equipment
+  pointRecs : [].toGrid
+  ptFromFolio : [].toGrid
+  try do
+  	pointRecs = eqRec.toPoints
+  end // end of try
+  catch(e) do
+  	logInfo("updateEquipPoint", "Equipment doesnot have points, returned from catch statement"+e)
+  	return {"status":"FAILURE"}
+  end // end of catch
+  
+  if(pointRecs.size <=0) do 
+  	logInfo("updateEquipPoint", "Equipment doesnot have points, returned from If statement")
+  	//return {"status":"FAILURE"}
+  end
+  else if (pointsFromPayload != null and pointsFromPayload.size > 0) do 
+  pointsFromPayload.each  ptFromPayload=>do
+      ptFromFolio = pointRecs.find( x => x->navName == ptFromPayload->pointId)
+      //map tags to this point
+      mapPointTags(ptFromFolio, ptFromPayload)
+  end
+  end
+  
+  
+  /*********************************************main function ends*********************************************/
+  
+  return {"status":"SUCCESS"}
+  end
+  //sample request : updateEquipPoint({"facilityName":"Demo","client":"pacificcontrols","equipmentId":"AHU0002","points":[{"pointId":"PT_001_Temp_Sensor","his":true,"water":false,"power":true},{"pointId":"longitude","his":true}]})
+---
+name:createPoint
+id:@1e4b241e-856d3c00
+func
+mod:2016-02-08T10:02:13.35Z
+src:
+  /**
+  * This function is used to create a point
+  *
+  * @author Twinkle
+  * @date January 2016
+  * @jsonPayload denotes the payload
+  */
+  (jsonPayload) => do
+  
+  equipRec : null
+  data : null
+  pointsFromPayload : jsonPayload->points.toGrid
+  pointsToBeCreated : [].toGrid
+  updatePointGrid : [].toGrid
+  
+  /********** func to create point **********/
+  createPoints : (pointsToBeCreated, equipRec) =>do
+  	updateGrid:[].toGrid
+  	pointsToBeCreated.each row => do
+  		mapAndCommitPoint(row, equipRec, updateGrid)
+  	end // end of pointsToBeCreated.each
+  end // end of createPoint
+  
+  /********** map and commit points to device **********/
+  mapAndCommitPoint : (pt, equipRec, updateGrid) =>do
+  	logInfo("unit", "unit -------------------: "+pt)
+  	mapPointsTags : {
+  		point,
+  		id : refGen(),
+  		point,
+  		description : pt ->pointName.toStr,
+  		equipRef : equipRec->id,
+  		kind : if(pt ->dataType.lower == "integer") do "Number" end
+  		else if (pt ->dataType.lower == "float") do "Number" end
+  		else if (pt ->dataType.lower == "double") do "Number" end
+  		else if (pt ->dataType.lower == "boolean") do "Bool" end
+  		else if (pt ->dataType.lower == "string") do "Str" end,
+  		siteRef : equipRec->siteRef->id,
+  		tz : equipRec->tz,
+  		unit : if(pt ->unit.parseUnit(false) !=null) do pt ->unit.parseUnit(false) end else pt ->unit,
+  		navName : pt ->pointId.toStr,
+  		dis : pt ->pointName.toStr,
+  	}
+  	if(updateGrid.isEmpty) do
+  		//commit new point
+  		commit(diff(null,mapPointsTags,{add}))
+  	end
+  	else do
+  		//commit existing point with updated tags
+  		updateGrid.toRecList.map(r => diff(r, mapPointsTags)).commit
+  	end
+  end //end of mapAndCommitPoints
+  
+  
+  
+  
+  /***********************************private functions end here *****************************************************************/
+  
+  
+  try do
+  	//fetch an equipment against which points are to be created
+  	equipRec = read(equip and siteRef->siteName==jsonPayload->facilityName and client==jsonPayload->client and navName==jsonPayload->equipmentId)
+  end //end of try
+  catch (e) do
+  	logInfo("createPoint", "Error occured in inactiveEquipment"+e)
+  	return {"status":"FAILURE"}
+  end //end of catch
+  
+  //Get all the points asscoiated with the equipment
+  existingPointsGrid: equipRec.toPoints
+  pointsToBeCreated = pointsToBeCreated.toGrid
+  pointsFromPayload.each((pt,i) => do
+  	if(existingPointsGrid.keepCols(["navName"]).findAll( x => x->navName == pt->pointId).size != 0) do
+  		updatePointGrid = readAll(point and equipRef==equipRec->id and navName==pt->pointId)
+  		// updatePointGrid.toRecList.map(r => diff(r, {active:removeMarker()})).commit
+  		//update tags to existing point
+  		mapAndCommitPoint(pt,equipRec,updatePointGrid)
+  		logInfo("mapAndCommitPoint", "mapAndCommitPoint is called -------------------: "+pt)
+  	end //end of if
+  	else do
+  		pointsToBeCreated = pointsToBeCreated.addRow(pt)
+  	end //end of else
+  end) //end of pointsFromPayload.each
+  
+  if(pointsToBeCreated.size > 0) do
+  	logInfo("mapAndCommitPoint", "mapAndCommitPoint is called -------------------: "+pointsToBeCreated)
+  	createPoints(pointsToBeCreated.toRecList, equipRec)
+  end
+  
+  return {"status":"SUCCESS"}
+  end
+  //sample request : createPoint({"facilityName":"BuildNo023","client":"PCS","equipmentId":"AHU0001","points":[{"pointId":"PT_001_Temp_Sensor","pointName":"TempSensor","unit":"°C","dataType":"Integer","his":true},{"pointId":"longitude","pointName":"longitude","dataType":"Float","unit":"no unit","tags":"filter,freq"}]})
+---
+name:writeFuncsToTrio
+id:@1e4c626c-4bb85922
+func
+mod:2016-02-09T08:40:23.831Z
+src:
+    () => do
+    
+      myUri : "io/SkySparkFuncBackup_QA.trio"
+      myUri = myUri.replace(" ", "")
+      useUri : myUri.parseUri
+    
+      readAll(func)
+        .ioWriteTrio(useUri)
+    end

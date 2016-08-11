@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="POI_Create_POI_Entity" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter POI_Create_POI_Entity" value="--------POI_Create_POI_Entity--------" />
+		<property expression="json-eval($.)" name="poiFindPOITypeTemplateResponse" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorCode">
+		<then>
+			<payloadFactory media-type="json">
+				<format>{"errorCode":652}</format>
+			</payloadFactory>
+			<header action="remove" name="To" />
+			<property name="RESPONSE" scope="default" type="STRING"
+				value="true" />
+			<send />
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('poiEntityPayload')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<property expression="json-eval($.)" name="poiCreateEntityPayload" />
+			<send receive="POI_Create_POI_Type_Entity">
+				<endpoint key="conf:/endpoints/poi/POI_Create_Entity_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

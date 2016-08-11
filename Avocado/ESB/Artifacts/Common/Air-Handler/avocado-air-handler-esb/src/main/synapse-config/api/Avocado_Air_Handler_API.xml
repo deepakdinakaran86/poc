@@ -1,0 +1,116 @@
+<api xmlns="http://ws.apache.org/ns/synapse" name="Avocado_Air_Handler_API" context="/galaxy-ah/services/equipments">
+   <resource methods="POST" url-mapping="/points" inSequence="Avocado_Validate_DS_DisplayName_Unique_SEQ">
+      <outSequence>
+         <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/*[1]/errorMessage">
+            <then>
+               <payloadFactory media-type="json">
+                  <format>$1</format>
+                  <args>
+                     <arg evaluator="xml" expression="get-property('currentPoint')"/>
+                  </args>
+               </payloadFactory>
+            </then>
+            <else>
+               <payloadFactory media-type="json">
+                  <format/>
+                  <args/>
+               </payloadFactory>
+            </else>
+         </filter>
+         <property name="addList" expression="$body/*[1]" scope="default" type="STRING"/>
+         <property name="info" scope="default">
+            <ns:Information xmlns:ns="www.google.com"/>
+         </property>
+         <aggregate id="123">
+            <completeCondition>
+               <messageCount/>
+            </completeCondition>
+            <onComplete expression="$body/*[1]" enclosingElementProperty="info">
+               <property xmlns:ns="http://org.apache.synapse/xsd" name="validationResponse" expression="json-eval($.Information)" scope="default" type="STRING"/>
+               <script language="js">var validationRes=mc.getProperty('validationResponse');                                      validationRes = validationRes .replace("null,", "");                                   validationRes = validationRes .replace(",null", "");                                    if( validationRes.charAt(0)=="[")                                     {   validationRes=validationRes = '['+validationRes;                   validationRes = validationRes +']';                           }                    if(validationRes!="[null]")                                        {                                     mc.setProperty('payload',validationRes);                             }                                 if(String.fromCharCode( validationRes.charAt(0))=="{")                                               {                      validationRes=validationRes =      '['+validationRes;                      validationRes = validationRes +']';      mc.setProperty('payload',validationRes);         }</script>
+               
+               <filter xmlns:ns="http://org.apache.synapse/xsd" source="get-property('payload')" regex="null">
+                  <then>
+                     <payloadFactory media-type="json">
+                        <format>{ "errorMessage": "Points are not unique"}</format>
+                        <args/>
+                     </payloadFactory>
+                     <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+                     <property name="HTTP_SC" value="200" scope="axis2" type="STRING"/>
+                     <send/>
+                  </then>
+               </filter>
+               <filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(get-property('payload'))" regex="false">
+                  <then>
+                     <payloadFactory media-type="json">
+                        <format>{ "errorMessage": "Points are not unique"}</format>
+                        <args/>
+                     </payloadFactory>
+                     <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+                     <property name="HTTP_SC" value="200" scope="axis2" type="STRING"/>
+                     <send/>
+                  </then>
+                  <else>
+                     <filter source="boolean(get-property('attachParents'))" regex="false">
+                        <then>
+                           <sequence key="Avocado_Create_Points_SEQ"/>
+                        </then>
+                     </filter>
+                  </else>
+               </filter>
+            </onComplete>
+         </aggregate>
+         <property name="info1" scope="default">
+            <ns:Information xmlns:ns="www.google.com"/>
+         </property>
+         <aggregate id="ITR_AGG">
+            <completeCondition>
+               <messageCount/>
+            </completeCondition>
+            <onComplete expression="$body/*[1]" enclosingElementProperty="info1">
+               <log separator="---------------******************--requestPayload is here onComplete --------">
+                  <property name="Points Mapped" expression="$body"/>
+               </log>
+               <log level="full"/>
+               <payloadFactory media-type="json">
+                  <format>{ "status": "SUCCESS"}</format>
+                  <args/>
+               </payloadFactory>
+               <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+               <property name="HTTP_SC" value="200" scope="axis2" type="STRING"/>
+               <send/>
+            </onComplete>
+         </aggregate>
+         <filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(get-property('attachParents'))" regex="false">
+            <then>
+               <filter xpath="$body/*[1]/errorMessage">
+                  <then>
+                     <payloadFactory media-type="json">
+                        <format>{ "status": "FAILURE"}</format>
+                        <args/>
+                     </payloadFactory>
+                     <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+                     <property name="HTTP_SC" value="200" scope="axis2" type="STRING"/>
+                     <send/>
+                  </then>
+                  <else>
+                     <payloadFactory media-type="json">
+                        <format>{ "status": "SUCCESS"}</format>
+                        <args/>
+                     </payloadFactory>
+                     <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+                     <property name="HTTP_SC" value="200" scope="axis2" type="STRING"/>
+                     <send/>
+                  </else>
+               </filter>
+            </then>
+         </filter>
+      </outSequence>
+      <faultSequence>
+         <log level="full">
+            <property name="MSG" value="==== FAULT CREATED ==="/>
+         </log>
+      </faultSequence>
+   </resource>
+</api>
+                        

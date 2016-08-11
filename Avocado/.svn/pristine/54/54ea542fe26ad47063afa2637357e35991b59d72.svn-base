@@ -1,0 +1,3 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Create_Tenant_Admin_Role_EP" >
+	<http method="post" uri-template="http://10.236.166.114:8281/alpine/services/users/roles"/>
+</endpoint>

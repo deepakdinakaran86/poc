@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Item_Update_Node_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Service_Item_Update_Node" value="---Service_Item_Update_Node----"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <payloadFactory media-type="json">
+                <format>{
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"platformEntity": {
+					"platformEntityType":
+					"MARKER"
+					},
+					"identifier": {
+					"key": "$3",
+					"value": "$4"
+					},
+					"entityStatus": {
+					"statusName": "$5"
+					}
+					}</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('serviceItemDomain')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemTemplate')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemIdKey')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemIdValue')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemStatus')"/>
+                </args>
+            </payloadFactory>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send receive="Service_Item_Update_Res_SEQ">
+                <endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Hierarchy_Update_Node_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

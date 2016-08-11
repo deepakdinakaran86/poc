@@ -1,0 +1,86 @@
+# This file is intentionally empty. Message look-ups will fall back to the default "messages.properties" file.
+
+#POI Type Messages
+poitype.create.success=POI Type Created Successfully.
+poitype.create.failure=POI Type Creation Failed.
+
+#POI Messages
+poi.create.success=POI Created Successfully.
+poi.update.success=POI Updated Successfully.
+poi.delete.success=POI Deleted Successfully.
+
+#Client Messages
+client.create.success=Client Created Successfully.
+client.create.failure=Client Creation Failed.
+client.update.success=Client Updated Successfully.
+client.update.failure=Client Updation Failed.
+client.admin.link.failure=Create Client Admin Link has Expired.
+client.admin.success=Client Admin Created Successfully.
+client.admin.failure=Client Admin Creation Failed.
+client.session.exists=Client Session Exists.
+client.send.email.success=Email Sent Successfully.
+client.send.email.failure=Send Email Failed.
+client.admin.success.link=Client Admin Created Successfully, Please check your email to set your password.
+
+#Service Component
+service.component.create.success=Service Component Created Successfully.
+service.component.create.failure=Service Component Creation Failed.
+service.component.update.success=Service Component Updated Successfully.
+service.component.update.failure=Service Component Updation Failed.
+
+#Service Schedule
+service.schedule.create.success=Service Schedule Created Successfully.
+service.schedule.create.failure=Service Schedule Creation Failed.
+service.schedule.update.success=Service Schedule Updated Successfully.
+service.schedule.update.failure=Service Schedule Updation Failed.
+
+#Vehicle Type
+vehicle.type.create.success=Vehicle Type Created Successfully.
+vehicle.type.create.failure=Vehicle Type Creation Failed.
+
+#Tag Messages
+tag.create.success=Tag Created Successfully.
+tag.create.failure=Tag Creation Failed.
+tag.update.success=Tag Updated Successfully.
+tag.update.failure=Tag Updation Failed.
+
+#Tag Type Messages
+tagtype.create.success=Tag Type Created Successfully.
+tagtype.create.failure=Tag Type Creation Failed.
+
+#Vehicle
+vehicle.create.success=Vehicle Created Successfully.
+vehicle.create.failure=Vehicle Creation Failed.
+vehicle.update.success=Vehicle Updated Successfully.
+vehicle.update.failure=Vehicle Updation Failed.
+
+#Service Management
+service.item.create.success=Service Item Created Successfully.
+service.item.update.success=Service Item Updated Successfully.
+
+#Geofence Messages
+geofence.update.success=Geofence Updated Successfully.
+geofence.update.failed=Geofence Updation Failed.
+geofence.create.success=Geofence Created Successfully.
+geofence.create.failed=Geofence Creation Failed.
+geofence.delete.success=Geofence Deleted Successfully.
+geofence.delete.failed=Geofence Deletion Failed
+
+#User Messages
+user.create.success=User Created Successfully.
+user.create.failure=User Creation Failed.
+user.update.success=User Updated Successfully.
+user.update.failure=User Update Failed.
+user.password.failure= Password Link has expired.
+user.delete.success= User deleted Successfully.
+user.delete.failure= User delete Failed.
+
+forgot.password.success= Mail sent for reset password.
+forgot.password.failure= Invalid data for reset password.
+
+set.password.success= Password Set Successfully.
+set.password.failure= Password Set Failed.
+
+#Route Messages
+route.create.success=Route Created Successfully.
+route.create.failed=Route Creation Failed

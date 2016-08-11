@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Create_Tenant_Assign_Features_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Create_Tenant_Assign_Features_SEQ"
+			value="Create_Tenant_Assign_Features_SEQ" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.)" name="responsePayload"
+				scope="default" type="STRING" />
+			<filter regex="false" source="boolean(get-property('featuresPayload'))">
+				<then>
+					<log separator=",">
+						<property name="No features present" value="--------No features present--------" />
+					</log>
+					<payloadFactory media-type="json">
+						<format>null</format>
+					</payloadFactory>
+				</then>
+				<else>
+					<log separator=",">
+						<property name="features present" value="----features present--------" />
+					</log>
+					<payloadFactory media-type="json">
+						<format>$1</format>
+						<args>
+							<arg evaluator="xml" expression="get-property('featuresPayload')" />
+						</args>
+					</payloadFactory>
+				</else>
+			</filter>
+			<property expression="get-property('myDomain')" name="query.param.domain"
+				scope="default" type="STRING" />
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send>
+				<endpoint
+					key="conf:/endpoints/alpine/Create_Tenant_Assign_Features_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

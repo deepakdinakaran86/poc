@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Avocado_Create_User_Send_SMS_SEQ" >
+  <log>
+    <property name="Entering Avocado_Create_User_Send_SMS_SEQ" value="Entering Avocado_Create_User_Send_SMS_SEQ"/>
+  </log>
+  <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+    <then>
+      <send/>
+    </then>
+    <else>
+      <payloadFactory media-type="json">
+        <format>{
+					"body":"Welcome to G2021. Visit www.galaxy2021.net/portal to start exploring your Galaxy",
+					"toMobileNumber":"$1"
+					}
+		</format>
+        <args>
+          <arg evaluator="xml" expression="get-property('contactNumber')"/>
+        </args>
+      </payloadFactory>
+      <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+      <send>
+        <endpoint key="conf:/endpoints/user/Avocado_Create_User_Send_SMS_EP.xml"/>
+      </send>
+    </else>
+  </filter>
+</sequence>

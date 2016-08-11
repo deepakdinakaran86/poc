@@ -1,0 +1,202 @@
+.fms-title{margin-bottom:10px;}
+.margintop10{margin-top:10px;}
+.fa{font-size:18px;}
+.sidebar .user-panel{display:none;}
+.sidebar-menu .header{display:none}
+.dropdown-menu .user-body{display: none;}
+.fms-title h4{    color: #6b6969;	}		
+.required {    color: #e02222;    font-size: 12px;    padding-left: 2px;    font-size: 14px;}
+.form-group {    margin-bottom: 20px;}
+
+  .skin-blue .main-header .navbar{
+      background: radial-gradient(#197aa5 15%, #005180 60%);
+	  }
+   .skin-blue .main-header .logo {
+    background-color: #158dc1;
+	}
+	
+	.btn-boxapp {
+    border-radius: 3px;
+    position: relative;
+    padding: 15px 5px;
+    margin: 0 0 10px 10px;
+    width: 71px;
+    height: 81px;
+    text-align: center;
+    color: #666;
+    border: 1px solid #ddd;
+    background-color: #f4f4f4;
+    font-size: 12px;
+}
+
+.btn-boxapp .count{font-size:16px;}
+.btn-boxapp .fa{font-size:20px;padding:8px 0px}
+.btn-boxapp h5{    margin-top: 5px;
+   margin-top: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+	}
+
+.btn-boxapp figure{
+    display: inline-block;
+    width: inherit;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    margin-left: -8px;
+}	
+.alertimg{
+    background-image: url('../img/console/alert.png');
+}
+.speedimg{
+    background-image: url('../img/console/speeding.png');
+}
+.maintenanceimg{
+    background-image: url('../img/console/maintenance.png');
+}
+.geofenceimg{
+    background-image: url('../img/console/geofence.png');
+}
+.seatbeltimg{
+    background-image: url('../img/console/seatbelt.png');
+}
+.accimg{
+    background-image: url('../img/console/acc.png');
+}
+.breakimg{
+    background-image: url('../img/console/break.png');
+}
+
+.fuel{
+background-image: url('../img/console/fuel.png');
+
+}
+
+.btn-boxapp:hover{
+background-color:#357ca5;
+}
+
+.btn-boxapp:hover .count.text-blue{color:#fff!important}
+.btn-boxapp:hover h5{color:#fff!important}
+.btn-boxapp:hover figure{
+    display: inline-block;
+    width: inherit;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: top center;
+    margin-left: -8px;
+}
+
+.btn-boxapp:hover .alertimg{
+    background-image: url('../img/console/white/alert.png');
+}
+.btn-boxapp:hover .speedimg{
+    background-image: url('../img/console/white/speeding.png');
+}
+.btn-boxapp:hover .maintenanceimg{
+    background-image: url('../img/console/white/maintenance.png');
+}
+.btn-boxapp:hover .geofenceimg{
+    background-image: url('../img/console/white/geofence.png');
+}
+.btn-boxapp:hover .seatbeltimg{
+    background-image: url('../img/console/white/seatbelt.png');
+}
+.btn-boxapp:hover .accimg{
+    background-image: url('../img/console/white/acc.png');
+}
+.btn-boxapp:hover .breakimg{
+    background-image: url('../img/console/white/break.png');
+}
+
+
+
+/*******************************/
+/******** Button Styles ********/
+/*******************************/
+
+ .btnanimation li.primary{
+	    border: 1px solid #00c0ef;
+    background-color: #00c0ef;
+  }
+  
+  .btnanimation li.primary i{
+  color: #fff;
+     position: relative;
+    top: 1px;
+  }
+  
+   .btnanimation li.default{
+      border: 1px solid #bdbbbb;
+    background-color: #eceaea;
+	}
+	
+	 .btnanimation li.default i{
+  color: #000;
+     position: relative;
+    top: 1px;
+  }
+  
+    .btnanimation li.edit{
+	border: 1px solid #d73925;
+	background-color: #d73925;
+  }
+  
+  .btnanimation li.edit i{
+  color: #fff;
+      position: relative;
+    top: 1px;
+  }
+  
+  
+ .btnanimation li {
+    overflow: hidden;
+    background: #ddd;
+    list-style: none;
+    white-space:nowrap;
+    margin-right: 6px;
+    border-radius: 3px;
+    display: inline-block;
+	padding: 7px;
+}
+    .btnanimation li a {
+        opacity: 0;
+        color: #666;
+        max-width: 0;
+        display: inline-block;
+        text-decoration: none;
+        transition: max-width 1s ease-out .1s, opacity 1s ease-out .1s, color;
+    }
+        .btnanimation li a:hover {
+            color: #c33;
+        }
+        .btnanimation li a i {
+            float:right;
+            display: block;
+            padding-right: 1em;
+            font:1em/1 'rokkitt', sans-serif;
+			    padding-left: 10px;
+        }
+    .btnanimation li b {
+        color: #c33;
+        line-height:1;
+        font-size: 25px;
+        display: inline-block;
+        padding:.125em .375em;
+    }
+    .btnanimation li:hover {}
+        .btnanimation li:hover a {
+            opacity: 1;
+            max-width: 150px;
+            transition: max-width 1s ease-out .1s, opacity 1s ease-out .1s, color .2s;
+        }
+
+
+/**************************************************/
+
+.col-split-12{
+     height: 100%!important;
+    float: left;
+    width: 100%;
+}

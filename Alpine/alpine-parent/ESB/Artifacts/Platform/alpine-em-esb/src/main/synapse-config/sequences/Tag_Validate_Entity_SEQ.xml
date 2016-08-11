@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Validate_Entity_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Validate_Entity_SEQ" value="--------"></property>
+	</log>
+	<!-- xPath boolean() function may evaluate to false if value of key is empty/null or request doesn't have that key. -->
+	<filter regex="false" source="boolean(//jsonObject/entity)">
+		<then>
+			<!-- Generate Error message for Tag -->
+			<header name="To" action="remove" />
+			<property name="RESPONSE" value="true" scope="default" type="STRING" />
+			<property name="HTTP_SC" value="200" scope="axis2" />
+			<payloadFactory media-type="json">
+				<format>{"errorCode":"505","errorMessage":"Entity not specified"}</format>
+				<args />
+			</payloadFactory>
+			<send />
+			<drop />
+		</then>
+		<else>
+			<filter regex="false" source="boolean(//jsonObject/entity/platformEntity)">
+				<then>
+					<!-- Generate Error message for platformEntity -->
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>{"errorCode":"505","errorMessage":"Platform Entity not specified"}</format>
+						<args />
+					</payloadFactory>
+					<property name="messageType" value="application/json" scope="axis2" />
+					<send />
+					<drop />
+				</then>
+				<else>
+					<filter regex="false" source="boolean(//jsonObject/entity/platformEntity/platformEntityType)">
+						<then>
+							<!-- Generate Error message for platformEntityType -->
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default" type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>{"errorCode":"505","errorMessage":"Platform Entity Type not specified"}</format>
+								<args />
+							</payloadFactory>
+							<property name="messageType" value="application/json" scope="axis2" />
+							<send />
+							<drop />
+						</then>
+						<else>
+						</else>
+					</filter>
+				</else>
+			</filter>
+			<filter regex="false" source="boolean(//jsonObject/entity/entityTemplate)">
+				<then>
+					<!-- Generate Error message for entityTemplate -->
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>{"errorCode":"505","errorMessage":"Entity Template not specified"}</format>
+						<args />
+					</payloadFactory>
+					<send />
+					<drop />
+				</then>
+				<else>
+					<filter regex="false" source="boolean(//jsonObject/entity/entityTemplate/entityTemplateName)">
+						<then>
+							<!-- Generate Error message for entityTemplateName -->
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default" type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>{"errorCode":"505","errorMessage":"Entity Template Name not specified"}</format>
+								<args />
+							</payloadFactory>
+							<send />
+							<drop />
+						</then>
+						<else></else>
+					</filter>
+				</else>
+			</filter>
+			<filter regex="false" source="boolean(//jsonObject/entity/identifier)">
+				<then>
+					<!-- Generate Error message for identifier -->
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>{"errorCode":"505","errorMessage":"Identifier not specified"}</format>
+						<args />
+					</payloadFactory>
+					<send />
+					<drop />
+				</then>
+				<else>
+					<filter regex="false" source="boolean(//jsonObject/entity/identifier/key)">
+						<then>
+							<!-- Generate Error message for identifierKey -->
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default" type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>{"errorCode":"505","errorMessage":"Identifier Key not specified"}</format>
+								<args />
+							</payloadFactory>
+							<send />
+							<drop />
+						</then>
+						<else></else>
+					</filter>
+					<filter regex="false" source="boolean(//jsonObject/entity/identifier/value)">
+						<then>
+							<!-- Generate Error message for platformEntityType -->
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default" type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>{"errorCode":"505","errorMessage":"Identifier Value not specified"}</format>
+								<args />
+							</payloadFactory>
+							<send />
+							<drop />
+						</then>
+						<else></else>
+					</filter>
+				</else>
+			</filter>
+		</else>
+	</filter>
+
+	<!-- get platformEntityType -->
+	<property expression="//jsonObject/entity/platformEntity/platformEntityType" name="platformEntityType" scope="default" type="STRING" />
+
+	<!-- check if entity is existing -->
+	<filter regex="MARKER" source="get-property('platformEntityType')">
+		<then>
+			<!-- check if MARKER entity is existing -->
+			<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+			<payloadFactory media-type="json">
+				<format>
+					{
+					"platformEntity": {
+					"platformEntityType": "MARKER"
+					},
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"identifier": {
+					"key": "identifier",
+					"value": "$3"
+					}
+					}
+				</format>
+				<args>
+					<arg evaluator="xml" expression="//entity/domain/domainName" />
+					<arg evaluator="xml" expression="//entity/entityTemplate/entityTemplateName" />
+					<arg evaluator="xml" expression="//entity/identifier/value" />
+				</args>
+			</payloadFactory>
+			<call>
+				<endpoint key="conf:/endpoints/alpine/Tag_Get_Marker_Entity_EP.xml"></endpoint>
+			</call>
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)" regex="true">
+				<then>
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>
+							{"errorCode":"$1","errorMessage":"$2"}
+						</format>
+						<args>
+							<arg evaluator="xml" expression="//jsonObject/errorCode" />
+							<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+						</args>
+					</payloadFactory>
+					<respond />
+				</then>
+			</filter>
+		</then>
+		<else>
+			<filter regex="USER" source="get-property('platformEntityType')">
+				<then>
+					<!-- check if USER entity is existing -->
+					<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+					<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+					<payloadFactory media-type="json">
+						<format>
+							{
+							"platformEntity": {
+							"platformEntityType": "USER"
+							},
+							"domain": {
+							"domainName": "$1"
+							},
+							"entityTemplate": {
+							"entityTemplateName": "$2"
+							},
+							"identifier": {
+							"key": "$3",
+							"value": "$4"
+							}
+							}
+						</format>
+						<args>
+							<arg evaluator="xml" expression="//entity/domain/domainName" />
+							<arg evaluator="xml" expression="//entity/entityTemplate/entityTemplateName" />
+							<arg evaluator="xml" expression="//entity/identifier/key" />
+							<arg evaluator="xml" expression="//entity/identifier/value" />
+						</args>
+					</payloadFactory>
+					<call>
+						<endpoint key="conf:/endpoints/alpine/Tag_Get_User_Entity_EP.xml"></endpoint>
+					</call>
+					<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)" regex="true">
+						<then>
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default" type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>
+									{"errorCode":"$1","errorMessage":"$2"}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//jsonObject/errorCode" />
+									<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+								</args>
+							</payloadFactory>
+							<respond />
+						</then>
+					</filter>
+				</then>
+				<else>
+					<filter regex="TENANT" source="get-property('platformEntityType')">
+						<then>
+							<!-- check if TENANT entity is existing -->
+							<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+							<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+							<payloadFactory media-type="json">
+								<format>
+									{
+									"platformEntity": {
+									"platformEntityType": "TENANT"
+									},
+									"domain": {
+									"domainName": "$1"
+									},
+									"entityTemplate": {
+									"entityTemplateName": "$2"
+									},
+									"identifier": {
+									"key":
+									"$3",
+									"value": "$4"
+									}
+									}
+								</format>
+								<args>
+									<arg evaluator="xml" expression="//entity/domain/domainName" />
+									<arg evaluator="xml" expression="//entity/entityTemplate/entityTemplateName" />
+									<arg evaluator="xml" expression="//entity/identifier/key" />
+									<arg evaluator="xml" expression="//entity/identifier/value" />
+								</args>
+							</payloadFactory>
+							<call>
+								<endpoint key="conf:/endpoints/alpine/Tag_Get_Tenant_Entity_EP.xml"></endpoint>
+							</call>
+							<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)" regex="true">
+								<then>
+									<header name="To" action="remove" />
+									<property name="RESPONSE" value="true" scope="default" type="STRING" />
+									<property name="HTTP_SC" value="200" scope="axis2" />
+									<payloadFactory media-type="json">
+										<format>
+											{"errorCode":"$1","errorMessage":"$2"}
+										</format>
+										<args>
+											<arg evaluator="xml" expression="//jsonObject/errorCode" />
+											<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+										</args>
+									</payloadFactory>
+									<respond />
+								</then>
+							</filter>
+						</then>
+						<else>
+							<!-- Invalid entity -->
+							<!-- Generate Error message for Invalid entity -->
+							<header name="To" action="remove" />
+							<property name="RESPONSE" value="true" scope="default" type="STRING" />
+							<property name="HTTP_SC" value="200" scope="axis2" />
+							<payloadFactory media-type="json">
+								<format>{"errorCode":"508","errorMessage":"Entity is invalid"}</format>
+								<args />
+							</payloadFactory>
+							<property name="messageType" value="application/json" scope="axis2" />
+							<send />
+							<drop />
+						</else>
+					</filter>
+				</else>
+			</filter>
+		</else>
+	</filter>
+</sequence>

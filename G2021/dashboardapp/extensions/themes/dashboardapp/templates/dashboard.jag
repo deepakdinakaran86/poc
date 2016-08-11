@@ -1,0 +1,449 @@
+<%
+	var APPCONF = require('/configs/appconfig.jag');
+	var APICONF = require('/configs/apiproperties.jag');
+	var usr = require('/modules/user.js');
+	include(utils.resolvePath('templates/portal-header.jag'));
+ %>
+
+<style>
+#battery {	 
+   background:url(<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/img/dashboard_battery.png')%>) no-repeat;
+    width: 180px;
+    height: 100px;
+    display: block;
+    position: relative;
+	    top: 90px;
+    left: 60px;
+}
+#status{
+	background:  url(<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/img/dashboard_battery_status.png')%>) no-repeat  center center;	
+	background-color:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9bba7e+3,e6f0a3+9,147a2f+28,b1d125+51,b1d125+55,d2e638+61,54b72d+77,c3d825+92,dbf043+100 */
+	background: #9bba7e; /* Old browsers */
+	background: -moz-linear-gradient(top,  #9bba7e 3%, #e6f0a3 9%, #147a2f 28%, #b1d125 51%, #b1d125 55%, #d2e638 61%, #54b72d 77%, #c3d825 92%, #dbf043 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #9bba7e 3%,#e6f0a3 9%,#147a2f 28%,#b1d125 51%,#b1d125 55%,#d2e638 61%,#54b72d 77%,#c3d825 92%,#dbf043 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #9bba7e 3%,#e6f0a3 9%,#147a2f 28%,#b1d125 51%,#b1d125 55%,#d2e638 61%,#54b72d 77%,#c3d825 92%,#dbf043 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9bba7e', endColorstr='#dbf043',GradientType=0 ); /* IE6-9 */
+	width: 32px;
+    height: 90px;
+    display: block;
+    top: 4px;
+    left: 11px;
+    position: relative;
+	
+}
+
+#gauge-container {
+    margin: 0 auto;
+    overflow: hidden;
+    width: 614px;
+    height: 324px; 
+    background: transparent url(<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/img/car-dashboard.png')%>) no-repeat 50% 50%;
+}
+
+#status-number{
+	position:relative;
+	font-size: 30px;
+    padding: 30px 30px 0 0px;
+    float: right;
+	z-index: 100;
+}
+
+.page-container-bg-solid .page-title {
+    color: #666;
+     margin-bottom: 10px; 
+     margin-top: 0px; 
+}
+#asset-name{font-weight:bold; letter-spacing:1px;}
+.page-container-bg-solid .page-content {
+    background: #364150;
+	background: #445162;
+
+}
+.page-container-bg-solid .page-title small {
+    color: #fff;
+}
+/*---*/
+
+#memorystatus {	 
+   background:url(<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/img/dashboard_memory.png')%>) no-repeat;
+    width: 180px;
+    height: 100px;
+    display: block;
+    position: relative;
+	    top: 90px;
+    left: 60px;
+}
+#memory-status{
+	background:  url(<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/img/dashboard_battery_status.png')%>) no-repeat  center center;	
+	background-color:/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#9bba7e+3,e6f0a3+9,147a2f+28,b1d125+51,b1d125+55,d2e638+61,54b72d+77,c3d825+92,dbf043+100 */
+	background: #9bba7e; /* Old browsers */
+	background: -moz-linear-gradient(top,  #9bba7e 3%, #e6f0a3 9%, #147a2f 28%, #b1d125 51%, #b1d125 55%, #d2e638 61%, #54b72d 77%, #c3d825 92%, #dbf043 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top,  #9bba7e 3%,#e6f0a3 9%,#147a2f 28%,#b1d125 51%,#b1d125 55%,#d2e638 61%,#54b72d 77%,#c3d825 92%,#dbf043 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom,  #9bba7e 3%,#e6f0a3 9%,#147a2f 28%,#b1d125 51%,#b1d125 55%,#d2e638 61%,#54b72d 77%,#c3d825 92%,#dbf043 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#9bba7e', endColorstr='#dbf043',GradientType=0 ); /* IE6-9 */
+	width: 32px;
+    height: 86px;
+    display: block;
+    top: 8px;
+    left: 11px;
+    position: relative;
+	
+}
+
+#memory-status-number{
+	/*
+	position:relative;
+	font-size: 30px;
+    padding: 30px 30px 0 0px;
+    float: right;
+	z-index: 100;
+	color: #94de49;
+	*/
+	
+	/*
+    position: relative;
+    font-size: 20px;
+    padding: 30px 24px 0 0px;
+    float: right;
+    z-index: 100;
+    color: #fff;
+	*/
+	
+	position:relative;
+	font-size: 30px;
+    padding: 30px 30px 0 0px;
+    float: right;
+	z-index: 100;
+	color: #fff;
+	
+	
+}
+
+.page-container-bg-solid .page-title {
+    color: #666;
+     margin-bottom: 10px; 
+     margin-top: 0px; 
+}
+#asset-name{font-weight:bold; letter-spacing:1px;}
+
+.portlet.light {
+    /* padding: 12px 20px 15px 20px; */
+    background-color: #fff;
+    padding: 0;
+}
+.page-content-wrapper .page-content {
+   
+    padding: 0px 20px 10px 20px !important;
+  }
+
+</style>
+
+<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solid page-footer-fixed " onload=" FnDashboardInit();">
+<!-- BEGIN HEADER -->
+	<%include(utils.resolvePath('templates/page-header.jag')); %>
+<!-- END HEADER -->
+
+
+<!-- BEGIN CONTAINER -->
+<div class="page-container">	
+	<%include(utils.resolvePath('templates/page-sidebar.jag')); %>
+	
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content" style="min-height:720px">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			
+			<!-- BEGIN PAGE HEADER-->
+			<h3 class="page-title " >	<small >Asset ID: </small><small id="asset-name"></small></h3>
+			<div class="page-bar hidden">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Page Layouts</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Blank Page</a>
+					</li>
+				</ul>		
+			</div>
+			<!-- END PAGE HEADER-->
+			
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">			
+					<div class="col-md-3 col-sm-6">
+							<!-- BEGIN PORTLET-->
+							<div class="portlet light " style="
+								background: #e8d057; /* Old browsers */
+								background: -moz-radial-gradient(center, ellipse cover,  #e8d057 1%, #c5a61a 100%); /* FF3.6-15 */
+								background: -webkit-radial-gradient(center, ellipse cover,  #e8d057 1%,#c5a61a 100%); /* Chrome10-25,Safari5.1-6 */
+								background: radial-gradient(ellipse at center,  #e8d057 1%,#c5a61a 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+								filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e8d057', endColorstr='#c5a61a',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+								height: 350px;
+								">
+								<div class="portlet-title hidden">
+									<div class="caption">
+										<i class="icon-bar-chart font-green-sharp hide"></i>
+										<span class="caption-subject font-green-sharp bold uppercase" style="color:#fff !important">Battery Check</span>
+										<span class="caption-helper"></span>
+									</div>
+									<div class="actions">
+									
+									</div>
+								</div>
+							<div class="portlet-body" >
+							<!--- style="background:#c8ac20; min-height:180px"--->
+								<span class="caption-subject  bold uppercase" style="padding: 0px 0 0 15px !important;">Battery Status</span>
+									<div class="dashboard-stat " style=" min-height:200px">				
+										<div id="battery">
+											<span id="status-number">%</span><div id="status"></div>
+									
+										</div>
+											
+									</div>
+								</div>
+							</div>
+							<!-- END PORTLET-->
+						
+						</div>
+						
+				
+				<div class="col-md-6 col-sm-6"> 
+					
+										<!-- BEGIN PORTLET-->
+					<div class="portlet light ">
+						<div class="portlet-title hidden">
+							<div class="caption">
+								<i class="icon-share font-red-sunglo hide"></i>
+								<span class="caption-subject  bold uppercase">Gyrometer</span>
+								<span class="caption-helper"></span>
+							</div>
+							<div class="actions">
+							
+							</div>
+						</div>
+						<!--<div class="portlet-body" style="background:#94de49">-->
+						<div class="portlet-body" style="background:#71ad34">
+							<div id="site_activities_loading" style="display: none;">
+								<img src="extensions/themes/dashboardapp/assets/admin/layout/img/loading-spinner-blue.gif" alt="loading">
+							</div>							
+						<div class="speed"> </div>
+						<span class="caption-subject  bold uppercase" style="padding: 0px 0 0 15px !important;">Gyrometer Sensor</span>
+					        <div id="gauge-container" class="hidden-on-narrow">
+								<div id="rpm"></div>
+								<div id="kmh"></div>
+								<div id="fuel"></div>
+								<!--<div id="water-temprature"></div> -->
+							</div>
+						</div>
+						<div class="responsive-message"></div>
+					</div>
+					<!-- END PORTLET-->
+					</div>
+					
+					<div class="col-md-3 col-sm-6">
+					<!-- BEGIN PORTLET-->
+					<div class="portlet light " style="
+						background: #36d0db; /* Old browsers */
+						background: -moz-radial-gradient(center, ellipse cover,  #36d0db 1%, #148b93 100%); /* FF3.6-15 */
+						background: -webkit-radial-gradient(center, ellipse cover,  #36d0db 1%,#148b93 100%); /* Chrome10-25,Safari5.1-6 */
+						background: radial-gradient(ellipse at center,  #36d0db 1%,#148b93 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+						filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#36d0db', endColorstr='#148b93',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */height: 350px;
+						">
+												<div class="portlet-title hidden">
+							<div class="caption">
+								<i class="icon-bar-chart font-green-sharp hide"></i>
+								<span class="caption-subject font-red-sunglo bold uppercase">Memory Check</span>
+								<span class="caption-helper"></span>
+							</div>
+							<div class="actions">
+							
+							</div>
+						</div>
+						
+						<!--
+						<div class="portlet-body">
+						<span class="caption-subject  bold uppercase" style="padding: 0px 0 0 15px !important;">Memory Status</span>
+						<div class="dashboard-stat " style=" min-height:200px">	
+							 <div id="chart" >loading...</div>
+						</div>
+						</div>
+					</div>
+					-->
+	
+					<div class="portlet-body"><!--- style="background:#c8ac20; min-height:180px"--->
+								<span class="caption-subject  bold uppercase" style="padding: 0px 0 0 15px !important;">Memory Status</span>
+									<div class="dashboard-stat " style=" min-height:200px">				
+										<div id="memorystatus"><span id="memory-status-number">%</span><div id="memory-status" style="height:75px;"></div>
+										
+										</div>
+									
+									</div>
+					</div>
+				</div>
+				
+				
+				
+				
+					<!-- END PORTLET-->
+			</div>
+				
+			<div class="col-md-12 col-sm-12" style="">	
+				<!--
+					<button name="test" id="test" value="addData" onclick="javascript:setAlert();">addData</button>
+					<button name="test" id="test" value="addSeries" onclick="javascript:addSeries('test')">addSeries</button>
+					-->	
+						<span class="caption-subject  bold uppercase" style="top: -15px;color:rgba(255, 255, 255, 0.57);padding: 10px 0 0 15px !important;margin: 10px 0 10px 0;style="width:100%!important;">Magnetometer Sensor</span>					
+						<div id="line-chart" style="width:100%!important;height:300px;background: linear-gradient( to left, #000, #364150 );"></div>
+			</div>
+				
+				
+			</div>
+				<br/>
+			
+				<div class="col-md-6 col-sm-6 hidden">
+					<!-- BEGIN PORTLET-->
+					<div class="portlet light " style="
+					background: #d9a97c; /* Old browsers */
+					background: -moz-radial-gradient(center, ellipse cover,  #d9a97c 0%, #955b29 100%); /* FF3.6-15 */
+					background: -webkit-radial-gradient(center, ellipse cover,  #d9a97c 0%,#955b29 100%); /* Chrome10-25,Safari5.1-6 */
+					background: radial-gradient(ellipse at center,  #d9a97c 0%,#955b29 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+					filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d9a97c', endColorstr='#955b29',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+">
+						<div class="portlet-title hidden">
+							<div class="caption">
+								<i class="icon-share font-red-sunglo hide"></i>
+								<span class="caption-subject font-red-sunglo bold uppercase">Accelerometer Sensor</span>
+								<span class="caption-helper"></span>
+							</div>
+							<div class="actions">
+							
+							</div>
+						</div>
+						<div class="portlet-body">
+						<span class="caption-subject  bold uppercase" style="padding: 0px 0 0 15px !important;">Accelerometer Sensor</span>
+							<div id="site_activities_loading" style="display: none;">
+								<img src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/img/loading-spinner-blue.gif')%>" alt="loading">
+							</div>							
+						<div class="dashboard-stat " style=" min-height:200px">	
+							 <div id="gyrograph">loading...</div>
+						</div>
+						</div>
+					</div>
+					<!-- END PORTLET-->
+					
+				
+					
+				</div>
+				
+			</div>
+			
+			<div class="clearfix"></div><!-- END First ROW -->
+			
+
+			
+			<div class="row hidden">
+				
+						<!-- BEGIN PORTLET  http://visjs.org/docs/graph3d/#Configuration_Options-->
+					<div class="col-md-6 col-sm-6">	
+
+						<div class="portlet light ">
+							<div class="porlet-title"></div>
+							<div class="porlet-body" style="
+background: #f1ff00; /* Old browsers */
+background: -moz-radial-gradient(center, ellipse cover,  #f1ff00 1%, #76c12f 100%); /* FF3.6-15 */
+background: -webkit-radial-gradient(center, ellipse cover,  #f1ff00 1%,#76c12f 100%); /* Chrome10-25,Safari5.1-6 */
+background: radial-gradient(ellipse at center,  #f1ff00 1%,#76c12f 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f1ff00', endColorstr='#76c12f',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+">
+				
+								
+							<div id="mygraph"></div>
+							<div id="info"></div>
+							</div>
+						
+						</div>					
+												
+					</div>
+				
+					
+			</div>
+		
+	
+		
+		
+		
+					
+			</div>
+			
+			
+				
+			
+			
+			
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	
+	
+	<!-- END CONTENT -->
+	<!--<% //include(utils.resolvePath('templates/page-quickbar.jag')); %> -->
+	
+</div>
+<!-- END CONTAINER -->
+<%include(utils.resolvePath('templates/portal-footer.jag')); %>
+
+
+<script type="text/javascript">		
+		var VarListAssetsUrl = '<%=APICONF.GAPP_SERVICES.assets.monitoring%>';		
+		var VarGetDeviceDataUrl = '<%=APICONF.GAPP_SERVICES.device.find%>';		
+		var VarGetAssetLatestUrl = '<%=APICONF.GAPP_SERVICES.equipments.asset.latestdevice%>';
+		var VarGetAssetDetailsUrl = '<%=APICONF.GAPP_SERVICES.equipments.asset.find%>';
+		var VarGetAssetIdentifier = '<%=APICONF.GAPP_SERVICES.equipments.asset.findidentifier%>';
+		var VarLUDomainName = '<%=usr.domainName()%>';
+		var VarCurrentTenantInfo = $.parseJSON('<%=VarCurrentTenantInfo%>');
+		var ObjPageAccess = $.parseJSON('<%=ObjPageAccess%>');
+		var VarDashbardId = '<%=VarGensetDashboardId%>';
+		
+		<!-- Variables/Urls for Websocket Connection-->
+		var VarWebSocketType        = '<%=APPCONF.GAPP_CONF.APP_WEBSOCKET_TYPE%>';
+		var VarLiveSubscribeUrl     = '<%=APICONF.GAPP_SERVICES.websocket.weborb%>';	
+		var VarMqttLiveSubscribeUrl = '<%=APICONF.GAPP_SERVICES.websocket.mqtt%>';
+</script>
+
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('js/dashboardscript.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('js/vis.js')%>"></script>
+
+	<!-- Scripts for Websocket Connection-->
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('js/websocket.js')%>"></script>
+<script src="<%=urlPrefix%>js/websocket/mqtt/mqttws31-min.js"></script>
+<script src="<%=urlPrefix%>js/websocket/WebORB.js"></script>
+
+
+
+

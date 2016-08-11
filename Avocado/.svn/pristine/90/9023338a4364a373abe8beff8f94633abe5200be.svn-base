@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_Tenant_Admin_Role_SEQ">
+	<log separator=",">
+		<property name="Enter Create_Tenant_Admin_Role_SEQ" value="---Create_Tenant_Admin_Role_SEQ--------"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			
+			<payloadFactory media-type="json">
+				<format>{ "domainName":"$1", "roleName":"$2", "resources":$3 }				</format>
+				<args>
+					<arg expression="get-property('myDomain')" evaluator="xml"></arg>
+					<arg expression="get-property('tenantAdminRole')" evaluator="xml"></arg>
+					<arg expression="get-property('resourcesPermissionPayload')"
+						evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<property name="x-jwt-assertion" expression="get-property('Authorization')"
+				scope="transport" type="STRING"></property>
+			<property name="messageType" value="application/json" scope="axis2"
+				type="STRING"></property>
+			<send>
+				<endpoint key="conf:/endpoints/tenant/Create_Tenant_Admin_Role_EP.xml"></endpoint>
+			</send>
+		</else>
+	</filter>
+</sequence>

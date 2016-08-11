@@ -1,0 +1,205 @@
+<style>
+#GBL_loading, #alertModal{display:none}
+</style>
+<!-- BEGIN FOOTER -->
+<div class="page-footer">
+    <div class="page-footer-inner">
+         2016 &copy; GALAXY APP
+    </div>
+    <div class="page-footer-tools">
+        <span class="go-top">
+        <i class="fa fa-angle-up"></i>
+        </span>
+    </div>
+</div>
+<!-- END FOOTER -->
+
+<span id="notificationMsg"></span>
+
+<!--  common modal dialog box  -->
+
+<div id="alertModal" class="modal fade" tabindex="-1" aria-hidden="true">
+	<div class="modal-dialog modal-xs">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+				<h4 class="modal-title">Alert</h4>
+			</div>
+			<div class="modal-body">
+				<div class="scroller" data-always-visible="1" data-rail-visible1="1">
+					<div class="row">
+						<div class="col-md-12">														
+							<p class="modalMessage">Error</p>							
+						</div>					
+					</div>
+				</div>
+			</div>
+			
+			<div class="modal-footer">
+			<button type="button" data-dismiss="modal" aria-hidden="true" class="btn  btn-raised"><i class="icon-check icons" aria-hidden="true"></i>Ok</button>
+				<div class="modal-footer">	</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!--  End cancel model popup  -->
+
+<!-- Token Expired Notification-->
+<div class="modal fade" id="tokenexpiremodal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-md">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title"> <i class="fa fa-frown-o"></i> &nbsp; Notification</h4>
+			</div>
+			<div class="modal-body" style="min-height:220px">
+				<div class="row">
+				<div id="tokenexpiremodal-icon" clas="bg-info" style="margin:0 auto; text-align:center">
+					<i class="fa fa-exclamation-triangle " ></i>
+				</div>
+				
+				<div id="tokenexpiremodal-content"></div>
+				<div id="tokenexpiremodal-text"> Please re-login to continue with the appication. if you have unsaved changes, unfortunately they will not be saved.</div>
+				
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+		
+<div id="GBL_loading">
+	<div class="GBL_loading" >
+			<div style="max-width:50%"><img src="<%=urlPrefix%><%=utils.resolveUrl('images/103.GIF')%>"></div>
+	</div>
+</div>
+	
+<script id="errorTemplate" type="text/x-kendo-template">
+	<div class="alert alert-danger">
+		<strong> <img  src="<%=urlPrefix%><%=utils.resolveUrl('images/error-icon.png')%>" /></strong>  #= message #		
+	</div>
+</script>
+
+<script id="successTemplate" type="text/x-kendo-template">  
+	<div class="alert alert-success">
+		<strong> <img  src="<%=urlPrefix%><%=utils.resolveUrl('images/success-icon.png')%>" /></strong>  #= message #
+	</div>
+</script>
+
+<script id="infoTemplate" type="text/x-kendo-template">  
+	<div class="alert alert-info" role="alert">
+		<strong> <img  src="<%=urlPrefix%><%=utils.resolveUrl('images/info-icon.png')%>" /></strong>  #= message #
+	</div>  	
+</script>
+
+
+<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+<!-- BEGIN CORE PLUGINS -->
+
+<!-- BEGIN CORE PLUGINS -->
+<!--[if lt IE 9]>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/respond.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/excanvas.min.js')%>"></script>
+<![endif]-->
+
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/jquery.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/jquery-migrate.min.js')%>"></script>
+
+<!-- IMPORTANT! Load jquery-ui.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/jquery-ui/jquery-ui.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/bootstrap/js/bootstrap.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/jquery.blockui.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/jquery.cokie.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/uniform/jquery.uniform.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js')%>"></script>
+<!-- END CORE PLUGINS -->
+
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+<!-- END PAGE LEVEL PLUGINS -->
+
+
+<!-- BEGIN PAGE LEVEL SCRIPTS -->
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/scripts/metronic.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/scripts/layout.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/scripts/quick-sidebar.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/scripts/demo.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/scripts/index.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/scripts/tasks.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/scripts/maps-google.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/global/plugins/kendoui/kendo.all.min.js')%>"></script>
+<script type='text/javascript' src="<%=urlPrefix%>js/jquery-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<script type='text/javascript' src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/scripts/commonFunctions.js')%>"></script>
+
+<!-- END PAGE LEVEL SCRIPTS -->
+
+
+
+
+
+<script>
+
+var GblAppContextPath = '<%=APPCONF.GAPP_CONF.CONTEXT_PATH%>';
+	var GblAppRootPath = '<%=urlPrefix%>';
+	var GblAppTheme = '<%=require('/configs/designer.json').theme%>';
+	
+	initNotifications();
+	
+jQuery(document).ready(function() {    
+   Metronic.init(); // init metronic core componets
+   Layout.init(); // init layout
+   QuickSidebar.init(); // init quick sidebar
+	//Demo.init(); // init demo features
+   Index.init();   
+   Index.initDashboardDaterange();
+	//Index.initJQVMAP(); // init index page's custom scripts
+	//Index.initCalendar(); // init index page's custom scripts
+	// Index.initCharts(); // init index page's custom scripts
+	// Index.initChat();
+	// Index.initMiniCharts();
+	// Tasks.initDashboardWidget();
+     //MapsGoogle.init();
+});
+
+	var UserCurrentRoleName, UserCurrentPermissions;
+
+	console.info('--------------UsrObj');
+	console.log(ObjUserData);
+	//console.log('--------------roles');
+	//console.log(UserCurrentRoleName);
+	//console.log('--------------permissions');
+	//console.log(UserCurrentPermissions);
+	console.log('--------------');
+	
+	if(jQuery.inArray("TenantAdmin", JSON.parse(UserCurrentRoleName)) !== -1){	
+	console.log('TenantAdmin');
+			// If the element was not found, -1 will be returned.  
+			//alert('UserCurrentRoleName yes');
+		//$('#writeback-block').show();
+			//$('#single-user-writeback').hide();
+  
+	} else {
+			console.log('User');
+			//alert('UserCurrentRoleName no');
+	//$('#writeback-block').hide();
+			//$('#single-user-writeback').hide();
+			//$('.last').hide();
+		}
+	
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

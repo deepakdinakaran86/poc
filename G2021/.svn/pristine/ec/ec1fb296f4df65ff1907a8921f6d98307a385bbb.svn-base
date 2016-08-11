@@ -1,0 +1,142 @@
+{
+  "initScripts": ["js/dashboard-deployer.js"],
+  "welcomeFiles": ["/routers/tenant.jag"],
+  "errorPages": {
+    
+	"500": "/controllers/error-pages/error500.html",
+	
+  },
+  "urlMappings": [
+    {
+      "url": "/login-controller",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/login",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/logout",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/t/*",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/apis/*",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/dashboards/*",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/assets/*",
+      "path": "/routers/tenant.jag"
+    },
+	{
+      "url": "/device/*",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/create-dashboard",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/dashboard-settings/*",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/select-layout",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/create-gadget",
+      "path": "/routers/tenant.jag"
+    },
+    {
+      "url": "/geojson/world/*",
+      "path": "/templates/geojson/world.json"
+    },
+    {
+      "url": "/geojson/europe/*",
+      "path": "/templates/geojson/europe.json"
+    },
+    {
+      "url": "/geojson/usa/*",
+      "path": "/templates/geojson/usa.json"
+    },
+    {
+      "url": "/geojson/countryInfo/*",
+      "path": "/templates/geojson/countryInfo.json"
+    },
+    {
+      "url": "/geojson/usaInfo/*",
+      "path": "/templates/geojson/usaInfo.json"
+    },
+    {
+      "url": "/acs",
+      "path": "/controllers/acs.jag"
+    },
+    {
+      "url": "/banners/*",
+      "path": "/routers/tenant.jag"
+    },
+	{
+		"url": "/ajax/*",
+		"path": "/controllers/ajaxfunctions.jag"
+	},
+	{
+		"url": "/clients/*",
+		"path": "/routers/tenant.jag"
+	},
+	{
+		"url": "/resetpassword/*",
+		"path": "/routers/tenant.jag"
+	},
+	{
+		"url": "/upload/*",
+		"path": "/controllers/imageupload.jag"
+	},
+	{
+		"url": "/dashboard/*",
+		"path": "/routers/tenant.jag"
+	},
+	{
+		"url": "/dashboardexist",
+		"path": "/controllers/checkdashboardexist.jag"
+	},
+	{
+		"url": "/ajaxtoken/*",
+		"path": "/controllers/ajaxtokenfunctions.jag"
+	},
+	{
+		"url": "/dashboardviewer/*",
+		"path": "/routers/tenant.jag"
+	},	
+	{
+		"url": "/error/*",
+		"path": "/routers/tenant.jag"
+	},
+	{
+      "url": "/prototype/*",
+      "path": "/routers/tenant.jag"
+    },
+	{
+      "url": "/history/*",
+      "path": "/routers/tenant.jag"
+    },
+	{
+      "url": "/alarm/*",
+      "path": "/routers/tenant.jag"
+    },{
+      "url": "/writeback/*",
+      "path": "/routers/tenant.jag"
+    },
+	{
+		"url": "/getimage/*",
+		"path": "/controllers/getimage.jag"
+	}
+  ]
+}

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Service_Component_Find_Res_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property
+            name="----------------Entering Service_Component_Find_Res_SEQ----------------" value="----Service_Component_Find_Res_SEQ----"/>
+        <property expression="json-eval($.)"
+            name="JSON Payload find all Entities!" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.[0].dataprovider)"
+                name="serviceItemDataprovider" scope="default" type="STRING"/>
+            <payloadFactory media-type="json">
+                <format>
+				{
+					  "domain": {
+					    "domainName": "$1"
+					  },
+					  "serviceComponentName": "$2",
+					  "description": "$3",
+					  "frequencyInDistance": "$4",
+					  "frequencyInTime": "$5",
+					  "frequencyInRunningHours": "$6",
+					  "notificationInDistance": "$7",
+					  "notificationInTime": "$8",
+					  "notificationInRunningHours": "$9",
+					  "serviceItemValues": $10,
+					  "serviceComponentStatus": {
+					    "statusName": "$11"
+					  },
+					  "serviceComponentIdentifier": {
+					    "key": "$12",
+					    "value": "$13"
+					  }
+				}
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('domainName')"/>
+                    <arg evaluator="xml" expression="get-property('serviceComponentName')"/>
+                    <arg evaluator="xml" expression="get-property('description')"/>
+                    <arg evaluator="xml" expression="get-property('frequencyInDistance')"/>
+                    <arg evaluator="xml" expression="get-property('frequencyInTime')"/>
+                    <arg evaluator="xml" expression="get-property('frequencyInRunningHours')"/>
+                    <arg evaluator="xml" expression="get-property('notificationInDistance')"/>
+                    <arg evaluator="xml" expression="get-property('notificationInTime')"/>
+                    <arg evaluator="xml" expression="get-property('notificationInRunningHours')"/>
+                    <arg evaluator="xml" expression="get-property('serviceItemDataprovider')"/>
+                    <arg evaluator="xml" expression="get-property('status')"/>
+                    <arg evaluator="xml" expression="get-property('identifierKey')"/>
+                    <arg evaluator="xml" expression="get-property('identifierValue')"/>
+                </args>
+            </payloadFactory>
+            <property name="RESPONSE" scope="default" type="STRING" value="true"/>
+            <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+            <send/>
+        </else>
+    </filter>
+</sequence>

@@ -1,0 +1,68 @@
+### Cummins service uri configurations ###
+cummins.services.host=10.234.31.201
+cummins.services.port=8282
+cummins.services.scheme=http
+cummins.services.context.path=/
+
+### test api end points ###
+cummins.um.authenticate=/datasources/units
+
+
+### marker api end points ###
+cummins.services.createMarker=markers/1.0.0/markers
+cummins.services.updateMarker=markers/1.0.0/markers
+cummins.services.deleteMarker=markers/1.0.0/markers/delete
+cummins.services.findMarker=markers/1.0.0/markers/find
+cummins.services.listFilterMarker=markers/1.0.0/markers/list/filter
+cummins.services.listMarker=markers/1.0.0/markers/list
+cummins.services.validate=markers/1.0.0/markers/validate
+cummins.services.markerDatasource=markers/1.0.0/markers/search
+
+### device api from SAFFRON end points ###
+cummins.services.getDeviceDetails=saffron/1.0.0/datasources/devices/{source_id}
+cummins.services.claimDevice=saffron/1.0.0/datasources/devices/{source_id}/claim
+cummins.services.getUnclaimedDevices=saffron/1.0.0/datasources/devices/unsubscribed
+cummins.services.websocket.subscribe=saffron/1.0.0/datasources/ds/subscribe
+
+### device api end points ###
+cummins.services.createDevice=markers/1.0.0/markers
+cummins.services.updateDevice=markers/1.0.0/markers
+cummins.services.findDevice=markers/1.0.0/markers/find
+cummins.services.listFilterDevice=markers/1.0.0/markers/list/filter
+
+
+### generator api end points ###
+cummins.services.createGenerator=/markers
+cummins.services.updateGenerator=/markers
+cummins.services.deleteGenerator=/markers/delete
+cummins.services.findGenerator=/markers/find
+cummins.services.listGenerator=/markers/list
+cummins.services.listFilterGenerator=/markers/list/filter
+cummins.services.viewGeneratorDetails=/marker/find
+cummins.services.viewAllGenerator=/markers/list/filter
+
+### commuter api end points ###
+cummins.services.createCommuter=/markers
+cummins.services.updateCommuter=/markers
+cummins.services.deleteCommuter=/markers/delete
+cummins.services.findCommuter=/markers/find
+cummins.services.listCommuter=/markers/list
+cummins.services.listFilterCommuter=/markers/list/filter
+cummins.services.viewCommuterDetails=/marker/find
+cummins.services.viewAllCommuter=/markers/list/filter
+
+### user api end points ###
+cummins.services.createUser=/users/1.0.0/users
+cummins.services.updateUser=/users/1.0.0/users
+cummins.services.findUser=/users/1.0.0/users/find
+cummins.services.listUser=/users/1.0.0/users/list
+cummins.services.deleteUser=/users/1.0.0/users/delete
+cummins.services.createAdminUser=/users/1.0.0/users/admin
+cummins.services.validateUser=users/1.0.0/users/validate
+
+# History services
+datasource.history.getallparams=saffron/1.0.0/datasources/devices/{source_id}/configurations
+datasource.device.history=saffron/1.0.0/datasources/data/{pq}/find
+
+apimanager.clientid=MhXZBTjZUuqNyeao1udJ8ZD4R64a
+apimanager.clientSecret=7pp7fXAI5agwGf3QGmnCqgXDM_Aa

@@ -1,0 +1,268 @@
+.live-alert { 
+position:relative;
+width:350px; 
+height:223px;  
+overflow:hidden;
+background-color:#fff;
+border:0 solid #ff00ff;
+display:block;
+}
+.alert-thumbnail{
+	width:350px;
+	height:85px;
+	float: left;
+	display: block; 
+	margin: 5px 15px 5px 0px;
+	background:#fff;
+	text-align:center;
+	overflow:hidden;
+	border:0.0em solid #ff00ff;
+}
+.carousel_inner {
+float:left; /* important for inline positioning */
+width:350px; /* important (this width = width of list item(including margin) * items shown */ 
+height:218px;
+overflow: hidden;  /* important (hide the items outside the div) */
+/* non-important styling bellow */
+background: #fff;
+}
+
+.carousel_ul {
+position:relative;
+top:-10px;
+left:0px; /* important (this should be negative number of list items width(including margin) */
+list-style-type: none; /* removing the default styling for unordered list items */
+margin: 0px;
+padding: 0px;
+width:9999px; /* important */
+/* non-important styling bellow */
+padding-bottom:0px;
+border:0.0em solid #ff00ff;
+}
+
+.carousel_ul li{
+float: left; /* important for inline positioning of the list items */                                    
+width:350px;  /* fixed width, important */
+height: 102px;
+/* just styling bellow*/
+padding:0px; 
+margin-top:10px;
+margin-bottom:10px; 
+margin-left:0px; 
+margin-right:5px; 
+}
+
+.carousel_ul li img {
+.margin-bottom:-4px; /* IE is making a 4px gap bellow an image inside of an anchor (<a href...>) so this is to fix that*/
+/* styling */
+cursor:pointer;
+cursor: hand; 
+border:0px; 
+}
+.left_scroll{
+z-index:999;
+position:absolute; 
+top:30px;
+right:310px;
+width:20px;  
+border:0.0em solid #00ff00;
+}
+
+.right_scroll{
+z-index:999;
+position:absolute; 
+top:30px;
+right:5px;
+width:20px;  
+border:0.0em solid #00ff00;
+}
+.left_scroll img, .right_scroll img{position:relative; 
+border:0; /* remove the default border of linked image */
+/*styling*/
+cursor: pointer;
+cursor: hand;
+}
+
+.status-panel-alert-subtitle{ 
+	float:left;
+	display:inline-block; 
+	width:95%;
+	font-weight:bold;  
+	text-decoration:none; 
+	color:#fff;
+	padding: 5px 5px 5px 10px;
+	margin: 0 0 0 15px;
+	text-shadow:1px 1px 0px #404040;
+ 	-webkit-box-shadow:inset 0px 0px 3px -13px #ffffff;
+ 	-moz-box-shadow:inset 0px 0px 3px -13px #ffffff;
+ 	box-shadow:inset 0px 0px 3px -13px #ffffff;	
+	background-color: #970905; 
+	/* background: url(images/header-gradient.jpg) #384146 repeat-x; */ 
+	/* Safari 4-5, Chrome 1-9 */ 
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#b80407), to(#970905));   
+	/* Safari 5.1, Chrome 10+ */ 
+	background: -webkit-linear-gradient(top, #b80407, #970905);   
+	/* Firefox 3.6+ */ 
+	background: -moz-linear-gradient(top, #b80407, #970905);   
+	/* IE 10 */ 
+	background: -ms-linear-gradient(top, #b80407, #970905);   
+	/* Opera 11.10+ */ 
+	background: -o-linear-gradient(top, #b80407, #970905);
+	border-radius: 5px;
+	border: 0.0em solid #0000ff;
+}
+.live-alert-panel-content{ 
+	float:left;	
+	width:320px; 
+	overflow:hidden;
+	background:#fff;
+	padding:5px 10px 10px 5px; 
+	margin: 0 0 0 20px;
+	line-height:22px; 
+	color:#555;
+	border:0.0em solid #ff0000;
+}
+/*Charts */
+.chart-holder{
+	display:inline-block;
+	margin: 10px 10px 0 0;
+	float:left;
+	border:0 solid #ff0000;
+}
+
+
+/* Calendar */
+#panel-icon{ 
+	position:relative;
+	float:left;
+	margin:0 5px 0 0;
+}
+#calendar-panel{
+	float:right;	 
+	width:350px;
+	height:250px;
+	margin: 10px 7px 0 7px;
+	border:0.0em solid #ff0000;
+	border-radius: 5px;
+}
+#calendar-panel-content{ 
+	margin:40px 0 0 0;
+	padding:2px;
+	width:350px; 
+	height:231px;  
+	border-radius: 5px;
+	border:0.0em solid #ff0000;
+}
+#calendar-panel-title{ 
+	float:left;
+	width:350px;
+	height:34px; 
+	font-weight:normal;  
+	text-decoration:none; 
+	color:#fff;
+	padding: 6px 0 0 10px;
+	text-shadow:1px 1px 0px #404040;
+ 	-webkit-box-shadow:inset 0px 0px 3px -13px #ffffff;
+ 	-moz-box-shadow:inset 0px 0px 3px -13px #ffffff;
+ 	box-shadow:inset 0px 0px 3px -13px #ffffff;	
+	background-color: #384146; 
+	/* background: url(images/header-gradient.jpg) #384146 repeat-x; */ 
+	/* Safari 4-5, Chrome 1-9 */ 
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#505d65), to(#384146));   
+	/* Safari 5.1, Chrome 10+ */ 
+	background: -webkit-linear-gradient(top, #505d65, #384146);   
+	/* Firefox 3.6+ */ 
+	background: -moz-linear-gradient(top, #505d65, #384146);   
+	/* IE 10 */ 
+	background: -ms-linear-gradient(top, #505d65, #384146);   
+	/* Opera 11.10+ */ 
+	background: -o-linear-gradient(top, #505d65, #384146);
+	border-radius: 5px;
+	border: 0.0em solid #0000ff;
+}
+
+#weather-title{ 
+	float:left;
+	width:300px;
+	height:34px; 
+	font-weight:normal;  
+	text-decoration:none; 
+	color:#fff;
+	padding: 6px 0 0 10px;
+	margin-bottom: 80px;
+	text-shadow:1px 1px 0px #404040;
+ 	-webkit-box-shadow:inset 0px 0px 3px -13px #ffffff;
+ 	-moz-box-shadow:inset 0px 0px 3px -13px #ffffff;
+ 	box-shadow:inset 0px 0px 3px -13px #ffffff;	
+	background-color: #384146; 
+	/* background: url(images/header-gradient.jpg) #384146 repeat-x; */ 
+	/* Safari 4-5, Chrome 1-9 */ 
+	background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#505d65), to(#384146));   
+	/* Safari 5.1, Chrome 10+ */ 
+	background: -webkit-linear-gradient(top, #505d65, #384146);   
+	/* Firefox 3.6+ */ 
+	background: -moz-linear-gradient(top, #505d65, #384146);   
+	/* IE 10 */ 
+	background: -ms-linear-gradient(top, #505d65, #384146);   
+	/* Opera 11.10+ */ 
+	background: -o-linear-gradient(top, #505d65, #384146);
+	border-radius: 5px;
+	border: 0.0em solid #0000ff;
+} 
+.weatherItem{margin:30px 0 0 0; text-align:right;padding:20px;}
+.weatherLink{display:none;}
+.weatherCity{ 
+	float:left;
+	font-size: 20px;
+	font-weight:bold;
+	margin: 35px 0 0 0;
+	padding: 0 10px 0 10px;
+	border:0 solid #ff0000;
+	
+} 
+
+.ticker-panel{ 
+
+}
+.ticker-item-title{ 
+	float:left;
+	display:inline;
+	background:#ff0000;
+	color:#ffffff;
+	font-weight:bold;
+	height:36px;
+	padding: 7px 10px 5px 10px;
+	border-radius: 5px 0px 0px 5px;
+	border:0 solid #ff0000;
+	
+}
+.ticker-items{ 
+	float:left;
+	width:80%;
+	border:0 solid #ff0000;
+	
+}
+.ticker-items ul{
+	padding: 0;
+}
+.ticker-items li{
+	list-style: none; 
+	padding: 7px 10px 5px 10px;
+}
+.ticker-controls{  
+	float:right;
+	margin: 8px 5px 0 0;
+}
+.up, 
+.down{ 
+	display:inline; 
+	cursor:pointer;
+	padding: 4px 8px;	 
+	border:0 solid #ff0000;
+	background: #00a8e7;
+	border-radius: 5px;
+}
+.up:hover, 
+.down:hover{
+	background: #93268f;
+	}

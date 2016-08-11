@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><resource name="Get_CCD_Tenant_EP.xml" isCollection="false" path="/_system/config/endpoints/ccd/ccd/Get_CCD_Tenant_EP.xml" registryUrl="https://localhost:9443/registry" md5="350a5d5aecf65d6ac0d3c6e3fef4be0b">
+    <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+    <version>1844</version>
+    <creator>admin</creator>
+    <createdTime>1453731220182</createdTime>
+    <lastUpdater>admin</lastUpdater>
+    <lastModified>1453731220182</lastModified>
+    <registryState>1</registryState>
+    <description/>
+</resource>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Service_Schedule_Update_SEQ" >
+    <log separator=",">
+        <property name="Enter Service_Schedule_Update_SEQ" value="----Service_Schedule_Update_SEQ----"/>
+        <property expression="json-eval($.)" name="findMarkerPayload" xmlns:ns="http://org.apache.synapse/xsd"/>
+        <property expression="$body/jsonObject" name="findMarkerPayload" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.identifier.key)"
+                name="serviceScheduleIdKey" scope="default" type="STRING"/>
+            <property expression="json-eval($.identifier.value)"
+                name="serviceScheduleIdValue" scope="default" type="STRING"/>
+            <property expression="json-eval($.domain.domainName)"
+                name="serviceScheduleDomain" scope="default" type="STRING"/>
+            <property
+                expression="json-eval($.entityTemplate.entityTemplateName)"
+                name="serviceScheduleTemplate" scope="default" type="STRING"/>
+            <log separator=",">
+                <property expression="json-eval($.identifier.key)" name="serviceScheduleIdKey"/>
+                <property expression="json-eval($.identifier.value)" name="serviceScheduleIdValue"/>
+                <property expression="json-eval($.domain.domainName)" name="serviceScheduleDomain"/>
+                <property
+                    expression="json-eval($.entityTemplate.entityTemplateName)" name="serviceScheduleTemplate"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>{
+					"entityTemplate": {
+					"entityTemplateName": "$1"
+					},
+					"domain": {
+					"domainName": "$2"
+					},
+					"entityStatus": {
+					"statusName": "$3"
+					},
+					"fieldValues":
+					$4,
+					"identifier": {
+					"key": "$5",
+					"value": "$6"
+					}
+					}</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('serviceScheduleTemplate')"/>
+                    <arg evaluator="xml" expression="get-property('serviceScheduleDomain')"/>
+                    <arg evaluator="xml" expression="get-property('serviceScheduleStatus')"/>
+                    <arg evaluator="xml" expression="get-property('serviceScheduleFieldValues')"/>
+                    <arg evaluator="xml" expression="get-property('serviceScheduleIdKey')"/>
+                    <arg evaluator="xml" expression="get-property('serviceScheduleIdValue')"/>
+                </args>
+            </payloadFactory>
+            <log separator=",">
+                <property expression="json-eval($.)" name="Payload for Update Service Schedule"/>
+            </log>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send receive="Service_Schedule_Update_Node_SEQ">
+                <endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Update_Entity_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

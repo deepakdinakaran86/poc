@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notation:Diagram xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:esb="http:///org/wso2/developerstudio/eclipse/gmf/esb" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmi:id="_kLixsL6BEeW0xc1EWk5y7g" type="Esb" name="endpoint_Create_Contacts_EP.esb_diagram" measurementUnit="Pixel">
+  <children xmi:type="notation:Node" xmi:id="_kQEFUL6BEeW0xc1EWk5y7g" type="2001">
+    <children xmi:type="notation:DecorationNode" xmi:id="_kQEFVb6BEeW0xc1EWk5y7g" type="7001"/>
+    <children xmi:type="notation:Shape" xmi:id="_kRxVgL6BEeW0xc1EWk5y7g" type="3642" fontName="Segoe UI">
+      <children xmi:type="notation:BasicCompartment" xmi:id="_kRx8kL6BEeW0xc1EWk5y7g" type="7041">
+        <children xmi:type="notation:Node" xmi:id="_kR1m8L6BEeW0xc1EWk5y7g" type="3712">
+          <styles xmi:type="notation:DescriptionStyle" xmi:id="_kR1m8b6BEeW0xc1EWk5y7g"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_kR1m8r6BEeW0xc1EWk5y7g" fontName="Segoe UI"/>
+          <styles xmi:type="notation:LineStyle" xmi:id="_kR1m876BEeW0xc1EWk5y7g"/>
+          <element xmi:type="esb:HTTPEndpoint" href="endpoint_Create_Contacts_EP.esb#//@server/@children.0/@child"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kR1m9L6BEeW0xc1EWk5y7g" width="75" height="75"/>
+        </children>
+        <styles xmi:type="notation:TitleStyle" xmi:id="_kRx8kb6BEeW0xc1EWk5y7g" showTitle="true"/>
+      </children>
+      <element xmi:type="esb:EndpointDiagram" href="endpoint_Create_Contacts_EP.esb#//@server/@children.0"/>
+      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kRxVgb6BEeW0xc1EWk5y7g" width="118" height="100"/>
+    </children>
+    <styles xmi:type="notation:DescriptionStyle" xmi:id="_kQEFUb6BEeW0xc1EWk5y7g"/>
+    <styles xmi:type="notation:FontStyle" xmi:id="_kQEFUr6BEeW0xc1EWk5y7g" fontName="Segoe UI"/>
+    <styles xmi:type="notation:LineStyle" xmi:id="_kQEFU76BEeW0xc1EWk5y7g"/>
+    <element xmi:type="esb:EsbServer" href="endpoint_Create_Contacts_EP.esb#//@server"/>
+    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_kQEFVL6BEeW0xc1EWk5y7g"/>
+  </children>
+  <styles xmi:type="notation:DiagramStyle" xmi:id="_kLixsb6BEeW0xc1EWk5y7g"/>
+  <element xmi:type="esb:EsbDiagram" href="endpoint_Create_Contacts_EP.esb#/"/>
+</notation:Diagram>

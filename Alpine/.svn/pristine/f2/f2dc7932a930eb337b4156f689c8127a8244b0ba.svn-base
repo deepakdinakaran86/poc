@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Delete_Permission_Group_SEQ" >
+<log separator=",">
+        <property name="Enter Delete_Permission_Group_SEQ" value="--------"/>
+    </log>
+    <property action="set"
+        expression="get-property('uri.var.pathparameter')"
+        name="uri.var.pathparameter" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property action="set"
+        expression="get-property('query.param.domain')"
+        name="query.param.domain" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property action="set"
+        expression="get-property('uri.var.domain')"
+        name="uri.var.domain" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <send>
+        <endpoint key="conf:/endpoints/alpine/Delete_Permission_Group_EP.xml"/>
+    </send>
+</sequence>

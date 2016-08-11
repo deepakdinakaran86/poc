@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="POI_Update_Entity_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter POI_Update_Entity_SEQ" value="----POI_Update_Entity_SEQ----"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.fieldValues)"
+                name="poiPayload" scope="default" type="STRING"/>
+            <script language="js"><![CDATA[var poiPayload		= eval("("+mc.getProperty('poiPayload')+")"); 
+      var poiName;	
+      var poiType;      	 
+      var poiUpdateName = mc.getProperty('poiName');
+      var poiUpdateType = mc.getProperty('poiType');	  
+      for(var i in poiPayload )      	
+       {       	 	
+       	 		
+       var key = poiPayload[i].key;      	 		
+        if(key		== 'poiName')       	 		
+       {       	 			
+        poiName = poiPayload[i].value;       	 			        	 		
+       } 
+        if(key		== 'poiType')       	 		
+       {       	 			
+        poiType = poiPayload[i].value;       	 			        	 		
+       } 
+if(poiUpdateName == poiName)	  { 
+mc.setProperty("poiNameError","false");
+       }else{
+       mc.setProperty("poiNameError","true");
+       }
+       
+       if(poiUpdateType == poiType)	  { 
+mc.setProperty("poiTypeError","false");
+       }else{
+       mc.setProperty("poiTypeError","true");
+       }
+}]]></script>
+            <filter regex="true" source="get-property('poiTypeError')">
+                <then>
+                    <log separator=",">
+                        <property name="Enter POI_Update_Entity_SEQ" value="----POI_Update_Entity_SEQ----"/>
+                    </log>
+                    <header action="remove" name="To"/>
+                    <property name="RESPONSE" scope="default"
+                        type="STRING" value="true"/>
+                    <property name="HTTP_SC" scope="axis2" value="200"/>
+                    <payloadFactory media-type="json">
+                        <format>{
+						"errorCode": "526",
+							"field": "POI Type"
+							}</format>
+                    </payloadFactory>
+                    <send/>
+                </then>
+            </filter>
+            <log separator=",">
+                <property name="normal" value="----POI_Update_Entity_SEQ normal1----"/>
+            </log>
+            <filter regex="true" source="get-property('poiNameError')">
+                <then>
+                    <log separator=",">
+                        <property
+                            expression="get-property('poiNameError')" name="normal2"/>
+                    </log>
+                    <header action="remove" name="To"/>
+                    <property name="RESPONSE" scope="default"
+                        type="STRING" value="true"/>
+                    <property name="HTTP_SC" scope="axis2" value="200"/>
+                    <payloadFactory media-type="json">
+                        <format>{ "errorCode": "526",
+							"field": "POI Name"}</format>
+                    </payloadFactory>
+                    <send/>
+                </then>
+                <else>
+                    <payloadFactory media-type="json">
+                        <format>$1</format>
+                        <args>
+                            <arg evaluator="xml" expression="get-property('poiEntityPayload')"/>
+                        </args>
+                    </payloadFactory>
+                    <property expression="get-property('Authorization')"
+                        name="x-jwt-assertion" scope="transport" type="STRING"/>
+                    <property name="messageType" scope="axis2"
+                        type="STRING" value="application/json"/>
+                    <send receive="POI_Update_Node_SEQ">
+                        <endpoint key="conf:/endpoints/poi/POI_Update_Entity_EP.xml"/>
+                    </send>
+                </else>
+            </filter>
+        </else>
+    </filter>
+</sequence>

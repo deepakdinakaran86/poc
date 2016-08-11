@@ -1,0 +1,870 @@
+protoVersion = g.V().hasLabel('MAKE','name','Teltonika').out('hasType').hasLabel('DEVICE_TYPE').has('name','Telematics').out('hasModel').hasLabel('MODEL').has('name','FMS').out('talksIn').hasLabel('DEVICE_PROTOCOL').has('name','FM5300').out('hasVersion').hasLabel('PROTOCOL_VERSION').has('name','v2.13').next();
+
+pt = graph.addVertex(label,'POINT','pointId','1','pointName','DIN1','displayName','DIN1','dataType','Boolean','accessType','READONLY','description','Logic: 0 / 1');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','2','pointName','DIN2','displayName','DIN2','dataType','Boolean','accessType','READONLY','description','Logic: 0 / 1');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','3','pointName','DIN3','displayName','DIN3','dataType','Boolean','accessType','READONLY','description','Logic: 0 / 1');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','4','pointName','DIN4','displayName','DIN4','dataType','Boolean','accessType','READONLY','description','Logic: 0 / 1');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','9','pointName','Analog 1','displayName','Analog 1','dataType','Float','accessType','READONLY','description','Voltage: mV, 0 – 30 V');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','10','pointName','Analog 2','displayName','Analog 2','dataType','Float','accessType','READONLY','description','Voltage: mV, 0 – 30 V');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','11','pointName','Analog 3','displayName','Analog 3','dataType','Float','accessType','READONLY','description','Voltage: mV, 0 – 30 V');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','19','pointName','Analog 4','displayName','Analog 4','dataType','Float','accessType','READONLY','description','Voltage: mV, 0 – 30 V');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','21','pointName','GSM Signal','displayName','GSM Signal','dataType','Integer','accessType','READONLY','description','Value in scale 1 – 5');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','22','pointName','Current Profile','displayName','Profile','dataType','String','accessType','READONLY','description','Value in scale 1 – 4');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','24','pointName','Speedometer','displayName','Gps Speed','dataType','Integer','accessType','READONLY','description','Value in km/h, 0 – xxx km/h');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','50','pointName','DOUT3','displayName','DOUT3','dataType','Boolean','accessType','READONLY','description','Logic: 0 / 1');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','51','pointName','DOUT4','displayName','DOUT4','dataType','Boolean','accessType','READONLY','description','Logic: 0 / 1');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','66','pointName','External Power Voltage','displayName','Vehicle Battery','dataType','Float','accessType','READONLY','description','Voltage: mV, 0 – 30 V');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','67','pointName','Internal Battery Voltage','displayName','Device Battery','dataType','Float','accessType','READONLY','description','Voltage: mV');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','68','pointName','Internal Battery Current','displayName','Internal Battery Current','dataType','Float','accessType','READONLY','description','Voltage: mA');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','70','pointName','PCB Temperature','displayName','PCB Temperature','dataType','Float','accessType','READONLY','description','10 * Degrees ( °C )');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','71','pointName','GNSS status','displayName','GNSS status','dataType','Integer','accessType','READONLY','description','0-off/ 1-no antenna (only when using NAVYS)/ 2- no fix/ 3-got fix/ 4-sleep/ 5-over current');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','72','pointName','Dallas Temperature 1','displayName','Dallas Temperature 1','dataType','Float','accessType','READONLY','description','10 * Degrees ( °C ), -55 - +115, if 3000 – Dallas error');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','73','pointName','Dallas Temperature 2','displayName','Dallas Temperature 2','dataType','Float','accessType','READONLY','description','10 * Degrees ( °C ), -55 - +115, if 3000 – Dallas error');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','74','pointName','Dallas Temperature 3','displayName','Dallas Temperature 3','dataType','Float','accessType','READONLY','description','i10 * Degrees ( °C ), -55 - +115, if 3000 – Dallas error');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','76','pointName','Fuel Counter','displayName','Fuel Counter','dataType','Float','accessType','READONLY','description','Difference of generated impulses on two signal lines');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','78','pointName','iButton ID','displayName','iButton ID','dataType','String','accessType','READONLY','description','iButton ID number');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','79','pointName','Brake switch (autoCAN)','displayName','Brake switch (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 = pedal released, 1 = pedal depressed');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','80','pointName','wheel based speed (autoCAN)','displayName','wheel based speed (autoCAN)','dataType','Float','accessType','READONLY','description','0-65536 (km/h)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','81','pointName','cruise control active (autoCAN)','displayName','cruise control active (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 = switched off, 1 = switched on');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','82','pointName','clutch switch (autoCAN)','displayName','clutch switch (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 = pedal released, 1 = pedal depressed');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','83','pointName','PTO state (autoCAN)','displayName','PTO state (autoCAN)','dataType','Integer','accessType','READONLY','description','0 = off/disabled, 1 = Set, 2 = not available, 3 = not available');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','84','pointName','accelerator pedal position 1 X (autoCAN)','displayName','accelerator pedal position 1 X (autoCAN)','dataType','Float','accessType','READONLY','description','0-102 (%)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','85','pointName','Engine Percent Load At Current Speed X (autoCAN)','displayName','Engine Percent Load At Current Speed X (autoCAN)','dataType','Float','accessType','READONLY','description','0-102 (%)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','86','pointName','Engine total fuel used (autoCAN)','displayName','Engine total fuel used (autoCAN)','dataType','Float','accessType','READONLY','description','0 – 2105540607.5 (Liters)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','87','pointName','fuel level 1 X (autoCAN)','displayName','fuel level 1 X (autoCAN)','dataType','Float','accessType','READONLY','description','0-102 (%)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','88','pointName','engine speed X (autoCAN)','displayName','engine speed X (autoCAN)','dataType','Float','accessType','READONLY','description','0 – 8031.875 (rpm)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','89','pointName','Axle weight - Tier 1 (autoCAN)','displayName','Axle weight - Tier 1 (autoCAN)','dataType','Float','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','90','pointName','Axle weight - Tier 2 (autoCAN)','displayName','Axle weight - Tier 2 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','91','pointName','Axle weight - Tier 3 (autoCAN)','displayName','Axle weight - Tier 3(autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','92','pointName','Axle weight - Tier 4 (autoCAN)','displayName','Axle weight - Tier 4 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','93','pointName','Axle weight - Tier 5 (autoCAN)','displayName','Axle weight - Tier 5 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','94','pointName','Axle weight - Tier 6 (autoCAN)','displayName','Axle weight - Tier 6 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','95','pointName','Axle weight - Tier 7 (autoCAN)','displayName','Axle weight - Tier 7 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','96','pointName','Axle weight - Tier 8 (autoCAN)','displayName','Axle weight - Tier 8 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','97','pointName','Axle weight - Tier 9 (autoCAN)','displayName','Axle weight - Tier 9 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','98','pointName','Axle weight - Tier 10 (autoCAN)','displayName','Axle weight - Tier 10 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','99','pointName','Axle weight - Tier 11 (autoCAN)','displayName','Axle weight - Tier 11 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','100','pointName','Axle weight - Tier 12 (autoCAN)','displayName','Axle weight - Tier 12 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','101','pointName','Axle weight - Tier 13 (autoCAN)','displayName','Axle weight - Tier 13 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','102','pointName','Axle weight - Tier 14 (autoCAN)','displayName','Axle weight - Tier 14 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','103','pointName','Axle weight - Tier 15 (autoCAN)','displayName','Axle weight - Tier 15 (autoCAN)','dataType','Boolean','accessType','READONLY','description','0 - 32766 (kg)*');
+protoVersion.addEdge('hasPoint',pt);
+
+
+
+
+
+pt = graph.addVertex(label,'POINT','pointId','104','pointName','Engine total hours of Operation X (autoCAN)','displayName','EngineTotalHoursOfOperationX (autoCAN)','dataType','Float','accessType','READONLY','description','0 – 214748364 (Hours)*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','105','pointName','vehicle identification number X (autoCAN)','displayName','vehicle identification number X (autoCAN)','dataType','Float','accessType','READONLY','description','Max 24 ASCII bytes');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','106','pointName','vehicle identification number X (autoCAN)','displayName','vehicle identification number X (autoCAN)','dataType','Float','accessType','READONLY','description','Max 24 ASCII bytes');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','107','pointName','vehicle identification number X (autoCAN)','displayName','vehicle identification number X (autoCAN)','dataType','Float','accessType','READONLY','description','Max 24 ASCII bytes');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','108','pointName','vehicle identification number X (autoCAN)','displayName','vehicle identification number X (autoCAN)','dataType','Float','accessType','READONLY','description','Max 24 ASCII bytes');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','109','pointName','SW-version supported X (autoCAN)','displayName','SW-versionSupportedX (autoCAN)','dataType','String','accessType','READONLY','description','4 ASCII bytes (Version format – ab.cd)');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','110','pointName','Diagnostics supported X','displayName','DiagnosticsSupportedX','dataType','Integer','accessType','READONLY','description','0 = request is not supported, 1= request is supported, 2 = reserved, 3 = do not care');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','111','pointName','CAN Requests supported X (autoCAN)','displayName','CANRequestsSupportedX (autoCAN)','dataType','Integer','accessType','READONLY','description','0 = diagnostics is not supported, 1 = diagnostics is supported, 2 = reserved, 3 = do not care');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','112','pointName','High resolution total vehicle distance X (autoCAN)','displayName','HighRresolutionTotalVehicleDistanceX (autoCAN)','dataType','Float','accessType','READONLY','description','0 - 21055406 km*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','113','pointName','Service distance (autoCAN)','displayName','ServiceDistance (autoCAN)','dataType','Float','accessType','READONLY','description','-160 635 – 167040 km*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','114','pointName','Vehicle motion X (autoCAN)','displayName','VehicleMotionX(autoCAN)','dataType','Boolean','accessType','READONLY','description','0 – Motion Not Detected, 1 – Motion Detected');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','115','pointName','driver 2 working state X (autoCAN)','displayName','Driver2WorkingStateX(autoCAN)','dataType','Integer','accessType','READONLY','description','0 – Rest, 1 – Driver Available, 2 – Work, 3 - Drive, 4 – Error, 5 – not available');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','116','pointName','driver 1 working state X (autoCAN)','displayName','Driver1WorkingStateX(autoCAN)','dataType','Integer','accessType','READONLY','description','0 – Rest, 1 – Driver Available, 2 – Work, 3 - Drive, 4 – Error, 5 – not available');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','117','pointName','Vehicle overspeed (autoCAN)','displayName','VehicleOverspeed(autoCAN)','dataType','Boolean','accessType','READONLY','description','0 – No Overspeed, 1 - Overspeed');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','118','pointName','Driver 1 time related states','displayName','Driver1TimeRelated states','dataType','Integer','accessType','READONLY','description','0 – Normal, 1 – 15min before 4.5h, 2 – 4.5h reached, 3 – 15min before 9h, 4 – 9h reached, 5 – 15min before 16h, 6 – 16h reached, 7 – Error, 8 – not available');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','119','pointName','Driver 2 time related states','displayName','Driver2TimeRelated states','dataType','Integer','accessType','READONLY','description','0 – Normal, 1 – 15min before 4.5h, 2 – 4.5h reached, 3 – 15min before 9h, 4 – 9h reached, 5 – 15min before 16h, 6 – 16h reached, 7 – Error, 8 – not available');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','120','pointName','Driver 1 card X','displayName','Driver1CardX','dataType','Boolean','accessType','READONLY','description','0 – Card Not Present, 1 – Card Present');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','121','pointName','Driver 2 card X','displayName','Driver2CardX','dataType','Boolean','accessType','READONLY','description','0 – Card Not Present, 1 – Card Present');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','122','pointName','Direction indicator','displayName','DirectionIndicator','dataType','Boolean','accessType','READONLY','description','0 – Forward, 1 – Reverse');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','123','pointName','Tachograph performance X','displayName','TachographPerformanceX','dataType','Boolean','accessType','READONLY','description','0 – Normal Performance, 1 – Performance Analysis');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','124','pointName','Handling Information X','displayName','HandlingInformationX','dataType','Boolean','accessType','READONLY','description','0 – No Handling Information, 1 – Handling Information');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','125','pointName','System (Tacho) Event X','displayName','System(Tacho)EventX','dataType','Boolean','accessType','READONLY','description','0 – No Tacho Event, 1 – Tacho Event');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','126','pointName','Tachograph vehicle speed X','displayName','TachographVehicleSpeed X','dataType','Float','accessType','READONLY','description','[0 – 65000] – Tacho Vehicle Speed km/h*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','127','pointName','engine coolant temperature X','displayName','EngineCoolantTemperature X','dataType','Float','accessType','READONLY','description','[-40 – 210] oC– Engine Cooilant Temperature*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','128','pointName','Ambient Air Temperature X','displayName','Ambient Air Temperature X','dataType','Float','accessType','READONLY','description','[-273 – 1770]oC – Ambient Air Temperature*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','129','pointName','Driver 1 Identification','displayName','Driver1Identification','dataType','String','accessType','READONLY','description','24 ASCII Bytes per Driver ID Driver ID');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','130','pointName','Driver 1 Identification','displayName','Driver1Identification','dataType','String','accessType','READONLY','description','24 ASCII Bytes per Driver ID Driver ID');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','131','pointName','Driver 1 Identification','displayName','Driver1Identification','dataType','String','accessType','READONLY','description','24 ASCII Bytes per Driver ID Driver ID');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','132','pointName','Driver 2 Identification','displayName','Driver2Identification','dataType','String','accessType','READONLY','description','24 ASCII Bytes per Driver ID Driver ID');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','133','pointName','Driver 2 Identification','displayName','Driver2Identification','dataType','String','accessType','READONLY','description','24 ASCII Bytes per Driver ID Driver ID');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','134','pointName','Driver 2 Identification','displayName','Driver2Identification','dataType','String','accessType','READONLY','description','24 ASCII Bytes per Driver ID Driver ID');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','135','pointName','Fuel Rate X','displayName','FuelRateX','dataType','Float','accessType','READONLY','description','[0 – 3212,75] litres/h*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','136','pointName','Instantaneous Fuel Economy X','displayName','InstantaneousFuelEconomy X','dataType','String','accessType','READONLY','description','[0 – 125.5 km/litre ]*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','137','pointName','At least one PTO engaged','displayName','AtLeastOnePTOEngaged','dataType','Integer','accessType','READONLY','description','0 – No PTO Drive is Engaged, 1 – At least one PTO drive is engaged, 2 – Error, 3 – not available');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','138','pointName','High resolution engine total fuel used','displayName','HighResolutionEngineTotalFuel used','dataType','Float','accessType','READONLY','description','[0 - 4211081,215] litres*');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','145','pointName','CAN 0','displayName','CAN0','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','146','pointName','CAN 1','displayName','CAN1','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','147','pointName','CAN 2','displayName','CAN2','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','148','pointName','CAN 3','displayName','CAN3','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','149','pointName','CAN 4','displayName','CAN4','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','150','pointName','CAN 5','displayName','CAN5','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','151','pointName','CAN 6','displayName','CAN6','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','152','pointName','CAN 7','displayName','CAN7','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','153','pointName','CAN 8','displayName','CAN8','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','154','pointName','CAN 9','displayName','CAN9','dataType','String','accessType','READONLY','description','ID Specific data');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','155','pointName','Geofence zone 01','displayName','GeofenceZone01','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','156','pointName','Geofence zone 02','displayName','GeofenceZone02','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','157','pointName','Geofence zone 03','displayName','GeofenceZone03','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','158','pointName','Geofence zone 04','displayName','GeofenceZone04','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','159','pointName','Geofence zone 05','displayName','GeofenceZone05','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','160','pointName','Geofence zone 06','displayName','GeofenceZone06','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','161','pointName','Geofence zone 07','displayName','GeofenceZone07','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','162','pointName','Geofence zone 08','displayName','GeofenceZone08','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','163','pointName','Geofence zone 09','displayName','GeofenceZone09','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','164','pointName','Geofence zone 10','displayName','GeofenceZone10','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','165','pointName','Geofence zone 11','displayName','GeofenceZone11','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','166','pointName','Geofence zone 12','displayName','GeofenceZone13','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','167','pointName','Geofence zone 13','displayName','GeofenceZone14','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','168','pointName','Geofence zone 14','displayName','GeofenceZone14','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','169','pointName','Geofence zone 15','displayName','GeofenceZone15','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','170','pointName','Geofence zone 16','displayName','GeofenceZone16','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','171','pointName','Geofence zone 17','displayName','GeofenceZone17','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','172','pointName','Geofence zone 18','displayName','GeofenceZone18','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','173','pointName','Geofence zone 19','displayName','GeofenceZone19','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','174','pointName','Geofence zone 20','displayName','GeofenceZone20','dataType','Boolean','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','175','pointName','Auto Geofence','displayName','AutoGeofence','dataType','Boolean','accessType','READONLY','description','Probability * 10; 0-500');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','181','pointName','GPS PDOP','displayName','GPSPDOP','dataType','Integer','accessType','READONLY','description','Probability * 10; 0-500');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','182','pointName','GPS HDOP','displayName','GPSHDOP','dataType','Integer','accessType','READONLY','description','Probability * 10; 0-500');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','179','pointName','Digital Output Status 1','displayName','DOUT1','dataType','Boolean','accessType','READONLY','description','Logic: 0 / 1');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','180','pointName','Digital Output Status 2','displayName','DOUT2','dataType','Boolean','accessType','READONLY','description','Logic: 0 / 1');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','199','pointName','Odometer','displayName','Odometer','dataType','Float','accessType','READONLY','description','Distance between two records: m');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','200','pointName','Deep Sleep','displayName','Deep Sleep','dataType','Boolean','accessType','READONLY','description','0 – not deep sleep mode, 1 – deep sleep mode');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','205','pointName','Cell ID','displayName','CellID','dataType','Boolean','accessType','READONLY','description','GSM base station ID');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','206','pointName','Area Code','displayName','AreaCode','dataType','Integer','accessType','READONLY','description','Location Area code (LAC), it depends on GSM operator. It provides unique number which assigned to a set of base GSM stations. Max value: 65536');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','240','pointName','Movement','displayName','Movement','dataType','Boolean','accessType','READONLY','description','0 – not moving, 1 – moving.');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','241','pointName','Current Operator Code','displayName','Current Operator Code','dataType','String','accessType','READONLY','description','0 – not moving, 1 – moving.');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','201','pointName','Fuel level meter 1','displayName','FuelLevelMeter1','dataType','Float','accessType','READONLY','description','Fuel level, measured by LLS sensor on COM1, in kvants or liters.');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','202','pointName','Fuel temperature 1','displayName','FuelTemperature1','dataType','Float','accessType','READONLY','description','Fuel temperature, measured by LLS sensor on COM1, in degrees Celsius.');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','203','pointName','Fuel level meter 2','displayName','FuelLevelMeter2','dataType','Float','accessType','READONLY','description','Fuel level, measured by LLS sensor on COM1, in kvants or liters.');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','204','pointName','Fuel level meter 2','displayName','FuelLevelMeter2','dataType','Float','accessType','READONLY','description','Fuel temperature, measured by LLS sensor on COM1, in degrees Celsius.');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','207','pointName','RFID ID','displayName','RFID','dataType','String','accessType','READONLY','description','Read RFID value, depending on RFID mode, values can be:  for  RFID  mode  in  hexadecimal  format,  RFID  M7 mode in decimal format.');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','250','pointName','Trip','displayName','Trip','dataType','Boolean','accessType','READONLY','description','1 – trip start, 0 – trip stop');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','251','pointName','Immobilizer','displayName','Immobilizer','dataType','Boolean','accessType','READONLY','description','1 – iButton connected');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','252','pointName','Authorized driving','displayName','Authorized driving','dataType','Boolean','accessType','READONLY','description','1 – authorized iButton connected');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','253','pointName','ECO driving type','displayName','ECODrivingType','dataType','Integer','accessType','READONLY','description','1  –  harsh acceleration, 2  –  harsh braking,  3  -  harsh cornering');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','254','pointName','ECO driving value','displayName','ECODrivingValue','dataType','Float','accessType','READONLY','description','Depending on eco driving type: if harsh acceleration, braking and cornering – g*10 m/s2');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','255','pointName','Over Speeding','displayName','OverSpeeding','dataType','Float','accessType','READONLY','description','At  over  speeding  start  km/h,  at  over  speeding  end km/h');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','Angle','pointName','Angle','displayName','Angle','dataType','Float','accessType','READONLY','description','Angle');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','Altitude','pointName','Altitude','displayName','Altitude','dataType','Float','accessType','READONLY','description','Gps Altitude');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','Latitude','pointName','Latitude','displayName','Latitude','dataType','Float','accessType','READONLY','description','Latitude');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','Longitude','pointName','Longitude','displayName','Longitude','dataType','Float','accessType','READONLY','description','Longitude');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','Priority','pointName','Priority','displayName','Priority','dataType','Integer','accessType','READONLY','description','Priority');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','Speed','pointName','Speed','displayName','Speed','dataType','Integer','accessType','READONLY','description','Speed');
+protoVersion.addEdge('hasPoint',pt)
+
+pt = graph.addVertex(label,'POINT','pointId','Visible Satellites','pointName','Visible Satellites','displayName','Visible Satellites','dataType','Integer','accessType','READONLY','description','Visible Satellites');
+protoVersion.addEdge('hasPoint',pt)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

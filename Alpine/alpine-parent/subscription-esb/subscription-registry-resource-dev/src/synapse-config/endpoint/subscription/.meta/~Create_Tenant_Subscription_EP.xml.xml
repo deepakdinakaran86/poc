@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><resource name="Create_Tenant_Subscription_EP.xml" isCollection="false" path="/_system/config/endpoints/subscription/subscription/Create_Tenant_Subscription_EP.xml" registryUrl="https://localhost:9443/registry" md5="3548b4c34e55b5bcd72a6f28315b6e92">
+    <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+    <version>1844</version>
+    <creator>admin</creator>
+    <createdTime>1443688949932</createdTime>
+    <lastUpdater>admin</lastUpdater>
+    <lastModified>1443688949932</lastModified>
+    <registryState>1</registryState>
+    <description/>
+</resource>

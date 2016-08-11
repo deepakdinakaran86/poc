@@ -1,0 +1,38 @@
+<api xmlns="http://ws.apache.org/ns/synapse" context="/alpine/services/hierarchy" name="Hierarchy_API">
+ <resource inSequence="Attach_Parent_SEQ" methods="POST" url-mapping="/attach/parents">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+     <resource inSequence="Attach_Children_SEQ" methods="POST" url-mapping="/attach/children">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_Children_SEQ" methods="POST" url-mapping="/children">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_Children_Count_SEQ" methods="POST" url-mapping="/children/count">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource inSequence="Get_Hierarchy_Count_By_Status_SEQ" methods="POST" url-mapping="/status/count">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+      <resource inSequence="Hierarchy_Update_Node_SEQ" methods="PUT" >
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Register_Datasource_EP">
+    <http method="post" uri-template="http://10.234.31.158:9763/datasource-api-1.0.0/services/datasources/ds/register"/>
+</endpoint>

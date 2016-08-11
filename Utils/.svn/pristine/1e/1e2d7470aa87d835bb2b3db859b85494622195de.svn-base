@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Polar Area Chart</title>
+		<script src="../Chart.js"></script>
+		<style>
+			body {
+				margin:0px;
+			}
+			
+			#canvas-holder {
+			padding: 5px;
+			}
+			
+			#chart-area {
+			width: 355px !important;
+			height: 220px !important;
+			}
+			
+			#chart-title{ 
+				float:left;
+				width:96%;
+				height:28px; 
+				font-family: 'Open Sans', Tahoma, Arial, Helvetica, sans-serif;
+				font-size:14px;
+				font-weight:normal;  
+				text-decoration:none; 
+				color:#fff;
+				padding: 6px 0 0 10px;
+				margin-bottom:10px;
+				text-shadow:1px 1px 0px #404040;
+			 	-webkit-box-shadow:inset 0px 0px 3px -13px #ffffff;
+			 	-moz-box-shadow:inset 0px 0px 3px -13px #ffffff;
+			 	box-shadow:inset 0px 0px 3px -13px #ffffff;	
+				background-color: #384146; 
+				/* background: url(images/header-gradient.jpg) #384146 repeat-x; */ 
+				/* Safari 4-5, Chrome 1-9 */ 
+				background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#505d65), to(#384146));   
+				/* Safari 5.1, Chrome 10+ */ 
+				background: -webkit-linear-gradient(top, #505d65, #384146);   
+				/* Firefox 3.6+ */ 
+				background: -moz-linear-gradient(top, #505d65, #384146);   
+				/* IE 10 */ 
+				background: -ms-linear-gradient(top, #505d65, #384146);   
+				/* Opera 11.10+ */ 
+				background: -o-linear-gradient(top, #505d65, #384146);
+				border-radius: 5px;
+				border: 0.0em solid #0000ff;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="canvas-holder">
+			<canvas id="chart-area" width="300" height="200"/>
+		</div>
+
+
+	<script>
+
+		var polarData = [
+				{
+					value: 300,
+					color:"#F7464A",
+					highlight: "#FF5A5E",
+					label: "Red"
+				},
+				{
+					value: 50,
+					color: "#46BFBD",
+					highlight: "#5AD3D1",
+					label: "Green"
+				},
+				{
+					value: 100,
+					color: "#FDB45C",
+					highlight: "#FFC870",
+					label: "Yellow"
+				},
+				{
+					value: 40,
+					color: "#949FB1",
+					highlight: "#A8B3C5",
+					label: "Grey"
+				},
+				{
+					value: 120,
+					color: "#4D5360",
+					highlight: "#616774",
+					label: "Dark Grey"
+				}
+
+			];
+
+			window.onload = function(){
+				var ctx = document.getElementById("chart-area").getContext("2d");
+				window.myPolarArea = new Chart(ctx).PolarArea(polarData, {
+					responsive:true
+				});
+			};
+
+
+
+	</script>
+	</body>
+</html>

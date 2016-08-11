@@ -1,0 +1,6 @@
+subject : Fault Recommendations
+addressee : Customer
+emailTemplate : ccdEmailTemplate.vm
+defaultEmail : seenakr@pacificcontrols.net
+
+

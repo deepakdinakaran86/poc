@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Alpine_Hierarchy_Update_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Alpine_Hierarchy_Update_SEQ" value="Alpine_Hierarchy_Update_SEQ" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<log separator="Error">
+				<property name="AlpineError" value="Im error from Update Marker in Alpine" />
+			</log>
+			<send />
+		</then>
+		<else>
+			<filter regex="false" source="boolean(get-property('updateHierarchy'))">
+				<then>
+					<log separator="Info">
+						<property name="NotAllocated" value="Not allocated" />
+					</log>
+					<filter regex="false" source="boolean(get-property('assignTemplate'))">
+						<then>
+							<log separator="Info">
+								<property name="NoTemplate" value="NoTemplate" />
+							</log>
+							<send />
+						</then>
+						<else>
+							<log separator=",">
+								<property expression="get-property('assignTemplate')"
+									name="assignTemplate" />
+							</log>
+							<payloadFactory media-type="json">
+								<format>$1</format>
+								<args>
+									<arg evaluator="xml" expression="get-property('assignTemplate')" />
+								</args>
+							</payloadFactory>
+							<property name="x-jwt-assertion" expression="get-property('x-jwt-assertion')" scope="transport" type="STRING"></property>
+							<property name="messageType" scope="axis2" type="STRING"
+								value="application/json" />
+							<send>
+								<endpoint key="conf:/endpoints/Saffron_Template_Assign_EP.xml" />
+							</send>
+						</else>
+					</filter>
+				</then>
+				<else>
+					<payloadFactory media-type="json">
+						<format>$1</format>
+						<args>
+							<arg evaluator="xml" expression="get-property('alpineDevice')" />
+						</args>
+					</payloadFactory>
+					<property name="x-jwt-assertion" expression="get-property('x-jwt-assertion')" scope="transport" type="STRING"></property>
+					<property name="messageType" scope="axis2" type="STRING"
+						value="application/json" />
+					<send receive="Saffron_Template_Assign_SEQ">
+						<endpoint key="conf:/endpoints/Alpine_Hierarchy_Update_EP.xml" />
+					</send>
+				</else>
+			</filter>
+		</else>
+	</filter>
+</sequence>

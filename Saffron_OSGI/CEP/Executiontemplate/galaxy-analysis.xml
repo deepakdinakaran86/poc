@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  ~ Copyright (c) 2016, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~     http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+<templateDomain name="GalaxyAnalysis">
+    <description>Galaxy Device Analysis</description>
+    <templates>
+	
+	
+        <template name="Max and Min Temperature of Engine Oil">
+            <description>To check Max and Min Temperature of Engine Oil</description>
+            <executionPlan>
+                <![CDATA[
+                @Plan:name('EngineOilTempTestPlan')
+
+                @Import('inStream:1.0.0')
+                define stream inStream (meta_sourceId String, meta_engOilTemp float, meta_engFuelRate float, meta_acceleratorPedalPos float, meta_engSpeed float, meta_barometricPressure float);
+
+                @Export('outStream:1.0.0')
+                define stream outStream (meta_sourceId String, meta_alarmMessage String,  meta_alarmName String, meta_alarmType String, meta_displayName String, meta_data String);
+
+                from inStream[meta_engOilTemp > $engineOilTempMax and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Maximum Temperature Reached' as meta_alarmMessage, 
+				"Engine Oil Temperature Alarm" as meta_alarmName, "Temperature Alarm" as meta_alarmType, "engOilTemp" as meta_displayName,  convert(meta_engOilTemp, 'string') as meta_data insert into outStream;
+               
+			    from inStream[meta_engOilTemp <= $engineOilTempMin and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Minimum Temperature Reached' as meta_alarmMessage, 
+				"Engine Oil Temperature Alarm" as meta_alarmName, "Temperature Alarm" as meta_alarmType, "engOilTemp" as meta_displayName,  convert(meta_engOilTemp, 'string') as meta_data insert into outStream;
+               
+			   ]]>				 
+            </executionPlan>
+            <parameters>
+                <parameter name="engineOilTempMax" type="float">
+                    <displayName>Maximum Temperature</displayName>
+                    <description>Maximum room temperature threshold</description>
+                    <defaultValue>75</defaultValue>
+                </parameter>
+				<parameter name="deviceId" type="String">
+                    <displayName>Device</displayName>
+                    <description>Device for Which Alarm is configured</description>
+                    <defaultValue>Dev1</defaultValue>
+                </parameter>
+			   <parameter name="engineOilTempMin" type="float">
+				<displayName>Min Temp-Engine Oil</displayName>
+				<description>Minimum Temperature of Engine Oil which needs to be checked</description>
+				<defaultValue>0</defaultValue>
+			   </parameter>
+				
+            </parameters>
+        </template>
+
+		
+         <template name="Max and Min Engine Fuel Rate">
+            <description>To check Max and Min Engine Fuel Rate</description>
+            <executionPlan>
+                <![CDATA[
+                @Plan:name('FuelRateTestPlan')
+
+                @Import('inStream:1.0.0')
+                define stream inStream (meta_sourceId String, meta_engOilTemp float, meta_engFuelRate float, meta_acceleratorPedalPos float, meta_engSpeed float, meta_barometricPressure float);
+
+                @Export('outStream:1.0.0')
+                define stream outStream (meta_sourceId String, meta_alarmMessage String,  meta_alarmName String, meta_alarmType String, meta_displayName String, meta_data String);
+				
+                from inStream[meta_engFuelRate > $engineFuelRateMax and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Maximum Engine Fuel Rate Reached' as meta_alarmMessage, 
+				"Engine Fuel Rate Alarm" as meta_alarmName, "Fuel Rate Alarm" as meta_alarmType, "engFuelRate" as meta_displayName, convert(meta_engFuelRate, 'string') as meta_data insert into outStream;
+               
+			    from inStream[meta_engFuelRate <= $engineFuelRateMin and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Minimum Engine Fuel Rate Reached' as meta_alarmMessage, 
+				"Engine Fuel Rate Alarm" as meta_alarmName, "Fuel Rate Alarm" as meta_alarmType, "engFuelRate" as meta_displayName, convert(meta_engFuelRate, 'string') as meta_data insert into outStream;
+				
+			   ]]>				 
+            </executionPlan>
+            <parameters>
+                <parameter name="engineFuelRateMax" type="float">
+                    <displayName>Maximum Engine Fuel Rate</displayName>
+                    <description>Maximum Engine Fuel Rate</description>
+                    <defaultValue>75</defaultValue>
+                </parameter>
+				<parameter name="deviceId" type="String">
+                    <displayName>Device</displayName>
+                    <description>Device for Which Alarm is configured</description>
+                    <defaultValue>Dev2</defaultValue>
+                </parameter>
+			   <parameter name="engineFuelRateMin" type="float">
+				<displayName>Minimum Engine Fuel Rate</displayName>
+				<description>Minimum Engine Fuel Rate</description>
+				<defaultValue>0</defaultValue>
+			   </parameter>
+				
+            </parameters>
+        </template>
+
+		<template name="Max and Min Accelerator Pedal Position">
+            <description>Max and Min Accelerator Pedal Position</description>
+            <executionPlan>
+                <![CDATA[
+                @Plan:name('APPTestPlan')
+
+                @Import('inStream:1.0.0')
+                define stream inStream (meta_sourceId String, meta_engOilTemp float, meta_engFuelRate float, meta_acceleratorPedalPos float, meta_engSpeed float, meta_barometricPressure float);
+
+                @Export('outStream:1.0.0')
+                define stream outStream (meta_sourceId String, meta_alarmMessage String,  meta_alarmName String, meta_alarmType String, meta_displayName String, meta_data String);
+				
+                from inStream[meta_acceleratorPedalPos > $accelPedalPosMax and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Maximum Accelerator Pedal Position Reached' as meta_alarmMessage, 
+				"Accelerator Pedal Position Alarm" as meta_alarmName, "Accelerator Pedal Position Alarm" as meta_alarmType, "acceleratorPedalPos" as meta_displayName, convert(meta_acceleratorPedalPos, 'string') as meta_data insert into outStream;
+			   
+			    from inStream[meta_acceleratorPedalPos <= $accelPedalPosMin and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Minimum Accelerator Pedal Position Reached' as meta_alarmMessage, 
+				"Accelerator Pedal Position Alarm" as meta_alarmName, "Accelerator Pedal Position Alarm" as meta_alarmType, "acceleratorPedalPos" as meta_displayName, convert(meta_acceleratorPedalPos, 'string') as meta_data insert into outStream;
+			   
+			   ]]>				 
+            </executionPlan>
+            <parameters>
+                <parameter name="accelPedalPosMax" type="float">
+                    <displayName>Maximum Accelerator Pedal Position</displayName>
+                    <description>Maximum Accelerator Pedal Position</description>
+                    <defaultValue>75</defaultValue>
+                </parameter>
+				<parameter name="deviceId" type="String">
+                    <displayName>Device</displayName>
+                    <description>Device for Which Alarm is configured</description>
+                    <defaultValue>Dev4</defaultValue>
+                </parameter>
+			   <parameter name="accelPedalPosMin" type="float">
+				<displayName>Minimum Accelerator Pedal Position</displayName>
+				<description>Minimum Accelerator Pedal Position</description>
+				<defaultValue>0</defaultValue>
+			   </parameter>
+				
+            </parameters>
+        </template>
+		
+		
+		
+		<template name="Max and Min Engine Speed">
+            <description>Max and Min Engine Speed</description>
+            <executionPlan>
+                <![CDATA[
+                @Plan:name('EngineSpeedTestPlan')
+
+                @Import('inStream:1.0.0')
+                define stream inStream (meta_sourceId String, meta_engOilTemp float, meta_engFuelRate float, meta_acceleratorPedalPos float, meta_engSpeed float, meta_barometricPressure float);
+
+                @Export('outStream:1.0.0')
+                define stream outStream (meta_sourceId String, meta_alarmMessage String,  meta_alarmName String, meta_alarmType String, meta_displayName String, meta_data String);
+				
+                from inStream[meta_engSpeed > $engineSpeedMax and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Maximum  Engine Speed Reached' as meta_alarmMessage, 
+				"Engine Speed Alarm" as meta_alarmName, "Engine Speed Alarm" as meta_alarmType, "engSpeed" as meta_displayName, convert(meta_engSpeed, 'string') as meta_data insert into outStream;
+
+			    from inStream[meta_engSpeed > $engineSpeedMin and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Minimum  Engine Speed Reached' as meta_alarmMessage, 
+				"Engine Speed Alarm" as meta_alarmName, "Engine Speed Alarm" as meta_alarmType, "engSpeed" as meta_displayName, convert(meta_engSpeed, 'string') as meta_data insert into outStream;
+
+			   ]]>				 
+            </executionPlan>
+            <parameters>
+                <parameter name="engineSpeedMax" type="float">
+                    <displayName>Maximum Engine Speed</displayName>
+                    <description>Maximum Engine Speed</description>
+                    <defaultValue>140</defaultValue>
+                </parameter>
+				<parameter name="deviceId" type="String">
+                    <displayName>Device</displayName>
+                    <description>Device for Which Alarm is configured</description>
+                    <defaultValue>Dev4</defaultValue>
+                </parameter>
+			   <parameter name="engineSpeedMin" type="float">
+				<displayName>Minimum Engine Speed</displayName>
+				<description>Minimum Engine Speed</description>
+				<defaultValue>40</defaultValue>
+			   </parameter>
+				
+            </parameters>
+        </template>
+		
+		<template name="Max and Min Barometric Pressure">
+            <description>Max and Min Barometric Pressure</description>
+            <executionPlan>
+                <![CDATA[
+                @Plan:name('BarometricPressureTestPlan')
+
+                @Import('inStream:1.0.0')
+                define stream inStream (meta_sourceId String, meta_engOilTemp float, meta_engFuelRate float, meta_acceleratorPedalPos float, meta_engSpeed float, meta_barometricPressure float);
+
+                @Export('outStream:1.0.0')
+                define stream outStream (meta_sourceId String, meta_alarmMessage String,  meta_alarmName String, meta_alarmType String, meta_displayName String, meta_data String);
+				
+                from inStream[meta_barometricPressure > $barometricPressureMax and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Maximum Barometric Pressure Reached' as meta_alarmMessage, 
+				"Barometric Pressure Alarm" as meta_alarmName, "Barometric Pressure Alarm" as meta_alarmType, "barometricPressure" as meta_displayName, convert(meta_barometricPressure, 'string') as meta_data insert into outStream;
+
+			    from inStream[meta_barometricPressure <= $barometricPressureMin and meta_sourceId == '$deviceId'] select  meta_sourceId, 'Minimum Barometric Pressure Reached' as meta_alarmMessage, 
+				"Barometric Pressure Alarm" as meta_alarmName, "Barometric Pressure Alarm" as meta_alarmType, "barometricPressure" as meta_displayName, convert(meta_barometricPressure, 'string') as meta_data insert into outStream;
+
+			   ]]>				 
+            </executionPlan>
+            <parameters>
+                <parameter name="barometricPressureMax" type="float">
+                    <displayName>Maximum Barometric Pressure</displayName>
+                    <description>Maximum Barometric Pressure</description>
+                    <defaultValue>140</defaultValue>
+                </parameter>
+				<parameter name="deviceId" type="String">
+                    <displayName>Device</displayName>
+                    <description>Device for Which Alarm is configured</description>
+                    <defaultValue>Dev5</defaultValue>
+                </parameter>
+			   <parameter name="barometricPressureMin" type="float">
+				<displayName>Minimum Barometric Pressure</displayName>
+				<description>Minimum Barometric Pressure</description>
+				<defaultValue>40</defaultValue>
+			   </parameter>
+				
+            </parameters>
+        </template>
+		
+    </templates>
+    <streams>
+        <stream>
+            {
+            "streamId": "inStream:1.0.0",
+            "name": "inStream",
+            "version": "1.0.0",
+            "nickName": "",
+            "description": "",
+            "metaData": [
+			{
+            "name": "sourceId",
+            "type": "String"
+            },
+            {
+            "name": "engOilTemp",
+            "type": "FLOAT"
+            },
+			 {
+            "name": "engFuelRate",
+            "type": "FLOAT"
+            },
+			{
+            "name": "acceleratorPedalPos",
+            "type": "FLOAT"
+            },
+			{
+            "name": "engSpeed",
+            "type": "FLOAT"
+            },
+			{
+            "name": "barometricPressure",
+            "type": "FLOAT"
+            }
+            		
+            ],
+            "correlationData": [],
+            "payloadData": []
+            }
+        </stream>
+		
+        <stream>
+            {
+            "streamId": "outStream:1.0.0",
+            "name": "outStream",
+            "version": "1.0.0",
+            "nickName": "",
+            "description": "",
+            "metaData": [
+            {
+            "name": "sourceId",
+            "type": "String"
+            },
+			{
+            "name": "alarmMessage",
+            "type": "String"
+            },
+			 {
+            "name": "alarmName",
+            "type": "String"
+            },
+			 {
+            "name": "alarmType",
+            "type": "String"
+            },
+			 {
+            "name": "displayName",
+            "type": "String"
+            },
+			{
+            "name": "data",
+            "type": "String"
+            }
+            ],
+            "correlationData": [],
+            "payloadData": []
+            }
+        </stream>	
+		
+    </streams>
+</templateDomain>
+

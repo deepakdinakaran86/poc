@@ -1,0 +1,92 @@
+#!/bin/sh
+# Copyright (c) 2015 Stratio (http://stratio.com)
+#
+
+set -e
+
+GROUP='stratio'
+USER='ingestion'
+DIR_INSTALL='/opt/sds/ingestion'
+DIR_CONF='/etc/sds/ingestion'
+DIR_LOG='/var/log/sds/ingestion'
+DIR_RUN='/var/run/sds'
+DIR_DATA='/var/sds/ingestion'
+
+
+chmod 755 /opt/sds/ingestion/bin
+#chmod +x /opt/sds/ingestion/bin/run
+chmod +x /etc/default/ingestion*
+
+case "$1" in
+  configure)
+
+    # Add stratio group if it doesn't already exists
+    if ! getent group $GROUP >/dev/null 2>&1; then
+    groupadd ${GROUP}
+    fi
+
+    # Add stratio user if it doesn't already exists
+    if ! getent passwd $USER >/dev/null 2>&1; then
+    [ -d /opt ] || mkdir /opt
+    useradd -M -d /opt/sds -g ${GROUP} -s /bin/bash ${USER}
+    else
+    usermod -G $GROUP $USER
+    fi
+
+
+    
+    if [ ! -d "$DIR_LOG" ]; then
+    mkdir $DIR_LOG
+    fi
+
+    #ln -sf $DIR_INSTALL/bin/ingestion-init /etc/init.d/ingestion
+    #chown root:root /etc/init.d/ingestion
+    #chmod 755 /etc/init.d/ingestion
+    if [ ! -d "$DIR_CONF" ]; then
+    mkdir -p $DIR_CONF
+    fi
+
+    #rm -rf $DIR_CONF && ln -sf $DIR_INSTALL/conf $DIR_CONF
+    cp -rf $DIR_INSTALL/conf/* $DIR_CONF/
+
+    if [ ! -d "$DIR_RUN" ]; then
+    mkdir $DIR_RUN
+    fi
+
+
+    chown root:${GROUP} /etc/sds 2>/dev/null
+    chmod 775 /etc/sds 2>/dev/null
+
+    chown root:${GROUP} /var/log/sds 2>/dev/null
+    chmod 775 /var/log/sds 2>/dev/null
+
+    chown root:${GROUP} /var/run/sds 2>/dev/null
+    chmod 775 /var/run/sds 2>/dev/null
+
+    chown root:${GROUP} /opt/sds 2>/dev/null
+    chmod 775 /opt/sds 2>/dev/null
+
+
+    chmod 0644 $DIR_CONF
+    chown -R ${USER}:${GROUP} $DIR_CONF
+    chown -R ${USER}:${GROUP} $DIR_LOG
+    chown -R ${USER}:${GROUP} $DIR_DATA
+    chmod -R 775 $DIR_INSTALL
+    chmod 775 $DIR_LOG
+
+    chown -R ${USER}:${GROUP} $DIR_INSTALL
+
+    find $DIR_INSTALL -maxdepth 1 -type f -exec chmod 644 {} \;
+    find $DIR_INSTALL -maxdepth 1 -type d -exec chmod 755 {} \;
+
+    chmod 0755 $DIR_INSTALL/bin/*
+    chmod 0755 $DIR_INSTALL/examples/*/bin/*
+
+    chmod 644 /etc/default/ingestion-*
+
+    #update-rc.d ingestion defaults
+
+  ;;
+esac
+
+exit 0

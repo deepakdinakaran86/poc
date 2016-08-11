@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" context="/alpine/services/users"
+	name="User_API">
+	<resource inSequence="Create_User_SEQ" methods="POST"
+		url-mapping="/">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Create_Admin_User_SEQ" methods="POST"
+		url-mapping="/admin">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Find_User_SEQ" methods="POST"
+		url-mapping="/find">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="List_User_SEQ" methods="GET"
+		url-mapping="/list">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Update_User_SEQ" methods="PUT"
+		url-mapping="/">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Delete_User_SEQ" methods="POST"
+		url-mapping="/delete">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Validate_User_SEQ" methods="POST"
+		url-mapping="/validate">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Create_Permission_Group_SEQ" methods="POST"
+		url-mapping="/permissions">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Update_Permission_Group_SEQ" methods="PUT"
+		url-mapping="/permissions">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="GET" uri-template="/permissions/{pathparameter}"
+		inSequence="Get_Permission_Group_SEQ">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="GET"
+		uri-template="/permissions/{pathparameter}?domain={domain}"
+		inSequence="Get_Permission_Group_SEQ">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="DELETE" uri-template="/permissions/{pathparameter}"
+		inSequence="Delete_Permission_Group_SEQ">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="DELETE"
+		uri-template="/permissions/{pathparameter}?domain={domain}"
+		inSequence="Delete_Permission_Group_SEQ">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="GET" inSequence="Get_Domain_Permission_Group_SEQ"
+		url-mapping="/permissions">
+		<outSequence>
+			<send></send>
+		</outSequence>
+		<faultSequence></faultSequence>
+	</resource>
+
+	<resource methods="GET" inSequence="Get_Current_User_Permission_SEQ"
+		url-mapping="/permissions/current">
+		<outSequence>
+			<send></send>
+		</outSequence>
+		<faultSequence></faultSequence>
+	</resource>
+
+	<resource inSequence="Create_Role_SEQ" methods="POST"
+		url-mapping="/roles">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Update_Role_SEQ" methods="PUT"
+		url-mapping="/roles">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="GET" uri-template="/roles/{pathparameter}"
+		inSequence="Get_Role_SEQ">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="GET"
+		uri-template="/roles/{pathparameter}?domain_name={domain}" inSequence="Get_Role_SEQ">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="GET" url-mapping="/roles" inSequence="Get_Domain_Role_SEQ">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="DELETE" uri-template="/roles/{pathparameter}"
+		inSequence="Delete_Role_SEQ">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource methods="DELETE"
+		uri-template="/roles/{pathparameter}?domain_name={domain}" inSequence="Delete_Role_SEQ">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_User_Count_SEQ" methods="POST"
+		url-mapping="/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Reset_Password_SEQ" methods="POST"
+		url-mapping="/reset_password">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Users_Count_By_Status_SEQ" methods="POST"
+		url-mapping="/status/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+</api>

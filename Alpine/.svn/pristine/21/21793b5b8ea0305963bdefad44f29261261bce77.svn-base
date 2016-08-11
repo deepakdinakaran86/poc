@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Subject_Entities_By_Tags_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_Subject_Entities_By_Tags_SEQ" value="------" />
+	</log>
+	<property expression="$trp:x-jwt-assertion" name="Authorization" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Get_Subject_Entities_By_Tags_EP.xml" />
+	</send>
+</sequence>

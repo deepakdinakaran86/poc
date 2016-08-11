@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Update_Multiple_Device_Point_Config_SEQ" >
+<log category="INFO" level="simple" separator=",">
+		<property name="Enter Update_Multiple_Device_Point_Config_SEQ" value="--------" />
+	</log>
+	 <send>
+		<endpoint key="conf:/endpoints/saffron/Update_Multiple_Device_Point_Config_EP.xml" />
+	</send>
+</sequence>

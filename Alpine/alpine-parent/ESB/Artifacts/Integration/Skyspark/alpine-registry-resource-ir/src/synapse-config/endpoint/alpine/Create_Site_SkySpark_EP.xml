@@ -1,0 +1,3 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Create_Site_SkySpark_EP" >
+<http method="post" uri-template="http://10.236.10.75/api/deviceCloud/eval"/>
+</endpoint>

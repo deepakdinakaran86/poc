@@ -1,0 +1,17 @@
+cacheprovider=HazelCast
+cacheproviderConfigPath=hazelcast-client.xml
+## Platform configuration
+remote.platform.hostIp=10.234.60.55
+remote.platform.port=9765
+remote.platform.scheme=http
+remote.getdevice.url=datasource-api-1.0.0/services/datasources/devices/authenticate
+remote.getdevice.config.url=datasource-api-1.0.0/services/datasources/devices/{source_id}/configurationsdefault
+remote.getcontext.url=datasource-api-1.0.0/services/datasources/ds/context/{datasource_name}
+remote.getphyqty.url=/datasource-api-1.0.0/services/datasources/phy_quantity/{physical_quantity}
+remote.persist.alarm.url=/datasource-api-1.0.0/services/datasources/alarm
+alpineHostIp=10.234.31.155
+alpinePort=8281
+alpineScheme=http
+heirarchyChildrenUrl=markers/children
+apiMgrClientId=A2Wdo8q_Cz7y_W1njIqZMC_bHvka
+apiMgrClientSecret=_1AksboKBeG3ytPPO31TpVC6Ih4a

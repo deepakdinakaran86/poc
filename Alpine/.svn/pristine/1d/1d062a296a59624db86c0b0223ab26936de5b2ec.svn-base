@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Find_Document_SEQ">
+	<log separator=",">
+		<property name="Enter Find_Document_SEQ" value="----Find_Document_SEQ----" />
+	</log>
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Find_Document_EP.xml" />
+	</send>
+</sequence>

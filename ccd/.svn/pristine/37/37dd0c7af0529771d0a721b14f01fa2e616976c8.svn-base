@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="CCD_API" groupId="ccd-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/CCD_API.xml</file>
+    </artifact>
+    <artifact name="Get_CCD_Tenant_SEQ" groupId="ccd-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_CCD_Tenant_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_CCD_Tenant_Node_SEQ" groupId="ccd-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_CCD_Tenant_Node_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_CCD_Contacts_SEQ" groupId="ccd-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_CCD_Contacts_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_CCD_Contact_Hierarchy_SEQ" groupId="ccd-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_CCD_Contact_Hierarchy_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_CCD_Contact_Hierarchy_Response_SEQ" groupId="ccd-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_CCD_Contact_Hierarchy_Response_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_CCD_Tenant_Equip_SEQ" groupId="ccd-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_CCD_Tenant_Equip_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_CCD_Equipments_SEQ" groupId="ccd-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_CCD_Equipments_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_CCD_Tenant_Node_Equip_SEQ" groupId="ccd-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_CCD_Tenant_Node_Equip_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_CCD_Equipment_Hierarchy_SEQ" groupId="ccd-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_CCD_Equipment_Hierarchy_SEQ.xml</file>
+    </artifact>
+    <artifact name="CCD_Equipment_API" groupId="ccd-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/CCD_Equipment_API.xml</file>
+    </artifact>
+</artifacts>

@@ -1,0 +1,712 @@
+name:deleteSiteEquipPoint
+id:@1dc88ad5-3351e5f0
+analytics
+func
+mod:2015-11-01T14:02:43.573Z
+src:
+  () => do
+    "Hello world!"
+   readAll(equip).each row=>do
+    commit(diff(row, {navName}, {remove}))
+   end
+   readAll(point).each row=>do
+    commit(diff(row, {navName}, {remove}))
+   end
+   readAll(site).each row=>do
+    commit(diff(row, {navName}, {remove}))
+   end
+  end
+---
+name:importHistory
+id:@1e08f451-7de4fe02
+func
+mod:2015-12-21T10:31:41.775Z
+src:
+  
+  /**
+   * This function is used to assign history to a point
+   * 
+   * @author Twinkle
+   * @date December 2015
+   * @jsonPayload denotes the payload with point history
+   * 
+   */
+   
+  (jsonPayload) => do
+  
+  srcId : jsonPayload->sourceId
+  ptsData : jsonPayload->points.toGrid
+  points : [].toGrid
+  
+  ptsData.each pt=>do
+  	points.toGrid
+  
+  	try do
+  		//check sourceId is correct
+  		read(equip and sourceId == srcId.toStr)
+  	end
+  	catch(e) do
+  		logInfo("importHistory", "importHistory, error occured while writing history for point displayName : "+pt->displayName.toStr+"device or sourceId doesnot exist !")
+  		throw {dis:"device or sourceId doesnot exist !"} 
+  	end
+    
+  	try do
+  		pointRec : read(point and equipRef->sourceId == srcId.toStr and pointId == pt->pointId.toStr and pointName == pt->pointName.toStr and displayName == pt->displayName.toStr and active)
+  		if(not pointRec.isEmpty) do 
+  			//point exists in folio, hense write history
+  			points = points.addRow(pointRec) 
+      
+  			logInfo("importHistory", "importHistory, point data value : "+pt->data)
+  			logInfo("importHistory", "importHistory, point data type : "+pt->data.debugType)
+  			hisData: 
+  			{
+  			ts : fromJavaMillis(jsonPayload->time.parseNumber, "Dubai"),
+  			val: if(pointRec->kind == "Number") do pt->data.parseNumber end
+  				else if(pointRec->kind == "Bool") do pt->data.lower.parseBool end
+  				else if(pointRec->kind == "Str") do pt->data.toStr end
+  			}
+  			hisWrite(hisData, pointRec)
+  		end //end of if
+  		else do 
+  	
+  			//point doesnot exists in folio, skip
+  			logInfo("importHistory", "importHistory, point doesnot exists, displayName : "+pt->displayName.toStr)
+  	
+  		end // end of else
+  	end // end of try
+  	catch(e) do
+  		logInfo("importHistory", "importHistory, error occured while writing history for point displayName : "+pt->displayName.toStr)
+  	end // end of catch
+  end // end of ptsData.each
+  
+  //points
+  //return {"status":"SUCCESS"}
+  
+  end
+---
+name:assignDeviceToSite
+id:@1dfbccca-4a872fac
+func
+mod:2015-12-20T11:26:03.083Z
+src:
+  /**
+   * This function is used to assign a device to a site, all other devices having this source id will be made inactive
+   * 
+   * @author Daniela (PCSEG191)
+   * @date 
+   * @subscriptionId denotes the subscription id
+   * @sourceId denotes the device source id
+   * @siteName denotes the site to which the device needs to be assigned
+   */
+  (subscriptionId, sourceId, siteName) => do
+   
+   //Get the current active device
+   activeEquip:null
+   activePoints:[].toGrid
+   try do
+     activeEquip = read(equip and active and sourceId==sourceId and siteRef->subscriptionId==subscriptionId)
+     activePoints = readAll(point and active and equipRef==activeEquip["id"])
+   end 
+   catch(e) do
+     return "Invalid Data Specified"
+   end
+   
+  
+   //Get the devices points
+   
+   //Inactivate all the currently existing devices
+   inactivateDevice(subscriptionId, sourceId)
+   
+   //check if device already exists for the same site, if yes then update the same device
+   equipsGrid:{}.toGrid
+   equipsGrid = readAll(equip and sourceId == sourceId and siteRef->navName == siteName)
+  
+   devToAdd: activeEquip
+   //return activeEquip
+   
+   // create Version Record
+    mapVersionTags : {
+      id : refGen(),
+      make : devToAdd->versionRef->make,
+      deviceType : devToAdd->versionRef->deviceType,
+      model : devToAdd->versionRef->model,
+      protocol : devToAdd->versionRef->protocol,
+      version : devToAdd->versionRef->version,
+      dis : devToAdd->versionRef->version
+    }
+  
+  //commit version so that can be used for reference later while creating device
+      commit(diff(null,mapVersionTags,{add}))
+      
+      mapDeviceTags : {
+        equip,
+        id : refGen(),
+        sourceId : devToAdd->sourceId,
+        dis : devToAdd->sourceId,
+        unitId : devToAdd->unitId,
+        isPublishing : devToAdd->isPublishing,
+        datasourceName : devToAdd->datasourceName,
+        ip : devToAdd->ip,
+        connectedPort : devToAdd->connectedPort,
+        writeBackPort : devToAdd->writeBackPort,
+        networkProtocol : devToAdd->networkProtocol,
+        siteRef : read(site and navName == siteName)->id,
+        versionRef : mapVersionTags->id,
+        active,
+        tz : "Dubai"
+  }
+  
+  
+  //commit device
+   if(equipsGrid.isEmpty) do
+      commit(diff(null,mapDeviceTags,{add}))
+       end
+      else do
+        equipsGrid.toRecList.map(r => diff(r, mapDeviceTags)).commit
+      end
+      
+      //retrieve the newly created active device
+      activeEquip = read(equip and active and sourceId==sourceId and siteRef->subscriptionId==subscriptionId)
+         assignDevicePointsToSite(activeEquip,activePoints)
+    return {"status":"SUCCESS"}
+  end
+  //assignDeviceToSite("1","3517543051523113","ABC")
+---
+name:createDevice
+id:@1dc9b993-63c6b42d
+func
+mod:2015-12-16T07:59:33.875Z
+src:
+  /**
+   * This function is used to create a device
+   * 
+   * @author Twinkle
+   * @date 
+   * @jsonPayload denotes the payload with device details
+   * @subId denotes the subscription id against which the site needs to be created
+   * @siteName denotes the site Name
+   */
+  
+  (jsonPayload, subId, siteName) => do
+  /*
+  sample request : {"sourceId":"3517543051523113","unitId":50,"isPublishing":true,"datasourceName":"351756431523113","ip":"10.234.60.39","connectedPort":9443,"writeBackPort":9445,"networkProtocol":{"name":"TCP"},"tags":[{"name":"tag1"},{"name":"tag2"}],"version":{"make":"Teltonica","deviceType":"3G Routers","model":"FM1010","protocol":"EDCP","version":"EDCP-1.0.0"}}
+  
+  */
+  
+  //Inactivate all the currently existing devices
+  inactivateDevice(subId, jsonPayload->sourceId)
+  
+  //check if device already exists for the same site, if yes then update the same device
+  equipsGrid: readAll(equip and sourceId == jsonPayload->sourceId and siteRef->navName == siteName)
+  
+  
+  // create Version Record
+  mapVersionTags : {
+  	id : refGen(),
+  	make : jsonPayload["version"]["make"],
+  	model : jsonPayload["version"]["model"],
+  	protocol : jsonPayload["version"]["protocol"],
+  	version : jsonPayload["version"]["version"],
+  	dis : jsonPayload["version"]["version"],
+    deviceType : if(jsonPayload["version"]["deviceType"] != null) do jsonPayload["version"]["deviceType"] end else "",
+  }
+  
+  //commit version so that can be used for reference later while creating device
+       commit(diff(null,mapVersionTags,{add}))   
+  
+  mapDeviceTags : {
+  	equip,
+  	id : refGen(),
+  	sourceId : jsonPayload->sourceId,
+    dis : jsonPayload->sourceId,
+  	unitId : jsonPayload->unitId,
+  	isPublishing : jsonPayload->isPublishing,
+  	datasourceName : if(jsonPayload["datasourceName"] != null) do jsonPayload["datasourceName"] end else "",
+  	ip : if(jsonPayload["ip"] != null) do jsonPayload["ip"] end else "",
+  	connectedPort : if(jsonPayload["connectedPort"] != null) do jsonPayload["connectedPort"] end else "",
+    writeBackPort : if(jsonPayload["writeBackPort"] != null) do jsonPayload["writeBackPort"] end else "",
+  	networkProtocol :  jsonPayload->networkProtocol->name,
+  	siteRef : read(site and navName == siteName)->id,
+  	versionRef : mapVersionTags->id,
+    active
+  }
+  //commit device
+   if(equipsGrid.isEmpty) do
+      commit(diff(null,mapDeviceTags,{add}))
+       end
+      else do
+      //Read performed again due to concurrent record error
+        equipsGrid = readAll(equip and sourceId == jsonPayload->sourceId and siteRef->navName == siteName)
+        
+        equipsGrid.toRecList.map(r => diff(r, mapDeviceTags)).commit
+        //return  readAll(equip and sourceId == jsonPayload->sourceId and siteRef->navName == siteName)
+      end
+  
+  /*
+  Cannot create Dynamic markers
+  
+  tagsList : jsonPayload->tag
+  a : tagsList.each row=>do
+    commit(diff(read(equip and id ==mapData->id), row->name))
+  end*/
+  
+  return {"status":"SUCCESS"}
+  end
+  //createDevice({"sourceId":"3517543051523113","unitId":50,"isPublishing":true,"datasourceName":"351756431523113","ip":"10.234.60.39","connectedPort":9443,"writeBackPort":9445,"networkProtocol":{"name":"TCP"},"tags":[{"name":"tag1"},{"name":"tag2"}],"version":{"make":"Teltonica","deviceType":"3G Routers","model":"FM1010","protocol":"EDCP","version":"EDCP-1.0.0"}},"1","PCS")
+---
+name:writeFuncsToTrio
+id:@1dd301aa-2cb54306
+func
+mod:2016-01-02T06:34:37.783Z
+src:
+    () => do
+    
+      myUri : "io/saffronFunctionsJanuaryBackup.trio"
+      myUri = myUri.replace(" ", "")
+      useUri : myUri.parseUri
+    
+      readAll(func)
+        .ioWriteTrio(useUri)
+    end
+---
+name:createSubscription
+id:@1dfad36c-2fc43b9e
+func
+mod:2015-12-10T07:01:30.782Z
+src:
+  /**
+   * This function is used to create a subscription
+   * 
+   * @author Daniela(PCSEG191)
+   * @date 09 December 2015
+   * @subId denotes the subscription id
+   * @subName denotes the subscriber name
+   */
+  (subId, subName) => do
+    
+    if(subId==null)do
+      return "Subscription id not specified"
+    end
+    
+    if(subName==null)do
+      return "Subscription name not specified"
+    end
+    
+     subGrid: readAll(subscription and subscriptionId==subId and siteName==subName)
+     
+     if(subGrid.isEmpty) do 
+    
+    //construct a dict
+    data:{
+      //Marker tag to denote a 
+      site,
+      //Auto generated id
+      id: refGen(),
+      subscriptionId:toStr(subId),
+      siteName:subName,
+      navName :subName,
+      dis:subName,
+      subscription,
+      //time zone should be UTC
+      tz: "UTC"
+    }
+    //commit to folio
+      commit(diff(null,data,{add}))
+    return "SUCCESS"
+    end
+    else
+      return "Subscription already exists"
+    //createSubscription("1","PCS")
+  end
+  
+---
+name:createSite
+id:@1dc9ad41-e3636cd7
+func
+mod:2016-01-02T05:45:25.634Z
+src:
+  /**
+   * This function is used to create a subscription
+   * 
+   * @author Daniela(PCSEG191)
+   * @date 09 December 2015
+   * @subId denotes the subscription id against which the site needs to be created
+   * @siteName denotes the site Name
+   */
+  (subId, siteName) => do
+    
+    if(subId==null)do
+      return "Subscription id not specified"
+    end
+    
+    if(siteName==null)do
+      return "Site name not specified"
+    end
+    
+     subGrid: readAll(subscriptionId==subId and siteName==siteName)
+     
+     if(subGrid.isEmpty) do 
+    
+    //construct a dict
+      data:{
+        //Marker tag to denote a 
+        site,
+        //Auto generated id
+        id: refGen(),
+        subscriptionId:toStr(subId),
+        siteName:siteName,
+        navName :siteName,
+        dis:siteName,
+        //time zone should be UTC
+        tz: "UTC"
+      }
+    //commit to folio
+      commit(diff(null,data,{add}))
+      return "SUCCESS"
+    end
+    else
+      return "Site already exists"
+    //createSite("1","PCS")
+  end
+  
+---
+name:functionToTestApis
+id:@1dc9c0c5-82dc07eb
+func
+mod:2015-12-21T06:27:47.273Z
+src:
+  () => do
+   
+   //create device
+  //eval("createDevice({\"sourceId\":\"3517543051523114\",\"unitId\":50,\"isPublishing\":true,\"datasourceName\":\"351756431523113\",\"ip\":\"10.234.60.39\",\"connectedPort\":9443,\"writeBackPort\":9445,\"networkProtocol\":{\"name\":\"TCP\"},\"tags\":[{\"name\":\"tag1\"},{\"name\":\"tag2\"}],\"version\":{\"make\":\"Teltonica\",\"deviceType\":\"3G Routers\",\"model\":\"FM1010\",\"protocol\":\"EDCP\",\"version\":\"EDCP-1.0.0\"}}, \"123287512234321\")") 
+  //eval("createDevice({\"sourceId\":\"3517543051523113\",\"unitId\":50,\"isPublishing\":true,\"datasourceName\":\"351756431523113\",\"ip\":\"10.234.60.39\",\"connectedPort\":9443,\"writeBackPort\":9445,\"networkProtocol\":{\"name\":\"TCP\"},\"tags\":[{\"name\":\"tag1\"},{\"name\":\"tag2\"}],\"version\":{\"make\":\"Teltonica\",\"deviceType\":\"3G Routers\",\"model\":\"FM1010\",\"protocol\":\"EDCP\",\"version\":\"EDCP-1.0.0\"}}, \"123287512234321\")")
+   
+   //assign points to devices
+  //eval("assignPointsToDevices({\"sourceIds\":[\"3517543051523113\",\"3517543051523114\"],\"confTemplate\":{\"subId\":\"1\",\"templateName\":\"Javids Test\",\"configPoints\":[{\"pointId\":1,\"pointName\":\"point name 1\",\"displayName\":\"display name 1\",\"dataType\":\"Integer\",\"accessType\":\"READONLY\",\"unit\":\"kV\"},{\"pointId\":3,\"pointName\":\"point name 2\",\"displayName\":\"display name 2\",\"dataType\":\"Float\",\"accessType\":\"READONLY\",\"unit\":\"kV\"}]}})")
+   
+   // eval("tst({\"sourceIds\":[\"3517543051523113\",\"3517543051523114\"],\"confTemplate\":{\"subId\":\"1\",\"templateName\":\"Javids Test\",\"configPoints\":[{\"pointId\":1,\"pointName\":\"point name 1\",\"displayName\":\"display name 1\",\"dataType\":\"Integer\",\"accessType\":\"READONLY\",\"unit\":\"kV\"},{\"pointId\":3,\"pointName\":\"point name 2\",\"displayName\":\"display name 2\",\"dataType\":\"Float\",\"accessType\":\"READONLY\",\"unit\":\"kV\"}]}})")
+  
+  //eval("importHistory({\"sourceId\":\"356307045764650\",\"time\":\"1450588435000\",\"receivedTime\":\"1450588452083\",\"points\":[{\"pointId\":\"1\",\"pointName\":\"DIN1\",\"displayName\":\"Ignition Status\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"status string\",\"unit\":\"unitless\",\"data\":\"OFF\",\"status\":\"HEALTHY\",\"type\":\"STRING\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]},{\"pointId\":\"Speed\",\"pointName\":\"Speed\",\"displayName\":\"GPS Speed\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"velocity\",\"unit\":\"kilometer per hour\",\"data\":\"0\",\"status\":\"HEALTHY\",\"type\":\"DOUBLE\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]},{\"pointId\":\"1\",\"pointName\":\"DIN1\",\"displayName\":\"Asset Status\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"status string\",\"unit\":\"unitless\",\"data\":\"null\",\"status\":\"null\",\"type\":\"STRING\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"}],\"alarmExtensions\":[]},{\"pointId\":\"66\",\"pointName\":\"External Power Voltage\",\"displayName\":\"Vehicle Battery\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"electric potential\",\"unit\":\"volt\",\"data\":\"12.36\",\"status\":\"HEALTHY\",\"type\":\"DOUBLE\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]},{\"pointId\":\"67\",\"pointName\":\"Internal Battery Voltage\",\"displayName\":\"Device Battery\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"electric potential\",\"unit\":\"volt\",\"data\":\"9.26\",\"status\":\"HEALTHY\",\"type\":\"DOUBLE\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]},{\"pointId\":\"Longitude\",\"pointName\":\"Longitude\",\"displayName\":\"Longitude\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"status double\",\"unit\":\"unitless\",\"data\":\"55.0514333\",\"status\":\"HEALTHY\",\"type\":\"DOUBLE\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]},{\"pointId\":\"Latitude\",\"pointName\":\"Latitude\",\"displayName\":\"Latitude\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"status double\",\"unit\":\"unitless\",\"data\":\"24.9388256\",\"status\":\"HEALTHY\",\"type\":\"DOUBLE\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]},{\"pointId\":\"Visible Satellites\",\"pointName\":\"Visible Satellites\",\"displayName\":\"Visible Satellites\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"status integer\",\"unit\":\"unitless\",\"data\":\"19\",\"status\":\"HEALTHY\",\"type\":\"INTEGER\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]},{\"pointId\":\"Angle\",\"pointName\":\"Angle\",\"displayName\":\"Angle\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"solid angle\",\"unit\":\"steradian\",\"data\":\"0\",\"status\":\"HEALTHY\",\"type\":\"DOUBLE\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]},{\"pointId\":\"Angle\",\"pointName\":\"Angle\",\"displayName\":\"Direction\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"status string\",\"unit\":\"unitless\",\"data\":\"N\",\"status\":\"HEALTHY\",\"type\":\"STRING\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]}]})")
+  
+  
+  
+  
+  
+  //------------------------------------------------------import History-------------------------------------------------------
+  //Boolean point:
+  //eval("importHistory({\"sourceId\":\"3517543051523113\",\"time\":\"1450588435000\",\"receivedTime\":\"1450588452083\",\"points\":[{\"pointId\":\"1\",\"pointName\":\"point name 1\",\"displayName\":\"Status1\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"status string\",\"unit\":\"unitless\",\"data\":\"True\",\"status\":\"HEALTHY\",\"type\":\"Boolean\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]}]})")
+  
+  //String point:
+  //eval("importHistory({\"sourceId\":\"3517543051523113\",\"time\":\"1450588435000\",\"receivedTime\":\"1450588452083\",\"points\":[{\"pointId\":\"2\",\"pointName\":\"point name 2\",\"displayName\":\"Status2\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"status string\",\"unit\":\"unitless\",\"data\":\"True\",\"status\":\"HEALTHY\",\"type\":\"String\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]}]})")
+  
+  //Number point:
+  //eval("importHistory({\"sourceId\":\"3517543051523113\",\"time\":\"1450588435000\",\"receivedTime\":\"1450588452083\",\"points\":[{\"pointId\":\"3\",\"pointName\":\"point name 3\",\"displayName\":\"Status3\",\"className\":\"null\",\"systemTag\":\"null\",\"physicalQuantity\":\"status string\",\"unit\":\"unitless\",\"data\":\"True\",\"status\":\"HEALTHY\",\"type\":\"Integer\",\"extensions\":[{\"extensionName\":\"READONLY\",\"extensionType\":\"ACCESS TYPE\"},{\"extensionName\":\"HEALTHY\",\"extensionType\":\"STATUS\"}],\"alarmExtensions\":[]}]})")
+  
+  //------------------------------------------------------create point to device-------------------------------------------------------
+  //Boolean point:
+  eval("assignPointsToDevices({\"sourceIds\":[\"3517543051523113\"],\"confTemplate\":{\"deviceMake\":\"Teltonika\",\"deviceType\":\"Telematics\",\"deviceModel\":\"FMS\",\"deviceProtocol\":\"EDCP\",\"deviceProtocolVersion\":\"1.0.0\",\"configPoints\":[{\"pointId\":1,\"pointName\":\"point name 1\",\"configuredName\":\"configured name 1\",\"dataType\":\"BOOLEAN\",\"physicalQuantity\":\"Temperature\",\"unit\":\"unitless\",\"precedence\":\"1\",\"displayName\":\"Status1\"}]}})")
+  
+  //String point:
+  //eval("assignPointsToDevices({\"sourceIds\":[\"3517543051523113\"],\"confTemplate\":{\"deviceMake\":\"Teltonika\",\"deviceType\":\"Telematics\",\"deviceModel\":\"FMS\",\"deviceProtocol\":\"EDCP\",\"deviceProtocolVersion\":\"1.0.0\",\"configPoints\":[{\"pointId\":2,\"pointName\":\"point name 2\",\"configuredName\":\"configured name 1\",\"dataType\":\"BOOLEAN\",\"physicalQuantity\":\"Temperature\",\"unit\":\"unitless\",\"precedence\":\"1\",\"displayName\":\"Status2\"}]}})")
+  
+  //Number point:
+  //eval("assignPointsToDevices({\"sourceIds\":[\"3517543051523113\"],\"confTemplate\":{\"deviceMake\":\"Teltonika\",\"deviceType\":\"Telematics\",\"deviceModel\":\"FMS\",\"deviceProtocol\":\"EDCP\",\"deviceProtocolVersion\":\"1.0.0\",\"configPoints\":[{\"pointId\":3,\"pointName\":\"point name 3\",\"configuredName\":\"configured name 1\",\"dataType\":\"BOOLEAN\",\"physicalQuantity\":\"Temperature\",\"unit\":\"unitless\",\"precedence\":\"1\",\"displayName\":\"Status3\"}]}})")
+  
+  
+  
+  
+  
+  end
+---
+name:inactivateDevice
+id:@1dfaddb3-c88ad8e2
+func
+mod:2015-12-12T12:45:53.856Z
+src:
+  /**
+   * This function is used to create a site
+   * 
+   * @author Daniela(PCSEG191)
+   * @date 12 Dec 2015
+   * @subscriptionId denotes the subscription id
+   * @sourceId unique id for an equipment
+   */
+  
+  (subscriptionId, sourceId) => do
+    
+    //make points associated with the device inactive
+    try do
+     activePoints: read(active and equip and siteRef->subscriptionId==subscriptionId and sourceId==sourceId).equipToPoints()
+     activePoints.toRecList.map(r => diff(r, {active:removeMarker()})).commit
+     end
+     catch (e) 
+         do
+       logInfo("newdevice", "newdevice")
+     end
+    
+    //Get all active equip with the specified sourceId and make it inactive  
+     activeEquips:readAll(equip  and siteRef->subscriptionId==subscriptionId and sourceId==sourceId)
+     activeEquips.toRecList.map(r => diff(r, {active:removeMarker()})).commit
+       logInfo("newdeviceAdd", "newdeviceAdd"+subscriptionId)
+  end
+  //inactivateDevice("3", "5175430515231132")
+  
+---
+name:dcEquip
+id:@1d4b0f4d-920f3215
+func
+mod:2015-07-29T04:14:20.771Z
+src:
+  (tags) => do
+  
+    logInfo("dcEquip","tags"+tags)
+  //  tags.each()
+  end
+  
+---
+name:assignPointsToDevices
+id:@1dca0222-2e068502
+func
+mod:2015-12-21T08:30:12.191Z
+src:
+  /**
+   * This function is used to assign points to multiple devices
+   * 
+   * @author Twinkle
+   * @date 
+   * @jsonPayload denotes the payload with point details
+   * 
+   */
+  
+  (jsonPayload) => do
+  /*
+  sample request :{"sourceIds":["source_id_ss_002"],"confTemplate":{"deviceMake":"Teltonika","deviceType":"Telematics","deviceModel":"FMS","deviceProtocol":"EDCP","deviceProtocolVersion":"1.0.0","configPoints":[{"pointId":1,"pointName":"point name 1","configuredName":"configured name 1","dataType":"Integer","physicalQuantity":"Temperature","unit":"kelvin","precedence":"1","displayName":"Engine Status"}]}}
+  */
+  
+  /*****************************************************Private functions starts *****************************************************************************/
+  
+  
+  /********** func to create point **********/
+  createPoint : (pointsToBeCreated, deviceRefId) =>do 
+  updateGrid:{}.toGrid
+  	pointsToBeCreated.each row => do
+  		mapAndCommitPoint(row, deviceRefId,updateGrid)
+  	end // end of pointsToBeCreated.each
+  end // end of createPoint
+  
+  
+  /********** func to validate already existing point vs newPointToBeCreated **********/
+  validatePoints : (pointsToDevice, configPoints, deviceRefId) =>do 
+  
+  	pointsToBeCreated : [].toGrid
+    
+  	logInfo("deviceRefId", "deviceRefId "+deviceRefId)
+  	logInfo("assignPointsToDevices", "existing points list : "+pointsToDevice.keepCols(["pointId"]).toRecList)
+    
+  	iterateConfigPoints : configPoints.each row => do 
+  		pointsToBeCreated.toRecList
+      
+  		logInfo("assignPointsToDevices", "new point pointId : "+row->pointId)
+  		logInfo("assignPointsToDevices", "new point exists already ? result : "+pointsToDevice.keepCols(["pointId"]).toRecList.any(v => v->pointId == row->pointId.toStr))
+  		//if(pointsToDevice.keepCols(["pointId"]).toRecList.find(row->pointId) == null) do
+  		//if(pointsToDevice.keepCols(["pointId"]).findAll( x => x->pointId == row->pointId).size == 0) do
+      
+  		if(not pointsToDevice.keepCols(["pointId"]).toRecList.any(v => v->pointId == row->pointId.toStr)) do // TODO add more conditions pointName and displayName
+  			//point doesnot exists, add to toBeCreated list
+  			pointsToBeCreated = pointsToBeCreated.addRow(row)
+  			
+  			logInfo("assignPointsToDevices", "inside for point : ")
+  		end //end of if
+  		else do //if point is present update it, use deviceRefId and pointId to get point from folio
+  			//it must return only one record, else data wont be correct
+  			updatePointRecord: read(point and equipRef==deviceRefId and pointId==row->pointId.toStr and pointName==row->pointName and displayName==row->displayName and active) 
+         
+  			logInfo("assignPointsToDevices", "point is existing : pointId : "+row->pointId+", inside else point")
+        
+  			//invalidate point, if it is already existing in folio, create new active point
+  			diff(updatePointRecord, {active:removeMarker()}).commit
+  			mapAndCommitPoint(row,deviceRefId,updatePointRecord)
+  		end //end of else
+  
+  	end // end of iterateConfigPoints
+  	
+      if(pointsToBeCreated.size > 0) do 
+  		createPoint(pointsToBeCreated.toRecList, deviceRefId)
+      end // end of if 
+  	
+  	return pointsToBeCreated
+  end // end of validatePoint
+  
+  
+  /********** map and commit points to device **********/
+  mapAndCommitPoint : (pt, deviceRefId,updatePointRecord) =>do 
+  
+  	logInfo("unit", "unit : "+pt->unit)
+  
+  	mapPointsTags : {
+  		point,
+  		id : refGen(),
+  		pointId : pt -> pointId.toStr,
+  		pointName : pt ->pointName.toStr,
+  		displayName : pt ->displayName.toStr,
+  		dis : pt ->displayName,
+  		dataType : pt->dataType,
+  		kind : if(pt ->dataType.lower == "integer") do "Number" end 
+  			else if (pt ->dataType.lower == "float") do "Number" end 
+  			else if (pt ->dataType.lower == "double") do "Number" end 
+  			else if (pt ->dataType.lower == "boolean") do "Bool" end 
+  			else if (pt ->dataType.lower == "string") do "Str" end,
+  		accessType : if(pt["accessType"] != null) do pt["accessType"] end else "",
+  		equipRef : deviceRefId,
+  		unit : if(pt ->unit.parseUnit(false) !=null) do pt ->unit.parseUnit(false) end else pt ->unit,
+  		active,
+  		his,
+  		tz : "Dubai"
+  	}
+  
+  	if(updatePointRecord.isEmpty) do
+  		//commit points to device
+  		commit(diff(null,mapPointsTags,{add}))
+  	end //end of if
+  	else do
+  		//below code will create a new active point, ids are different
+  		//updatePointRecord.toRecList.map(r => diff(r, mapPointsTags)).commit
+  		
+  		commit(diff(null,mapPointsTags,{add}))
+  	end  //end of if
+  end //end of mapAndCommitPoints
+  
+  
+  /*****************************************************Private functions ends   *****************************************************************************/
+  
+  
+  /********** fetch all devices/equips by sourceIds **********/
+  sourceIds : jsonPayload->sourceIds
+  devices : [].toGrid
+  iterateSourceIds : sourceIds.each row=>do
+  	devices.toGrid
+  	
+  	//Get only the current active equip
+  	lst : readAll(equip and sourceId==row and active)
+  	if(lst.size >= 1) do
+  		devices = devices.addRows(lst.toGrid)
+  	end //end of if
+  end // end of iterateSourceIds
+  
+  /********** fetch points for one device at a time **********/
+  pointsToDevice : [].toGrid 
+  configPoints : jsonPayload->confTemplate->configPoints
+  
+  iterateDevicesForPoints : devices.toRecList.each row=>do 
+  	pointsToDevice.toGrid
+  	//fetch all the points from folio for a device
+  	lst : read(equip and sourceId==row->sourceId and active).toPoints()
+    
+  	//make all points inactive
+  	//lst.toRecList.map(r => diff(r, {active:removeMarker()})).commit
+    
+  	//validate fetched device points for new points
+  	if(lst.size > 0) do
+  		pointsToDevice = pointsToDevice.addRows(lst.toGrid)
+  		//validate pointsToDevice for existing point
+  		validatePoints(pointsToDevice, configPoints, row->id)
+  		//update points with new points if new points doesnt exists, else dont do anything
+  	end //end of if
+  	else do 
+  		//create point and assign to device
+  		createPoint(configPoints, row->id)
+  	end //end of else
+  end // end of iterateDevicesForPoints
+  
+  return {"status":"SUCCESS"}
+  end
+  //assignPointsToDevices({"sourceIds":["source_id_ss_002"],"confTemplate":{"deviceMake":"Teltonika","deviceType":"Telematics","deviceModel":"FMS","deviceProtocol":"EDCP","deviceProtocolVersion":"1.0.0","configPoints":[{"pointId":1,"pointName":"point name 1","configuredName":"configured name 1","dataType":"Integer","physicalQuantity":"Temperature","unit":"kelvin","precedence":"1","displayName":"Engine Status"}]}})
+---
+name:assignDevicePointsToSite
+id:@1dfeb336-398abc2a
+func
+mod:2015-12-20T11:25:46.016Z
+src:
+  /**
+   * This function is used to assign points to a device, this function is invoked together with assignDeviceToSite
+   * 
+   * @author Daniela (PCSEG191)
+   * @date 
+   * @deviceRefId denotes the device ref id
+   * @points denotes the list of points
+   */
+  
+  (deviceRefId,points) => do
+  
+  /*****************************************************Private functions starts *****************************************************************************/
+  
+  
+  /********** func to create point **********/
+  createPoint : (pointsToBeCreated, deviceRefId) =>do 
+  updateGrid:[].toGrid
+    pointsToBeCreated.each row => do
+      mapAndCommitPoint(row, deviceRefId,updateGrid)
+    end // end of pointsToBeCreated.each
+  end // end of createPoint
+  
+  /********** map and commit points to device **********/
+  mapAndCommitPoint : (pt, deviceRefId,updateGrid) =>do 
+  logInfo("unit", "unit : "+pt->unit)
+  mapPointsTags : {
+  	point,
+  	id : refGen(),
+  	pointId : pt -> pointId.toStr,
+  	pointName : pt ->pointName.toStr,
+  	displayName : pt ->displayName.toStr,
+  	dis : pt ->displayName,
+  	dataType : pt ->dataType,
+  	kind : if(pt ->dataType.lower == "integer") do "Number" end 
+      else if (pt ->dataType.lower == "float") do "Number" end 
+      else if (pt ->dataType.lower == "double") do "Number" end 
+      else if (pt ->dataType.lower == "boolean") do "Bool" end 
+      else if (pt ->dataType.lower == "string") do "Str" end,
+  	accessType : if(pt["accessType"] != null) do pt["accessType"] end else "",
+    equipRef : deviceRefId["id"],
+  	unit : if(pt ->unit.parseUnit(false) !=null) do pt ->unit.parseUnit(false) end else pt ->unit,
+    active,
+    tz : "Dubai"
+  }
+  
+  if(updateGrid.isEmpty) do
+  //commit points to device
+      commit(diff(null,mapPointsTags,{add}))
+    end
+   else do
+   updateGrid.toRecList.map(r => diff(r, mapPointsTags)).commit
+  end
+  
+  end //end of mapAndCommitPoints
+  
+  //Get all the points asscoiated with the device
+  existingPointsGrid: readAll(point and equipRef==deviceRefId["id"])
+   //make all points inactive
+  existingPointsGrid.toRecList.map(r => diff(r, {active:removeMarker()})).commit   
+  
+   pointsToBeCreated : [].toGrid
+   updatePointGrid : [].toGrid
+  points.each((row,i) => do   
+     if(existingPointsGrid.keepCols(["pointId"]).findAll( x => x->pointId == row->pointId).size != 0) do
+        updatePointGrid = readAll(point and equipRef==deviceRefId["id"] and pointId==row->pointId)  
+        
+       // updatePointGrid.toRecList.map(r => diff(r, {active:removeMarker()})).commit     
+        mapAndCommitPoint(row,deviceRefId,updatePointGrid)
+     end
+      else do 
+        pointsToBeCreated = pointsToBeCreated.addRow(row)
+      end
+  end)
+   if(pointsToBeCreated.size > 0) do 
+     createPoint(pointsToBeCreated.toRecList, deviceRefId)
+   end
+  
+  return {"status":"SUCCESS"}
+  
+  
+  end
+  
+  

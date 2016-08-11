@@ -1,0 +1,8 @@
+   zookeeperRoot :
+   nimbusHost : 10.234.31.234
+   thriftPort : 6627
+   zookeeperPort : 2181
+   zookeeperServers: 10.234.31.234
+   zookeeperHosts: 10.234.31.234:2181
+   maxSpoutSpending: 1000
+   

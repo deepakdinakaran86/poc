@@ -1,0 +1,57 @@
+#!/bin/sh
+# Copyright (c) 2015 Stratio (http://stratio.com)
+#
+
+set -e
+
+GROUP='stratio'
+USER='ingestion'
+DIR_INSTALL='/opt/sds/ingestion'
+DIR_CONF='/etc/sds/ingestion'
+DIR_LOG='/var/log/sds/ingestion'
+
+# Add stratio group if it doesn't already exists
+if ! getent group $GROUP >/dev/null 2>&1; then
+groupadd ${GROUP}
+fi
+
+# Add stratio user if it doesn't already exists
+if ! getent passwd $USER >/dev/null 2>&1; then
+[ -d /opt ] || mkdir /opt
+useradd -M -d /opt/sds -g ${GROUP} -s /bin/bash ${USER}
+else
+usermod -G $GROUP $USER
+fi
+
+if [ ! -d "$DIR_LOG" ]; then
+mkdir $DIR_LOG
+fi
+chown -R ${USER}:${GROUP} $DIR_LOG
+chmod 775 $DIR_LOG
+
+chown -R ${USER}:${GROUP} $DIR_INSTALL
+chmod -R 775 $DIR_INSTALL
+
+if [ ! -d "$DIR_CONF" ]; then
+mkdir -p $DIR_CONF
+fi
+
+cp -rf $DIR_INSTALL/conf/* $DIR_CONF/
+chown -R ${USER}:${GROUP} $DIR_CONF
+
+chmod 0644 $DIR_CONF
+
+
+find $DIR_INSTALL -maxdepth 1 -type f -exec chmod 644 {} \;
+find $DIR_INSTALL -maxdepth 1 -type d -exec chmod 755 {} \;
+
+chmod 0755 $DIR_INSTALL/bin
+chmod 0755 $DIR_INSTALL/bin/*
+chmod 0755 $DIR_INSTALL/examples/*/bin/*
+chmod +x /etc/default/ingestion*
+
+chmod 644 /etc/default/ingestion-*
+
+
+#/sbin/chkconfig --add ingestion
+

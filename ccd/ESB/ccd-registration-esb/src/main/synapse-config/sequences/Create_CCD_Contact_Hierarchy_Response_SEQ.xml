@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_CCD_Contact_Hierarchy_Response_SEQ">
+	<log separator=",">
+		<property name="Create_CCD_Contact_Hierarchy_Response_SEQ"
+			value="--------" />
+		<property name="currentCount" expression="get-property('synapse_it_count')" />
+		<property name="contactLength" expression="get-property('contactLength')" />
+	</log>
+	<property name="currentCount" expression="get-property('synapse_it_count')" />
+	<filter xpath="get-property('currentCount') = get-property('contactLength')">
+		<then>
+			<log level="custom">
+				<property name="count equal" expression="'worked'" />
+			</log>
+			<header name="To" action="remove"></header>
+			<property name="RESPONSE" value="true" scope="default" type="STRING"></property>
+			<property name="HTTP_SC" value="200" scope="axis2"></property>
+			<payloadFactory media-type="json">
+				<format>{ "status": "SUCCESS"}</format>
+			</payloadFactory>
+			<send></send>
+		</then>
+	</filter>
+</sequence>

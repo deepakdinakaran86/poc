@@ -1,0 +1,42 @@
+MATCH (n:`DATA_SOURCE_PARAMETERS`)<-[r:hasParameter]-(m:DATA_SOURCE) delete r,n;
+
+MATCH (n:`SUBSCRIPTION_CONTEXT`)<-[r:subscribedTo]-(m:DATA_SOURCE) delete r,n,m;
+
+MATCH (m:DATA_SOURCE) delete m ;
+
+MATCH (n:COMMAND)<-[r:executed]-(m) delete r,n ;
+
+MATCH (a)-[r1]->(b:CONFIGURED_POINT)-[r2]->(c) delete r2,r1,b ;
+
+MATCH (n:`DEVICE_CONFIG_TEMP`)<-[r:hasTemplate]-(m) delete r;
+
+MATCH (a:DEVICE)-[r1:isConfiguredWith]->(b:CONFIGURED_POINT) delete r1;
+
+MATCH (a:`CONFIGURED_POINT`)<-[r]-b delete r;
+
+MATCH (a:`CONFIGURED_POINT`)-[r]->b delete r;
+
+MATCH (n:`CONFIGURED_POINT`) delete n ;
+
+MATCH (n:`DEVICE_CONFIG_TEMP`)<-[r]-(m) delete r,n ;
+
+MATCH (n:`DEVICE_CONFIG_TEMP`) delete n ;
+
+OPTIONAL MATCH (a)-[r1]->(b:`PARAMETER`)-[r2]->c delete r1,r2,b;
+
+
+OPTIONAL MATCH (a)-[r1]->(b:`DEVICE`)-[r2]->c delete r1,r2,b;
+
+MATCH (a)-[r1]->(b:`DEVICE_TAG`) delete r1,b;
+
+MATCH (n:`SUBSCRIPTION`) delete n;
+
+OPTIONAL MATCH (b:`DEVICE`)-[r2]->c delete r2,b;
+
+MATCH (n:`DEVICE`) delete n;
+
+OPTIONAL MATCH (a)-[r1]->(b:`SYSTEM_TAG`)-[r2]->c delete r1,r2,b;
+
+MATCH (n:`BATCH`)-[r:includes]->(m:`COMMAND`) delete n,m,r;
+
+MATCH (n:`RECYCLE`)<-[r:hasVersion]-(m) delete n,r;

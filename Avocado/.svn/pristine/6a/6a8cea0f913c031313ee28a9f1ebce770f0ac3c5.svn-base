@@ -1,0 +1,28 @@
+#ESB URLS
+avocado.esb.url = http://10.234.31.202:8281
+platform.esb.url = http://10.234.31.202:8281
+platform.saffron.url = http://10.234.31.158:9763/datasource-api-1.0.0/services/datasources
+
+#Platform End Points
+platform.client.entitytemplate = alpine/services/templates
+platform.client.entitytemplate.list = alpine/services/templates/list
+platform.client.entitytemplate.find = alpine/services/templates/find
+platform.client.entitytemplate.list.byparenttemplate= alpine/services/templates/listByParentTemplate
+
+#Platform ESB End Points
+platform.esb.marker = /alpine/services/markers
+platform.esb.marker.find = /alpine/services/markers/find
+platform.esb.marker.list = /alpine/services/markers/list/filter
+platform.esb.marker.search = /alpine/services/markers/fieldvalue/search
+platform.esb.hierarchy.children = /alpine/services/hierarchy/children
+platform.esb.hierarchy.attach = /alpine/services/hierarchy/attach/children
+platform.esb.hierarchy.parents.immediate = /alpine/services/hierarchy/parents/immediate
+platform.esb.hierarchy.children.immediate = /alpine/services/hierarchy/children/immediate
+platform.esb.hierarchy.search.relation = /alpine/services/hierarchy/search/relation
+
+#Saffron End Points
+saffron.device.configurations = devices/{sourceId}/configurations
+saffron.data.latest=data/latest
+
+#Avocado ESB End Points
+avocado.esb.points.create= /galaxy-assets/services/assets/points

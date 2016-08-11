@@ -1,0 +1,37 @@
+<%
+
+var VarTenantKey;
+var VarCurrentTenantInfo;
+var usr = require('/modules/user.js');
+var ObjUser = usr.current();
+var ObjPageAccess;
+var VarGensetDashboardId;
+
+(function() {
+	
+    if (!user) {
+        sendLogin();
+        return;
+    }
+		
+
+	var method = request.getMethod();
+	
+	if (method === 'POST') { 		
+		VarTenantKey = (request.getParameter("gapp-tenant-key") != null) ? request.getParameter("gapp-tenant-key") : '';
+		//VarGensetDashboardId = (pageId=='dashboard') ? request.getParameter("dashboard_equip_id") : '';	
+		VarGensetDashboardId =  request.getParameter("dashboard_equip_id") ;	
+		
+	} else {
+				
+		var ObjTenantInfo = session.get('PARENT_CLIENT');
+		if(ObjTenantInfo != null){
+			VarTenantKey = ObjTenantInfo['tenantId'];
+		}
+	}	
+	VarCurrentTenantInfo = usr.FnGetCurrentClientInfo(VarTenantKey);
+			
+   include(utils.resolvePath('templates/dashboard.jag'));
+} ());
+
+ %>

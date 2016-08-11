@@ -1,0 +1,24 @@
+### ---enevo.oneconnect Gateway Properties--- ###
+## Time out in seconds
+enevo.oneconnect.devicemanager.cache.session.timeout=15
+
+## Device manager remote system configuration
+
+enevo.oneconnect.devicemanager.remote.authentication.url=https://onecollect.enevo.com/api/2/session
+enevo.oneconnect.devicemanager.remote.authentication.username=pcs-beeah-integration
+enevo.oneconnect.devicemanager.remote.authentication.password=binujoyp
+
+enevo.oneconnect.devicemanager.remote.snapshot.url=https://onecollect.enevo.com/api/2/generate/snapshot
+
+# Device Gateway Configurations Follows:
+
+
+enevo.oneconnect.devicegateway.command.register.url=tcp://10.236.63.100:61616
+enevo.oneconnect.devicegateway.command.register=enevo.oneconnect-commands
+enevo.oneconnect.devicegateway.livedata=SENSOR_DATA
+enevo.oneconnect.devicegateway.rabbitmq.livequeue=SENSOR_DATA
+enevo.oneconnect.devicegateway.rabbitmq.host=10.64.70.1552
+enevo.oneconnect.devicegateway.rabbitmq.port= 5672
+enevo.oneconnect.devicegateway.rabbitmq.username=
+enevo.oneconnect.devicegateway.rabbitmq.password=
+# Device Gateway Configurations Ends:

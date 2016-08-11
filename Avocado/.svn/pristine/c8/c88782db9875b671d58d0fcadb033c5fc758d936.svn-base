@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Avocado_User_API" groupId="com.pcs.avocado.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Avocado_User_API.xml</file>
+    </artifact>
+    <artifact name="Avocado_Create_User_SEQ" groupId="com.pcs.avocado.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Create_User_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Create_Link_Marker_SEQ" groupId="com.pcs.avocado.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Create_Link_Marker_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Set_Pwd_Email_Send_SEQ" groupId="com.pcs.avocado.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Set_Pwd_Email_Send_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Reset_Password_Get_Marker_SEQ" groupId="com.pcs.avocado.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Reset_Password_Get_Marker_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Reset_Password_Update_Marker_SEQ" groupId="com.pcs.avocado.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Reset_Password_Update_Marker_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Reset_Password_SEQ" groupId="com.pcs.avocado.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Reset_Password_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Reset_Password_Update_Res_SEQ" groupId="com.pcs.avocado.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Reset_Password_Update_Res_SEQ.xml</file>
+    </artifact>
+    <artifact name="Avocado_Create_User_Send_SMS_SEQ" groupId="com.pcs.avocado.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Avocado_Create_User_Send_SMS_SEQ.xml</file>
+    </artifact>
+</artifacts>

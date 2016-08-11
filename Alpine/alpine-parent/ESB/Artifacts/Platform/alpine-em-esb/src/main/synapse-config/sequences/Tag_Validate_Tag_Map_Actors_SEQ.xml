@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Validate_Tag_Map_Actors_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Validate_Tag_Map_Actors_SEQ" value="--------"></property>
+	</log>
+	<property expression="$trp:x-jwt-assertion" name="Authorization" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.)" name="originalPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.entity)" name="originalPayload_entity" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<!-- Validate tag entity payload and against database -->
+	<sequence key="Tag_Validate_Entity_SEQ" />
+
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('originalPayload')" />
+		</args>
+	</payloadFactory>
+	<!-- Check if tags are specified -->
+	<filter regex="false" source="boolean(//jsonObject/tags)">
+		<then>
+			<!-- Generate Error message for tags are not specified -->
+			<header name="To" action="remove" />
+			<property name="RESPONSE" value="true" scope="default" type="STRING" />
+			<property name="HTTP_SC" value="200" scope="axis2" />
+			<payloadFactory media-type="json">
+				<format>{"errorCode":"505","errorMessage":"Tags not specified"}</format>
+				<args />
+			</payloadFactory>
+			<property name="messageType" value="application/json" scope="axis2" />
+			<send />
+			<drop />
+		</then>
+		<else>
+			<!-- validate each tag entity payload -->
+			<sequence key="Tag_Validate_Tags_Entities_SEQ" />
+		</else>
+	</filter>
+</sequence>

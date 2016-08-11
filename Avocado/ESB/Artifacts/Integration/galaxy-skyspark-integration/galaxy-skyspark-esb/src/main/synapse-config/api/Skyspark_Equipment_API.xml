@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/skyspark/services/equipments"
+  name="Skyspark_Equipment_API" xmlns="http://ws.apache.org/ns/synapse">
+  <resource inSequence="Skyspark_Create_Equipment_SEQ" methods="POST"
+    protocol="http" url-mapping="/">
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+  <resource inSequence="Skyspark_Update_Equipment_Point_SEQ"
+    methods="PUT" protocol="http" url-mapping="/">
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+</api>

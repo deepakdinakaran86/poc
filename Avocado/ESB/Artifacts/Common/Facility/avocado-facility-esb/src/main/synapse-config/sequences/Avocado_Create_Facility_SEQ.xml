@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Avocado_Create_Facility_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Avocado_Create_Facility_SEQ" value="--------Avocado_Create_Facility_SEQ--------" />
+	</log>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="skysparkPayload"
+		expression="json-eval($.skysparkPayload)" scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="markerPayload"
+		expression="json-eval($.markerPayload)" scope="default" type="STRING"></property>
+	<log separator=",">
+		<property xmlns:ns="http://org.apache.synapse/xsd" name="skyspark_Payload"
+			expression="get-property('skysparkPayload')"></property>
+		<property xmlns:ns="http://org.apache.synapse/xsd" name="marker_Payload"
+			expression="get-property('markerPayload')"></property>
+	</log>
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg expression="get-property('markerPayload')" evaluator="xml"></arg>
+		</args>
+	</payloadFactory>
+
+	<property action="set" expression="$trp:x-jwt-assertion" name="Authorization"
+		scope="default" type="STRING" />
+	<property name="messageType" value="application/json" scope="axis2"
+		type="STRING"></property>
+	<send receive="Avocado_Create_Facility_In_SkySpark_SEQ">
+		<endpoint key="conf:/endpoints/avocado/Create_Facility_Marker_EP.xml" />
+	</send>
+</sequence>

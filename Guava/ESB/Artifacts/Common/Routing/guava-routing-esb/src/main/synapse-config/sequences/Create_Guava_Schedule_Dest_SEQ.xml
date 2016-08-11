@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Create_Guava_Schedule_Dest_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Create_Guava_Schedule_Dest_SEQ" value="--------"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="$trp:x-jwt-assertion"
+                name="Authorization" scope="default" type="STRING"/>
+            <property expression="json-eval($.scheduleEntity)"
+                name="scheduleEntity" scope="default" type="STRING"/>
+            <property expression="json-eval($.scheduleDestination)"
+                name="scheduleDestEntity" scope="default" type="STRING"/>
+            <property expression="json-eval($.routeIdentity)"
+                name="routeIdentity" scope="default" type="STRING"/>
+            <payloadFactory media-type="json">
+                <format>$1</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('scheduleDestEntity')"/>
+                </args>
+            </payloadFactory>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send receive="Create_Guava_Schedule_SEQ">
+                <endpoint key="conf:/endpoints/schedule/Create_Guava_Schedule_Dest_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

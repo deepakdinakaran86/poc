@@ -1,0 +1,14 @@
+<html>
+    <body>
+       Dear ${to},	
+        <div></br>
+         Congratulations!
+        </div></br>
+        <div></br>
+         You have successfully subscribed to the API store for your user:${userName}, Please find the link to access the API Store and subscribe to our services; <a href=${content}>Store Link</a>
+        </div></br>
+         Regards,</br>
+		 Platform Team</br></br>
+         This is a system generated message. Please do not reply to this mail.
+    </body>
+</html>

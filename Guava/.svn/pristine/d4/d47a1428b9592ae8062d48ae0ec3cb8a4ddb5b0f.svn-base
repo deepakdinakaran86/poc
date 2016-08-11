@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="POI_Find_POI_Type_Hierarchy_SEQ"
+    trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator="$$$$$$">
+        <property
+            name="----------------Entering POI_Find_POI_Type_SEQ" value="----POI_Find_POI_Type_SEQ----"/>
+        <property expression="json-eval($.)"
+            name="JSON Payload find marker!" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.)" name="identityDto"
+                scope="default" type="STRING"/>
+            <property expression="json-eval($.fieldValues)"
+                name="poiPayload" scope="default" type="STRING"/>
+            <property expression="$body/jsonObject/domain/domainName"
+                name="domainName" scope="default" type="STRING"/>
+            <property expression="$body/jsonObject/identifier/key"
+                name="identifierKey" scope="default" type="STRING"/>
+            <property expression="$body/jsonObject/identifier/value"
+                name="identifierValue" scope="default" type="STRING"/>
+            <property
+                expression="$body/jsonObject/entityTemplate/entityTemplateName"
+                name="entityTemplateName" scope="default" type="STRING"/>
+           <property expression="$body/jsonObject/entityStatus/statusName"
+                name="status" scope="default" type="STRING"/>
+            <script language="js"><![CDATA[var payload=eval("("+mc.getProperty('poiPayload')+")");
+                         			var value;      	      	      
+                         			for(var i in payload ){
+                         				     var key = payload[i].key;      	 		                         
+                         				     if(key		== 'poiType'){       	 			                   
+                         				     	poiType = payload[i].value;       	 			                     
+                         				     	mc.setProperty("poiType",poiType);	
+                         				     	}
+                         				     if(key		== 'poiName'){       	 			                   
+                         				     	poiName = payload[i].value;       	 			                     
+                         				     	mc.setProperty("poiName",poiName);	
+                         				     	}
+                         				     if(key		== 'description'){       	 			                   
+                         				     	description = payload[i].value;       	 			                     
+                         				     	mc.setProperty("description",description);	
+                         				     	}
+                         				     if(key		== 'latitude'){       	 			                   
+                         				     	latitude = payload[i].value;       	 			                     
+                         				     	mc.setProperty("latitude",latitude);	
+                         				     	}
+                         				     if(key		== 'longitude'){       	 			                   
+                         				     	longitude = payload[i].value;       	 			                     
+                         				     	mc.setProperty("longitude",longitude);	
+                         				     	}
+                         				     if(key		== 'radius'){       	 			                   
+                         				     	radius = payload[i].value;       	 			                     
+                         				     	mc.setProperty("radius",radius);	
+                         				     	}
+                         				    	         
+                         			}]]></script>
+            <payloadFactory media-type="json">
+                <format>
+			{"actor": $1,
+			"searchTemplateName":"$2"
+			}
+		</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('identityDto')"/>
+                    <arg evaluator="xml" expression="get-property('poiType')"/>
+                </args>
+            </payloadFactory>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send receive="POI_Find_POI_Res_SEQ">
+                <endpoint key="conf:/endpoints/poi/POI_Get_Immediate_Children_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

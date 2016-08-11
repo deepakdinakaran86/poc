@@ -1,0 +1,8 @@
+<api xmlns="http://ws.apache.org/ns/synapse" context="/galaxy-route/services/schedule" name="Guava_Schedule_API">
+<resource methods="POST" url-mapping="/create" inSequence="Create_Guava_Schedule_Dest_SEQ">
+      <outSequence>
+         <send/>
+      </outSequence>
+      <faultSequence/>
+   </resource>
+</api>

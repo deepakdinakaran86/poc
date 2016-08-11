@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Hierarchy_Update_Node_EP" groupId="avocado-air-handler-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/air-handler/Hierarchy_Update_Node_EP.xml</file>
+            <path>/_system/config/endpoints/air-handler</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Avocado_Attach_Point_Parents_EP" groupId="avocado-air-handler-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/air-handler/Avocado_Attach_Point_Parents_EP.xml</file>
+            <path>/_system/config/endpoints/air-handler</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Avocado_Create_Points_EP" groupId="avocado-air-handler-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/air-handler/Avocado_Create_Points_EP.xml</file>
+            <path>/_system/config/endpoints/air-handler</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Avocado_Validate_DS_DisplayName_Unique_EP" groupId="avocado-air-handler-esb.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoint/air-handler/Avocado_Validate_DS_DisplayName_Unique_EP.xml</file>
+            <path>/_system/config/endpoints/air-handler</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

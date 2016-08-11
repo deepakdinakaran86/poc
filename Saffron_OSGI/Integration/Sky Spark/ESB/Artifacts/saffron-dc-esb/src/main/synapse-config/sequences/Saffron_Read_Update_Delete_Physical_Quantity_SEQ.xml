@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Read_Update_Delete_Physical_Quantity_SEQ">
+    <log separator=",">
+        <property name="Enter Saffron_Read_Update_Delete_Physical_Quantity_SEQ" value="--------"/>
+    </log>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="METHOD" expression="$ctx:REST_METHOD" scope="default" type="STRING"/>
+    <log separator="####################">
+        <property xmlns:ns="http://org.apache.synapse/xsd" name="METHOD" expression="get-property('METHOD')"/>
+    </log>
+    <switch xmlns:ns="http://org.apache.synapse/xsd" source="get-property('METHOD')">
+        <case regex="GET">
+            <send>
+                <endpoint key="conf:/endpoints/saffron/Saffron_Read_Physical_Quantity_EP.xml"/>
+            </send>
+        </case>
+        <case regex="PUT">
+            <send>
+                <endpoint key="conf:/endpoints/saffron/Saffron_Update_Physical_Quantity_EP.xml"/>
+            </send>
+        </case>
+        <case regex="DELETE">
+            <send>
+                <endpoint key="conf:/endpoints/saffron/Saffron_Delete_Physical_Quantity_EP.xml"/>
+            </send>
+        </case>
+        <default/>
+    </switch>
+</sequence>

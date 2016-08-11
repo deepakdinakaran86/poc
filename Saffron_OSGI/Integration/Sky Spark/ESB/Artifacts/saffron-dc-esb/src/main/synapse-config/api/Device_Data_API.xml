@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Device_Data_API" context="/saffron/services/data">
+    <resource methods="POST" uri-template="/{pathparameter}" inSequence="Saffron_Create_Device_Data_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/find" inSequence="Saffron_Get_Device_Data_Details_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" inSequence="Saffron_Create_Batch_Device_Data_Quantity_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}/latest" inSequence="Saffron_Get_Latest_Device_Data_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/batch" inSequence="Saffron_Create_Batch_Device_Data_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Device_API" context="/saffron/services/devices">
+    <resource methods="POST"  inSequence="Saffron_Create_Device_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" url-mapping="/configurations/batch" inSequence="Saffron_Device_Config_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}" inSequence="Get_Device_Details_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/{pathparameter}" inSequence="Update_Device_Details_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/filter" inSequence="Get_Devices_Filtered_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}/configurationsdefault" inSequence="Get_Device_Point_Config_Default_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/{pathparameter}/configurationsdefault" inSequence="Update_Device_Point_Config_Default_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}/configurations" inSequence="Get_Device_Point_Config_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/{pathparameter}/configurations" inSequence="Update_Device_Point_Config_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" url-mapping="/all" inSequence="Get_All_Devices_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/all" inSequence="Get_All_Devices_Filtered_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}/datasourcename" inSequence="Get_Datasource_Name_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/{pathparameter}/claim" inSequence="Claim_Device_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/register" inSequence="Register_Device_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/configurations/template" inSequence="Update_Multiple_Device_Point_Config_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/{pathparameter}/writebackconf" inSequence="Update_Device_Config_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}/authenticate" inSequence="Authenticate_Device_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" url-mapping="/unsubscribed" inSequence="Fetch_Unclaimed_Devices_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/{pathparameter}/tags" inSequence="Update_Device_Tags_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

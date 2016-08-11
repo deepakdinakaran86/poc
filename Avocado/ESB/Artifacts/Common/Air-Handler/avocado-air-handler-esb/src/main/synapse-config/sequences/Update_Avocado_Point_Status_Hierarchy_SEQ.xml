@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Update_Avocado_Point_Status_Hierarchy_SEQ">
+	<log separator=",">
+		<property name="Enter Update_Avocado_Point_Status_Hierarchy_SEQ"
+			value="--------"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>{
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"platformEntity": {
+					"platformEntityType": "MARKER"
+					},
+					"identifier": {
+					"key": "identifier",
+					"value": "$3"
+					},
+					"entityStatus": {
+					"statusName": "ALLOCATED"
+					}
+					}</format>
+				<args>
+					<arg expression="get-property('pointDomain')" evaluator="xml"></arg>
+					<arg expression="get-property('pointTemplateName')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('pointIdValue')"
+						evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<property name="x-jwt-assertion" expression="get-property('Authorization')"
+				scope="transport" type="STRING"></property>
+			<property name="messageType" value="application/json" scope="axis2"
+				type="STRING"></property>
+			<send>
+				<endpoint key="conf:/endpoints/air-handler/Hierarchy_Update_Node_EP.xml"></endpoint>
+			</send>
+		</else>
+	</filter>
+</sequence>

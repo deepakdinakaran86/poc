@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_Avocado_Tenant_Admin_SEQ">
+	<log separator=",">
+		<property name="Enter Create_Avocado_Tenant_Admin_SEQ" value="--------"></property>
+	</log>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="resetPswdPayload"
+		expression="json-eval($.resetPswd)" scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="tenantAdminTemplatePayload"
+		expression="json-eval($.tenantAdminTemplateIdentifier)" scope="default"
+		type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="Authorization"
+		expression="$trp:x-jwt-assertion" scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="content"
+		expression="$body/jsonObject/email/content" scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="emailTemplate"
+		expression="$body/jsonObject/email/emailTemplate" scope="default"
+		type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="subject"
+		expression="$body/jsonObject/email/subject" scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="toAddresses"
+		expression="$body/jsonObject/email/toAddresses" scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="to"
+		expression="$body/jsonObject/email/to" scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="userName"
+		expression="$body/jsonObject/email/userName" scope="default" type="STRING"></property>
+		
+	<send receive="Get_Avocado_Tenant_Admin_Marker_Link_SEQ">
+		<endpoint key="conf:/endpoints/tenant/Create_Avocado_Tenant_Admin_EP.xml"></endpoint>
+	</send>
+</sequence>

@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Subject_Filter_Entities_Validate_Payload_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Subject_Filter_Entities_Validate_Payload_SEQ" value="--------"></property>
+	</log>
+
+	<property expression="$trp:x-jwt-assertion" name="Authorization" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.)" name="originalPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.filter)" name="filterOriginalPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.match)" name="matchOriginalPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<!-- xPath boolean() function may evaluate to false if value of key is empty/null or request doesn't have that key. -->
+	<filter regex="false" source="boolean(//jsonObject/match)">
+		<then>
+			<!-- Generate Error message for startNodeType -->
+			<header name="To" action="remove" />
+			<property name="RESPONSE" value="true" scope="default" type="STRING" />
+			<property name="HTTP_SC" value="200" scope="axis2" />
+			<payloadFactory media-type="json">
+				<format>{"errorCode":"505","errorMessage":"Match not specified"}</format>
+				<args />
+			</payloadFactory>
+			<send />
+			<drop />
+		</then>
+		<else>
+			<property name="match" expression="//jsonObject/match" />
+			<switch source="get-property('match')">
+				<case regex="ANY">
+					<!-- <loopback /> -->
+				</case>
+				<case regex="ALL">
+					<!-- <loopback /> -->
+				</case>
+				<default>
+					<!-- Invalid match -->
+					<!-- Generate Error message for Invalid match -->
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>{"errorCode":"508","errorMessage":"Match is invalid"}</format>
+						<args />
+					</payloadFactory>
+					<property name="messageType" value="application/json" scope="axis2" />
+					<send />
+					<drop />
+				</default>
+			</switch>
+		</else>
+	</filter>
+
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('originalPayload')" />
+		</args>
+	</payloadFactory>
+	<filter regex="false" source="boolean(//jsonObject/tags)">
+		<then>
+			<header name="To" action="remove" />
+			<property name="RESPONSE" value="true" scope="default" type="STRING" />
+			<property name="HTTP_SC" value="200" scope="axis2" />
+			<payloadFactory media-type="json">
+				<format>{"errorCode":"505","errorMessage":"Tags not specified"}</format>
+				<args />
+			</payloadFactory>
+			<property name="messageType" value="application/json" scope="axis2" />
+			<send />
+			<drop />
+		</then>
+		<else>
+		</else>
+	</filter>
+
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('originalPayload')" />
+		</args>
+	</payloadFactory>
+	<filter regex="false" source="boolean(//jsonObject/filter)">
+		<then>
+			<!-- fetch all templates and attach as to filter/types -->
+			<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+			<payloadFactory media-type="json">
+				<format>
+					{
+					"platformEntityType": "MARKER",
+					"status": {
+					"statusName": "ACTIVE"
+					},
+					"parentTemplate": "platformMarkerTemplate"
+					}
+				</format>
+				<args />
+			</payloadFactory>
+			<call>
+				<endpoint key="conf:/endpoints/alpine/Tag_Get_All_Marker_Templates_EP.xml"></endpoint>
+			</call>
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(//errorMessage)" regex="true">
+				<then>
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>
+							{"errorCode":"$1","errorMessage":"$2"}
+						</format>
+						<args>
+							<arg evaluator="xml" expression="//jsonObject/errorCode" />
+							<arg evaluator="xml" expression="//jsonObject/errorMessage" />
+						</args>
+					</payloadFactory>
+					<send />
+					<drop />
+				</then>
+				<else>
+					<!-- create list of filter/types from returned tempalte list -->
+					<foreach expression="//jsonArray/jsonElement">
+						<sequence>
+							<payloadFactory media-type="xml">
+								<format>
+									<jsonElement xmlns="">$1</jsonElement>
+								</format>
+								<args>
+									<arg expression="//entityTemplateName" evaluator="xml" />
+								</args>
+							</payloadFactory>
+						</sequence>
+					</foreach>
+					<enrich>
+						<source type="inline">
+							<jsonElement>DefaultUser</jsonElement>
+						</source>
+						<target action="child" xpath="//jsonArray" />
+					</enrich>
+					<enrich>
+						<source type="inline">
+							<jsonElement>DefaultTenant</jsonElement>
+						</source>
+						<target action="child" xpath="//jsonArray" />
+					</enrich>
+					<log level="full"></log>
+					<payloadFactory media-type="json">
+						<format>
+							{
+							"filter": {
+							"types": $1
+							}
+							}
+						</format>
+						<args>
+							<arg expression="$." evaluator="json" />
+						</args>
+					</payloadFactory>
+					<property name="filterOriginalPayload" expression="json-eval($.filter)"></property>
+				</else>
+			</filter>
+		</then>
+		<else>
+			<!-- filter is specified, check types are specified or not -->
+			<filter regex="false" source="boolean(//jsonObject/filter/types)">
+				<then>
+					<header name="To" action="remove" />
+					<property name="RESPONSE" value="true" scope="default" type="STRING" />
+					<property name="HTTP_SC" value="200" scope="axis2" />
+					<payloadFactory media-type="json">
+						<format>{"errorCode":"505","errorMessage":"Types not specified"}</format>
+						<args />
+					</payloadFactory>
+					<property name="messageType" value="application/json" scope="axis2" />
+					<send />
+					<drop />
+				</then>
+				<else>
+				</else>
+			</filter>
+		</else>
+	</filter>
+
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('originalPayload')" />
+		</args>
+	</payloadFactory>
+	<!-- Fetch tag entities and send as request to End service -->
+	<iterate attachPath="//jsonObject" expression="//tags" id="123" preservePayload="true" continueParent="false" xmlns:ns="http://org.apache.synapse/xsd">
+		<target>
+			<sequence>
+				<property action="set" expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING"
+					xmlns:ns="http://org.apache.synapse/xsd" />
+				<property action="set" name="messageType" scope="axis2" type="STRING" value="application/json" />
+				<payloadFactory media-type="json">
+					<format>
+						{
+						"searchFields": [
+						{
+						"key": "name",
+						"value": "$1"
+						}
+						],
+						"domain": {
+						"domainName": "$2"
+						},
+						"entityTemplate": {
+						"entityTemplateName": "$3"
+						}
+						}
+					</format>
+					<args>
+						<arg evaluator="xml" expression="//tags/name" />
+						<arg evaluator="xml" expression="//tags/domain/domainName" />
+						<arg evaluator="xml" expression="//tags/tagType" />
+					</args>
+				</payloadFactory>
+				<send>
+					<endpoint key="conf:/endpoints/alpine/Tag_Search_Tag_Entity_EP.xml"></endpoint>
+				</send>
+			</sequence>
+		</target>
+	</iterate>
+</sequence>

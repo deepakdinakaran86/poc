@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/galaxy-um" name="Avocado_User_API" xmlns="http://ws.apache.org/ns/synapse">
+  <resource methods="POST" protocol="http" uri-template="/users">
+    <inSequence>
+      <sequence key="Avocado_Create_User_SEQ"/>
+    </inSequence>
+    <outSequence>
+      <log description="Sequence Name">
+        <property name="Entering Avocado_Create_User_SEQ OUTSEQUENCE" value="Entering Avocado_Create_User_SEQ OUTSEQUENCE"/>
+      </log>
+      <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+          <send/>
+        </then>
+        <else>
+          <payloadFactory media-type="json">
+            <format>$1</format>
+            <args>
+              <arg evaluator="xml" expression="get-property('returnPayload')"/>
+            </args>
+          </payloadFactory>
+          <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+          <send/>
+        </else>
+      </filter>
+    </outSequence>
+    <faultSequence>
+      <log level="custom">
+        <property expression="get-property('ERROR_MESSAGE')" name="message"/>
+      </log>
+    </faultSequence>
+  </resource>
+  <resource methods="POST" protocol="http" uri-template="/users/reset_password">
+    <inSequence>
+      <sequence key="Avocado_Reset_Password_SEQ"/>
+    </inSequence>
+    <outSequence/>
+    <faultSequence>
+      <log level="custom">
+        <property expression="get-property('ERROR_MESSAGE')" name="message"/>
+      </log>
+    </faultSequence>
+  </resource>
+  <resource inSequence="Avocado_Reset_Password_SEQ" methods="POST"
+    protocol="http" url-mapping="/reset_password">
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+</api>

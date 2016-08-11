@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Alpine_Device_Create_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Alpine_Device_Create_SEQ" value="Alpine_Device_Create_SEQ"/>
+    </log>
+    <log separator=",">
+        <property expression="get-property('alpineDevice')"
+            name="alpineDevice" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <log separator=",">
+                <property name="Im in" value="Im error from Saffron"/>
+            </log>
+            <send/>
+        </then>
+        <else>
+            <payloadFactory media-type="json">
+                <format>$1</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('alpineDevice')"/>
+                </args>
+            </payloadFactory>
+            <property name="x-jwt-assertion" expression="get-property('x-jwt-assertion')" scope="transport" type="STRING"></property>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <send receive="Saffron_Template_Assign_SEQ">
+                <endpoint key="conf:/endpoints/Alpine_Device_Create_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

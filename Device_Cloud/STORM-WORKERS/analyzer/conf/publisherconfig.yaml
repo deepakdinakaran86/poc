@@ -1,0 +1,7 @@
+   registryHost : 10.234.31.201
+   registryPort : 1099   
+   registryName : distributor
+   mqttBrokerUrl : tcp://10.234.31.156:1883
+   mqttUserName : root
+   mqttPassword : root
+   mqttQoS : 1

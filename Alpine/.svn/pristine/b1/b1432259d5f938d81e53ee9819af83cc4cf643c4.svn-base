@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Permissions_To_Assign_SEQ">
+	<log separator=",">
+		<property name="Enter Get_Permissions_To_Assign_SEQ" value="---Get_Permissions_To_Assign_SEQ-----"></property>
+	</log>
+
+	<payloadFactory media-type="json">
+		<format> {"resources": $1 }</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('resourcePayload')" />
+		</args>
+	</payloadFactory>
+
+	<iterate id="FEATURE_ITERATE" preservePayload="true"
+		expression="//resources" attachPath="//jsonObject">
+		<target>
+			<sequence>
+				<log separator=",">
+					<property name="inside iterate" expression="//resources" />
+				</log>
+				<property expression="//resources" name="uri.var.pathparameter"
+					scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+				<property expression="get-property('Authorization')" name="x-jwt-assertion"
+					scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+				<property name="messageType" scope="axis2" type="STRING"
+					value="application/json" />
+				<send receive="Assign_Permissions_To_Tenant_SEQ">
+					<endpoint key="conf:/endpoints/alpine/Get_Permissions_To_Assign_EP.xml" />
+				</send>
+			</sequence>
+		</target>
+	</iterate>
+</sequence>

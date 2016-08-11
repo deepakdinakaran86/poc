@@ -1,0 +1,4 @@
+#token.manager.apimanager.url=https://10.234.31.152:8245
+token.manager.apimanager.url=https://10.234.31.152:8245
+token.manager.user.permission.url=http://10.234.31.152:8282
+token.manager.tenant.url=http://10.234.31.152:8282

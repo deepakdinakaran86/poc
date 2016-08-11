@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_CCD_Tenant_Node_SEQ">
+	<log separator=",">
+		<property name="Enter Create_CCD_Tenant_Node_SEQ" value="--------" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<log separator=",">
+				<property name="error in prev sequence" value="--------" />
+			</log>
+			<send />
+		</then>
+		<else>
+			<log separator=",">
+				<property name="NO Error in tenant creation" value="--------" />
+			</log>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="tenantMarkerId"
+				expression="$body/jsonObject/identifier/value" scope="default" type="STRING"></property>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="tenantMarkerDomain"
+				expression="$body/jsonObject/domain/domainName" scope="default"
+				type="STRING"></property>
+			<log separator=",">
+				<property name="NO Error in tenant creation, tenantId:" expression="get-property('tenantMarkerId')" />
+			</log>
+
+			<payloadFactory media-type="json">
+				<format> {
+					"actor": {
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"platformEntity": {
+					"platformEntityType": "TENANT"
+					},
+					"identifier": {
+					"key": "tenantId",
+					"value": "$3"
+					}
+					},
+					"subjects": [
+					{
+					"domain": {
+					"domainName": "$4"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$5"
+					},
+					"platformEntity": {
+					"platformEntityType": "MARKER"
+					},
+					"identifier": {
+					"key": "identifier",
+					"value": "$6"
+					}
+					}
+					]
+					}</format>
+				<args>
+					<arg expression="get-property('parentDomain')" evaluator="xml"></arg>
+					<arg expression="get-property('defaultTenantTemplate')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('parentTenantName')" evaluator="xml"></arg>
+					<arg expression="get-property('tenantMarkerDomain')" evaluator="xml"></arg>
+					<arg expression="get-property('tenantTemplate')" evaluator="xml"></arg>
+					<arg expression="get-property('tenantMarkerId')" evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			
+			 <log>
+                <property expression="json-eval($.)" name="JSON-Payload"/>
+            </log>
+
+			<property name="x-jwt-assertion" expression="get-property('Authorization')"
+				scope="transport" type="STRING"></property>
+			<property name="messageType" value="application/json" scope="axis2"
+				type="STRING"></property>
+			<send receive="Create_CCD_Contacts_SEQ">
+				<endpoint key="conf:/endpoints/ccd/Create_CCD_Tenant_Node_EP.xml" />
+			</send>
+
+		</else>
+	</filter>
+</sequence>

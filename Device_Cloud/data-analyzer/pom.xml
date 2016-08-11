@@ -1,0 +1,30 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+
+	<groupId>com.pcs</groupId>
+	<artifactId>data-analyzer</artifactId>
+	<name>Data Analyzer</name>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	
+	<modules>
+		<module>io-data-analyzer</module>
+		<module>data-analytics-engine</module>
+		<module>storm-data-analyzer</module>
+	</modules>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.10</version>
+		</dependency>
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.3.2</version>
+		</dependency>
+	</dependencies>
+</project>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Map_Subjects_To_An_Actor_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Map_Subjects_To_An_Actor_SEQ" value="--------"></property>
+	</log>
+
+	<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(get-property('originalPayload_entities'))" regex="true">
+		<then>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+			<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+			<payloadFactory media-type="json">
+				<format>
+					{
+					"tag": $1,
+					"entities": $2
+					}
+				</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('originalPayload_tagentity')" />
+					<arg evaluator="xml" expression="get-property('originalPayload_entities')" />
+				</args>
+			</payloadFactory>
+			<!-- response will be handled by receive sequence, it wont go to aggregator -->
+			<send receive="Tag_Map_Subjects_To_An_Actor_Res_SEQ">
+				<endpoint key="conf:/endpoints/alpine/Tag_Map_Subjects_To_An_Actor_EP.xml"></endpoint>
+			</send>
+		</then>
+		<else>
+			<filter xmlns:ns="http://org.apache.synapse/xsd" source="boolean(get-property('originalPayload_templates'))" regex="true">
+				<then>
+					<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+					<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+					<payloadFactory media-type="json">
+						<format>
+							{
+							"tag": $1,
+							"templates": $2
+							}
+						</format>
+						<args>
+							<arg evaluator="xml" expression="get-property('originalPayload_tagentity')" />
+							<arg evaluator="xml" expression="get-property('originalPayload_templates')" />
+						</args>
+					</payloadFactory>
+					<!-- response will be handled by receive sequence, it wont go to aggregator -->
+					<send receive="Tag_Map_Subjects_To_An_Actor_Res_SEQ">
+						<endpoint key="conf:/endpoints/alpine/Tag_Map_Subjects_To_An_Actor_EP.xml"></endpoint>
+					</send>
+				</then>
+			</filter>
+		</else>
+	</filter>
+
+</sequence>

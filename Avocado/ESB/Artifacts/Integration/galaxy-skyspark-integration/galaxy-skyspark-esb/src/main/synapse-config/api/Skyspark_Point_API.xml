@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/skyspark/services/points" name="Skyspark_Point_API" xmlns="http://ws.apache.org/ns/synapse">
+  <resource inSequence="Skyspark_Create_Point_SEQ" methods="POST"
+    protocol="http" url-mapping="/">
+    <outSequence>
+      <send/>
+    </outSequence>
+    <faultSequence/>
+  </resource>
+</api>

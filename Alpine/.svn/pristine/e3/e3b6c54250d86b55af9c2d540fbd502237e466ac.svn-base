@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_Admin_User_SEQ">
+    <log category="INFO" level="simple" separator=",">
+        <property name="Enter Create_Admin_User_SEQ" value="--------"/>
+    </log>
+    <send>
+        <endpoint key="conf:/endpoints/alpine/Create_Admin_User_EP.xml"/>
+    </send>
+</sequence>

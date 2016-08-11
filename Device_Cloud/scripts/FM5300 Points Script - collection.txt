@@ -1,0 +1,298 @@
+WITH [
+{point_id:'1',point_name:'DIN1',display_name:'DIN1',data_type:'Boolean',access_type:'READONLY' ,description:'Logic: 0 / 1'},
+
+{point_id:'2',point_name:'DIN2',display_name:'DIN2',data_type:'Boolean',access_type:'READONLY',description:'Logic: 0 / 1'},
+
+{point_id:'3',point_name:'DIN3',display_name:'DIN3',data_type:'Boolean',access_type:'READONLY',description:'Logic: 0 / 1'},
+
+{point_id:'4',point_name:'DIN4',display_name:'DIN4',data_type:'Boolean',access_type:'READONLY',description:'Logic: 0 / 1'},
+
+{point_id:'9',point_name:'Analog 1',display_name:'Analog 1',data_type:'Float',access_type:'READONLY',description:'Voltage: mV, 0 – 30 V'},
+
+{point_id:'10',point_name:'Analog 2',display_name:'Analog 2',data_type:'Float',access_type:'READONLY',description:'Voltage: mV, 0 – 30 V'},
+
+{point_id:'11',point_name:'Analog 3',display_name:'Analog 3',data_type:'Float',access_type:'READONLY',description:'Voltage: mV, 0 – 30 V'},
+
+{point_id:'19',point_name:'Analog 4',display_name:'Analog 4',data_type:'Float',access_type:'READONLY',description:'Voltage: mV, 0 – 30 V'},
+
+{point_id:'21',point_name:'GSM Signal',display_name:'GSM Signal',data_type:'Integer',access_type:'READONLY',description:'Value in scale 1 – 5'},
+
+{point_id:'22',point_name:'Current Profile',display_name:'Profile',data_type:'String',access_type:'READONLY',description:'Value in scale 1 – 4'},
+
+{point_id:'24',point_name:'Speedometer',display_name:'Gps Speed',data_type:'Integer',access_type:'READONLY',description:'Value in km/h, 0 – xxx km/h'},
+
+{point_id:'50',point_name:'DOUT3',display_name:'DOUT3',data_type:'Boolean',access_type:'READONLY',description:'Logic: 0 / 1'},
+
+
+{point_id:'51',point_name:'DOUT4',display_name:'DOUT4',data_type:'Boolean',access_type:'READONLY',description:'Logic: 0 / 1'},
+
+{point_id:'66',point_name:'External Power Voltage',display_name:'Vehicle Battery',data_type:'Float',access_type:'READONLY',description:'Voltage: mV, 0 – 30 V'},
+
+{point_id:'67',point_name:'Internal Battery Voltage',display_name:'Device Battery',data_type:'Float',access_type:'READONLY',description:'Voltage: mV'},
+
+{point_id:'68',point_name:'Internal Battery Current',display_name:'Internal Battery Current',data_type:'Float',access_type:'READONLY',description:'Voltage: mA'},
+
+
+{point_id:'70',point_name:'PCB Temperature',display_name:'PCB Temperature',data_type:'Float',access_type:'READONLY',description:'10 * Degrees ( °C )'},
+
+{point_id:'71',point_name:'GNSS status',display_name:'GNSS status',data_type:'Integer',access_type:'READONLY',description:'0-off/ 1-no antenna (only when using NAVYS)/ 2- no fix/ 3-got fix/ 4-sleep/ 5-over current'},
+
+{point_id:'72',point_name:'Dallas Temperature 1',display_name:'Dallas Temperature 1',data_type:'Float',access_type:'READONLY',description:'10 * Degrees ( °C ), -55 - +115, if 3000 – Dallas error'},
+
+{point_id:'73',point_name:'Dallas Temperature 2',display_name:'Dallas Temperature 2',data_type:'Float',access_type:'READONLY',description:'10 * Degrees ( °C ), -55 - +115, if 3000 – Dallas error'},
+
+
+{point_id:'74',point_name:'Dallas Temperature 3',display_name:'Dallas Temperature 3',data_type:'Float',access_type:'READONLY',description:'i10 * Degrees ( °C ), -55 - +115, if 3000 – Dallas error'},
+
+{point_id:'76',point_name:'Fuel Counter',display_name:'Fuel Counter',data_type:'Float',access_type:'READONLY',description:'Difference of generated impulses on two signal lines'},
+
+{point_id:'78',point_name:'iButton ID',display_name:'iButton ID',data_type:'String',access_type:'READONLY',description:'iButton ID number'},
+
+{point_id:'79',point_name:'Brake switch (autoCAN)',display_name:'Brake switch (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 = pedal released, 1 = pedal depressed'},
+
+
+{point_id:'80',point_name:'wheel based speed (autoCAN)',display_name:'wheel based speed (autoCAN)',data_type:'Float',access_type:'READONLY',description:'0-65536 (km/h)*'},
+
+{point_id:'81',point_name:'cruise control active (autoCAN)',display_name:'cruise control active (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 = switched off, 1 = switched on'},
+
+{point_id:'82',point_name:'clutch switch (autoCAN)',display_name:'clutch switch (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 = pedal released, 1 = pedal depressed'},
+
+{point_id:'83',point_name:'PTO state (autoCAN)',display_name:'PTO state (autoCAN)',data_type:'Integer',access_type:'READONLY',description:'0 = off/disabled, 1 = Set, 2 = not available, 3 = not available'},
+
+{point_id:'84',point_name:'accelerator pedal position 1 X (autoCAN)',display_name:'accelerator pedal position 1 X (autoCAN)',data_type:'Float',access_type:'READONLY',description:'0-102 (%)*'},
+
+{point_id:'85',point_name:'Engine Percent Load At Current Speed X (autoCAN)',display_name:'Engine Percent Load At Current Speed X (autoCAN)',data_type:'Float',access_type:'READONLY',description:'0-102 (%)*'},
+
+{point_id:'86',point_name:'Engine total fuel used (autoCAN)',display_name:'Engine total fuel used (autoCAN)',data_type:'Float',access_type:'READONLY',description:'0 – 2105540607.5 (Liters)*'},
+
+{point_id:'87',point_name:'fuel level 1 X (autoCAN)',display_name:'fuel level 1 X (autoCAN)',data_type:'Float',access_type:'READONLY',description:'0-102 (%)*'},
+
+{point_id:'88',point_name:'engine speed X (autoCAN)',display_name:'engine speed X (autoCAN)',data_type:'Float',access_type:'READONLY',description:'0 – 8031.875 (rpm)*'},
+
+{point_id:'89',point_name:'Axle weight - Tier 1 (autoCAN)',display_name:'Axle weight - Tier 1 (autoCAN)',data_type:'Float',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'90',point_name:'Axle weight - Tier 2 (autoCAN)',display_name:'Axle weight - Tier 2 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'91',point_name:'Axle weight - Tier 3 (autoCAN)',display_name:'Axle weight - Tier 3
+(autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'92',point_name:'Axle weight - Tier 4 (autoCAN)',display_name:'Axle weight - Tier 4 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'93',point_name:'Axle weight - Tier 5 (autoCAN)',display_name:'Axle weight - Tier 5 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'94',point_name:'Axle weight - Tier 6 (autoCAN)',display_name:'Axle weight - Tier 6 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'95',point_name:'Axle weight - Tier 7 (autoCAN)',display_name:'Axle weight - Tier 7 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'96',point_name:'Axle weight - Tier 8 (autoCAN)',display_name:'Axle weight - Tier 8 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'97',point_name:'Axle weight - Tier 9 (autoCAN)',display_name:'Axle weight - Tier 9 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'98',point_name:'Axle weight - Tier 10 (autoCAN)',display_name:'Axle weight - Tier 10 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'99',point_name:'Axle weight - Tier 11 (autoCAN)',display_name:'Axle weight - Tier 11 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'100',point_name:'Axle weight - Tier 12 (autoCAN)',display_name:'Axle weight - Tier 12 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'101',point_name:'Axle weight - Tier 13 (autoCAN)',display_name:'Axle weight - Tier 13 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'102',point_name:'Axle weight - Tier 14 (autoCAN)',display_name:'Axle weight - Tier 14 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'103',point_name:'Axle weight - Tier 15 (autoCAN)',display_name:'Axle weight - Tier 15 (autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 - 32766 (kg)*'},
+
+{point_id:'104',point_name:'Engine total hours of Operation X (autoCAN)',display_name:'EngineTotalHoursOfOperationX (autoCAN)',data_type:'Float',access_type:'READONLY',description:'0 – 214748364 (Hours)*'},
+
+{point_id:'105',point_name:'vehicle identification number X (autoCAN)',display_name:'vehicle identification number X (autoCAN)',data_type:'Float',access_type:'READONLY',description:'Max 24 ASCII bytes'},
+
+{point_id:'106',point_name:'vehicle identification number X (autoCAN)',display_name:'vehicle identification number X (autoCAN)',data_type:'Float',access_type:'READONLY',description:'Max 24 ASCII bytes'},
+
+{point_id:'107',point_name:'vehicle identification number X (autoCAN)',display_name:'vehicle identification number X (autoCAN)',data_type:'Float',access_type:'READONLY',description:'Max 24 ASCII bytes'},
+
+{point_id:'108',point_name:'vehicle identification number X (autoCAN)',display_name:'vehicle identification number X (autoCAN)',data_type:'Float',access_type:'READONLY',description:'Max 24 ASCII bytes'},
+
+{point_id:'109',point_name:'SW-version supported X (autoCAN)',display_name:'SW-versionSupportedX (autoCAN)',data_type:'String',access_type:'READONLY',description:'4 ASCII bytes (Version format – ab.cd)'},
+
+{point_id:'110',point_name:'Diagnostics supported X',display_name:'DiagnosticsSupportedX',data_type:'Integer',access_type:'READONLY',description:'0 = request is not supported, 1= request is supported, 2 = reserved, 3 = do not care'},
+
+{point_id:'111',point_name:'CAN Requests supported X (autoCAN)',display_name:'CANRequestsSupportedX (autoCAN)',data_type:'Integer',access_type:'READONLY',description:'0 = diagnostics is not supported, 1 = diagnostics is supported, 2 = reserved, 3 = do not care'},
+
+{point_id:'112',point_name:'High resolution total vehicle distance X (autoCAN)',display_name:'HighRresolutionTotalVehicleDistanceX (autoCAN)',data_type:'Float',access_type:'READONLY',description:'0 - 21055406 km*'},
+
+{point_id:'113',point_name:'Service distance (autoCAN)',display_name:'ServiceDistance (autoCAN)',data_type:'Float',access_type:'READONLY',description:'-160 635 – 167040 km*'},
+
+{point_id:'114',point_name:'Vehicle motion X (autoCAN)',display_name:'VehicleMotionX(autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 – Motion Not Detected, 1 – Motion Detected'},
+
+{point_id:'115',point_name:'driver 2 working state X (autoCAN)',display_name:'Driver2WorkingStateX(autoCAN)',data_type:'Integer',access_type:'READONLY',description:'0 – Rest, 1 – Driver Available, 2 – Work, 3 - Drive, 4 – Error, 5 – not available'},
+
+{point_id:'116',point_name:'driver 1 working state X (autoCAN)',display_name:'Driver1WorkingStateX(autoCAN)',data_type:'Integer',access_type:'READONLY',description:'0 – Rest, 1 – Driver Available, 2 – Work, 3 - Drive, 4 – Error, 5 – not available'},
+
+{point_id:'117',point_name:'Vehicle overspeed (autoCAN)',display_name:'VehicleOverspeed(autoCAN)',data_type:'Boolean',access_type:'READONLY',description:'0 – No Overspeed, 1 - Overspeed'},
+
+{point_id:'118',point_name:'Driver 1 time related states',display_name:'Driver1TimeRelated states',data_type:'Integer',access_type:'READONLY',description:'0 – Normal, 1 – 15min before 4.5h, 2 – 4.5h reached, 3 – 15min before 9h, 4 – 9h reached, 5 – 15min before 16h, 6 – 16h reached, 7 – Error, 8 – not available'},
+
+{point_id:'119',point_name:'Driver 2 time related states',display_name:'Driver2TimeRelated states',data_type:'Integer',access_type:'READONLY',description:'0 – Normal, 1 – 15min before 4.5h, 2 – 4.5h reached, 3 – 15min before 9h, 4 – 9h reached, 5 – 15min before 16h, 6 – 16h reached, 7 – Error, 8 – not available'},
+
+{point_id:'120',point_name:'Driver 1 card X',display_name:'Driver1CardX',data_type:'Boolean',access_type:'READONLY',description:'0 – Card Not Present, 1 – Card Present'},
+
+{point_id:'121',point_name:'Driver 2 card X',display_name:'Driver2CardX',data_type:'Boolean',access_type:'READONLY',description:'0 – Card Not Present, 1 – Card Present'},
+
+{point_id:'122',point_name:'Direction indicator',display_name:'DirectionIndicator',data_type:'Boolean',access_type:'READONLY',description:'0 – Forward, 1 – Reverse'},
+
+{point_id:'123',point_name:'Tachograph performance X',display_name:'TachographPerformanceX',data_type:'Boolean',access_type:'READONLY',description:'0 – Normal Performance, 1 – Performance Analysis'},
+
+{point_id:'124',point_name:'Handling Information X',display_name:'HandlingInformationX',data_type:'Boolean',access_type:'READONLY',description:'0 – No Handling Information, 1 – Handling Information'},
+
+{point_id:'125',point_name:'System (Tacho) Event X',display_name:'System(Tacho)EventX',data_type:'Boolean',access_type:'READONLY',description:'0 – No Tacho Event, 1 – Tacho Event'},
+
+{point_id:'126',point_name:'Tachograph vehicle speed X',display_name:'TachographVehicleSpeed X',data_type:'Float',access_type:'READONLY',description:'[0 – 65000] – Tacho Vehicle Speed km/h*'},
+
+{point_id:'127',point_name:'engine coolant temperature X',display_name:'EngineCoolantTemperature X',data_type:'Float',access_type:'READONLY',description:'[-40 – 210] oC– Engine Cooilant Temperature*'},
+
+{point_id:'128',point_name:'Ambient Air Temperature X',display_name:'Ambient Air Temperature X',data_type:'Float',access_type:'READONLY',description:'[-273 – 1770]oC – Ambient Air Temperature*'},
+
+{point_id:'129',point_name:'Driver 1 Identification',display_name:'Driver1Identification',data_type:'String',access_type:'READONLY',description:'24 ASCII Bytes per Driver ID Driver ID'},
+
+{point_id:'130',point_name:'Driver 1 Identification',display_name:'Driver1Identification',data_type:'String',access_type:'READONLY',description:'24 ASCII Bytes per Driver ID Driver ID'},
+
+{point_id:'131',point_name:'Driver 1 Identification',display_name:'Driver1Identification',data_type:'String',access_type:'READONLY',description:'24 ASCII Bytes per Driver ID Driver ID'},
+
+{point_id:'132',point_name:'Driver 2 Identification',display_name:'Driver2Identification',data_type:'String',access_type:'READONLY',description:'24 ASCII Bytes per Driver ID Driver ID'},
+
+{point_id:'133',point_name:'Driver 2 Identification',display_name:'Driver2Identification',data_type:'String',access_type:'READONLY',description:'24 ASCII Bytes per Driver ID Driver ID'},
+
+{point_id:'134',point_name:'Driver 2 Identification',display_name:'Driver2Identification',data_type:'String',access_type:'READONLY',description:'24 ASCII Bytes per Driver ID Driver ID'},
+
+
+{point_id:'135',point_name:'Fuel Rate X',display_name:'FuelRateX',data_type:'Float',access_type:'READONLY',description:'[0 – 3212,75] litres/h*'},
+
+{point_id:'136',point_name:'Instantaneous Fuel Economy X',display_name:'InstantaneousFuelEconomy X',data_type:'String',access_type:'READONLY',description:'[0 – 125.5 km/litre ]*'},
+
+{point_id:'137',point_name:'At least one PTO engaged',display_name:'AtLeastOnePTOEngaged',data_type:'Integer',access_type:'READONLY',description:'0 – No PTO Drive is Engaged, 1 – At least one PTO drive is engaged, 2 – Error, 3 – not available'},
+
+{point_id:'138',point_name:'High resolution engine total fuel used',display_name:'HighResolutionEngineTotalFuel used',data_type:'Float',access_type:'READONLY',description:'[0 - 4211081,215] litres*'},
+
+{point_id:'145',point_name:'CAN 0',display_name:'CAN0',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+{point_id:'146',point_name:'CAN 1',display_name:'CAN1',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+{point_id:'147',point_name:'CAN 2',display_name:'CAN2',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+
+{point_id:'148',point_name:'CAN 3',display_name:'CAN3',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+{point_id:'149',point_name:'CAN 4',display_name:'CAN4',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+
+{point_id:'150',point_name:'CAN 5',display_name:'CAN5',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+{point_id:'151',point_name:'CAN 6',display_name:'CAN6',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+
+{point_id:'152',point_name:'CAN 7',display_name:'CAN7',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+{point_id:'153',point_name:'CAN 8',display_name:'CAN8',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+
+{point_id:'154',point_name:'CAN 9',display_name:'CAN9',data_type:'String',access_type:'READONLY',description:'ID Specific data'},
+
+{point_id:'155',point_name:'Geofence zone 01',display_name:'GeofenceZone01',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'156',point_name:'Geofence zone 02',display_name:'GeofenceZone02',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'157',point_name:'Geofence zone 03',display_name:'GeofenceZone03',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'158',point_name:'Geofence zone 04',display_name:'GeofenceZone04',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'159',point_name:'Geofence zone 05',display_name:'GeofenceZone05',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'160',point_name:'Geofence zone 06',display_name:'GeofenceZone06',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'161',point_name:'Geofence zone 07',display_name:'GeofenceZone07',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'162',point_name:'Geofence zone 08',display_name:'GeofenceZone08',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'163',point_name:'Geofence zone 09',display_name:'GeofenceZone09',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'164',point_name:'Geofence zone 10',display_name:'GeofenceZone10',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'165',point_name:'Geofence zone 11',display_name:'GeofenceZone11',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'166',point_name:'Geofence zone 12',display_name:'GeofenceZone12',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'167',point_name:'Geofence zone 13',display_name:'GeofenceZone13',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'168',point_name:'Geofence zone 14',display_name:'GeofenceZone14',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'169',point_name:'Geofence zone 15',display_name:'GeofenceZone15',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'170',point_name:'Geofence zone 16',display_name:'GeofenceZone16',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'171',point_name:'Geofence zone 17',display_name:'GeofenceZone17',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'172',point_name:'Geofence zone 18',display_name:'GeofenceZone18',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'173',point_name:'Geofence zone 19',display_name:'GeofenceZone19',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'174',point_name:'Geofence zone 20',display_name:'GeofenceZone20',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'175',point_name:'Auto Geofence',display_name:'AutoGeofence',data_type:'Boolean',access_type:'READONLY',description:'Event: 0 – target left zone, 1 – target entered zone'},
+
+{point_id:'181',point_name:'GPS PDOP',display_name:'GPSPDOP',data_type:'Integer',access_type:'READONLY',description:'Probability * 10; 0-500'},
+
+{point_id:'182',point_name:'GPS HDOP',display_name:'GPSHDOP',data_type:'Integer',access_type:'READONLY',description:'Probability * 10; 0-500'},
+
+{point_id:'179',point_name:'Digital Output Status 1',display_name:'DOUT1',data_type:'Boolean',access_type:'READONLY',description:'Logic: 0 / 1'},
+
+{point_id:'180',point_name:'Digital Output Status 2',display_name:'DOUT2',data_type:'Boolean',access_type:'READONLY',description:'Logic: 0 / 1'},
+
+{point_id:'199',point_name:'Odometer',display_name:'Odometer',data_type:'Float',access_type:'READONLY',description:'Distance between two records: m'},
+
+{point_id:'200',point_name:'Deep Sleep',display_name:'DeepSleep',data_type:'Boolean',access_type:'READONLY',description:'0 – not deep sleep mode, 1 – deep sleep mode'},
+
+{point_id:'205',point_name:'Cell ID',display_name:'CellID',data_type:'Boolean',access_type:'READONLY',description:'GSM base station ID'},
+
+{point_id:'206',point_name:'Area Code',display_name:'AreaCode',data_type:'Integer',access_type:'READONLY',description:'Location Area code (LAC), it depends on GSM operator. It provides unique number which assigned to a set of base GSM stations. Max value: 65536'},
+
+{point_id:'240',point_name:'Movement',display_name:'Movement',data_type:'Boolean',access_type:'READONLY',description:'0 – not moving, 1 – moving.'},
+
+{point_id:'241',point_name:'Current Operator Code',display_name:'Current Operator Code',data_type:'String',access_type:'READONLY',description:'Currently used GSM Operator code'},
+
+{point_id:'201',point_name:'Fuel level meter 1',display_name:'FuelLevelMeter1',data_type:'Float',access_type:'READONLY',description:'Fuel level, measured by LLS sensor on COM1, in kvants or liters.'},
+
+{point_id:'202',point_name:'Fuel temperature 1',display_name:'FuelTemperature1',data_type:'Float',access_type:'READONLY',description:'Fuel temperature, measured by LLS sensor on COM1, in degrees Celsius.'},
+
+{point_id:'203',point_name:'Fuel level meter 2',display_name:'FuelLevelMeter2',data_type:'Float',access_type:'READONLY',description:'Fuel level, measured by LLS sensor on COM1, in kvants or liters.'},
+
+{point_id:'204',point_name:'Fuel temperature 2',display_name:'FuelTemperature2',data_type:'Float',access_type:'READONLY',description:'Fuel temperature, measured by LLS sensor on COM1, in degrees Celsius.'},
+
+{point_id:'207',point_name:'RFID ID',display_name:'RFID',data_type:'String',access_type:'READONLY',description:'Read RFID value, depending on RFID mode, values can be:  for  RFID  mode  in  hexadecimal  format,  RFID  M7 mode in decimal format.'},
+
+{point_id:'250',point_name:'Trip',display_name:'Trip',data_type:'Boolean',access_type:'READONLY',description:'1 – trip start, 0 – trip stop'},
+
+{point_id:'251',point_name:'Immobilizer',display_name:'Immobilizer',data_type:'Boolean',access_type:'READONLY',description:'1 – iButton connected'},
+
+{point_id:'252',point_name:'Authorized driving',display_name:'AuthorizedDriving',data_type:'Boolean',access_type:'READONLY',description:'1 – authorized iButton connected'},
+
+{point_id:'253',point_name:'ECO driving type',display_name:'ECODrivingType',data_type:'Integer',access_type:'READONLY',description:'1  –  harsh acceleration, 2  –  harsh braking,  3  -  harsh cornering'},
+
+{point_id:'254',point_name:'ECO driving value',display_name:'ECODrivingValue',data_type:'Float',access_type:'READONLY',description:'Depending on eco driving type: if harsh acceleration, braking and cornering – g*10 m/s2'},
+
+{point_id:'255',point_name:'Over Speeding',display_name:'OverSpeeding',data_type:'Float',access_type:'READONLY',description:'At  over  speeding  start  km/h,  at  over  speeding  end km/h'},
+
+{point_id:'Angle',point_name:'Angle',display_name:'Angle',data_type:'Float',access_type:'READONLY',description:'Angle'},
+
+{point_id:'Altitude',point_name:'Altitude',display_name:'Altitude',data_type:'Float',access_type:'READONLY',description:'Gps Altitude'},
+
+{point_id:'Latitude',point_name:'Latitude',display_name:'Latitude',data_type:'Float',access_type:'READONLY',description:'Latitude'},
+
+{point_id:'Longitude',point_name:'Longitude',display_name:'Longitude',data_type:'Float',access_type:'READONLY',description:'Longitude'},
+
+{point_id:'Priority',point_name:'Priority',display_name:'Priority',data_type:'Integer',access_type:'READONLY',description:'Priority'},
+
+{point_id:'Speed',point_name:'Speed',display_name:'Speed',data_type:'Integer',access_type:'READONLY',description:'Speed'},
+
+{point_id:'Visible Satellites',point_name:'Visible Satellites',display_name:'Visible Satellites',data_type:'Integer',access_type:'READONLY',description:'Visible Satellites'}
+] AS points UNWIND points AS point 
+match (v:PROTOCOL_VERSION ) where id(v)=13235 create (p:POINT) set p = point create v-[r:hasPoint]->p return r,p;
+
+

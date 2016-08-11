@@ -1,0 +1,55 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="POI_Type_Find_POI_Type_For_Update_SEQ">
+    <log category="INFO" level="simple" separator=",">
+        <property
+            name="Enter POI_Type_Find_POI_Type_For_Update_SEQ" value="----POI_Type_Find_POI_Type_For_Update_SEQ----"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <log category="INFO" level="simple" separator="####">
+                <property name="error" value="----error----"/>
+            </log>
+            <send/>
+        </then>
+        <else>
+             <payloadFactory media-type="json">
+                <format>{
+					"actor": {
+					"platformEntity": {
+					"platformEntityType": "MARKER"
+					},
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"identifier": {
+					"key": "$3",
+					"value":
+					"$4"
+					}
+					},
+					"searchTemplateName": "$5",
+					"searchEntityType": "MARKER"
+					}</format>
+                <args>
+                    <arg expression="get-property('poiEntityDomain')"/>
+                    <arg expression="get-property('poiEntityTemplate')"/>
+                    <arg expression="get-property('poiEntityIdKey')"/>
+                    <arg expression="get-property('poiEntityIdValue')"/>
+                    <arg expression="get-property('poiType')"/>
+                </args>
+            </payloadFactory>
+             <property expression="get-property('Authorization')"
+                        name="x-jwt-assertion" scope="transport" type="STRING"/>
+                    <property name="messageType" scope="axis2"
+                        type="STRING" value="application/json"/>
+            <log category="INFO" level="simple" separator="----------------------">
+                <property expression="json-eval($.)" name="check input Payload get imm. children"/>
+            </log>
+            <send receive="POI_Type_Update_Entity_SEQ">
+                <endpoint key="conf:/endpoints/poi/POI_Get_Immediate_Children_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

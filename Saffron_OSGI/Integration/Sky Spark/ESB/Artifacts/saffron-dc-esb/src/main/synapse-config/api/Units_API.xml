@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Units_API" context="/saffron/services/units">
+    <resource methods="POST" inSequence="Saffron_Create_Units_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="DELETE PUT" uri-template="/{pathparameter}" inSequence="Saffron_Update_Delete_Units_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="DELETE PUT" uri-template="/{pathparameter}?unit={unit}" inSequence="Saffron_Update_Delete_Units_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" uri-template="/{pathparameter}" inSequence="Saffron_Get_Units_Of_Physical_Quantity_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

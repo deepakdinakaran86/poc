@@ -1,0 +1,6 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Delete_Permission_Group_EP" >
+<!-- 		<http method="delete" uri-template="http://10.234.31.201:9764/alpine-user-1.0.0/services/users/permissions/{uri.var.pathparameter}?domain={query.param.domain}"/> -->
+<http method="delete" uri-template="http://10.236.166.111:9763/alpine-user-1.0.0/services/users/permissions/{uri.var.pathparameter}?domain={query.param.domain}"/>
+
+
+</endpoint>

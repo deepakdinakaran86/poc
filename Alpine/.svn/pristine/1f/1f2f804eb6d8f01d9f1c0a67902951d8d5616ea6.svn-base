@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Geofence_Find_Geofence_For_Update_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Geofence_Find_Geofence_For_Update_SEQ" value="----Geofence_Find_Geofence_For_Update_SEQ----"/>
+    </log>
+    <property expression="$trp:x-jwt-assertion" name="Authorization"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.geofenceEntity)"
+        name="geofenceEntityPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="json-eval($.geofenceTypeEntity.fieldValues)"
+        name="geofenceTypeEntityPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/geofenceEntity/domain/domainName"
+        name="geofenceEntityDomain" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/geofenceEntity/identifier/key"
+        name="geofenceEntityIdKey" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/geofenceEntity/identifier/value"
+        name="geofenceEntityIdValue" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/geofenceEntity/entityTemplate/entityTemplateName"
+        name="geofenceEntityTemplate" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$body/jsonObject/geofenceName"
+        name="geofenceName" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property expression="$body/jsonObject/type" name="geofenceType"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <property
+        expression="$body/jsonObject/geofenceTypeEntity/entityStatus/statusName"
+        name="geofenceStatus" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <payloadFactory media-type="json">
+        <format>{
+		"domain": {
+		"domainName": "$1"
+		},
+		"entityTemplate": {
+		"entityTemplateName": "$2"
+		},
+		"identifier": {
+		"key": "$3",
+		"value": "$4"
+		}
+		}</format>
+        <args>
+            <arg evaluator="xml"
+                expression="get-property('geofenceEntityDomain')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml"
+                expression="get-property('geofenceEntityTemplate')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml"
+                expression="get-property('geofenceEntityIdKey')" xmlns:ns="http://org.apache.synapse/xsd"/>
+            <arg evaluator="xml"
+                expression="get-property('geofenceEntityIdValue')" xmlns:ns="http://org.apache.synapse/xsd"/>
+        </args>
+    </payloadFactory>
+    <log separator=",">
+        <property expression="json-eval($.)" name="Enter check domain" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <send receive="Geofence_Update_SEQ">
+        <endpoint key="conf:/endpoints/alpine/Find_Marker_EP.xml"/>
+    </send>
+</sequence>

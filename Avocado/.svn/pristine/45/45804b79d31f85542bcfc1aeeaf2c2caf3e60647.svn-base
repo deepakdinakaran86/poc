@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Avocado_Create_User_EP" groupId="com.pcs.avocado.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/user/Avocado_Create_User_EP.xml</file>
+            <path>/_system/config/endpoints/user</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Avocado_Set_Pwd_Send_Email_EP" groupId="com.pcs.avocado.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/user/Avocado_Set_Pwd_Send_Email_EP.xml</file>
+            <path>/_system/config/endpoints/user</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Avocado_Create_Link_Marker_EP" groupId="com.pcs.avocado.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/user/Avocado_Create_Link_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/user</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Avocado_Reset_Password_EP" groupId="com.pcs.avocado.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/user/Avocado_Reset_Password_EP.xml</file>
+            <path>/_system/config/endpoints/user</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Avocado_Reset_Password_Get_Marker_EP" groupId="com.pcs.avocado.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/user/Avocado_Reset_Password_Get_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/user</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Avocado_Reset_Password_Update_Marker_EP" groupId="com.pcs.avocado.resource" version="1.0.0" type="registry/resource" serverRole="EnterpriseServiceBus">
+        <item>
+            <file>src/synapse-config/endpoints/user/Avocado_Reset_Password_Update_Marker_EP.xml</file>
+            <path>/_system/config/endpoints/user</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+    <artifact name="Avocado_Create_User_Send_SMS_EP" groupId="com.pcs.avocado.resource" version="1.0.0" type="registry/resource" serverRole="GovernanceRegistry">
+        <item>
+            <file>src/synapse-config/endpoints/user/Avocado_Create_User_Send_SMS_EP.xml</file>
+            <path>/_system/config/endpoints/user</path>
+            <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+        </item>
+    </artifact>
+</artifacts>

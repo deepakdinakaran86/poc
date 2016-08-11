@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="POI_Type_Update_Node_SEQ" >
+<log separator=",">
+		<property name="Enter POI_Type_Update_Node_SEQ" value="---POI_Type_Update_Node_SEQ----"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>{
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"platformEntity": {
+					"platformEntityType":
+					"MARKER"
+					},
+					"identifier": {
+					"key": "$3",
+					"value": "$4"
+					},
+					"entityStatus": {
+					"statusName": "$5"
+					}
+					}</format>
+				<args>
+					<arg expression="get-property('poiEntityDomain')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('poiType')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('poiTypeIdKey')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('poiTypeIdValue')"
+						evaluator="xml"></arg>
+					<arg expression="get-property('poiStatus')" evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="POI_Type_Update_Node_Res_SEQ">
+				<endpoint key="conf:/endpoints/poi/POI_Hierarchy_Update_Node_EP.xml"></endpoint>
+			</send>
+		</else>
+	</filter>
+</sequence>

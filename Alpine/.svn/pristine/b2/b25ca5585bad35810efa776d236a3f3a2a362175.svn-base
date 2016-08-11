@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Create_Tenant_Node_SEQ">
+	<log separator=",">
+		<property name="Enter Subscription_Create_Tenant_Node_SEQ"
+			value="Subscription_Create_Tenant_Node_SEQ" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="actorDomain"
+				expression="$body/jsonObject/domain/domainName" scope="default"
+				type="STRING" />
+
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="tenantKey"
+				expression="$body/jsonObject/identifier/key" scope="default" type="STRING" />
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="tenantValue"
+				expression="$body/jsonObject/identifier/value" scope="default" type="STRING" />
+			<property xmlns:ns="http://org.apache.synapse/xsd" name="template"
+				expression="$body/jsonObject/entityTemplate/entityTemplateName"
+				scope="default" type="STRING" />
+			<property name="myDomain" expression="fn:concat( get-property('tenantValue'),'.galaxy')" scope="default" type="STRING"></property>
+
+			<log>
+				<property name="actorDomain" expression="get-property('actorDomain')"></property>
+				<property name="DOmain_With_Parent" expression="get-property('myDomain')"></property>
+			</log>
+
+			<payloadFactory media-type="json">
+				<format>{"actor": {"myDomain": {"domainName": "$1" }},"tenant":
+					{"myDomain": {"domainName": "$2" },"identifier": {"key": "$3",
+					"value": "$4"}, "entityTemplate": { "entityTemplateName": "$5" } }}</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('actorDomain')" />
+					<arg evaluator="xml" expression="get-property('myDomain')" />
+					<arg evaluator="xml" expression="get-property('tenantKey')" />
+					<arg evaluator="xml" expression="get-property('tenantValue')" />
+					<arg evaluator="xml" expression="get-property('template')" />
+				</args>
+			</payloadFactory>
+
+			<property name="x-jwt-assertion" expression="get-property('Authorization')"
+				scope="transport" type="STRING" />
+			<property name="messageType" value="application/json" scope="axis2"
+				type="STRING" />
+				
+			<send receive="Subscription_Create_Saffron_Subscription_SEQ">
+				<endpoint
+					key="conf:/endpoints/subscription/Subscription_Create_Tenant_Node_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

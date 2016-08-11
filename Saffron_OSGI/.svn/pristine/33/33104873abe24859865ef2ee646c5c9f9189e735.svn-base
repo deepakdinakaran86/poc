@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Create_Device_SEQ"
+	trace="disable">
+	<log separator=",">
+		<property name="Enter Saffron_Create_Device_SEQ" value="--------Saffron_Create_Device_SEQ--------"></property>
+	</log>
+
+	<send >
+		<endpoint key="conf:/endpoints/saffron/Saffron_Create_Device_EP.xml" />
+	</send>
+	
+</sequence>
+

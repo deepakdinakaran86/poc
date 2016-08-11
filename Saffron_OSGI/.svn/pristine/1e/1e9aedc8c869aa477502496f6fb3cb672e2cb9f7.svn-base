@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Get_All_Devices_Filtered_SEQ" >
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_All_Devices_Filtered_SEQ" value="--------" />
+	</log>
+	<send>
+		<endpoint key="conf:/endpoints/saffron/Get_All_Devices_Filtered_EP.xml" />
+	</send>
+</sequence>

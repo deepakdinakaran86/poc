@@ -1,0 +1,25 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.pcs.alpine</groupId>
+  <artifactId>alpine-parent</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>alpine-pom</module>
+	<module>alpine-domain</module>
+  	<module>alpine-user</module>
+  	<module>alpine-tenant</module>
+  	<module>alpine-marker</module>
+  	<module>alpine-core-entity</module>
+	<module>alpine-commons</module>
+	<module>alpine-notification</module>
+	<module>alpine-hierarchy</module>
+	<module>alpine-template</module>
+	<module>alpine-geoservices</module>
+	<module>alpine-alarmmanagement</module>
+	<module>alpine-tagservices</module>
+	<module>commons</module>
+	<module>alpine-document</module>
+
+  </modules>
+</project>

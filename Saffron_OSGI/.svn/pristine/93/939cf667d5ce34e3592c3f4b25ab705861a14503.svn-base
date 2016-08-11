@@ -1,0 +1,29 @@
+
+# Device Gateway Configurations Follows:
+
+#  startwithdelay y-with delay, n-without delay
+teltonika.devicegateway.startwithdelay=y
+#mode 1 - control server only,2 -  data server only, 3 - dual(preferred for initial phases)
+teltonika.devicegateway.startmode=3
+
+teltonika.devicegateway.udp.controlserverport=8999
+teltonika.devicegateway.udp.dataserverip=10.236.60.13
+teltonika.devicegateway.udp.dataserverport=8990
+teltonika.devicegateway.udp.dataserverdomain=PCS.COM
+teltonika.devicegateway.udp.commandport=9595
+
+teltonika.devicegateway.tcp.controlserverport=8976
+teltonika.devicegateway.tcp.dataserverip=10.236.60.13
+teltonika.devicegateway.tcp.dataserverport=8989
+teltonika.devicegateway.tcp.dataserverdomain=PCS.COM
+teltonika.devicegateway.tcp.commandport=8185
+
+teltonika.devicegateway.command.register.url=tcp://10.131.5.9:61616
+teltonika.devicegateway.command.register=teltonika-commands
+teltonika.devicegateway.livedata=SENSOR_DATA
+teltonika.devicegateway.rabbitmq.livequeue=SENSOR_DATA
+teltonika.devicegateway.rabbitmq.host=10.64.70.1552
+teltonika.devicegateway.rabbitmq.port= 5672
+teltonika.devicegateway.rabbitmq.username=
+teltonika.devicegateway.rabbitmq.password=
+# Device Gateway Configurations Ends:

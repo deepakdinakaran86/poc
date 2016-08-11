@@ -1,0 +1,4 @@
+com/pcs/saffron/cache/base/CacheProvider.class
+com/pcs/saffron/cache/base/CacheActivator.class
+com/pcs/saffron/cache/base/Cache.class
+com/pcs/saffron/cache/base/CacheProviderConfiguration.class

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_CCD_Equipment_Hierarchy_SEQ">
+	<log separator=",">
+		<property name="Create_CCD_Equipment_Hierarchy_SEQ" value="--------" />
+	</log>
+	
+	
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<log separator=",">
+				<property name="Error while creating equipment marker"
+					value="--------" />
+			</log>
+			<send></send>
+		</then>
+		<else>
+			<property expression="$body/jsonObject/identifier/value"
+				name="equipId" scope="default" type="STRING"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+			<property expression="$body/jsonObject/entityTemplate/entityTemplateName"
+				name="equipmentTemplate" scope="default" type="STRING"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+
+			<payloadFactory media-type="json">
+				<format>{
+					"actor": {
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate":
+					{
+					"entityTemplateName": "$2"
+					},
+					"platformEntity": {
+					"platformEntityType":
+					"MARKER"
+					},
+					"identifier": {
+					"key": "identifier",
+					"value": "$3"
+					}
+					},
+					"subjects": [
+					{
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$4"
+					},
+					"platformEntity": {
+					"platformEntityType":
+					"MARKER"
+					},
+					"identifier": {
+					"key": "identifier",
+					"value": "$5"
+					}
+					}
+					]
+					}</format>
+				<args>
+					<arg expression="get-property('myDomain')" evaluator="xml"></arg>
+					<arg expression="get-property('tenantTemplate')" evaluator="xml"></arg>
+					<arg expression="get-property('tenantId')" evaluator="xml"></arg>
+					<arg expression="get-property('equipmentTemplate')" evaluator="xml"></arg>
+					<arg expression="get-property('equipId')" evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<log separator=",">
+				<property name="in else of create equipment hierarchy seq"
+					value="--------" />
+			</log>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			
+			<send>
+				<endpoint key="conf:/endpoints/ccd/Create_CCD_Equipment_Heirarchy_EP.xml" />
+			</send>
+			
+		</else>
+	</filter>
+</sequence>

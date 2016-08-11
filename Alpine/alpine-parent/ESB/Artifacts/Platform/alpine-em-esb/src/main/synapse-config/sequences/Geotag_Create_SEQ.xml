@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Geotag_Create_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter Geotag_Create_SEQ" value="--------" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorCode"
+		regex="500">
+		<then>
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('geotagEntityPayload')"
+						xmlns:ns="http://org.apache.synapse/xsd" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<send receive="Geotag_Attach_Geotag_SEQ">
+				<endpoint key="conf:/endpoints/alpine/Create_Marker_EP.xml" />
+			</send>
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>{"errorCode":801}</format>
+			</payloadFactory>
+			<header action="remove" name="To" />
+			<property name="RESPONSE" scope="default" type="STRING"
+				value="true" />
+			<send />
+		</else>
+
+	</filter>
+</sequence>

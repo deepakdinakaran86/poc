@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Update_Avocado_Tenant_Admin_Marker_Link_SEQ">
+	<log separator=",">
+		<property name="Enter Update_Avocado_Tenant_Admin_Marker_Link_SEQ"
+			value="---Update_Avocado_Tenant_Admin_Marker_Link_SEQ-----"></property>
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<property name="domain" expression="$body/jsonObject/domain/domainName"
+				scope="default" type="STRING"></property>
+			<property name="status" expression="$body/jsonObject/entityStatus/statusName"
+				scope="default" type="STRING"></property>
+			<property name="entityTemplateName"
+				expression="$body/jsonObject/entityTemplate/entityTemplateName"
+				scope="default" type="STRING"></property>
+			<property name="identifierValue" expression="$body/jsonObject/identifier/value"
+				scope="default" type="STRING"></property>
+			<property name="tenantAdminMarkerLinkPayload" expression="json-eval($.fieldValues)"
+				scope="default" type="STRING"></property>
+			<log separator=",">
+				<property name="domain" expression="get-property('domain')"></property>
+				<property name="status" expression="get-property('status')"></property>
+				<property name="entityTemplateName" expression="get-property('entityTemplateName')"></property>
+				<property name="identifierValue" expression="get-property('identifierValue')"></property>
+			</log>
+			<script language="js">
+            <![CDATA[var payload		=eval("("+mc.getProperty('tenantAdminMarkerLinkPayload')+")");       
+            var value;      	      	      for(var i in payload )      	       
+            {       	 	       	 		       
+            var key = payload[i].key;      	 		             
+            if(key		== 'entityName')       	 		       
+            {       	 			       
+            entityName = payload[i].value;       	 			        
+             mc.setProperty("entityName",entityName);	 		      
+              }                
+              if(key		== 'timeStamp')       	 		      
+               {       	 			       	
+               timeStamp = payload[i].value;       	 			         
+               mc.setProperty("timeStamp",timeStamp);	 		      
+                }
+                if(key		== 'emailId')       	 		      
+               {       	 			       	
+               emailId = payload[i].value;       	 			         
+               mc.setProperty("emailId",emailId);	 		      
+                } 
+                if(key		== 'myDomain')       	 		      
+               {       	 			       	
+               myDomain = payload[i].value;       	 			         
+               mc.setProperty("myDomain",myDomain);	 		      
+                }        	 	       }]]></script>
+			<log separator=",">
+				<property name="timeStamp" expression="get-property('timeStamp')"></property>
+				<property name="entityName" expression="get-property('entityName')"></property>
+			</log>
+			<payloadFactory media-type="json">
+				<format>{
+					"platformEntity": {
+					"platformEntityType": "MARKER"
+					},
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityStatus": {
+					"statusName": "$2"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$3"
+					},
+					"fieldValues": [
+					{
+					"key": "emailId",
+					"value": "$4"
+					},
+					{
+					"key": "entityName",
+					"value": "$5"
+					},
+					{
+					"key": "identifier",
+					"value": "$6"
+					}
+					,
+					{
+					"key": "myDomain",
+					"value":
+					"$7"
+					}
+					,
+					{
+					"key": "timeStamp",
+					"value": "$8"
+					}
+					,
+					{
+					"key": "valid",
+					"value":
+					"false"
+					}
+					],
+					"identifier": {
+					"key": "identifier",
+					"value": "$6"
+					}
+					}</format>
+				<args>
+					<arg expression="get-property('domain')" evaluator="xml"></arg>
+					<arg expression="get-property('status')" evaluator="xml"></arg>
+					<arg expression="get-property('entityTemplateName')" evaluator="xml"></arg>
+					<arg expression="get-property('emailId')" evaluator="xml"></arg>
+					<arg expression="get-property('entityName')" evaluator="xml"></arg>
+					<arg expression="get-property('identifierValue')" evaluator="xml"></arg>
+					<arg expression="get-property('myDomain')" evaluator="xml"></arg>
+					<arg expression="get-property('timeStamp')" evaluator="xml"></arg>
+					<arg expression="get-property('identifierValue')" evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			<property name="x-jwt-assertion" expression="get-property('Authorization')"
+				scope="transport" type="STRING"></property>
+			<property name="messageType" value="application/json" scope="axis2"
+				type="STRING"></property>
+			<send receive="Create_Avocado_Reset_Pswd_Marker_Link_SEQ">
+				<endpoint
+					key="conf:/endpoints/tenant/Update_Avocado_Tenant_Admin_Marker_Link_EP.xml"></endpoint>
+			</send>
+		</else>
+	</filter>
+</sequence>

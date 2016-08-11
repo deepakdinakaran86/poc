@@ -1,0 +1,441 @@
+<% 
+		var APPCONF = require('/configs/appconfig.jag');
+		var APICONF = require('/configs/apiproperties.jag');
+		var usr = require('/modules/user.js');	 
+		var ObjUser = usr.current();
+		var log = new Log();
+	    
+		if(utils.allowed(ObjUser['roles'],[APPCONF.GAPP_CONF.SUPER_ADMIN_ROLE])){ // SUPER ADMIN
+			var VarHomeUrl = './';
+			log.info(ObjUser['roles']);
+		} else if(utils.allowed(ObjUser['roles'],[APPCONF.GAPP_CONF.CLIENT_ADMIN_ROLE])){ // CLIENT ADMIN
+			var VarHomeUrl = './clienthome';
+		} else {
+			var VarHomeUrl = './userhome';
+			log.info(ObjUser['roles']);
+		}
+	
+		include(utils.resolvePath('templates/portal-header.jag'));
+		include('/controllers/includes/theme-portal-styles.jag');
+%>
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.2.607/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="//kendo.cdn.telerik.com/2016.2.607/styles/kendo.material.min.css" />
+	
+	<!--
+	<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/css/jquery.seat-charts.css')%>" rel="stylesheet" type="text/css"/>
+	<link href="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/css/seat.css')%>" rel="stylesheet" type="text/css"/>
+	-->
+
+<style>
+
+    	#mobile-wrapper{ 
+				position:relative; 
+				display:block;
+				background: url(extensions/themes/dashboardapp/assets/admin/layout/img/mobile-wrapper.png) no-repeat;
+				width:320px; height:520px;
+				display: block;		
+		}
+		#mobile-inner{ 
+						width: 220px;
+						height: 390px;
+						border-radius: 6px;
+						/*background: #364150;*/
+						position: absolute;
+						top: 68px;
+						left: 52px;
+		}
+						
+		#mobile-flash{
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			background:#000;
+			    top: 27px;
+			right: 64px;
+			border-radius: 50% !important;
+			
+		}
+		#color-picker-wrapper{
+		    position: relative;
+			margin: 0 auto;
+			padding: 0 0 0 20px;
+			text-align: center;			
+		}
+		#flash-switch-wrapper{
+			margin:12px 0 0 0 ;
+			position:relative;		
+		}
+		.page-container-bg-solid .page-content {
+			background: #364150;
+			background: #445162;
+		}
+		.picker-wrapper h4,.flash-switch-wrapper h4 {color:#fff; padding:0 0 0 16px;}
+		.page-content {
+				margin-top: 0px;
+				padding: 0px;
+				background: #445162;
+			}
+			
+		.portlet > .portlet-title {
+			border-bottom: 1px solid #eee;
+	}
+ </style>
+
+<body class="page-header-fixed page-quick-sidebar-over-content page-sidebar-closed-hide-logo page-container-bg-solidpage-footer-fixed " >
+
+<div class="se-pre-con"></div>
+<!-- BEGIN HEADER -->
+	<%include(utils.resolvePath('templates/page-header.jag')); %>
+<!-- END HEADER -->
+
+
+<!-- BEGIN CONTAINER -->
+<div class="page-container">	
+	<%include(utils.resolvePath('templates/page-sidebar.jag')); %>
+	
+	<!-- BEGIN CONTENT -->
+	<div class="page-content-wrapper">
+		<div class="page-content" style="min-height:720px; ">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div class="modal fade" id="portlet-config" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+							<h4 class="modal-title">Modal title</h4>
+						</div>
+						<div class="modal-body">
+							 Widget settings form goes here
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn blue">Save changes</button>
+							<button type="button" class="btn default" data-dismiss="modal">Close</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal-dialog -->
+			</div>
+			<!-- /.modal -->
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			
+			<!-- BEGIN PAGE HEADER-->
+			<!--<h3 class="page-title ">	Writeback <small></small></h3>-->
+			<div class="page-bar hidden">
+				<ul class="page-breadcrumb">
+					<li>
+						<i class="fa fa-home"></i>
+						<a href="index.html">Home</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Page Layouts</a>
+						<i class="fa fa-angle-right"></i>
+					</li>
+					<li>
+						<a href="#">Writeback</a>
+					</li>
+				</ul>		
+			</div>
+			<!-- END PAGE HEADER-->
+			
+			<!-- BEGIN PAGE CONTENT-->
+			<div class="row">
+				<div class="col-md-12">
+					<div class="portlet " id="writeback-block" style="background: #445162;">
+						<div class="portlet-title">
+								<div class="caption font-red-sunglo">
+									<i class="icon-settings font-red-sunglo"></i>
+									<span class="caption-subject bold uppercase"> Write back</span>
+								</div>
+							<div class="actions hidden">					
+							<button type="button" data-dismiss="modal" class="btn  btn blue btn-sm btn-raised" onclick="FnSendWriteBack()"><i class="fa fa-pencil" aria-hidden="true"></i> WRITE BACK </button>
+							
+							<button type="button" data-dismiss="modal" class="btn  btn-raised" ><i class="icon-close icons" aria-hidden="true"></i> CANCEL</button>
+									
+						</div>
+						
+						
+						</div>
+						<div class="portlet-body form">	
+																	   <div id="seat-map" class="hidden">
+																		<% //if((VarCurrentTenantInfo.tenantDomain != APPCONF.GAPP_CONF.MY_DEMO_DOMAIN_NAME)) {	%>	<div class="front-indicator">Screen</div>
+																			<% //} %>
+																		</div>
+																		<div class="booking-details hidden">
+																		<!--	<h2>Selected Details</h2>-->
+																			
+																			<h3> Selected Seats (<span id="counter">0</span>):</h3>
+																			<ul id="selected-seats"></ul>
+																			
+																			<!--Total: <b>$<span id="total">0</span></b> -->
+																			
+																			<button class="checkout-button hidden">Checkout &raquo;</button>
+																			
+																			<div id="legend hidden"></div>
+																			<div id="selected-row"></div>								
+																			<ul id="selected-cells">selected cells</ul>
+																		</div>
+																	
+							<div class="row single-user-writeback" id="single-user-writeback" style="">	
+							
+					
+								<div class="col-sm-5 picker-wrapper" >	
+								<h4>Color picker</h4>
+									<div id="color-picker-wrapper">
+									
+										<div id="writeback-color-picker" class="picker" style=""></div>								
+										<div class="clearfix"></div>
+										<input id="writeback-color-picker-value"  style="background-color: #000000;border:0px;height:32px;width:252px;"/>
+									</div>
+							
+									<div id="flash-switch-wrapper">
+									<h4>Flash switch</h4>
+										<a href="javascript:;"  id="device-torch-btn-write-back">					
+											<img src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/img/devicetorch_off.png')%>" alt="logo" class="img-responsive"/></a>
+									</div>
+								</div>
+								<div class="col-sm-4"> 
+								
+									<div id="mobile-wrapper">
+										<div id="mobile-flash"></div>
+										<div id="mobile-inner"></div>
+									</div>
+								
+								
+								</div>
+							
+							
+								<!--<div class="col-sm-3 deviceTorch pull-left" style="height: 247px;width:275px;">										
+													
+								</div> -->
+							
+						</div>
+						
+						
+					
+						
+						
+						
+						
+						<div class="clearfix"></div>
+						
+						
+						</div>
+					</div>
+			
+				</div>		
+		
+			</div>
+				<div class="clearfix"><!-- END First ROW -->
+	
+			</div>
+			
+			
+			
+			
+			<!-- END PAGE CONTENT-->
+		</div>
+	</div>
+	<!-- END CONTENT -->
+	<!--<% //include(utils.resolvePath('templates/page-quickbar.jag')); %> -->
+	
+</div>
+<!-- END CONTAINER -->
+<%
+	include(utils.resolvePath('templates/portal-footer.jag'));
+	include('/controllers/includes/theme-portal-scripts.jag');
+%>
+
+
+	
+	<script src="<%=urlPrefix%>js/websocket/WebORB.js"></script>
+	<script type='text/javascript' src="<%=urlPrefix%>js/mask.js"></script>
+	
+	<!--<script src="<%=urlPrefix%>js/jquery-custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>-->
+
+	<script type="text/javascript">
+	
+	var UserCurrentRoleName = '<%=ObjUser['roles']%>';
+	var VarAssetWriteBackCommandUrl  = '<%=APICONF.GAPP_SERVICES.assets.writeback%>';
+	var VarListDeviceUrl = '<%=APICONF.GAPP_SERVICES.device.list%>';
+	
+	var VarWriteBackOffSrc="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/img/devicetorch_off.png')%>";
+	var VarWriteBackOnSrc="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/pages/img/devicetorch_on.png')%>";
+	
+	var VarLUDomainName = '<%=usr.domainName()%>';
+	var VarCurrentTenantInfo = $.parseJSON('<%=VarCurrentTenantInfo%>');
+	var VarAppRootDomain = '<%=APPCONF.GAPP_CONF.MY_DOMAIN_NAME%>';	
+	var VarAppRootDemoDomain = '<%=APPCONF.GAPP_CONF.MY_DEMO_DOMAIN_NAME%>';	
+	//alert(JSON.stringify(VarCurrentTenantInfo));	
+	//alert(VarLUDomainName +' '+VarAppRootDomain);
+	
+	
+	</script>
+<script type="text/javascript" src="<%=urlPrefix%><%=utils.resolveUrl('js/writeback.js')%>"></script>
+<script type="text/javascript" src="<%=urlPrefix%><%=utils.resolveUrl('assets/admin/layout/scripts/jquery.seat-charts.js')%>"></script>
+
+
+		<script>
+			var firstSeatLabel = 1;
+			var VarMapLive =[];
+			var VarMapLive =[
+						'_______fffffffffffk________',
+						'_____fffffff__fffffff______',
+						'___fffffffff__ffffffffff___',
+						
+						'_fffffffffff__ffffffffffff_',
+						'ffffffffffff__fffffffffffff',						
+						'_______________________________',
+						'ffffffffffff__fffffffffffff'
+						//'eeeeeeeeeeeeee__eeeeeeeeeeeeeee',
+					];
+			
+
+			/*	for (var i = 0 ; i < 5 ; i++){
+						var row = '' ;
+						for (var j = 0 ; j < 28 ; j++){                  
+								row += 'f';
+						}
+						VarMapLive.push(row);
+					}
+			*/		
+		    var sc;
+			$(document).ready(function() {
+				var $cart = $('#selected-seats'),
+					$counter = $('#counter'),
+					$total = $('#total');
+					sc = $('#seat-map').seatCharts({						
+					map: VarMapLive,
+					seats: {
+					//	classes : 'seat-red seat-big',
+						f: {
+							price   : 100,
+							classes : 'first-class', //your custom CSS class
+							category: 'First Class'
+						},
+						e: {
+							price   : 40,
+							classes : 'economy-class', //your custom CSS class
+							category: 'Economy Class'
+						}					
+					
+					},
+					naming : {
+						//columns: ['A', 'B', 'C', 'D', 'E','F'],
+						top : false,					
+						getId  : function(character, row, column) {
+							return row + '_' + column;
+						},
+						getLabel : function (character, row, column) {
+							return column;
+						}
+					},
+					animate :true,
+					legend : {
+						node : $('#legend'),
+					    items : [
+							[ 'f', 'available',   'First Class' ],
+							[ 'e', 'available',   'Economy Class'],
+							[ 'f', 'unavailable', 'Already Booked']
+					    ]					
+					},
+					click: function () {
+						//alert(this.status());
+						$('ul#selected-cells').html('');
+						if (this.status() == 'available') {
+							var row =this.settings.row+1;
+							console.log(' R'+row+' S'+this.settings.label);
+							//let's create a new <li> which we'll add to the cart items
+						/*	$('<li>'+this.data().category+' Seat # '+this.settings.label+': <b>$'+this.data().price+'</b> <a href="#" class="cancel-cart-item">[cancel]</a></li>')
+								.attr('id', 'cart-item-'+this.settings.id)
+								.data('seatId', this.settings.id)
+								.appendTo($cart);*/
+								
+							$('<li>R'+(this.settings.row+1)+' S'+this.settings.label+' <a href="#" class="cancel-cart-item"> [cancel]</a></li>')
+							.attr('id', 'cart-item-'+this.settings.id)
+							.data('seatId', this.settings.id)
+							.appendTo($cart);
+							
+							/*
+							 * Lets update the counter and total
+							 *
+							 * .find function will not find the current seat, because it will change its stauts only after return
+							 * 'selected'. This is why we have to add 1 to the length and the current seat price to the total.
+							 */
+							$counter.text(sc.find('selected').length+1);
+							$total.text(recalculateTotal(sc)+this.data().price);
+							
+							return 'selected';
+						} else if (this.status() == 'selected') {
+							//update the counter
+							$counter.text(sc.find('selected').length-1);
+							//and total
+							$total.text(recalculateTotal(sc)-this.data().price);
+						
+							//remove the item from our cart
+							$('#cart-item-'+this.settings.id).remove();
+						
+							//seat has been vacated
+							return 'available';
+						} else if (this.status() == 'unavailable') {
+							//seat has been already booked
+						//	alert('unavailable');
+							return 'unavailable';
+						} else {
+							return this.style();
+						}
+					},
+					//default handler
+				/*	blur   : function() {
+						console.log(this.status());
+						return this.status();
+					},*/
+				});
+
+				//this will handle "[cancel]" link clicks
+				$('#selected-seats').on('click', '.cancel-cart-item', function () {
+					//let's just trigger Click event on the appropriate seat, so we don't have to repeat the logic here
+					sc.get($(this).parents('li:first').data('seatId')).click();
+				});
+
+				//sc.status('2_15', 'unvailable');
+				//let's pretend some seats have already been booked
+				sc.get(['6_17', '6_2', '6_31', '6_14']).status('unavailable');
+				var avil = sc.find('k');
+				console.log(JSON.stringify(avil));
+				//sc.status('1_8', 'unvailable'); 
+				sc.find('a.available').each(function(seatId) {
+					//alert('hi');
+					console.log(this.data()); //display seat data
+				}); 
+		
+		});
+
+		function recalculateTotal(sc) {
+			var total = 0;
+		
+			//basically find every selected seat and sum its price
+			sc.find('selected').each(function () {
+				total += this.data().price;
+			});
+			
+			return total;
+		}
+		
+		
+		</script>
+
+ 
+		<script>
+				
+					//alert(VarCurrentTenantInfo.tenantDomain +' ' +VarAppRootDemoDomain );
+					//alert(UserCurrentRoleName);
+					console.log(JSON.stringify(VarCurrentTenantInfo));
+					//MY_DOMAIN_NAME demo.galaxy
+					//console.log(JSON.stringify(ObjUser));
+					//var  VarObjUsr =  $.session.get(‘user’) ;
+					//console.log(VarObjUsr);
+		</script>
+
+

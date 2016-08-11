@@ -1,0 +1,56 @@
+{
+  "name": "PCOutputStream",
+  "version": "1.0.0",
+  "nickName": "",
+  "description": "",
+  "metaData": [
+    {
+      "name": "sourceId",
+      "type": "STRING"
+    },
+    {
+      "name": "alarmName",
+      "type": "STRING"
+    },
+    {
+      "name": "alarmMessage",
+      "type": "STRING"
+    },
+    {
+      "name": "alarmType",
+      "type": "STRING"
+    },
+    {
+      "name": "data",
+      "type": "STRING"
+    },
+    {
+      "name": "unit",
+      "type": "STRING"
+    },
+    {
+      "name": "pointId",
+      "type": "STRING"
+    },
+    {
+      "name": "pointName",
+      "type": "STRING"
+    },
+    {
+      "name": "deviceId",
+      "type": "STRING"
+    },
+    {
+      "name": "receivedTime",
+      "type": "LONG"
+    },
+    {
+      "name": "time",
+      "type": "LONG"
+    },
+    {
+      "name": "active",
+      "type": "BOOL"
+    }
+  ]
+}

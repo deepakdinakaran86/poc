@@ -1,0 +1,4 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Get_Domain_Accessible_EP" >
+	<http method="get"
+		uri-template="http://10.236.166.111:9763/alpine-hierarchy-1.0.0/services/hierarchy/domain_access/{uri.var.domainAccess}" />
+</endpoint>

@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Device_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Device_API.xml</file>
+    </artifact>
+    <artifact name="Saffron_Create_Device_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Create_Device_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Device_Config_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Device_Config_SEQ.xml</file>
+    </artifact>
+    <artifact name="Skyspark_Create_Equip_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Skyspark_Create_Equip_SEQ.xml</file>
+    </artifact>
+    <artifact name="Skyspark_Create_Points_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Skyspark_Create_Points_SEQ.xml</file>
+    </artifact>
+    <artifact name="Skyspark_Create_Equip_Response_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Skyspark_Create_Equip_Response_SEQ.xml</file>
+    </artifact>
+    <artifact name="Skyspark_Create_Points_Response_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Skyspark_Create_Points_Response_SEQ.xml</file>
+    </artifact>
+    <artifact name="System_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/System_API.xml</file>
+    </artifact>
+    <artifact name="Write_Back_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Write_Back_API.xml</file>
+    </artifact>
+    <artifact name="Authenticate_Device_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Authenticate_Device_SEQ.xml</file>
+    </artifact>
+    <artifact name="Claim_Device_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Claim_Device_SEQ.xml</file>
+    </artifact>
+    <artifact name="Create_System_Subscription_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Create_System_Subscription_SEQ.xml</file>
+    </artifact>
+    <artifact name="Fetch_Unclaimed_Devices_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Fetch_Unclaimed_Devices_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_All_Devices_Filtered_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_All_Devices_Filtered_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_All_Devices_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_All_Devices_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Datasource_Name_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Datasource_Name_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Device_Details_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Device_Details_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Device_Point_Config_Default_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Device_Point_Config_Default_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Device_Point_Config_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Device_Point_Config_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Devices_Filtered_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Devices_Filtered_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Access_Types_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Access_Types_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Data_Types_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Data_Types_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Make_Device_Types_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Make_Device_Types_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Makes_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Makes_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Models_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Models_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Network_Protocols_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Network_Protocols_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Points_By_Protocol_Version_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Points_By_Protocol_Version_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Protocol_Commands_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Protocol_Commands_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Protocols_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Protocols_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Protocols_Version_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Protocols_Version_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_System_Tags_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_System_Tags_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Write_Back_Device_Queued_Commands_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Write_Back_Device_Queued_Commands_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Write_Back_Graph_Logs_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Write_Back_Graph_Logs_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Write_Back_Logs_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Write_Back_Logs_SEQ.xml</file>
+    </artifact>
+    <artifact name="Register_Device_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Register_Device_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Device_Config_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Device_Config_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Device_Details_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Device_Details_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Device_Point_Config_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Device_Point_Config_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Device_Tags_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Device_Tags_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Write_Back_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Write_Back_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Device_Point_Config_Default_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Device_Point_Config_Default_SEQ.xml</file>
+    </artifact>
+    <artifact name="Update_Multiple_Device_Point_Config_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Update_Multiple_Device_Point_Config_SEQ.xml</file>
+    </artifact>
+    <artifact name="Device_Data_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Device_Data_API.xml</file>
+    </artifact>
+    <artifact name="Device_Tag_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Device_Tag_API.xml</file>
+    </artifact>
+    <artifact name="Physical_Quantity_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Physical_Quantity_API.xml</file>
+    </artifact>
+    <artifact name="Parameter_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Parameter_API.xml</file>
+    </artifact>
+    <artifact name="Data_Source_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Data_Source_API.xml</file>
+    </artifact>
+    <artifact name="Configuration_Template_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Configuration_Template_API.xml</file>
+    </artifact>
+    <artifact name="G2021_Write_Back_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/G2021_Write_Back_API.xml</file>
+    </artifact>
+    <artifact name="Units_API" groupId="saffron-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Units_API.xml</file>
+    </artifact>
+    <artifact name="Saffron_Create_Device_Data_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Create_Device_Data_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Get_Device_Data_Details_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Get_Device_Data_Details_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Create_Batch_Device_Data_Quantity_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Create_Batch_Device_Data_Quantity_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Get_Latest_Device_Data_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Get_Latest_Device_Data_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Create_Batch_Device_Data_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Create_Batch_Device_Data_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Get_All_Device_Tags_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Get_All_Device_Tags_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Get_All_Physical_Quantity_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Get_All_Physical_Quantity_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Create_Physical_Quantity_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Create_Physical_Quantity_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Read_Update_Delete_Physical_Quantity_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Read_Update_Delete_Physical_Quantity_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Create_Get_All_Parameters_Of_Subscriber_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Create_Get_All_Parameters_Of_Subscriber_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Check_Parameter_Exists_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Check_Parameter_Exists_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Publish_Data_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Publish_Data_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Check_Datasource_Exists_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Check_Datasource_Exists_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Get_Subsctiption_Context_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Get_Subsctiption_Context_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Get_All_Registered_Datasources_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Get_All_Registered_Datasources_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Update_Get_All_Parameters_Of_Datasource_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Update_Get_All_Parameters_Of_Datasource_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Deregister_Datasource_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Deregister_Datasource_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Subscribe_Datasource_Destination_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Subscribe_Datasource_Destination_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Register_Datasource_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Register_Datasource_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Create_Update_Configuration_Template_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Create_Update_Configuration_Template_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Deactivate_Configuration_Template_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Deactivate_Configuration_Template_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Get_Point_Configurations_Of_Template_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Get_Point_Configurations_Of_Template_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Get_All_Configuration_Template_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Get_All_Configuration_Template_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Check_Configurations_Template_Exists_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Check_Configurations_Template_Exists_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Process_G2021_Commands_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Process_G2021_Commands_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Get_Units_Of_Physical_Quantity_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Get_Units_Of_Physical_Quantity_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Create_Units_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Create_Units_SEQ.xml</file>
+    </artifact>
+    <artifact name="Saffron_Update_Delete_Units_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Saffron_Update_Delete_Units_SEQ.xml</file>
+    </artifact>
+    <artifact name="Get_Device_Details_For_Claim_SEQ" groupId="saffron-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Get_Device_Details_For_Claim_SEQ.xml</file>
+    </artifact>
+</artifacts>

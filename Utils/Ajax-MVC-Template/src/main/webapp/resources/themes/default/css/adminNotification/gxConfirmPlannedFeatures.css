@@ -1,0 +1,100 @@
+/**
+* Copyright 2014 Pacific Controls Software Services LLC (PCSS). All Rights Reserved.
+*
+* This software is the property of Pacific Controls  Software  Services LLC  and  its
+* suppliers. The intellectual and technical concepts contained herein are proprietary 
+* to PCSS. Dissemination of this information or  reproduction  of  this  material  is
+* strictly forbidden  unless  prior  written  permission  is  obtained  from  Pacific 
+* Controls Software Services.
+* 
+* PCSS MAKES NO REPRESENTATION OR WARRANTIES ABOUT THE SUITABILITY  OF  THE  SOFTWARE,
+* EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE  IMPLIED  WARRANTIES  OF
+* MERCHANTANILITY, FITNESS FOR A PARTICULAR PURPOSE,  OR  NON-INFRINGMENT.  PCSS SHALL
+* NOT BE LIABLE FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF  USING,  MODIFYING
+* OR DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+**/
+
+/**
+* Version    :   1.0 
+* User       :   PCS
+* Function   :   CSS file for Confirm Planned Features.
+**/
+
+
+
+body {
+	font-family: 'Open Sans', Tahoma, Arial, Helvetica, sans-serif;	
+}
+
+.well h3 {	
+	color: #A152A0;
+	margin-top: 10px;
+	font-size: 20px;
+}
+
+.well {
+	min-height: 20px;
+	padding: 0px 10px 0px 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	background-color: #f5f5f5;
+	border: 1px solid #e3e3e3;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+}
+
+section {
+	padding-top: 10px;
+	padding-bottom: 15px;
+}
+
+.btn:focus,.btn:active:focus,.btn.active:focus {
+	outline: none;
+}
+
+.btn-default {
+	color: #FFFFFF;
+	background-color: #00A8E7;
+	border-color: #ebebeb;
+	outline:none;
+}
+
+.btn-default:hover,.btn-default:focus,.btn-default:active {
+	color: #FFF;
+	background-color: #93268f;
+	border-color: #93268f;
+}
+
+
+.well h3 {
+	color: #66429A;
+	margin-top: 10px;
+	font-size: 21px;
+}
+
+.well {
+	min-height: 20px;
+	padding: 0px 10px 0px 10px;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	background-color: #ebebeb;
+	border: 0px solid #ebebeb;
+	border-radius: 4px;
+	-webkit-box-shadow: inset 0 0px 0px rgba(0,0,0,0);
+	box-shadow: inset 0 0px 0px rgba(0,0,0,0);
+}
+
+.gx-mandatory {
+	color: #FF0000;
+	font-size: 14px;
+	top: 0em;
+}
+
+form {
+	margin-bottom: 0px;
+}
+
+label {
+	font-weight: normal;
+}

@@ -1,0 +1,114 @@
+@Plan:name('AcceleratorPedalPosExecutionPlan')
+@Plan:statistics('true')
+@Plan:trace('true')
+
+@Import('PCInputStream:1.0.0')
+define stream inStream (meta_sourceId string, meta_engOilTemp float, meta_engFuelRate float, meta_acceleratorPedalPos float, meta_engSpeed float, meta_barometricPressure float, meta_receivedTime long, meta_time long, meta_latitude double, meta_longitude double);
+
+@Export('PCOutputStream:1.0.0')
+define stream outstream (meta_sourceId string, meta_alarmName string, meta_alarmMessage string, meta_alarmType string, meta_data string, meta_unit string, meta_pointId string, meta_pointName string, meta_deviceId string, meta_receivedTime long, meta_time long, meta_active bool);
+
+@From(eventtable='rdbms', datasource.name='cepdatabase', table.name='device_threshold')
+define table RDBMSDeviceThresholdTable (sourceId string, deviceId string, assetId string, assetName string,  pointid string, pointname string, unit string,
+minval string, maxval string, lowerRange string, upperRange string, alarmname string, alarmtype string, alarmattribute string, message string,
+minAlarmMsg string,  maxAlarmMsg string, rangeAlarmMsg string, status string, enabled bool);
+
+@IndexBy('sourceId')
+define table InMemoryDeviceThresholdTable (sourceId string, deviceId string, assetId string, assetName string,  pointid string, pointname string, unit string,
+minval string, maxval string, lowerRange string, upperRange string, alarmname string, alarmtype string, alarmattribute string, message string,
+minAlarmMsg string,  maxAlarmMsg string, rangeAlarmMsg string, status string, enabled bool);
+
+define table InMemoryAlarmTable (sourceId string, flag string);
+
+/* Trigger at start */
+define trigger startTrigger at 'start'; 
+
+/* Trigger every 5 min */
+define trigger timedTrigger at every 5 min;
+
+from startTrigger
+insert into triggerStream;
+
+from timedTrigger
+insert into triggerStream;
+
+from triggerStream join RDBMSDeviceThresholdTable on
+RDBMSDeviceThresholdTable.alarmattribute == 'acceleratorPedalPos' and RDBMSDeviceThresholdTable.enabled == true
+select RDBMSDeviceThresholdTable.sourceId as sourceId, RDBMSDeviceThresholdTable.deviceId as deviceId, RDBMSDeviceThresholdTable.assetId as assetId, 
+RDBMSDeviceThresholdTable.assetName as assetName, RDBMSDeviceThresholdTable.pointid as pointid, RDBMSDeviceThresholdTable.pointname as pointname,
+RDBMSDeviceThresholdTable.unit as unit, RDBMSDeviceThresholdTable.minval as minval, RDBMSDeviceThresholdTable.maxval as maxval, RDBMSDeviceThresholdTable.lowerRange as lowerRange,
+RDBMSDeviceThresholdTable.upperRange as upperRange, RDBMSDeviceThresholdTable.alarmname as alarmname, RDBMSDeviceThresholdTable.alarmtype as alarmtype, 
+RDBMSDeviceThresholdTable.alarmattribute as alarmattribute, RDBMSDeviceThresholdTable.message as message,  RDBMSDeviceThresholdTable.minAlarmMsg as minAlarmMsg, 
+RDBMSDeviceThresholdTable.maxAlarmMsg as maxAlarmMsg, RDBMSDeviceThresholdTable.rangeAlarmMsg as rangeAlarmMsg, RDBMSDeviceThresholdTable.status as status, RDBMSDeviceThresholdTable.enabled as enabled
+insert into updateStream;
+
+from updateStream
+select sourceId, deviceId, assetId, assetName, pointid, pointname, unit, minval, maxval, lowerRange, upperRange,
+alarmname, alarmtype, alarmattribute, message, minAlarmMsg, maxAlarmMsg, rangeAlarmMsg, status, enabled
+insert overwrite InMemoryDeviceThresholdTable
+on InMemoryDeviceThresholdTable.sourceId == sourceId;
+
+from inStream as iss join InMemoryDeviceThresholdTable as im
+on im.sourceId == iss.meta_sourceId
+select 	meta_sourceId, 
+		im.alarmname as meta_alarmName, 
+		im.alarmtype as meta_alarmType, 
+		im.message as message, 
+		im.minAlarmMsg as minAlarmMsg,
+		im.maxAlarmMsg as maxAlarmMsg,
+		im.rangeAlarmMsg as rangeAlarmMsg,
+		convert(meta_acceleratorPedalPos, "string") as meta_data, 
+		im.unit as meta_unit, 
+		im.pointid as meta_pointId, 
+		im.pointname as meta_pointName,
+		im.deviceId as meta_deviceId,
+		meta_receivedTime,
+		meta_time,
+		convert(im.maxval, "float") as maxTemp,
+		convert(im.minval, "float") as minTemp,
+		convert(im.lowerRange, "float") as upRangeTemp,
+		convert(im.upperRange, "float") as lowRangeTemp,
+		meta_acceleratorPedalPos
+insert into tempstream;
+
+from tempstream [not((InMemoryAlarmTable.sourceId == meta_sourceId AND InMemoryAlarmTable.flag == "MAX") in InMemoryAlarmTable) AND meta_acceleratorPedalPos >= maxTemp AND meta_acceleratorPedalPos != -999.00 ] 
+select meta_sourceId, meta_alarmName,  maxAlarmMsg as meta_alarmMessage, meta_alarmType, meta_data, meta_unit, meta_pointId, meta_pointName, meta_deviceId, meta_receivedTime, meta_time, true as meta_active, "MAX" as meta_flag
+insert into insertstream;
+
+from tempstream [((InMemoryAlarmTable.sourceId == meta_sourceId AND InMemoryAlarmTable.flag == "MAX") in InMemoryAlarmTable) AND meta_acceleratorPedalPos < maxTemp AND meta_acceleratorPedalPos != -999.00 ] 
+select meta_sourceId, meta_alarmName,  "Alarm Normalized" as meta_alarmMessage, meta_alarmType, meta_data, meta_unit, meta_pointId, meta_pointName, meta_deviceId, meta_receivedTime, meta_time, false as meta_active, "MAX" as meta_flag
+insert into deletestream;
+
+from tempstream [not((InMemoryAlarmTable.sourceId == meta_sourceId AND InMemoryAlarmTable.flag == "MIN") in InMemoryAlarmTable) AND meta_acceleratorPedalPos <= minTemp AND meta_acceleratorPedalPos != -999.00 ] 
+select meta_sourceId, meta_alarmName,  minAlarmMsg as meta_alarmMessage, meta_alarmType, meta_data, meta_unit, meta_pointId, meta_pointName, meta_deviceId, meta_receivedTime, meta_time, true as meta_active, "MIN" as meta_flag
+insert into insertstream;
+
+from tempstream [((InMemoryAlarmTable.sourceId == meta_sourceId AND InMemoryAlarmTable.flag == "MIN") in InMemoryAlarmTable) AND meta_acceleratorPedalPos > minTemp AND meta_acceleratorPedalPos != -999.00 ] 
+select meta_sourceId, meta_alarmName,  "Alarm Normalized" as meta_alarmMessage, meta_alarmType, meta_data, meta_unit, meta_pointId, meta_pointName, meta_deviceId, meta_receivedTime, meta_time, false as meta_active, "MIN" as meta_flag
+insert into deletestream;
+
+from tempstream [not((InMemoryAlarmTable.sourceId == meta_sourceId AND InMemoryAlarmTable.flag == "RANGE") in InMemoryAlarmTable) AND (meta_acceleratorPedalPos < lowRangeTemp OR meta_acceleratorPedalPos > upRangeTemp) AND meta_acceleratorPedalPos != -999.00 ] 
+select meta_sourceId, meta_alarmName,  rangeAlarmMsg as meta_alarmMessage, meta_alarmType, meta_data, meta_unit, meta_pointId, meta_pointName, meta_deviceId, meta_receivedTime, meta_time, true as meta_active, "RANGE" as meta_flag
+insert into insertstream;
+
+from tempstream [((InMemoryAlarmTable.sourceId == meta_sourceId AND InMemoryAlarmTable.flag == "RANGE") in InMemoryAlarmTable) AND (meta_acceleratorPedalPos >= lowRangeTemp AND meta_acceleratorPedalPos <= upRangeTemp)  AND meta_acceleratorPedalPos != -999.00 ] 
+select meta_sourceId, meta_alarmName,  "Alarm Normalized" as meta_alarmMessage, meta_alarmType, meta_data, meta_unit, meta_pointId, meta_pointName, meta_deviceId, meta_receivedTime, meta_time, false as meta_active, "RANGE" as meta_flag
+insert into deletestream;
+
+from insertstream
+select meta_sourceId as sourceId, meta_flag as flag
+insert into InMemoryAlarmTable;
+
+from deletestream
+delete InMemoryAlarmTable 
+	on InMemoryAlarmTable.sourceId == meta_sourceId AND InMemoryAlarmTable.flag == meta_flag;
+
+from insertstream
+select meta_sourceId, meta_alarmName, meta_alarmMessage, meta_alarmType, meta_data, meta_unit, meta_pointId, meta_pointName, meta_deviceId, meta_receivedTime, meta_time, meta_active
+insert into outstream;
+
+from deletestream
+select meta_sourceId, meta_alarmName, meta_alarmMessage, meta_alarmType, meta_data, meta_unit, meta_pointId, meta_pointName, meta_deviceId, meta_receivedTime, meta_time, meta_active
+insert into outstream;                   
+
+                    

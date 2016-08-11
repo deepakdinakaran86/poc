@@ -1,0 +1,155 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>com.pcs</groupId>
+		<artifactId>data-analyzer</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>data-analytics-engine</artifactId>
+	<name>Data Analytics Engine</name>
+
+	<dependencies>
+		<dependency>
+			<groupId>com.pcs.device.gateway.commons</groupId>
+			<artifactId>commons</artifactId>
+			<version>1.0.0</version>
+		</dependency>
+		<dependency>
+			<groupId>com.pcs</groupId>
+			<artifactId>io-data-analyzer</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>log4j-over-slf4j</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>storm-analyzer</artifactId>
+					<groupId>com.pcs</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.pcs.deviceframework</groupId>
+			<artifactId>cache</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+				<exclusion>
+					<artifactId>log4j</artifactId>
+					<groupId>log4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.pcs.deviceframework</groupId>
+			<artifactId>cache</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.pcs.deviceframework</groupId>
+			<artifactId>cache-hazelcast</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>com.pcs.deviceframework</groupId>
+			<artifactId>cache-memory</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+
+		<dependency>
+			<groupId>com.pcs.deviceframework</groupId>
+			<artifactId>data-distributor</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<artifactId>slf4j-log4j12</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+				<exclusion>
+					<artifactId>slf4j-api</artifactId>
+					<groupId>org.slf4j</groupId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
+<!-- 			<exclusions> -->
+<!-- 				<exclusion> -->
+<!-- 					<artifactId>slf4j-api</artifactId> -->
+<!-- 					<groupId>org.slf4j</groupId> -->
+<!-- 				</exclusion> -->
+<!-- 				<exclusion> -->
+<!-- 					<artifactId>log4j</artifactId> -->
+<!-- 					<groupId>log4j</groupId> -->
+<!-- 				</exclusion> -->
+<!-- 			</exclusions> -->
+		</dependency>
+		
+		<dependency>
+			<groupId>com.pcs.deviceframework</groupId>
+			<artifactId>device-manager</artifactId>
+			<version>1.0.0</version>
+			<exclusions>
+				<exclusion>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>ch.qos.logback</groupId>
+					<artifactId>logback-classic</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		
+		
+	</dependencies>
+
+</project>

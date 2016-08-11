@@ -1,0 +1,14 @@
+#ESB URLS
+platform.esb.url = http://10.234.31.202:8281/
+
+#Platform End Points
+platform.client.entitytemplate = alpine/services/templates
+platform.client.entitytemplate.find = alpine/services/templates/find
+
+#Platform ESB End Points
+platform.esb.marker = /alpine/services/markers
+platform.esb.marker.find = /alpine/services/markers/find
+platform.esb.marker.list = /alpine/services/markers/list/filter
+platform.esb.hierarchy.attach = /alpine/services/hierarchy/attach/children
+platform.esb.hierarchy.children.immediate = /alpine/services/hierarchy/children/immediate
+platform.esb.hierarchy.search.relation = /alpine/services/hierarchy/search/relation

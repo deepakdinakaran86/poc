@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Skyspark_Create_Equip_SEQ">
+	<log separator=",">
+		<property name="Enter Skyspark_Create_Equip_SEQ" value="--------Skyspark_Create_Equip_SEQ--------" />
+		<property name="Authorization***" expression="get-property('Authorization')"  />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+		<property name="payloadIn" expression="json-eval($.)" scope="default"
+		type="STRING"></property>
+
+	<out>
+      <log separator=","></log>
+      <property name="Message" value="DefaultMessage" scope="default" type="STRING"></property>
+      <class name="com.pcs.custom.SkysparkDevicePointMediator"></class>
+   </out>
+			
+			<script language="js">
+			<![CDATA[
+				
+				var jwtToken = mc.getProperty('Authorization'); 
+				var Base64={_keyStr:"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",encode:function(e){var t="";var n,r,i,s,o,u,a;var f=0;e=Base64._utf8_encode(e);while(f<e.length){n=e.charCodeAt(f++);r=e.charCodeAt(f++);i=e.charCodeAt(f++);s=n>>2;o=(n&3)<<4|r>>4;u=(r&15)<<2|i>>6;a=i&63;if(isNaN(r)){u=a=64}else if(isNaN(i)){a=64}t=t+this._keyStr.charAt(s)+this._keyStr.charAt(o)+this._keyStr.charAt(u)+this._keyStr.charAt(a)}return t},decode:function(e){var t="";var n,r,i;var s,o,u,a;var f=0;e=e.replace(/[^A-Za-z0-9\+\/\=]/g,"");while(f<e.length){s=this._keyStr.indexOf(e.charAt(f++));o=this._keyStr.indexOf(e.charAt(f++));u=this._keyStr.indexOf(e.charAt(f++));a=this._keyStr.indexOf(e.charAt(f++));n=s<<2|o>>4;r=(o&15)<<4|u>>2;i=(u&3)<<6|a;t=t+String.fromCharCode(n);if(u!=64){t=t+String.fromCharCode(r)}if(a!=64){t=t+String.fromCharCode(i)}}t=Base64._utf8_decode(t);return t},_utf8_encode:function(e){e=e.replace(/\r\n/g,"\n");var t="";for(var n=0;n<e.length;n++){var r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r)}else if(r>127&&r<2048){t+=String.fromCharCode(r>>6|192);t+=String.fromCharCode(r&63|128)}else{t+=String.fromCharCode(r>>12|224);t+=String.fromCharCode(r>>6&63|128);t+=String.fromCharCode(r&63|128)}}return t},_utf8_decode:function(e){var t="";var n=0;var r=c1=c2=0;while(n<e.length){r=e.charCodeAt(n);if(r<128){t+=String.fromCharCode(r);n++}else if(r>191&&r<224){c2=e.charCodeAt(n+1);t+=String.fromCharCode((r&31)<<6|c2&63);n+=2}else{c2=e.charCodeAt(n+1);c3=e.charCodeAt(n+2);t+=String.fromCharCode((r&15)<<12|(c2&63)<<6|c3&63);n+=3}}return t}}
+    				var str = String(jwtToken); 
+     			var res = str.split("."); 
+ 				var decodedString = Base64.decode(res[1]); 
+ 				var JSONObject = eval("("+decodedString+")");  
+				var key = JSONObject["ConsumerKey"];
+				var tenant= JSONObject["tenant"];
+				var tenantName= tenant["tenantName"];
+				mc.setProperty("siteName",tenantName);
+				mc.setProperty("subscriptionId",key);]]> 
+			</script>
+			<log>
+				<property xmlns:ns="http://org.apache.synapse/xsd" name="***subscriptionId****"
+					expression="get-property('subscriptionId')" />
+				<property xmlns:ns="http://org.apache.synapse/xsd" name="****Authorization****"
+					expression="get-property('Authorization')" />
+					
+					<property xmlns:ns="http://org.apache.synapse/xsd" name="****siteName****"
+					expression="get-property('siteName')" />
+					<property xmlns:ns="http://org.apache.synapse/xsd" name="****escapedPayload****"
+					expression="get-property('devicePayload')" />
+			</log>
+			<property name="messageType" value="text/plain" scope="axis2" />
+			<script language="js"><![CDATA[
+ 				var subId =   mc.getProperty('subscriptionId');  
+				var escapedPayload =   mc.getProperty('devicePayload'); 
+				var siteName =   mc.getProperty('siteName');  
+				
+ 				var payloadInfo ="\"createDevice("+escapedPayload+",\\\""+subId+"\\\",\\\""+siteName+"\\\")\""; 
+				var payLoad = "ver:\"2.0\" \n expr \n"+ payloadInfo; 
+              mc.setPayloadXML(<ns:text xmlns:ns="http://ws.apache.org/commons/ns/payload">{payLoad} 
+           </ns:text>);  
+        ]]></script> 
+        
+        <log>
+				<property xmlns:ns="http://org.apache.synapse/xsd" name="***subscriptionId****"
+					expression="get-property('subscriptionId')" />
+				<property xmlns:ns="http://org.apache.synapse/xsd" name="****Authorization****"
+					expression="get-property('Authorization')" />
+			</log>
+			<property name="Authorization" value="Basic ZGV2aWNlY2xvdWQ6ZGV2aWNlY2xvdWQ="
+				scope="transport" type="STRING" />
+			<send receive="Skyspark_Create_Equip_Response_SEQ">
+				<endpoint key="conf:/endpoints/saffron/Skyspark_Create_Equip_EP.xml" />
+			</send>
+
+		</else>
+	</filter>
+</sequence>

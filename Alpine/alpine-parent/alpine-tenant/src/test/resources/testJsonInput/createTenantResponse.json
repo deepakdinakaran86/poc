@@ -1,0 +1,37 @@
+{
+   "globalEntity": {"globalEntityType": "TENANT"},
+   "domain": {"domainName": "pcs.galaxy"},
+   "entityStatus": {"statusName": "ACTIVE"},
+   "entityTemplate": {"entityTemplateName": "DefaultTenant"},
+   "fieldValues":    [
+            {
+         "key": "contactEmail",
+         "value": "sample@example.com"
+      },
+            {
+         "key": "firstName",
+         "value": "sample"
+      },
+            {
+         "key": "lastName",
+         "value": "sample"
+      },
+            {
+         "key": "tenantName",
+         "value": "sample01"
+      },
+            {
+         "key": "domainName",
+         "value": "sample01.alpine.com"
+      },
+       {
+         "key": "tenantId",
+         "value": "sample01"
+      }
+   ],
+   "dataprovider": [],
+   "identifier":    {
+      "key": "tenantId",
+      "value": "sample01"
+   }
+}

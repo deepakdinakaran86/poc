@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>avocado-esb</groupId>
+  <artifactId>avocado-fm-esb</artifactId>
+  <version>1.0.0</version>
+  <packaging>pom</packaging>
+  <name>avocado-fm-esb</name>
+  <description>ESB Artifact for Avocado Facility Management</description>
+  <build>
+    <plugins>
+      <plugin>
+        <artifactId>maven-eclipse-plugin</artifactId>
+        <version>2.9</version>
+        <configuration>
+          <buildcommands />
+          <projectnatures>
+            <projectnature>org.wso2.developerstudio.eclipse.mavenmultimodule.project.nature</projectnature>
+          </projectnatures>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+  <modules>
+	<module>avocado-facility-esb</module>
+    <module>avocado-facility-composite-app</module>
+    <module>avocado-facility-registry-resource-dev</module>
+	<module>avocado-facility-registry-resource-dev-composite-app</module>
+	<module>avocado-facility-registry-resource-stagging</module>
+	<module>avocado-facility-registry-resource-stagging-composite-app</module>
+	<module>avocado-facility-registry-resource-ir</module>
+	<module>avocado-facility-registry-resource-ir-composite-app</module>
+  </modules>
+</project>

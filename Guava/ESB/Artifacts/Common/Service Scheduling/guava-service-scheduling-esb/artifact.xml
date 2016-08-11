@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Guava_Service_Schedule_API" groupId="com.pcs.guava-service-scheduling-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Guava_Service_Schedule_API.xml</file>
+    </artifact>
+    <artifact name="Service_Items_Get_Attached_Service_Components_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Items_Get_Attached_Service_Components_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Item_Update_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Item_Update_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Item_Update_Node_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Item_Update_Node_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Item_Find_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Item_Find_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Item_Find_Attached_Tags_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Item_Find_Attached_Tags_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Item_Find_For_Update_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Item_Find_For_Update_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Item_Create_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Item_Create_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Component_Update_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Component_Update_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Component_Update_Node_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Component_Update_Node_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Component_Find_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Component_Find_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Component_Find_Res_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Component_Find_Res_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Component_Find_for_Update_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Component_Find_for_Update_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Component_Create_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Component_Create_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Component_Attach_Service_Item_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Component_Attach_Service_Item_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Item_Update_Res_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Item_Update_Res_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Component_Find_Service_Item_Hierarchy_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Component_Find_Service_Item_Hierarchy_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Component_Find_Service_Item_Details_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Component_Find_Service_Item_Details_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Schedule_Create_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Schedule_Create_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Schedule_Attach_Service_Components_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Schedule_Attach_Service_Components_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Schedule_Find_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Schedule_Find_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Schedule_Find_Service_Components_Hierarchy_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Schedule_Find_Service_Components_Hierarchy_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Schedule_Find_for_Update_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Schedule_Find_for_Update_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Schedule_Update_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Schedule_Update_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Schedule_Update_Node_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Schedule_Update_Node_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Schedule_Update_Attach_Service_Components_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Schedule_Update_Attach_Service_Components_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Schedule_Find_Res_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Schedule_Find_Res_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Item_Attach_Entity_To_Tags_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Item_Attach_Entity_To_Tags_SEQ.xml</file>
+    </artifact>
+    <artifact name="Service_Item_Find_Res_SEQ" groupId="com.pcs.guava-service-scheduling-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Service_Item_Find_Res_SEQ.xml</file>
+    </artifact>
+</artifacts>

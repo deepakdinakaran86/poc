@@ -1,0 +1,8 @@
+### datasource service uri configurations ###
+datasource.services.host=10.234.60.26
+datasource.services.port=9763
+datasource.services.scheme=http
+datasource.services.context.path=datasource-api-1.0.0/services
+
+### test api end points ###
+datasource.um.authenticate=/datasources/units

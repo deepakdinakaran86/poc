@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Tenant_Node_Details_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_Tenant_Node_Details_SEQ" value="--------" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send></send>
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>{
+					"domain": {
+					"domainName": "$1"
+					},
+					"identifier": {
+					"key":
+					"tenantId",
+					"value": "$2"
+					}
+					}</format>
+				<args>
+					<arg expression="get-property('domain')" evaluator="xml"></arg>
+					<arg expression="get-property('identifierValue')" evaluator="xml"></arg>
+				</args>
+			</payloadFactory>
+			  <property name="x-jwt-assertion" expression="get-property('Authorization')" scope="transport" type="STRING"></property>
+            <property name="messageType" value="application/json" scope="axis2" type="STRING"></property>
+			<send receive="Update_Tenant_Node_SEQ">
+				<endpoint key="conf:/endpoints/alpine/Find_Tenant_EP.xml" />
+			</send>
+		</else>
+	</filter>
+
+</sequence>

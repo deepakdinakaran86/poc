@@ -1,0 +1,213 @@
+protoVersion = g.V().hasLabel('MAKE','name','Teltonika').out('hasType').hasLabel('DEVICE_TYPE').has('name','Telematics').out('hasModel').hasLabel('MODEL').has('name','FMS').out('talksIn').hasLabel('DEVICE_PROTOCOL').has('name','FM4200').out('hasVersion').hasLabel('PROTOCOL_VERSION').has('name','1.0.0').next();
+
+pt = graph.addVertex(label,'POINT','pointId','1','pointName','DIN1','displayName','DIN1','dataType','Boolean','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','2','pointName','DIN2','displayName','DIN2','dataType','Boolean','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','3','pointName','DIN3','displayName','DIN3','dataType','Boolean','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','4','pointName','DIN4','displayName','DIN4','dataType','Boolean','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','9','pointName','Analog 1','displayName','Analog 1','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','10','pointName','Analog 2','displayName','Analog 2','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','11','pointName','Analog 3','displayName','Analog 3','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','19','pointName','Analog 4','displayName','Analog 4','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','21','pointName','GSM Signal','displayName','GSM Signal','dataType','Integer','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','22','pointName','Current Profile','displayName','Profile','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','23','pointName','Accelerometer data','displayName','Accelerometer','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','24','pointName','GPS speed','displayName','Gps Speed','dataType','Integer','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','66','pointName','External Power Voltage','displayName','Vehicle Battery','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt14 = graph.addVertex(label,'POINT','pointId','67','pointName','Internal Battery Voltage','displayName','Device Battery','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','68','pointName','Battery Current','displayName','Battery Current','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','69','pointName','GPS Power','displayName','GPS Power','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','70','pointName','PCB Temperature','displayName','PCB Temperature','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','72','pointName','Temperature Sensor1','displayName','Temp Sensor1','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','73','pointName','Temperature Sensor2','displayName','Temp Sensor2','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','74','pointName','Temperature Sensor3','displayName','Temp Sensor3','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','76','pointName','Fuel Counter','displayName','Fuel Counter','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','78','pointName','iButton Input','displayName','iButton','dataType','Float','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','145','pointName','CAN0','displayName','CAN0','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','146','pointName','CAN1','displayName','CAN1','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','147','pointName','CAN2','displayName','CAN2','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','148','pointName','CAN3','displayName','CAN3','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','149','pointName','CAN4','displayName','CAN4','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','150','pointName','CAN5','displayName','CAN5','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','151','pointName','CAN6','displayName','CAN6','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','152','pointName','CAN7','displayName','CAN7','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','153','pointName','CAN8','displayName','CAN8','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','154','pointName','CAN9','displayName','CAN9','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','199','pointName','Virtual Odometer','displayName','Virtual Odometer','dataType','Integer','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','200','pointName','Harsh Move','displayName','Harsh Movement','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','203','pointName','Harsh Cornering','displayName','Harsh Cornering','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','240','pointName','Movement','displayName','Movement','dataType','String','accessType','READONLY');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','155','pointName','Geozone 01','displayName','Geozone 01','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','156','pointName','Geozone 02','displayName','Geozone 02','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','157','pointName','Geozone 03','displayName','Geozone 03','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','158','pointName','Geozone 04','displayName','Geozone 04','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','159','pointName','Geozone 05','displayName','Geozone 05','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','160','pointName','Geozone 06','displayName','Geozone 06','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','161','pointName','Geozone 07','displayName','Geozone 07','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','162','pointName','Geozone 08','displayName','Geozone 08','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','163','pointName','Geozone 09','displayName','Geozone 09','dataType','String','accessType','READONLY',,'description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','164','pointName','Geozone 10','displayName','Geozone 10','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','165','pointName','Geozone 11','displayName','Geozone 11','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','166','pointName','Geozone 12','displayName','Geozone 12','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','167','pointName','Geozone 13','displayName','Geozone 13','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','168','pointName','Geozone 14','displayName','Geozone 14','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','169','pointName','Geozone 15','displayName','Geozone 15','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','170','pointName','Geozone 16','displayName','Geozone 16','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','171','pointName','Geozone 17','displayName','Geozone 17','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','172','pointName','Geozone 18','displayName','Geozone 18','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','173','pointName','Geozone 19','displayName','Geozone 19','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','174','pointName','Geozone 20','displayName','Geozone 20','dataType','String','accessType','READONLY','description','Event: 0 – target left zone, 1 – target entered zone');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','Latitude','pointName','Latitude','displayName','Latitude','dataType','Float','accessType','READONLY','description','Latitude');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','Longitude','pointName','Longitude','displayName','Longitude','dataType','Float','accessType','READONLY','description','Longitude');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','Priority','pointName','Priority','displayName','Priority','dataType','Integer','accessType','READONLY','description','Priority');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','Speed','pointName','Speed','displayName','Speed','dataType','Integer','accessType','READONLY','description','Speed');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','Visible Satellites','pointName','Visible Satellites','displayName','Visible Satellites','dataType','Integer','accessType','READONLY','description','Visible Satellites');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','Visible Satellites','pointName','Visible Satellites','displayName','Visible Satellites','dataType','Integer','accessType','READONLY','description','Visible Satellites');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','Angle','pointName','Angle','displayName','Angle','dataType','Float','accessType','READONLY','description','Angle');
+protoVersion.addEdge('hasPoint',pt);
+
+pt = graph.addVertex(label,'POINT','pointId','Altitude','pointName','Altitude','displayName','Altitude','dataType','Float','accessType','READONLY','description','Gps Altitude');
+protoVersion.addEdge('hasPoint',pt);
+
+graph.tx().commit();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

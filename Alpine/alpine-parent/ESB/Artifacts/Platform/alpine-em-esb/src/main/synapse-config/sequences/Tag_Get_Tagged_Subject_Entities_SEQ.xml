@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Get_Tagged_Subject_Entities_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Get_Tagged_Subject_Entities_SEQ" value="--------"></property>
+	</log>
+	<property expression="json-eval($.)" name="originalPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<payloadFactory media-type="json">
+		<format>
+			{
+			"tag": $1
+			}
+		</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('originalPayload')" />
+		</args>
+	</payloadFactory>
+	<sequence key="Tag_Validate_Tag_Entity_SEQ" />
+	<property expression="get-property('Authorization')" name="x-jwt-assertion" scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property name="messageType" scope="axis2" type="STRING" value="application/json" />
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Tag_Get_Tagged_Subject_Entities_EP.xml"></endpoint>
+	</send>
+</sequence>

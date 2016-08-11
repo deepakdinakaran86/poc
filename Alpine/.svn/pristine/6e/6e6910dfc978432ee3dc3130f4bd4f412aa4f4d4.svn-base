@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Geofence_Find_Geofence_Res_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property
+            name="----------------Entering Geofence_Find_Geofence_Res_SEQ----------------" value="----Geofence_Find_Geofence_Res_SEQ----"/>
+        <property expression="json-eval($.)"
+            name="JSON Payload find marker!" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property expression="json-eval($.fieldValues)"
+                name="geofenceTypePayload" scope="default" type="STRING"/>
+            <property
+                expression="$body/jsonObject/entityStatus/statusName"
+                name="status" scope="default" type="STRING"/>
+            <log separator=",">
+                <property
+                    expression="$body/jsonObject/entityStatus/statusName" name="status"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>
+                {"geofenceName":"$1","desc":"$2","type":"$3","geofenceFields":$4,"identifier":{"key":"$5","value":"$6"},"geofenceStatus":{"statusName":"$7"}}
+                </format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('geofenceName')"/>
+                    <arg evaluator="xml" expression="get-property('desc')"/>
+                    <arg evaluator="xml" expression="get-property('type')"/>
+                    <arg evaluator="xml" expression="get-property('geofenceTypePayload')"/>
+                    <arg evaluator="xml" expression="get-property('identifierKey')"/>
+                    <arg evaluator="xml" expression="get-property('identifierValue')"/>
+                    <arg evaluator="xml" expression="get-property('status')"/>
+                </args>
+            </payloadFactory>
+            <property name="RESPONSE" scope="default" type="STRING" value="true"/>
+            <property name="HTTP_SC" scope="axis2" type="STRING" value="200"/>
+            <send/>
+        </else>
+    </filter>
+</sequence>

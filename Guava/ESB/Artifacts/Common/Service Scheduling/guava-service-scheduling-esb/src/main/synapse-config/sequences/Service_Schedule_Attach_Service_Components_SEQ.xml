@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse"  name="Service_Schedule_Attach_Service_Components_SEQ" >
+<log separator=",">
+		<property name="Enter Service_Schedule_Attach_Service_Components_SEQ"
+			value="-----Service_Schedule_Attach_Service_Components_SEQ-----" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.)" name="serviceScheduleIdentifier"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/key" name="serviceScheduleIdKey"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/value"
+				name="serviceScheduleIdValue" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/domain/domainName"
+				name="serviceScheduleDomain" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/entityTemplate/entityTemplateName"
+				name="serviceScheduleTemplate" scope="default" type="STRING" />
+			<payloadFactory media-type="json">
+				<format>{"actor":$1,"subjects":$2}</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('serviceScheduleIdentifier')" />
+					<arg evaluator="xml" expression="get-property('serviceComponentIdentifiersPayload')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<log separator=",">
+				<property expression="json-eval($.)" name="Payload Check" />
+			</log>
+			<send>
+				<endpoint key="conf:/endpoints/serviceSchedule/Service_Schedule_Attach_Entities_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

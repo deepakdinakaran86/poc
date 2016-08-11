@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Create_App_Api_Manager_SEQ">
+    <log separator=",">
+        <property name="Enter Subscription_Create_App_Api_Manager_SEQ" value="--------Subscription_Create_App_Api_Manager_SEQ--------"/>
+    </log>
+    <property xmlns:ns="http://org.apache.synapse/xsd" name="login_status" expression="$body/jsonObject/error" scope="default" type="BOOLEAN"/>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" source="(get-property('login_status'))" regex="false">
+        <then>
+            <property name="AuthHeader" expression="$trp:Set-Cookie" scope="default" type="STRING"/>
+            <log>
+                <property name=" Authheader value" expression="get-property('AuthHeader')"/>
+            </log>
+            <header name="Cookie" scope="transport" value="get-property('AuthHeader')"/>
+            <property name="Cookie" expression="get-property('AuthHeader')" scope="transport" type="STRING"/>
+            <send receive="Subscription_Create_Tenant_SEQ">
+                <endpoint key="conf:/endpoints/subscription/Subscription_Create_App_Api_Manager_EP.xml"/>
+            </send>
+        </then>
+        <else>
+            <payloadFactory media-type="json">
+                <format>{"errorMessage":"Unable to Login to API Manager"}</format>
+                <args/>
+            </payloadFactory>
+            <header name="To" scope="default" action="remove"/>
+            <property name="RESPONSE" value="true" scope="default" type="STRING"/>
+            <send/>
+        </else>
+    </filter>
+</sequence>

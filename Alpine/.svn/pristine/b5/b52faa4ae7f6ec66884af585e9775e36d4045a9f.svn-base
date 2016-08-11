@@ -1,0 +1,13 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Update_Template_Status_EP">
+	<http
+		uri-template="http://10.236.166.111:9763/alpine-template-1.0.0/services/templates/status/{uri.var.statusName}"
+		method="post">
+		<suspendOnFailure>
+			<progressionFactor>1.0</progressionFactor>
+		</suspendOnFailure>
+		<markForSuspension>
+			<retriesBeforeSuspension>0</retriesBeforeSuspension>
+			<retryDelay>0</retryDelay>
+		</markForSuspension>
+	</http>
+</endpoint>

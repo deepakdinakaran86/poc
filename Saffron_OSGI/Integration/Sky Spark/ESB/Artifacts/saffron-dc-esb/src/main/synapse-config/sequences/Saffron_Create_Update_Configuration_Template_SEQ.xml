@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Saffron_Create_Update_Configuration_Template_SEQ">
+    <log category="INFO" level="simple" separator=",">
+        <property
+            name="Enter Saffron_Create_Update_Configuration_Template_SEQ" value="--------"/>
+    </log>
+    <property action="set" expression="$ctx:REST_METHOD" name="METHOD"
+        scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd"/>
+    <log category="INFO" level="simple" separator="####################">
+        <property expression="get-property('METHOD')" name="METHOD" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <switch source="get-property('METHOD')" xmlns:ns="http://org.apache.synapse/xsd">
+        <case regex="POST">
+            <send>
+                <endpoint key="conf:/endpoints/saffron/Saffron_Create_Configuration_Template_EP.xml"/>
+            </send>
+        </case>
+        <case regex="PUT">
+            <send>
+                <endpoint key="conf:/endpoints/saffron/Saffron_Update_Configuration_Template_EP.xml"/>
+            </send>
+        </case>
+        <default/>
+    </switch>
+</sequence>

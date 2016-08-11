@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Subscription_Login_Api_Manager_SEQ">
+   <log separator=",">
+      <property name="Enter Subscription_Login_Api_Manager_SEQ" value="--------Subscription_Login_Api_Manager_SEQ--------"></property>
+   </log>
+   
+<!--    <property xmlns:ns="http://org.apache.synapse/xsd" name="create_user_status" expression="$body/jsonObject/error" scope="default" type="BOOLEAN"></property> -->
+<!--       <filter source="(get-property('create_user_status'))" regex="false"> -->
+<!--          <then> -->
+<!--                         <send receive="Create_App_Api_Manager_SEQ"> -->
+<!--                            <endpoint key="conf:/endpoints/subscription/Login_Api_Manager_User_EP.xml"></endpoint> -->
+<!--                         </send> -->
+<!--          </then> -->
+<!--          <else> -->
+<!--             <payloadFactory media-type="json"> -->
+<!--                <format>{"errorMessage":"Error creating User in API Manager"}</format> -->
+<!--             </payloadFactory> -->
+<!--             <header name="To" action="remove"></header> -->
+<!--             <property name="RESPONSE" value="true" scope="default" type="STRING"></property> -->
+<!--             <send></send> -->
+<!--          </else> -->
+<!--       </filter> -->
+
+   <property xmlns:ns="http://org.apache.synapse/xsd" name="create_user_status" expression="$body/jsonObject/status" scope="default" type="STRING"></property>
+      <filter source="(get-property('create_user_status'))" regex="SUCCESS">
+         <then>
+                        <send receive="Subscription_Create_App_Api_Manager_SEQ">
+                           <endpoint key="conf:/endpoints/subscription/Subscription_Login_Api_Manager_EP.xml"></endpoint>
+                        </send>
+         </then>
+         <else>
+            <payloadFactory media-type="json">
+               <format>{"errorMessage":"Error creating User in API Manager"}</format>
+            </payloadFactory>
+            <header name="To" action="remove"></header>
+            <property name="RESPONSE" value="true" scope="default" type="STRING"></property>
+            <send></send>
+         </else>
+      </filter>
+   </sequence>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" context="/alpine/services/tenants"
+	name="Tenant_API">
+	<resource inSequence="Create_Tenant_SEQ" methods="POST"
+		url-mapping="/">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Find_Tenant_SEQ" methods="POST"
+		url-mapping="/find">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="List_Tenant_SEQ" methods="POST"
+		url-mapping="/list">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Update_Tenant_SEQ" methods="PUT"
+		url-mapping="/">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Delete_Tenant_SEQ" methods="POST"
+		url-mapping="/delete">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Validate_Tenant_SEQ" methods="POST"
+		url-mapping="/validate">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Tenant_Count_SEQ" methods="POST"
+		url-mapping="/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Domain_Info_SEQ" methods="GET"
+		url-mapping="/domain/info">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Tenant_Children_SEQ" methods="POST"
+		url-mapping="/children">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+	<resource inSequence="Get_Tenant_Children_Count_SEQ" methods="POST"
+		url-mapping="/children/count">
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence />
+	</resource>
+</api>

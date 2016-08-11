@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api xmlns="http://ws.apache.org/ns/synapse" name="Write_Back_API" context="/saffron/services/write_back">
+    <resource methods="GET" uri-template="/{pathparameter}/queued_commands" inSequence="Get_Write_Back_Device_Queued_Commands_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="POST" url-mapping="/logs" inSequence="Get_Write_Back_Logs_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="GET" url-mapping="/logs/graph" inSequence="Get_Write_Back_Graph_Logs_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+    <resource methods="PUT" uri-template="/{pathparameter}" inSequence="Update_Write_Back_SEQ">
+        <outSequence>
+            <send/>
+        </outSequence>
+        <faultSequence/>
+    </resource>
+</api>

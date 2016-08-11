@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="POI_Find_POI_For_Update_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+	<log separator=",">
+		<property name="Enter POI_Find_POI_For_Update_SEQ" value="----POI_Find_POI_For_Update_SEQ----" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<payloadFactory media-type="json">
+				<format>{
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"identifier": {
+					"key": "$3",
+					"value": "$4"
+					}
+					}</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('poiEntityDomain')"
+						xmlns:ns="http://org.apache.synapse/xsd" />
+					<arg evaluator="xml" expression="get-property('poiEntityTemplate')"
+						xmlns:ns="http://org.apache.synapse/xsd" />
+					<arg evaluator="xml" expression="get-property('poiEntityIdKey')"
+						xmlns:ns="http://org.apache.synapse/xsd" />
+					<arg evaluator="xml" expression="get-property('poiEntityIdValue')"
+						xmlns:ns="http://org.apache.synapse/xsd" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+			<log separator=",">
+				<property expression="json-eval($.)" name="Entered find poi payload"
+					xmlns:ns="http://org.apache.synapse/xsd" />
+			</log>
+			<send receive="POI_Update_Entity_SEQ">
+				<endpoint key="conf:/endpoints/poi/POI_Find_Entity_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

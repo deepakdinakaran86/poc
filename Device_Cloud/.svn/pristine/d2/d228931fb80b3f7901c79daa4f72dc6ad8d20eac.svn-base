@@ -1,0 +1,175 @@
+
+WITH [
+
+{point_id:'1',point_name:'Input 1 Active',display_name:'Input 1 Active',data_type:'String',access_type:'READONLY',description:'SOS pressed'},
+
+{point_id:'2',point_name:'Input 2 Active',display_name:'Input 2 Active',data_type:'String',access_type:'READONLY',description:'In2'},
+
+{point_id:'3',point_name:'Input 3 Active',display_name:'Input 3 Active',data_type:'String',access_type:'READONLY',description:'In3'},
+
+{point_id:'4',point_name:'Input 4 Active',display_name:'Input 4 Active',data_type:'String',access_type:'READONLY',description:'In4'},
+
+{point_id:'5',point_name:'Input 5 Active',display_name:'Input 5 Active',data_type:'String',access_type:'READONLY',description:'In5'},
+
+{point_id:'9',point_name:'Input 1 Inactive',display_name:'Input 1 Inactive',data_type:'String',access_type:'READONLY',description:'SOS released'},
+
+{point_id:'10',point_name:'Input 2 Inactive',display_name:'Input 2 Inactive',data_type:'String',access_type:'READONLY',description:''},
+
+{point_id:'11',point_name:'Input 3 Inactive',display_name:'Input 3 Inactive',data_type:'String',access_type:'READONLY',description:''},
+
+{point_id:'12',point_name:'Input 4 Inactive',display_name:'Input 4 Inactive',data_type:'String',access_type:'READONLY',description:''},
+
+{point_id:'13',point_name:'Input 5 Inactive',display_name:'Input 5 Inactive',data_type:'String',access_type:'READONLY',description:''},
+
+{point_id:'17',point_name:'Low Battery',display_name:'Low Battery',data_type:'String',access_type:'READONLY',description:'Low Battery'},
+
+{point_id:'18',point_name:'Low External Power',display_name:'Low External Power',data_type:'String',access_type:'READONLY',description:'Low External Power'},
+
+{point_id:'19',point_name:'Speeding',display_name:'Speeding',data_type:'String',access_type:'READONLY',description:'Speeding'},
+
+{point_id:'20',point_name:'Enter Geo-fence',display_name:'Enter Geo-fence',data_type:'String',access_type:'READONLY',description:'Enter Geo-fence'},
+
+{point_id:'21',point_name:'Exit Geo-fence',display_name:'Exit Geo-fence',data_type:'String',access_type:'READONLY',description:'Exit Geo-fence'},
+
+{point_id:'22',point_name:'External Power On',display_name:'External Power On',data_type:'String',access_type:'READONLY',description:'External Power On'},
+
+{point_id:'23',point_name:'External Power Off',display_name:'External Power Off',data_type:'String',access_type:'READONLY',description:'External Power Off'},
+
+{point_id:'24',point_name:'No GPS Signal',display_name:'No GPS Signal',data_type:'String',access_type:'READONLY',description:'No GPS Signal'},
+
+{point_id:'25',point_name:'GPS Signal',display_name:'GPS Signal',data_type:'String',access_type:'READONLY',description:'GPS Signal'},
+
+{point_id:'26',point_name:'Enter Sleep',display_name:'Enter Sleep',data_type:'String',access_type:'READONLY',description:'Enter Sleep'},
+
+{point_id:'27',point_name:'Exit Sleep',display_name:'Exit Sleep',data_type:'String',access_type:'READONLY',description:'Exit Sleep'},
+
+{point_id:'28',point_name:'GPS Antenna Cut',display_name:'GPS Antenna Cut',data_type:'String',access_type:'READONLY',description:'GPS Antenna Cut'},
+
+{point_id:'29',point_name:'Device Reboot',display_name:'Device Reboot',data_type:'String',access_type:'READONLY',description:'Device Reboot'},
+
+{point_id:'30',point_name:'Impact',display_name:'Impact',data_type:'String',access_type:'READONLY',description:'Impact'},
+
+{point_id:'31',point_name:'Heartbeat Report',display_name:'Heartbeat Report',data_type:'String',access_type:'READONLY',description:'Heartbeat Report'},
+
+{point_id:'32',point_name:'Heading Change Report',display_name:'Heading Change Report',data_type:'String',access_type:'READONLY',description:'Heading Change Report'},
+
+{point_id:'33',point_name:'Distance Interval Report',display_name:'Distance Interval Report',data_type:'String',access_type:'READONLY',description:'Distance Interval Report'},
+
+{point_id:'34',point_name:'Current Location Report',display_name:'Current Location Report',data_type:'String',access_type:'READONLY',description:'Current Location Report'},
+
+{point_id:'35',point_name:'Time Interval Report',display_name:'Time Interval Report',data_type:'String',access_type:'READONLY',description:'Time Interval Report'},
+
+{point_id:'36',point_name:'Tow Alarm',display_name:'Tow Alarm',data_type:'String',access_type:'READONLY',description:'Tow Alarm'},
+
+{point_id:'37',point_name:'RFID',display_name:'RFID',data_type:'String',access_type:'READONLY',description:'RFID'},
+
+{point_id:'39',point_name:'Picture',display_name:'Picture',data_type:'String',access_type:'READONLY',description:'Picture'},
+
+{point_id:'65',point_name:'Press Input 1 to Call',display_name:'Press Input 1 to Call',data_type:'String',access_type:'READONLY',description:'Press Input 1 (SOS) to Call'},
+
+{point_id:'66',point_name:'Press Input 2 to Call',display_name:'Press Input 2 to Call',data_type:'String',access_type:'READONLY',description:'Press Input 2 to Call'},
+
+{point_id:'67',point_name:'Press Input 3 to Call',display_name:'Press Input 3 to Call',data_type:'String',access_type:'READONLY',description:'Press Input 3 to Call'},
+
+{point_id:'68',point_name:'Press Input 4 to Call',display_name:'Press Input 4 to Call',data_type:'String',access_type:'READONLY',description:'Press Input 4 to Call'},
+
+{point_id:'69',point_name:'Press Input 5 to Call',display_name:'Press Input 5 to Call',data_type:'String',access_type:'READONLY',description:'Press Input 5 to Call'},
+
+{point_id:'70',point_name:'Reject Incoming Call',display_name:'Reject Incoming Call',data_type:'String',access_type:'READONLY',description:'Reject Incoming Call'},
+
+{point_id:'71',point_name:'Report Location After Incoming Call',display_name:'Report Location After Incoming Call',data_type:'String',access_type:'READONLY',description:'Report Location After Incoming Call'},
+
+{point_id:'72',point_name:'Auto Answer Incoming Call',display_name:'Auto Answer Incoming Call',data_type:'String',access_type:'READONLY',description:'Auto Answer Incoming Call'},
+
+{point_id:'73',point_name:'Listen-in',display_name:'Listen-in',data_type:'String',access_type:'READONLY',description:'Listen-in(voice monitoring)'},
+
+{point_id:'DIN 1',point_name:'DIN 1',display_name:'DIN1',data_type:'Boolean',access_type:'READONLY',description:'Digital Input 1'},
+
+{point_id:'DIN 2',point_name:'DIN 2',display_name:'DIN2',data_type:'Boolean',access_type:'READONLY',description:'Digital Input 2'},
+
+{point_id:'DIN 3',point_name:'DIN 3',display_name:'DIN3',data_type:'Boolean',access_type:'READONLY',description:'Digital Input 3'},
+
+{point_id:'DIN 4',point_name:'DIN 4',display_name:'DIN4',data_type:'Boolean',access_type:'READONLY',description:'Digital Input 4'},
+
+{point_id:'DIN 5',point_name:'DIN 5',display_name:'DIN5',data_type:'Boolean',access_type:'READONLY',description:'Digital Input 5'},
+
+{point_id:'DIN 6',point_name:'DIN 6',display_name:'DIN6',data_type:'Boolean',access_type:'READONLY',description:'Digital Input 6'},
+
+{point_id:'DIN 7',point_name:'DIN 7',display_name:'DIN7',data_type:'Boolean',access_type:'READONLY',description:'Digital Input 7'},
+
+{point_id:'DIN 8',point_name:'DIN 8',display_name:'DIN8',data_type:'Boolean',access_type:'READONLY',description:'Digital Input 8'},
+
+{point_id:'DO 1',point_name:'DO 1',display_name:'DO1',data_type:'Boolean',access_type:'READONLY',description:'Digital Output 1'},
+
+{point_id:'DO 2',point_name:'DO 2',display_name:'DO2',data_type:'Boolean',access_type:'READONLY',description:'Digital Output 2'},
+
+{point_id:'DO 3',point_name:'DO 3',display_name:'DO3',data_type:'Boolean',access_type:'READONLY',description:'Digital Output 3'},
+
+{point_id:'DO 4',point_name:'DO 4',display_name:'DO4',data_type:'Boolean',access_type:'READONLY',description:'Digital Output 4'},
+
+{point_id:'DO 5',point_name:'DO 5',display_name:'DO5',data_type:'Boolean',access_type:'READONLY',description:'Digital Output 5'},
+
+{point_id:'DO 6',point_name:'DO 6',display_name:'DO6',data_type:'Boolean',access_type:'READONLY',description:'Digital Output 6'},
+
+{point_id:'DO 7',point_name:'DO 7',display_name:'DO7',data_type:'Boolean',access_type:'READONLY',description:'Digital Output 7'},
+
+{point_id:'DO 8',point_name:'DO 8',display_name:'DO8',data_type:'Boolean',access_type:'READONLY',description:'Digital Output 8'},
+
+{point_id:'AIN 1',point_name:'Analog Input 1',display_name:'Analog 1',data_type:'Float',access_type:'READONLY',description:'Analog Input 1'},
+
+{point_id:'AIN 2',point_name:'Analog Input 2',display_name:'Analog 2',data_type:'Float',access_type:'READONLY',description:'Analog Input 2'},
+
+{point_id:'AIN 3',point_name:'Analog Input 3',display_name:'Analog 3',data_type:'Float',access_type:'READONLY',description:'Analog Input 3'},
+
+{point_id:'code',point_name:'code',display_name:'code',data_type:'Integer',access_type:'READONLY',description:'Event code.Decimal digit'},
+
+{point_id:'command',point_name:'command',display_name:'command',data_type:'String',access_type:'READONLY',description:'Command code in Hexa string'},
+
+{point_id:'Latitude',point_name:'Latitude',display_name:'Latitude',data_type:'Float',access_type:'READONLY',description:'Latitude:in unit of degree.Decimal digit `-` means south, no minutes means north '},
+
+{point_id:'Longitude',point_name:'Longitude',display_name:'Longitude',data_type:'Float',access_type:'READONLY',description:'Longitude:in unit of degree.Decimal digit `-` means west, no minutes means east'},
+
+{point_id:'GPS Validity',point_name:'GPS Validity',display_name:'GPS Validity',data_type:'String',access_type:'READONLY',description:'GPS status indicator. A = valid, V = invalid'},
+
+{point_id:'Visible Satellites',point_name:'Visible Satellites',display_name:'Visible Satellites',data_type:'Integer',access_type:'READONLY',description:'Number of satellites available.Decimal digit'},
+
+{point_id:'GSM Signal',point_name:'GSM Signal',display_name:'GSM Signal',data_type:'Integer',access_type:'READONLY',description:'Decimal digit (0-31)'},
+
+{point_id:'Speed',point_name:'Speed',display_name:'Speed',data_type:'Integer',access_type:'READONLY',description:'km/h Decimal digit'},
+
+{point_id:'Angle',point_name:'Angle',display_name:'Angle',data_type:'Integer',access_type:'READONLY',description:'Heading, in unit of degree(0-359)'},
+
+{point_id:'HDOP',point_name:'HDOP',display_name:'HDOP',data_type:'Float',access_type:'READONLY',description:'Horizontal Dilution of Precision,0.5-99.9. Decimal digit'},
+
+{point_id:'Altitude',point_name:'Altitude',display_name:'Altitude',data_type:'Integer',access_type:'READONLY',description:'Mean sea level (MSL) Altitude, in unit of meter.Decimal digit'},
+
+{point_id:'Virtual Odometer',point_name:'Virtual Odometer',display_name:'Virtual Odometer',data_type:'Integer',access_type:'READONLY',description:'In unit of meter.Decimal digit.The total accumulated mileage and maximum of 4294967295 meters'},
+
+{point_id:'Run Time',point_name:'Run Time',display_name:'Run Time',data_type:'Integer',access_type:'READONLY',description:'In unit of second.Decimal digit.The total accumulated runtime and maximum 4294967295 seconds'},
+
+{point_id:'Base ID',point_name:'Base ID',display_name:'Base ID',data_type:'String',access_type:'READONLY',description:'ID of the base station including MCC|MNC|LAC|CI, MCC and MNC are decimal digits;LAC and CI are hexadecimal digits'},
+
+{point_id:'MCC',point_name:'MCC',display_name:'MCC',data_type:'String',access_type:'READONLY',description:'Mobile country code'},
+
+{point_id:'MNC',point_name:'MNC',display_name:'MNC',data_type:'String',access_type:'READONLY',description:'Mobile network code'},
+
+{point_id:'LAC',point_name:'LAC',display_name:'LAC',data_type:'String',access_type:'READONLY',description:'Location area code'},
+
+{point_id:'CI',point_name:'CI',display_name:'CI',data_type:'String',access_type:'READONLY',description:'Cell ID'},
+
+{point_id:'Device Battery',point_name:'Device Battery',display_name:'Device Battery',data_type:'Float',access_type:'READONLY',description:'Device Battery'},
+
+{point_id:'External Power',point_name:'External Power',display_name:'Vehicle Battery',data_type:'Float',access_type:'READONLY',description:'Vehicle Battery'},
+
+{point_id:'RFID',point_name:'RFID',display_name:'RFID',data_type:'Float',access_type:'READONLY',description:'IC Card identity code.Hexadecimal digits'},
+
+{point_id:'picture',point_name:'picture',display_name:'picture',data_type:'String',access_type:'READONLY',description:'Picture name'},
+
+{point_id:'fence',point_name:'fence',display_name:'fence',data_type:'Integer',access_type:'READONLY',description:'Fence number'},
+
+{point_id:'package flag',point_name:'package flag',display_name:'package flag',data_type:'String',access_type:'READONLY',description:'1 byte.In ASCII from 0x41 to 0x7A'}
+
+] AS points UNWIND points AS point 
+match (v:PROTOCOL_VERSION ) where id(v)=13235 create (p:POINT) set p = point create v-[r:hasPoint]->p return r,p;
+
+

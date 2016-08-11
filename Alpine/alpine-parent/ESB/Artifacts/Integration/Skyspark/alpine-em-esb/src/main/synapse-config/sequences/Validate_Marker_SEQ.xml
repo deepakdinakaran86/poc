@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Validate_Marker_SEQ">
+    <log category="INFO" level="simple" separator=",">
+        <property name="Enter Validate_Marker_SEQ" value="--------"/>
+    </log>
+    <send>
+        <endpoint key="conf:/endpoints/alpine/Validate_Marker_EP.xml"/>
+    </send>
+</sequence>

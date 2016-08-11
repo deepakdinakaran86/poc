@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jaxrs="http://cxf.apache.org/jaxrs"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
+		http://cxf.apache.org/bindings/soap http://cxf.apache.org/schemas/configuration/soap.xsd 
+		http://cxf.apache.org/jaxrs http://cxf.apache.org/schemas/jaxrs.xsd 
+		http://www.springframework.org/schema/context	http://www.springframework.org/schema/context/spring-context.xsd ">
+
+	<import resource="/spring/adaptor-app-context.xml" />
+
+	<!-- Swagger API listing resource -->
+	<bean id="swaggerResource" class="io.swagger.jaxrs.listing.ApiListingResource" />
+
+	<!-- Swagger writers -->
+	<bean id="swaggerWriter" class="io.swagger.jaxrs.listing.SwaggerSerializers" />
+
+	<jaxrs:server id="routing" address="/services">
+		<jaxrs:serviceBeans>
+			<ref bean="routingResource" />
+			<ref bean="schedulingResource" />
+			<ref bean="swaggerResource" />
+		</jaxrs:serviceBeans>
+		<jaxrs:providers>
+			<ref bean="jacksonJsonProvider" />
+			<ref bean="exceptionHandler" />
+			<ref bean="subscriptionProfile" />
+			<ref bean="swaggerWriter" />
+		</jaxrs:providers>
+	</jaxrs:server>
+	
+	<bean id="subscriptionProfile"
+		class="com.pcs.guava.commons.serviceImpl.SubscriptionProfileFilter">
+	</bean>
+
+	<bean id="jsonObjectMapper" class="com.pcs.guava.rest.mapper.GalaxyObjectMapper" />
+
+	<bean id="jacksonJsonProvider"
+		class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider">
+		<constructor-arg name="mapper" ref="jsonObjectMapper" />
+		<constructor-arg name="annotationsToUse">
+			<null />
+		</constructor-arg>
+	</bean>
+	<bean id="routingResource" class="com.pcs.guava.resources.RoutingResource" />
+	<bean id="schedulingResource" class="com.pcs.guava.resources.SchedulingResource" />
+	<bean id="exceptionHandler" class="com.pcs.guava.commons.exception.GalaxyExceptionHandler" />
+	
+
+	<!-- Swagger Configuration -->
+	<bean id="swaggerConfig" class="io.swagger.jaxrs.config.BeanConfig">
+		<property name="resourcePackage" value="com.pcs.guava.resources" />
+		<property name="version" value="1.0.0" />
+		<!-- <property name="basePath" value="/api" /> -->
+		<property name="title" value="Routing-APIs" />
+		<!-- <property name="description" value="Swagger Api Documentation" /> -->
+		<property name="scan" value="true" />
+	</bean>
+</beans>

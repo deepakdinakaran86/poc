@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Tag_Entities_By_Node_Range_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Get_Tag_Entities_By_Node_Range_SEQ" value="------" />
+	</log>
+	<property action="set" name="messageType" scope="axis2" type="STRING" value="application/json" />
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Get_Tag_Entities_By_Node_Range_EP.xml" />
+	</send>
+</sequence>

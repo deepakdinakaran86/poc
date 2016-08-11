@@ -1,0 +1,12 @@
+<html>
+    <body>
+       Dear ${to},	
+        <div></br>
+         Please find the link to reset your password; <a href=${content}>Reset Password</a>
+        </div></br>
+        
+         Regards,</br>
+		 Galaxy 2021 Team</br></br>
+         This is a system generated message. Please do not reply to this mail.
+    </body>
+</html>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Geofence_Delete_Find_SEQ">
+	<log separator=",">
+		<property name="Enter Geofence_Delete_Find_SEQ" value="---Geofence_Delete_Find_SEQ----" />
+	</log>
+	<property expression="json-eval($.)" name="geofenceIdPayload"
+		scope="default" type="STRING" />
+	<property expression="$trp:x-jwt-assertion" name="Authorization"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/domain/domainName"
+		name="geofenceEntityDomain" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/identifier/key" name="geofenceEntityIdKey"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/identifier/value" name="geofenceEntityIdValue"
+		scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="$body/jsonObject/entityTemplate/entityTemplateName"
+		name="geofenceEntityTemplate" scope="default" type="STRING"
+		xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<payloadFactory media-type="json">
+		<format>$1</format>
+		<args>
+			<arg evaluator="xml" expression="get-property('geofenceIdPayload')"
+				xmlns:ns="http://org.apache.synapse/xsd" />
+		</args>
+	</payloadFactory>
+	 <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+          
+	<send receive="Geofence_Delete_Find_Geofence_Type_SEQ">
+		<endpoint key="conf:/endpoints/alpine/Find_Marker_EP.xml" />
+	</send>
+</sequence>

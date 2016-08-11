@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Create_Tenant_SEQ">
+	<log separator=",">
+		<property name="Enter Create_Tenant_SEQ" value="--------"></property>
+	</log>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="tenantPayload"
+		expression="json-eval($.fieldValues)" scope="default" type="STRING"></property>
+
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="featuresPayload"
+		expression="json-eval($.features)" scope="default" type="STRING"></property>
+	<property name="status" expression="$body/jsonObject/entityStatus/statusName"
+		scope="default" type="STRING"></property>
+	<!-- <script language="js"> -->
+	<!-- <![CDATA[ -->
+	<!-- var tenantPayload =eval("("+mc.getProperty('tenantPayload')+")"); -->
+	<!-- var value; -->
+	<!-- var userName; -->
+	<!-- var domain = ''; -->
+	<!-- var domainFlag = 0; -->
+	<!-- for(var i in tenantPayload ) -->
+	<!-- { -->
+	<!-- if(domainFlag == 1) -->
+	<!-- { -->
+	<!-- break; -->
+	<!-- } -->
+	<!-- var key = tenantPayload[i].key; -->
+
+	<!-- if(key == 'tenantId') -->
+	<!-- { -->
+	<!-- tenantId = tenantPayload[i].value; -->
+	<!-- mc.setProperty("tenantId",tenantId); -->
+	<!-- } -->
+	<!-- } -->
+	<!-- mc.setProperty("myDomainFieldValue",tenantId);]]></script> -->
+	<!-- <log> -->
+	<!-- <property xmlns:ns="http://org.apache.synapse/xsd" name="myDomainFieldValue" -->
+	<!-- expression="get-property('myDomainFieldValue')"></property> -->
+	<!-- </log> -->
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="x-jwt-assertion"
+		expression="get-property('Authorization')" scope="transport" type="STRING"></property>
+	<property name="messageType" value="application/json" scope="axis2"
+		type="STRING"></property>
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<send receive="Create_Tenant_Node_SEQ">
+		<endpoint key="conf:/endpoints/alpine/Create_Tenant_EP.xml"></endpoint>
+	</send>
+</sequence>

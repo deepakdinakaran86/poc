@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="Delete_Guava_Route_Hierarchy_SEQ" xmlns="http://ws.apache.org/ns/synapse">
+    <log separator=",">
+        <property name="Enter Delete_Guava_Route_Hierarchy_SEQ" value="--------"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <payloadFactory media-type="json">
+                <format>{
+					"domain": {
+					"domainName": "$1"
+					},
+					"entityTemplate": {
+					"entityTemplateName": "$2"
+					},
+					"platformEntity": {
+					"platformEntityType":
+					"MARKER"
+					},
+					"identifier": {
+					"key": "$3",
+					"value": "$4"
+					},
+					"entityStatus": {
+					"statusName": "DELETED"
+					}
+					}</format>
+                <args>
+                    <arg evaluator="xml" expression="get-property('domainName')"/>
+                    <arg evaluator="xml" expression="get-property('entityTemplateName')"/>
+                    <arg evaluator="xml" expression="get-property('key')"/>
+                    <arg evaluator="xml" expression="get-property('value')"/>
+                </args>
+            </payloadFactory>
+            <property expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property name="messageType" scope="axis2" type="STRING" value="application/json"/>
+            <log separator=",">
+                <property expression="json-eval($.)" name="unique payload"/>
+            </log>
+            <send>
+                <endpoint key="conf:/endpoints/route/Delete_Guava_Route_Hierarchy_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

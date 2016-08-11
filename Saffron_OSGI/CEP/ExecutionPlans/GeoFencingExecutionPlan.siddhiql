@@ -1,0 +1,93 @@
+@Plan:name('GeoFencingExecutionPlan')
+@Plan:statistics('true')
+@Plan:trace('true')
+
+
+@Import('PCInputStream:1.0.0')
+define stream inStream (meta_sourceId string, meta_engOilTemp float, meta_engFuelRate float, meta_acceleratorPedalPos float, meta_engSpeed float, meta_barometricPressure float, meta_receivedTime long, meta_time long, meta_latitude double, meta_longitude double);
+
+@Export('PCOutputStream:1.0.0')
+define stream outstream (meta_sourceId string, meta_alarmName string, meta_alarmMessage string, meta_alarmType string, meta_data string, meta_unit string, meta_pointId string, meta_pointName string, meta_deviceId string, 
+						 meta_receivedTime long, meta_time long, meta_active bool);
+
+@From(eventtable='rdbms', datasource.name='cepdatabase', table.name='geofencing_configuration')
+define table RDBMSGeoAlarmConfigTable (sourceId string, deviceId string, assetId string, assetName string, geocoordinates string, alarmname string, alarmtype string, alarmmessage string, enabled bool);
+
+@IndexBy('sourceId')
+define table InMemoryGeoAlarmConfigTable (sourceId string, deviceId string, assetId string, assetName string, geocoordinates string, alarmname string, alarmtype string, alarmmessage string, enabled bool);
+
+define table InMemoryGeoAlarmTable (sourceId string);
+
+define function concatFn[JavaScript] return string {
+    var str1 = data[0];
+    var str2 = data[1];
+    var str3 = data[2];
+    var responce = str1 + str2 + str3;
+    return responce;
+};
+
+/* Trigger at start */
+define trigger startTrigger at 'start'; 
+
+/* Trigger every 5 min */
+define trigger timedTrigger at every 5 min;
+
+from startTrigger
+insert into triggerStream;
+
+from timedTrigger
+insert into triggerStream;
+
+from triggerStream join RDBMSGeoAlarmConfigTable on RDBMSGeoAlarmConfigTable.enabled == true
+select RDBMSGeoAlarmConfigTable.sourceId as sourceId, RDBMSGeoAlarmConfigTable.deviceId as deviceId, RDBMSGeoAlarmConfigTable.assetId as assetId, 
+RDBMSGeoAlarmConfigTable.assetName as assetName, RDBMSGeoAlarmConfigTable.geocoordinates as geocoordinates, RDBMSGeoAlarmConfigTable.alarmname as alarmname, 
+RDBMSGeoAlarmConfigTable.alarmtype as alarmtype, RDBMSGeoAlarmConfigTable.alarmmessage as alarmmessage, RDBMSGeoAlarmConfigTable.enabled as enabled
+insert into updateStream;
+
+
+from updateStream
+select sourceId, deviceId, assetId, assetName, geocoordinates, alarmname, alarmtype, alarmmessage, enabled
+insert overwrite InMemoryGeoAlarmConfigTable
+on InMemoryGeoAlarmConfigTable.sourceId == sourceId;
+
+
+
+from inStream as iss join InMemoryGeoAlarmConfigTable as im
+on im.sourceId == iss.meta_sourceId
+select 	meta_sourceId, 
+		im.alarmname as meta_alarmName, 
+		im.alarmtype as meta_alarmType, 
+		im.alarmmessage as meta_alarmMessage, 
+		im.geocoordinates as geocoordinates,
+		concatFn(iss.meta_latitude, '-', iss.meta_longitude) as meta_data, 
+		im.deviceId as meta_deviceId,
+		meta_receivedTime,
+		meta_time,
+		meta_latitude,
+		meta_longitude
+		insert into metaStream;
+
+from metaStream[ not(InMemoryGeoAlarmTable.sourceId == meta_sourceId in InMemoryGeoAlarmTable) AND geo:within(meta_latitude, meta_longitude, geocoordinates)== false AND meta_latitude != -999.00 AND meta_longitude != -999.00]
+select meta_sourceId, meta_alarmName, meta_alarmMessage, meta_alarmType, meta_data, 'NA' as meta_unit, 'NA' as meta_pointId, 'NA' as meta_pointName, meta_deviceId, meta_receivedTime, meta_time, true as meta_active
+insert into insertstream;
+
+from insertstream
+select meta_sourceId as sourceId
+insert into InMemoryGeoAlarmTable;
+
+from insertstream
+select *
+insert into outstream;
+
+
+from metaStream[(InMemoryGeoAlarmTable.sourceId == meta_sourceId in InMemoryGeoAlarmTable) AND geo:within(meta_latitude, meta_longitude, geocoordinates)== true AND meta_latitude != -999.00 AND meta_longitude != -999.00]
+select meta_sourceId, meta_alarmName, "Alarm Normalized" as meta_alarmMessage, meta_alarmType, meta_data, 'NA' as meta_unit, 'NA' as meta_pointId, 'NA' as meta_pointName, meta_deviceId, meta_receivedTime, meta_time, false as meta_active
+insert into deletestream;
+
+from deletestream
+delete InMemoryGeoAlarmTable 
+on InMemoryGeoAlarmTable.sourceId == meta_sourceId;
+
+from deletestream
+select *
+insert into outstream;

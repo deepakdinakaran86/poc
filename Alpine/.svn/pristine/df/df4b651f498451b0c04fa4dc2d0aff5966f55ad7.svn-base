@@ -1,0 +1,5 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Get_Current_User_Permission_EP">
+	<http method="get" uri-template="http://10.234.31.201:9764/alpine-user-1.0.0/services/users/permissions/current"/>
+<!-- 	<http method="get" -->
+<!-- 		uri-template="http://10.234.31.154:9763/alpine-user-1.0.0/services/users/permissions/current" /> -->
+</endpoint>

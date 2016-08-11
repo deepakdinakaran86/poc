@@ -1,0 +1,4 @@
+<endpoint xmlns="http://ws.apache.org/ns/synapse" name="Create_CCD_Contact_Heirarchy_EP" >
+	<http uri-template="http://10.234.31.155:8281/alpine/services/hierarchy/attach/children" method="post">
+	</http>
+</endpoint>

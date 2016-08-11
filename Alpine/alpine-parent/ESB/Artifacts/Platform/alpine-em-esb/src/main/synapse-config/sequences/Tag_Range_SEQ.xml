@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Tag_Range_SEQ">
+	<log separator=",">
+		<property name="Enter Tag_Range_SEQ" value="--------"></property>
+	</log>
+	<property expression="$trp:x-jwt-assertion" name="Authorization" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.)" name="originalPayload" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<property expression="json-eval($.startNodeType)" name="originalPayload_startNodeType" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.endNodeType)" name="originalPayload_endNodeType" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.startNode)" name="originalPayload_startNode" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<property expression="json-eval($.endNode)" name="originalPayload_endNode" scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+
+	<sequence key="Tag_Range_Validate_Payload_SEQ" />
+</sequence>

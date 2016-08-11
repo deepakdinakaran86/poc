@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Register_Device_SEQ">
+	<log category="INFO" level="simple" separator=",">
+		<property name="Enter Register_Device_SEQ" value="--------" />
+	</log>
+	<send>
+		<endpoint key="conf:/endpoints/saffron/Register_Device_EP.xml" />
+	</send>
+</sequence>

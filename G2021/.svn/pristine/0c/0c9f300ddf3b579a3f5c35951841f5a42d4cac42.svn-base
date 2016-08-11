@@ -1,0 +1,33 @@
+<%
+
+var VarTenantKey;
+var VarCurrentTenantInfo;
+var usr = require('/modules/user.js');
+var ObjUser = usr.current();
+
+(function() {
+	
+    if (!user) {
+        sendLogin();
+        return;
+    }
+		//print('working...'); 
+
+	var method = request.getMethod();
+	
+	if (method === 'POST') { 		
+		VarTenantKey = (request.getParameter("gapp-tenant-key") != null) ? request.getParameter("gapp-tenant-key") : '';		
+	} else {
+				
+		var ObjTenantInfo = session.get('PARENT_CLIENT');
+		if(ObjTenantInfo != null){
+			VarTenantKey = ObjTenantInfo['tenantId'];
+		}
+	}	
+	
+	VarCurrentTenantInfo = usr.FnGetCurrentClientInfo(VarTenantKey);
+			
+   include(utils.resolvePath('templates/writeback.jag'));
+} ());
+
+ %>

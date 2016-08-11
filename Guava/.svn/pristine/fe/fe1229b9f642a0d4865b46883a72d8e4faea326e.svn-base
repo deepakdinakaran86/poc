@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="POI_Create_POI_Type_Entity">
+	<log separator=",">
+		<property name="Enter POI_Create_POI_Type_Entity" value="----POI_Create_POI_Type_Entity----" />
+		<property expression="json-eval($.)" name="poiCreateEntityResponse" />
+	</log>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+		<then>
+			<send />
+		</then>
+		<else>
+			<property expression="json-eval($.)" name="poiEntityIdentifier"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/domain/domainName"
+				name="poiEntityDomain" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/key" name="poiEntityIdKey"
+				scope="default" type="STRING" />
+			<property expression="$body/jsonObject/identifier/value"
+				name="poiEntityIdValue" scope="default" type="STRING" />
+			<property expression="$body/jsonObject/entityTemplate/entityTemplateName"
+				name="poiEntityTemplate" scope="default" type="STRING" />
+			<payloadFactory media-type="json">
+				<format>$1</format>
+				<args>
+					<arg evaluator="xml" expression="get-property('poiTypeEntityPayload')" />
+				</args>
+			</payloadFactory>
+			<property expression="get-property('Authorization')" name="x-jwt-assertion"
+				scope="transport" type="STRING" />
+			<property name="messageType" scope="axis2" type="STRING"
+				value="application/json" />
+			<property expression="json-eval($.)" name="checkCreatePOICreateMarkerPayload"
+				scope="default" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+			<send receive="POI_Attach_POI_With_POI_Type_Entity_SEQ">
+				<endpoint key="conf:/endpoints/poi/POI_Create_Entity_EP.xml" />
+			</send>
+		</else>
+	</filter>
+</sequence>

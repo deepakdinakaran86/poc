@@ -1,0 +1,49 @@
+<api xmlns="http://ws.apache.org/ns/synapse" context="/alpine/services/geotags"
+	name="GeoTags_API">
+	<resource methods="POST" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Geotag_Find_Existing_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="POST" url-mapping="/tag">
+		<inSequence>
+			<property name="seqName" value="Geotag_Find_Tag_SEQ"
+				scope="default" type="STRING"></property>
+			<property name="tag" value="Use_Find_Tag_Response" scope="default" type="STRING"/>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+	<resource methods="PUT" url-mapping="/">
+		<inSequence>
+			<property name="seqName" value="Geotags_Get_Entities_Tag_SEQ"
+				scope="default" type="STRING"></property>
+			<sequence key="Generic_Domain_Access_Router_SEQ" />
+		</inSequence>
+		<outSequence>
+			<send />
+		</outSequence>
+		<faultSequence>
+			<log level="custom">
+				<property name="message" expression="get-property('ERROR_MESSAGE')" />
+			</log>
+		</faultSequence>
+	</resource>
+</api>

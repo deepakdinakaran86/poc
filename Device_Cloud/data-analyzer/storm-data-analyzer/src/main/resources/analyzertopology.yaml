@@ -1,0 +1,12 @@
+brokerHosts: localhost:2181
+messageTopicName: intermediate-message
+zookeeperRoot:  
+topologyName: analyzer-topology
+parentSpoutName: intermediate-message-spout
+topologyEmitInterval: 2000
+topologyMode: LOCAL
+maxParallelism: 5
+numberOfWorkers: 5
+outputTopicName: analyzed-message
+analyzerBoltName: analyzer-bolt
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="Subscription_API" groupId="subscription-esb.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/Subscription_API.xml</file>
+    </artifact>
+    <artifact name="Subscription_Create_User_Api_Manager_Temp_SEQ" groupId="subscription-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Subscription_Create_User_Api_Manager_Temp_SEQ.xml</file>
+    </artifact>
+    <artifact name="Subscription_Login_Api_Manager_SEQ" groupId="subscription-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Subscription_Login_Api_Manager_SEQ.xml</file>
+    </artifact>
+    <artifact name="Subscription_Create_App_Api_Manager_SEQ" groupId="subscription-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Subscription_Create_App_Api_Manager_SEQ.xml</file>
+    </artifact>
+    <artifact name="Subscription_Create_Tenant_SEQ" groupId="subscription-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Subscription_Create_Tenant_SEQ.xml</file>
+    </artifact>
+    <artifact name="Subscription_Send_Email_SEQ" groupId="subscription-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Subscription_Send_Email_SEQ.xml</file>
+    </artifact>
+    <artifact name="Subscription_Create_Tenant_Node_SEQ" groupId="subscription-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Subscription_Create_Tenant_Node_SEQ.xml</file>
+    </artifact>
+    <artifact name="Subscription_Create_Saffron_Subscription_SEQ" groupId="subscription-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Subscription_Create_Saffron_Subscription_SEQ.xml</file>
+    </artifact>
+    <artifact name="Subscription_Create_Skyspark_Site_SEQ" groupId="subscription-esb.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/Subscription_Create_Skyspark_Site_SEQ.xml</file>
+    </artifact>
+</artifacts>

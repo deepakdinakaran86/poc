@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Get_Permission_Group_SEQ">
+	<log separator=",">
+		<property name="Enter Get_Permission_Group_SEQ" value="--------" />
+	</log>
+
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="uri.var.pathparameter"
+		expression="get-property('uri.var.pathparameter')" scope="default"
+		type="STRING"></property>
+
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="query.param.domain"
+		expression="get-property('query.param.domain')" scope="default"
+		type="STRING"></property>		
+	<property expression="get-property('Authorization')" name="x-jwt-assertion"
+		scope="transport" type="STRING" xmlns:ns="http://org.apache.synapse/xsd" />
+	<send>
+		<endpoint key="conf:/endpoints/alpine/Get_Permission_Group_EP.xml" />
+	</send>
+</sequence>

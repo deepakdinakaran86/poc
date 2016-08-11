@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="Attach_Children_SEQ">
+	<log separator=",">
+		<property name="Enter Attach_Children_SEQ" value="--------"></property>
+	</log>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="tenantName"
+		expression="$body/jsonObject/actor/identifier/value" scope="default"
+		type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="parentType"
+		expression="$body/jsonObject/actor/globalEntity/globalEntityType"
+		scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="childTemplate"
+		expression="json-eval($.subjects[0].entityTemplate.entityTemplateName)"
+		scope="default" type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="childDomain"
+		expression="json-eval($.subjects[0].domain.domainName)" scope="default"
+		type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="identifierKey"
+		expression="json-eval($.subjects[0].identifier.key)" scope="default"
+		type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="identifierValue"
+		expression="json-eval($.subjects[0].identifier.value)" scope="default"
+		type="STRING"></property>
+	<property xmlns:ns="http://org.apache.synapse/xsd" name="Authorization"
+		expression="$trp:x-jwt-assertion" scope="default" type="STRING"></property>
+	<filter xmlns:ns="http://org.apache.synapse/xsd" source="(get-property('parentType'))"
+		regex="TENANT">
+		<then>
+			<log>
+				<property name="****Authorization****" expression="get-property('Authorization')"></property>
+				<property name="****childrenPayload****" expression="get-property('childTemplate')"></property>
+			</log>
+			<filter source="(get-property('childTemplate'))" regex="SaffronDeviceTemplate">
+				<then>
+					<log>
+						<property name="Call marker seq" value="--------Call marker seq--------" />
+					</log>
+
+
+					<payloadFactory media-type="json">
+						<format>{"searchFields":
+							[{"key":"$1","value": "$2"}],
+							"returnFields":["entityName"],
+							"domain":{"domainName": "$3"},
+							"entityTemplate": {"entityTemplateName": "$4"}
+
+							}
+						</format>
+						<args>
+							<arg evaluator="xml" expression="get-property('identifierKey')" />
+							<arg evaluator="xml" expression="get-property('identifierValue')" />
+							<arg evaluator="xml" expression="get-property('childDomain')" />
+							<arg evaluator="xml" expression="get-property('childTemplate')" />
+						</args>
+					</payloadFactory>
+
+					<property name="x-jwt-assertion" expression="get-property('Authorization')"
+						scope="transport" type="STRING" />
+					<property name="messageType" value="application/json"
+						scope="axis2" type="STRING" />
+					<send receive="Skyspark_Assign_Device_To_Site_SEQ">
+						<endpoint
+							key="conf:/endpoints/alpine/Search_Marker_EP.xml" />
+					</send>
+				</then>
+				<else>
+					<send>
+						<endpoint key="conf:/endpoints/alpine/Attach_Children_EP.xml"></endpoint>
+					</send>
+				</else>
+			</filter>
+		</then>
+		<else>
+			<send>
+				<endpoint key="conf:/endpoints/alpine/Attach_Children_EP.xml"></endpoint>
+			</send>
+		</else>
+	</filter>
+</sequence>

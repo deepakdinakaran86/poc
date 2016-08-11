@@ -1,0 +1,69 @@
+<sequence xmlns="http://ws.apache.org/ns/synapse" name="POI_Type_Update_Entity_SEQ">
+    <log category="INFO" level="simple" separator=",">
+        <property name="Enter POI_Type_Update_Entity_SEQ" value="----POI_Type_Update_Entity_SEQ----"/>
+        <property expression="json-eval($.[0].identifier.key)"
+            name="geofenceEntityPayload" xmlns:ns="http://org.apache.synapse/xsd"/>
+        <property expression="$body[0]/jsonObject/identifier/key"
+            name="poiEntityPayload" xmlns:ns="http://org.apache.synapse/xsd"/>
+    </log>
+    <filter xmlns:ns="http://org.apache.synapse/xsd" xpath="$body/jsonObject/errorMessage">
+        <then>
+            <send/>
+        </then>
+        <else>
+            <property action="set"
+                expression="json-eval($.[0].identifier.key)"
+                name="poiTypeIdKey" scope="default" type="STRING"/>
+            <property action="set"
+                expression="json-eval($.[0].identifier.value)"
+                name="poiTypeIdValue" scope="default" type="STRING"/>
+            <property action="set"
+                expression="json-eval($.[0].domain.domainName)"
+                name="poiTypeDomain" scope="default" type="STRING"/>
+            <log category="INFO" level="simple" separator=",">
+                <property expression="json-eval($.[0].identifier.key)" name="poiTypeidkey"/>
+                <property expression="json-eval($.[0].identifier.value)" name="poiTypeidvalue"/>
+                <property
+                    expression="json-eval($.[0].domain.domainName)" name="poiTypeDomain"/>
+            </log>
+            <payloadFactory media-type="json">
+                 <format>{
+					"entityTemplate": {
+					"entityTemplateName": "$1"
+					},
+					"domain": {
+					"domainName": "$2"
+					},
+					"entityStatus": {
+					"statusName": "$3"
+					},
+					"fieldValues":
+					$4,
+					"identifier": {
+					"key": "$5",
+					"value": "$6"
+					}
+					}</format>
+                <args>
+                    <arg expression="get-property('poiType')"/>
+                    <arg expression="get-property('poiTypeDomain')"/>
+                    <arg expression="get-property('poiStatus')"/>
+                    <arg expression="get-property('poiTypeEntityFieldValues')"/>
+                    <arg expression="get-property('poiTypeIdKey')"/>
+                    <arg expression="get-property('poiTypeIdValue')"/>
+                </args>
+            </payloadFactory>
+            <log category="INFO" level="simple" separator=",">
+                <property expression="json-eval($.)" name="poiTypeDomain"/>
+            </log>
+            <property action="set"
+                expression="get-property('Authorization')"
+                name="x-jwt-assertion" scope="transport" type="STRING"/>
+            <property action="set" name="messageType" scope="axis2"
+                type="STRING" value="application/json"/>
+            <send receive="POI_Type_Update_Node_SEQ">
+                <endpoint key="conf:/endpoints/poi/POI_Update_Entity_EP.xml"/>
+            </send>
+        </else>
+    </filter>
+</sequence>

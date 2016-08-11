@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><resource name="Subscription_Login_Api_Manager_EP.xml" isCollection="false" path="/_system/config/endpoints/subscription/subscription/Subscription_Login_Api_Manager_EP.xml" registryUrl="https://localhost:9443/registry" md5="12c2d0eff054401fdb50084d00400129">
+    <mediaType>application/vnd.wso2.esb.endpoint</mediaType>
+    <version>1844</version>
+    <creator>admin</creator>
+    <createdTime>1443848386958</createdTime>
+    <lastUpdater>admin</lastUpdater>
+    <lastModified>1443848386958</lastModified>
+    <registryState>1</registryState>
+    <description/>
+</resource>
