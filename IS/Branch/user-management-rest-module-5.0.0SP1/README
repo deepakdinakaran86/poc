@@ -1,0 +1,32 @@
+WSO2 IS 5.0.0 SP1
+1. Run the mysql.sql script found under resources directory on mysql server. This will create a database wit the name 'galaxy_schema'.
+2. Copy mysql connector into WSO2-IS under $WSO2_IS/repository/componenets/lib directory. This is needed as the jdbc connector library.
+3. Add the following datasource for IS repository/conf/datasources/master-datasources.xml. Change the url value accordingly.
+
+		<datasource>
+            <name>WSO2_HIERARCHICAL_TENANT_DB</name>
+            <description>The datasource used to store tenant relationships for hierarchical tenancy</description>
+            <jndiConfig>
+                <name>jdbc/WSO2HierarchicalTenantDB</name>
+            </jndiConfig>
+            <definition type="RDBMS">
+                <configuration>
+                    <url>jdbc:mysql://localhost:3306/galaxy_schema</url>
+                    <username>uname</username>
+                    <password>passwd</password>
+                    <driverClassName>com.mysql.jdbc.Driver</driverClassName>
+                    <maxActive>50</maxActive>
+                    <maxWait>60000</maxWait>
+                    <testOnBorrow>true</testOnBorrow>
+                    <validationQuery>SELECT 1</validationQuery>
+                    <validationInterval>30000</validationInterval>
+                </configuration>
+            </definition>
+        </datasource>
+
+4. Build and deploy the webapp (wso2-um.war) on WSO2 IS. The webapp should be copied to $WSO2_IS/repository/deploymemt/server/webapps directory.
+5. Once it is successfully deployed, the HTTPS RESTful services will be exposed in the URL https://10.234.31.211:9443/wso2-um/services/um 
+and HTTP services in http://10.234.31.211:9763/wso2-um/services/um
+6. To access these services you have to use basic authentication with the base 64 encoded value of <username>@<tenantdomain>:<password>
+Eg : for default wso2 admin user (admin@carbon.super:admin), the basic auth header would look like - Authorization: Basic YWRtaW5AY2FyYm9uLnN1cGVyOmFkbWlu
+7. Example requests for each service endpoints can be found with the jmeter script (HierarchicalTenantMgtTestGroup.jmx) under resources directory.
